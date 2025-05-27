@@ -1,0 +1,25 @@
+﻿  Player.cpp
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(4,4): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(4,13): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(14,48): warning C4244: 'argumento': conversão de 'T' para 'float', possível perda de dados
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(14,48): warning C4244:         with
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(14,48): warning C4244:         [
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(14,48): warning C4244:             T=unsigned int
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(14,48): warning C4244:         ]
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,55): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,55): warning C4244:         with
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,55): warning C4244:         [
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,55): warning C4244:             T=float
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,55): warning C4244:         ]
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,46): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,46): warning C4244:         with
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,46): warning C4244:         [
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,46): warning C4244:             T=float
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,46): warning C4244:         ]
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,36): warning C4244: 'argumento': conversão de 'int' para 'T', possível perda de dados
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,36): warning C4244:         with
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,36): warning C4244:         [
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,36): warning C4244:             T=float
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(16,36): warning C4244:         ]
+C:\utfpr\tecprog\jogos\jogo_simao\jogo_simao\Player.cpp(24,17): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+  jogo_simao.vcxproj -> C:\utfpr\tecprog\jogos\jogo_simao\x64\Debug\jogo_simao.exe
