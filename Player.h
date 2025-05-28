@@ -1,10 +1,11 @@
 #pragma once
+#include"Entidade.h"
 #include <SFML/Graphics.hpp>
 #include<iostream>
 
 #define LARGURASAMURAI 73
 
-class Player
+class Player : public Entidade
 {
 private:
     int ground;
