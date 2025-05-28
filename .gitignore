@@ -1,3 +1,16 @@
-.dll
-.vcxproj
-x64
+x64/
+Makefile
+.vscode/
+
+# Compiled binaries
+*.exe
+*.dll
+*.lib
+*.obj
+
+# Visual Studio files
+*vcxproj*
+*sln
+*.suo
+*.user
+*.filters
