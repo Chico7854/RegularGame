@@ -4,8 +4,13 @@ Jogo::Jogo():
     window(sf::VideoMode(1100, 650), "Prototipo Simao"), 
     height_floor(50), 
     speed(0.3f),
-    frame2 (0.f)
+    frame2 (0.f),
+    player1(textsamurai, 73, 104),
+    player2(textshinobi, 80, 82)
 {
+    player1.setWindow(&window);
+    player2.setWindow(&window);
+
     if (!textsamurai.loadFromFile("imagens/samurai_run.png") || //adicionar fonte dos sprites
         !textshinobi.loadFromFile("imagens/shinobi_run.png") ||
         !textyoukai.loadFromFile("imagens/youkai_walk.png") ||
@@ -21,15 +26,8 @@ Jogo::Jogo():
     floor.setPosition(0.f, window.getSize().y - height_floor);
 }
 
-Jogo::~Jogo()
-{
-}
-
 void Jogo::executar()
 {
-    Player player1(window, textsamurai, 73, 104);
-    Player player2(window, textshinobi, 80, 82);
-
     platform.setTexture(textplat);
     platform.setPosition(600, 500);
 
@@ -50,29 +48,8 @@ void Jogo::executar()
             }
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            player1.dx = speed;
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            player1.dx = -speed;
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && player1.getOnGround()) {
-            player1.dy = -speed * 1.3;
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-            player2.dx = speed;
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-            player2.dx = -speed;
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && player2.getOnGround()) {
-            player2.dy = -speed * 1.2;
-        }
+        player1.keyboard_att(0);
+        player2.keyboard_att(1);
 
         player1.update(time);
         player2.update(time);
@@ -81,8 +58,8 @@ void Jogo::executar()
         window.draw(bg);
         window.draw(floor);
         window.draw(platform);
-        //window.draw(player2.getPlayer());
-        window.draw(player1.getPlayer());
+        player1.draw();
+        player2.draw();
         //window.draw(youkai);
         window.display();
     }

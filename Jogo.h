@@ -14,9 +14,12 @@ private:
 	sf::Clock clock;
 	const float height_floor, speed;
 	float frame2 ;
+
+	Player player1;
+	Player player2;
 public:
 	Jogo();
-	~Jogo();
+	virtual ~Jogo(){}
 
 	void executar();
 };

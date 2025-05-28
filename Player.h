@@ -3,24 +3,23 @@
 #include <SFML/Graphics.hpp>
 #include<iostream>
 
-#define LARGURASAMURAI 73
-
 class Player : public Entidade
 {
 private:
     int ground;
     bool on_ground;
-    sf::FloatRect rect;
-    sf::Sprite player;
+    //sf::FloatRect rect;
     float frame,speed;
     int largura,altura;
-public:
     float dx, dy;
+public:
 
-    Player(sf::RenderWindow& window, sf::Texture &texture,int largura_sprite,int altura_sprite);
-    ~Player(){}
+    Player(){}
+    Player(sf::Texture &texture,int largura_sprite,int altura_sprite);
+    virtual ~Player(){}
 
+    void keyboard_att(int qual_player);
     void update(float time);
-    sf::Sprite getPlayer() { return player; }
+    sf::Sprite getPlayer() { return sprite; }
     bool getOnGround() { return on_ground; }
 };
