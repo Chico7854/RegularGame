@@ -15,6 +15,15 @@ Player::Player(sf::Texture &texture, int largura_sprite, int altura_sprite):
 
     hitbox = sf::FloatRect(0, ground - altura, largura, altura);
 }
+void Player::executar()
+{
+}
+void Player::salvar()
+{
+}
+void Player::move()
+{
+}
 void Player::keyboard_att(int qual_player)
 {
     if(qual_player == 0){

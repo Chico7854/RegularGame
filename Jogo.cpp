@@ -4,13 +4,8 @@ Jogo::Jogo():
     window(sf::VideoMode(1100, 650), "Prototipo Simao"), 
     height_floor(50), 
     speed(0.3f),
-    frame2 (0.f),
-    player1(textsamurai, 73, 104),
-    player2(textshinobi, 80, 82)
+    frame2 (0.f)
 {
-    player1.setWindow(&window);
-    player2.setWindow(&window);
-
     if (!textsamurai.loadFromFile("imagens/samurai_run.png") || //adicionar fonte dos sprites
         !textshinobi.loadFromFile("imagens/shinobi_run.png") ||
         !textyoukai.loadFromFile("imagens/youkai_walk.png") ||
@@ -19,6 +14,17 @@ Jogo::Jogo():
         !textbg.loadFromFile("imagens/bgsimao.png")) {
         std::cerr << "Falha ao ler arquivo de imagem\n";
     }
+
+    player1 = Player(textsamurai, 73, 104);
+    player2 = Player(textshinobi, 80, 82);
+
+    player1.setWindow(&window);
+    player2.setWindow(&window);
+
+	youkai = Inimigo(textyoukai, 52, 75);
+
+    youkai.setWindow(&window);
+	youkai.setInitPosition(sf::Vector2f(100.f, window.getSize().y - height_floor - 75.f));
 
     bg.setTexture(textbg);
 
@@ -30,9 +36,6 @@ void Jogo::executar()
 {
     platform.setTexture(textplat);
     platform.setPosition(600, 500);
-
-    //sf::Sprite youkai(textyoukai, sf::IntRect(0, 0, LARGURAYOUKAI, 75)); largura youkai = 54
-    //youkai.setPosition(window.getSize().x / 2 - LARGURAYOUKAI / 2, window.getSize().y - (youkai.getGlobalBounds().height + height_floor));
 
     while (window.isOpen())
     {
@@ -54,13 +57,15 @@ void Jogo::executar()
         player1.update(time);
         player2.update(time);
 
+		youkai.update(time);
+
         window.clear();
         window.draw(bg);
         window.draw(floor);
         window.draw(platform);
+        //player2.draw();
         player1.draw();
-        player2.draw();
-        //window.draw(youkai);
+		youkai.draw();
         window.display();
     }
 

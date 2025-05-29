@@ -15,9 +15,12 @@ protected:
 	sf::FloatRect hitbox;
 	sf::Vector2f init_position;
 public:
-	Entidade(){}
+	Entidade():window(nullptr){}
 	virtual ~Entidade(){}
 	 
+	virtual void executar() = 0;
+	virtual void salvar() = 0;
+
 	void setWindow(sf::RenderWindow* window) { this->window = window; }
 	void draw() { window->draw(sprite); }
 };

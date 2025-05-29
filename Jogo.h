@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include<iostream>
 #include"Player.h"
+#include"Inimigo.h"
 
 class Jogo
 {
@@ -17,6 +18,8 @@ private:
 
 	Player player1;
 	Player player2;
+
+	Inimigo youkai;
 public:
 	Jogo();
 	virtual ~Jogo(){}
