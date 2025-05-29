@@ -7,12 +7,12 @@ Jogo::Jogo():
     frame2 (0.f),
     platform(textplat, 86, 24)
 {
-    if (!textsamurai.loadFromFile("imagens/samurai_run.png") || //adicionar fonte dos sprites
-        !textshinobi.loadFromFile("imagens/shinobi_run.png") ||
-        !textyoukai.loadFromFile("imagens/youkai_walk.png") ||
-        !textfloor.loadFromFile("imagens/floor_mine.png") ||
-        !textplat.loadFromFile("imagens/platform.png") ||
-        !textbg.loadFromFile("imagens/bgsimao.png")) {
+    if (!textsamurai.loadFromFile("../images/samurai_run.png") || //adicionar fonte dos sprites
+        !textshinobi.loadFromFile("../images/shinobi_run.png") ||
+        !textyoukai.loadFromFile("../images/youkai_walk.png") ||
+        !textfloor.loadFromFile("../images/floor_mine.png") ||
+        !textplat.loadFromFile("../images/platform.png") ||
+        !textbg.loadFromFile("../images/bgsimao.png")) {
         std::cerr << "Falha ao ler arquivo de imagem\n";
     }
 
