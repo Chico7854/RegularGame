@@ -21,8 +21,10 @@ public:
     void salvar() override;
     void move() override;
 
+    void setCollision(int j);
     void keyboard_att(int qual_player);
     void update(float time);
     sf::Sprite getPlayer() { return sprite; }
+
     bool getOnGround() { return on_ground; }
 };

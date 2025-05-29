@@ -21,6 +21,7 @@ public:
 	virtual void executar() = 0;
 	virtual void salvar() = 0;
 
+	sf::FloatRect getHitbox(){ return hitbox; }
 	void setWindow(sf::RenderWindow* window) { this->window = window; }
 	void draw() { window->draw(sprite); }
 };

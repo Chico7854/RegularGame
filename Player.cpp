@@ -24,6 +24,17 @@ void Player::salvar()
 void Player::move()
 {
 }
+
+void Player::setCollision(int j)
+{
+    if (dx > 0) {
+        hitbox.left = j - largura;
+    }
+    if(dx < 0) {
+        hitbox.left = j + largura;
+    }
+}
+
 void Player::keyboard_att(int qual_player)
 {
     if(qual_player == 0){
@@ -71,6 +82,8 @@ void Player::update(float time)
         on_ground = true;
     }
 
+    sprite.setPosition(hitbox.left, hitbox.top);
+
     frame += 0.008f * time;//velocidade da animacao
     if (frame >= 8) {
         frame = 0;
@@ -85,6 +98,5 @@ void Player::update(float time)
         }
     }
 
-    sprite.setPosition(hitbox.left, hitbox.top);
     dx = 0;
 }
