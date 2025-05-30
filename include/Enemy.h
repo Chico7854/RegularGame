@@ -5,19 +5,20 @@
 
 class Enemy : public Character
 {
-private:
-    int ground;
+protected:
     float frame, speed;
     int width, height;
     float dx, dy;
+    int ground;
+
 public:
     Enemy() {}
     Enemy(sf::Texture& texture, int sprite_width, int sprite_height);
     virtual ~Enemy() {}
-    void setInitialPosition(sf::Vector2f pos);
+    virtual void setInitialPosition(sf::Vector2f pos){}
     void run() override;
     void save() override;
     void move() override;
-    void update(float time);
+    virtual void update(float time){}
     sf::Sprite getEnemy() { return sprite; }
 };

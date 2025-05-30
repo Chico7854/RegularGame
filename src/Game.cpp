@@ -6,19 +6,23 @@ Game::Game() :
     speed(0.3f),
     frame2(0.f),
     platform(platformTexture, 86, 24)
+	//hardObstacle(hardObsTexture, 100, 100),
+	//mediumObstacle(meduimObsTexture, 100, 100) //uncomment when you have the sprites for the obstacles
 {
-    if (!samuraiTexture.loadFromFile("images/samurai_run.png") ||
+	if (!samuraiTexture.loadFromFile("images/samurai_run.png") || //remember to give credit to the authors of the images
         !shinobiTexture.loadFromFile("images/shinobi_run.png") ||
         !youkaiTexture.loadFromFile("images/youkai_walk.png") ||
         !floorTexture.loadFromFile("images/floor_mine.png") ||
         !platformTexture.loadFromFile("images/platform.png") ||
         !bgTexture.loadFromFile("images/bgsimao.png")) {
+        //!hardObsTexture.loadFromFile("images/hard_obs.png")||
+        //!mediumObsTexture.loadFromFile("images/medium_obs.png")) { //find sprites for the obstacles
         std::cerr << "Failed to load image file\n";
     }
 
     player1 = Player(samuraiTexture, 73, 104);
     player2 = Player(shinobiTexture, 80, 82);
-    youkai = Enemy(youkaiTexture, 52, 75);
+    youkai = EasyEnemy(youkaiTexture, 52, 75);
 
     youkai.setInitialPosition(sf::Vector2f(100.f, window.getSize().y - floorHeight - 75.f));
 
@@ -26,6 +30,8 @@ Game::Game() :
     player2.setWindow(&window);
     youkai.setWindow(&window);
     platform.setWindow(&window);
+	//hardObstacle.setWindow(&window);
+	//mediumObstacle.setWindow(&window);
 
     background.setTexture(bgTexture);
 
@@ -76,6 +82,8 @@ void Game::run()
         window.draw(background);
         window.draw(floor);
         platform.draw();
+		//hardObstacle.draw();
+		//mediumObstacle.draw();
         //player2.draw();
         player1.draw();
         youkai.draw();

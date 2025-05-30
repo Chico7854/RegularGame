@@ -20,8 +20,8 @@ public:
     Entity() : window(nullptr) {}
     virtual ~Entity() {}
 
-    virtual void run() = 0;          // Changed from 'executar'
-    virtual void save() = 0;         // Changed from 'salvar'
+    virtual void run() = 0;          
+    virtual void save() = 0;         
 
     sf::FloatRect getHitbox() { return hitbox; }
     void setWindow(sf::RenderWindow* window) { this->window = window; }
