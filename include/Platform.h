@@ -1,24 +1,24 @@
 #pragma once
-#include "Obstaculo.h"
+#include "Obstacle.h"
 
-class Platform : public Obstaculo
+class Platform : public Obstacle
 {
 private:
-	int largura, altura;
+    int width, height;
 
 public:
-	Platform() {}
-	Platform(sf::Texture& texture, int largura_sprite, int altura_sprite):
-		largura(largura_sprite), 
-		altura(altura_sprite)
-	{
-		sprite.setTexture(texture);
-		sprite.setTextureRect(sf::IntRect(0, 0, largura, altura));
-		sprite.setPosition(600, 500);
-		hitbox = sf::FloatRect(600, 450, largura, altura);
-	}
-	virtual ~Platform() {}
+    Platform() {}
+    Platform(sf::Texture& texture, int sprite_width, int sprite_height) :
+        width(sprite_width),
+        height(sprite_height)
+    {
+        sprite.setTexture(texture);
+        sprite.setTextureRect(sf::IntRect(0, 0, width, height));
+        sprite.setPosition(600, 500);
+        hitbox = sf::FloatRect(600, 500, width, height);
+    }
+    virtual ~Platform() {}
 
-	void executar() override {}
-	void salvar() override {}
+    void run() override {}
+    void save() override {}
 };

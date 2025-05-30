@@ -1,7 +1,6 @@
 x64/
 Makefile
 .vscode/
-build/
 
 # Compiled binaries
 *.exe

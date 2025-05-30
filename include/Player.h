@@ -1,30 +1,29 @@
 #pragma once
-#include"Personagem.h"
+#include "Character.h"
 #include <SFML/Graphics.hpp>
-#include<iostream>
+#include <iostream>
 
-class Player : public Personagem
+class Player : public Character
 {
 private:
     int ground;
     bool on_ground;
-    float frame,speed;
-    int largura,altura;
+    float frame, speed;
+    int width, height;
     float dx, dy;
+
 public:
+    Player() {}
+    Player(sf::Texture& texture, int sprite_width, int sprite_height);
+    virtual ~Player() {}
 
-    Player(){}
-    Player(sf::Texture &texture,int largura_sprite,int altura_sprite);
-    virtual ~Player(){}
-
-    void executar() override;
-    void salvar() override;
+    void run() override;
+    void save() override;
     void move() override;
 
-    void setCollision(int j);
-    void keyboard_att(int qual_player);
+    void setCollision(int position);
+    void keyboardInput(int playerNumber);
     void update(float time);
     sf::Sprite getPlayer() { return sprite; }
-
     bool getOnGround() { return on_ground; }
 };

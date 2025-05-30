@@ -1,43 +1,46 @@
-#include"Player.h"
+#include "../include/Player.h"
 
-Player::Player(sf::Texture &texture, int largura_sprite, int altura_sprite):
-	dx(0.1), dy(0.1),
+Player::Player(sf::Texture& texture, int sprite_width, int sprite_height) :
+    dx(0.1), dy(0.1),
     ground(600),
     on_ground(true),
     frame(0),
     speed(0.3f),
-    largura(largura_sprite),
-    altura(altura_sprite)
+    width(sprite_width),
+    height(sprite_height)
 {
     sprite.setTexture(texture);
-    sprite.setTextureRect(sf::IntRect(0, 0, largura, altura));
-    sprite.setPosition(0.f, ground + altura);
+    sprite.setTextureRect(sf::IntRect(0, 0, width, height));
+    sprite.setPosition(0.f, ground + height);
 
-    hitbox = sf::FloatRect(0, ground - altura, largura, altura);
+    hitbox = sf::FloatRect(0, ground - height, width, height);
 }
-void Player::executar()
+
+void Player::run()
 {
 }
-void Player::salvar()
+
+void Player::save()
 {
 }
+
 void Player::move()
 {
 }
 
-void Player::setCollision(int j)
+void Player::setCollision(int position)
 {
     if (dx > 0) {
-        hitbox.left = j - largura;
+        hitbox.left = position - width;
     }
-    if(dx < 0) {
-        hitbox.left = j + largura;
+    if (dx < 0) {
+        hitbox.left = position + width;
     }
 }
 
-void Player::keyboard_att(int qual_player)
+void Player::keyboardInput(int playerNumber)
 {
-    if(qual_player == 0){
+    if (playerNumber == 0) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
             dx = speed;
         }
@@ -50,7 +53,7 @@ void Player::keyboard_att(int qual_player)
             dy = -speed * 1.3;
         }
     }
-    else{
+    else {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
             dx = speed;
         }
@@ -64,13 +67,14 @@ void Player::keyboard_att(int qual_player)
         }
     }
 }
+
 void Player::update(float time)
 {
     hitbox.left += dx * time;
     hitbox.top += dy * time;
 
     if (!on_ground) {
-        dy = dy + 0.0006 * time;//define a altura do pulo
+        dy = dy + 0.0006 * time; // Jump height calculation
         sprite.move(sprite.getPosition().x, dy);
     }
 
@@ -84,17 +88,17 @@ void Player::update(float time)
 
     sprite.setPosition(hitbox.left, hitbox.top);
 
-    frame += 0.008f * time;//velocidade da animacao
+    frame += 0.008f * time; // Animation speed
     if (frame >= 8) {
         frame = 0;
     }
 
-    if(on_ground){
+    if (on_ground) {
         if (dx > 0) {
-            sprite.setTextureRect(sf::IntRect(largura * (int)frame, 0, largura, altura));
+            sprite.setTextureRect(sf::IntRect(width * (int)frame, 0, width, height));
         }
         if (dx < 0) {
-            sprite.setTextureRect(sf::IntRect(largura * ((int)frame + 1) ,0, -largura, altura));
+            sprite.setTextureRect(sf::IntRect(width * ((int)frame + 1), 0, -width, height));
         }
     }
 
