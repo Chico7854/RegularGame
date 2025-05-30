@@ -6,7 +6,6 @@
 class Player : public Character
 {
 private:
-    int ground;
     bool on_ground;
     float frame, speed;
     int width, height;

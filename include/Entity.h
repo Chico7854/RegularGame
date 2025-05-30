@@ -15,9 +15,9 @@ protected:
     sf::Texture texture;
     sf::FloatRect hitbox;
     sf::Vector2f initialPosition;
-
+    int ground;
 public:
-    Entity() : window(nullptr) {}
+    Entity() : window(nullptr),ground(600/*floor height, declared statcally, chenge after*/) {}
     virtual ~Entity() {}
 
     virtual void run() = 0;          

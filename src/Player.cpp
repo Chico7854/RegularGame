@@ -2,7 +2,6 @@
 
 Player::Player(sf::Texture& texture, int sprite_width, int sprite_height) :
     dx(0.1), dy(0.1),
-    ground(600),
     on_ground(true),
     frame(0),
     speed(0.3f),

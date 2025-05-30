@@ -1,22 +1,22 @@
 #include "../include/Game.h"
 
 Game::Game() :
-    window(sf::VideoMode(1100, 650), "Simao Prototype"),
+    window(sf::VideoMode(1100, 650), "Simao Game"),
     floorHeight(50),
     speed(0.3f),
     frame2(0.f),
-    platform(platformTexture, 86, 24)
-	//hardObstacle(hardObsTexture, 100, 100),
-	//mediumObstacle(meduimObsTexture, 100, 100) //uncomment when you have the sprites for the obstacles
+    platform(platformTexture, 86, 24),
+    spike(spikeTexture, 25, 17), //uncomment when you have the sprites for the obstacles
+	saw(sawTexture, 96, 96)
 {
 	if (!samuraiTexture.loadFromFile("images/samurai_run.png") || //remember to give credit to the authors of the images
         !shinobiTexture.loadFromFile("images/shinobi_run.png") ||
         !youkaiTexture.loadFromFile("images/youkai_walk.png") ||
         !floorTexture.loadFromFile("images/floor_mine.png") ||
         !platformTexture.loadFromFile("images/platform.png") ||
-        !bgTexture.loadFromFile("images/bgsimao.png")) {
-        //!hardObsTexture.loadFromFile("images/hard_obs.png")||
-        //!mediumObsTexture.loadFromFile("images/medium_obs.png")) { //find sprites for the obstacles
+        !bgTexture.loadFromFile("images/bgsimao.png") ||
+        !spikeTexture.loadFromFile("images/spike.png") ||
+        !sawTexture.loadFromFile("images/saw.png")) { //find sprites for the oyher enemys
         std::cerr << "Failed to load image file\n";
     }
 
@@ -30,8 +30,8 @@ Game::Game() :
     player2.setWindow(&window);
     youkai.setWindow(&window);
     platform.setWindow(&window);
-	//hardObstacle.setWindow(&window);
-	//mediumObstacle.setWindow(&window);
+    spike.setWindow(&window);
+	saw.setWindow(&window);
 
     background.setTexture(bgTexture);
 
@@ -78,12 +78,14 @@ void Game::run()
 
         youkai.update(time);
 
+		saw.animation(time);
+
         window.clear();
         window.draw(background);
         window.draw(floor);
         platform.draw();
-		//hardObstacle.draw();
-		//mediumObstacle.draw();
+        spike.draw();
+		saw.draw();
         //player2.draw();
         player1.draw();
         youkai.draw();

@@ -13,7 +13,7 @@ class Game
 {
 private:
     sf::RenderWindow window;
-    sf::Texture floorTexture, bgTexture, shinobiTexture, youkaiTexture, samuraiTexture, platformTexture, hardObsTexture;
+    sf::Texture floorTexture, bgTexture, shinobiTexture, youkaiTexture, samuraiTexture, platformTexture,spikeTexture, sawTexture;
     sf::Sprite background;
     sf::Sprite floor;
     sf::Clock clock;
@@ -26,8 +26,8 @@ private:
     EasyEnemy youkai;
 
     Platform platform;
-	HardObstacle hardObstacle;
-	MediumObstacle mediumObstacle;
+    MediumObstacle spike;
+	HardObstacle saw;
 public:
     Game();
     virtual ~Game() {}
