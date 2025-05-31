@@ -3,7 +3,6 @@
 
 Game::Game():
     pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
-    window(pGraphicsManager->getWindow()),
     floorHeight(50),
     speed(0.3f),
     frame2(0.f),
@@ -40,13 +39,6 @@ Game::Game():
 
     youkai.setInitialPosition(sf::Vector2f(100.f, Constants::WINDOW_HEIGHT - floorHeight - 75.f));
 
-    player1.setWindow(window);
-    player2.setWindow(window);
-    youkai.setWindow(window);
-    platform.setWindow(window);
-    spike.setWindow(window);
-	saw.setWindow(window);
-
     background.setTexture(bgTexture);
 
     floor.setTexture(floorTexture);
@@ -75,7 +67,7 @@ void Game::run()
         time = time / 800;
 
         sf::Event event;
-        while (window->pollEvent(event))
+        while (pGraphicsManager->getWindow()->pollEvent(event))
         {
             if (event.type == sf::Event::Closed) {
                 pGraphicsManager->closeWindow();
@@ -95,8 +87,8 @@ void Game::run()
 		saw.animation(time);
 
         pGraphicsManager->clearWindow();
-        window->draw(background);
-        window->draw(floor);
+        pGraphicsManager->draw(background);
+        pGraphicsManager->draw(floor);
         platform.draw();
         spike.draw();
 		saw.draw();

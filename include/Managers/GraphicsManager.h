@@ -19,7 +19,7 @@ namespace Manager {
             void clearWindow();
             void displayWindow();
             void closeWindow();
-            // void drawEnt(Ent* ent);
-            // void draw(sf::Drawable &drawable);
+            void drawEnt(Ent* ent);
+            void draw(sf::Drawable &drawable);
     };
 }

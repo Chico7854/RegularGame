@@ -22,4 +22,5 @@ class Ent {
         const int getId() const;
         const sf::Sprite* getSprite();
         // void setTexture(sf::Texture texture);
+        void draw();
 };

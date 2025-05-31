@@ -1,5 +1,5 @@
 #include "../include/EasyEnemy.h"
-
+#include "Utility/Constants.h"
 #include "../include/Enemy.h"
 
 EasyEnemy::EasyEnemy(sf::Texture& texture, int width, int height):
@@ -29,7 +29,7 @@ void EasyEnemy::move()
 void EasyEnemy::update(float time)
 {
     hitbox.left += dx * time;
-    if (hitbox.left < 0 || hitbox.left + width > window->getSize().x) {
+    if (hitbox.left < 0 || hitbox.left + width > Constants::WINDOW_WIDTH) {
         dx = -dx; // Reverse direction if hits borders
     }
 

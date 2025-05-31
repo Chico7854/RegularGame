@@ -42,11 +42,11 @@ namespace Manager {
         window.close();
     }
 
-    // void GraphicsManager::drawEnt(Ent* ent) {
-    //     window.draw(ent->getSprite());
-    // }
+    void GraphicsManager::drawEnt(Ent* ent) {
+        window.draw(*(ent->getSprite()));
+    }
 
-    // void GraphicsManager::draw(sf::Drawable &drawable) {
-    //     window.draw(drawable);
-    // }
+    void GraphicsManager::draw(sf::Drawable &drawable) {
+        window.draw(drawable);
+    }
 }

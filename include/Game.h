@@ -15,7 +15,6 @@ class Game
 {
 private:
     Manager::GraphicsManager* pGraphicsManager;
-    sf::RenderWindow* window;
     sf::Texture floorTexture, bgTexture, shinobiTexture, youkaiTexture, samuraiTexture, platformTexture,spikeTexture, sawTexture;
     sf::Sprite background;
     sf::Sprite floor;

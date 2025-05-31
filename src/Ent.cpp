@@ -20,7 +20,7 @@ Ent::Ent(const int width, const int height):
     height(height),
     sprite()
 {
-    pGraphicsManager = Manager::GraphicsManager::getGraphicsManager();
+    pGraphicsManager = Manager::GraphicsManager::getGraphicsManager();  //it has to be here because there goes a compiler error if you initialize in the static
     sprite.setTextureRect(sf::IntRect(0, 0, width, height));
 }
 
@@ -37,3 +37,7 @@ const sf::Sprite* Ent::getSprite() {
 // void Ent::setTexture(sf::Texture texture) {
 //     sprite.setTexture(texture);
 // }
+
+void Ent::draw() {
+    pGraphicsManager->drawEnt(this);
+}
