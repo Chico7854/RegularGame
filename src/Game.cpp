@@ -1,16 +1,17 @@
 #include "../include/Game.h"
 
+
 Game::Game():
-    window(sf::VideoMode(1100, 650), "Simao Game"),
+    window(sf::VideoMode(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT), "Simao Game"),
     floorHeight(50),
     speed(0.3f),
     frame2(0.f),
     platform(platformTexture, 86, 24),
     spike(spikeTexture, 25, 17), //uncomment when you have the sprites for the obstacles
 	saw(sawTexture, 96, 96),
-    player1(samuraiTexture, 73, 104),
-    player2(shinobiTexture, 80, 82),
-    youkai(youkaiTexture, 52, 75)
+    player1(samuraiTexture, Constants::P1_WIDTH, Constants::P1_HEIGHT),
+    player2(shinobiTexture, Constants::P1_WIDTH, Constants::P2_HEIGHT),
+    youkai(youkaiTexture, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT)
 {
     /*yudi*/
 	// if (!samuraiTexture.loadFromFile("images/samurai_run.png") || //remember to give credit to the authors of the images
@@ -36,7 +37,7 @@ Game::Game():
         std::cerr << "Failed to load image file\n";
     }
 
-    youkai.setInitialPosition(sf::Vector2f(100.f, window.getSize().y - floorHeight - 75.f));
+    youkai.setInitialPosition(sf::Vector2f(100.f, Constants::WINDOW_HEIGHT - floorHeight - 75.f));
 
     player1.setWindow(&window);
     player2.setWindow(&window);
@@ -48,7 +49,7 @@ Game::Game():
     background.setTexture(bgTexture);
 
     floor.setTexture(floorTexture);
-    floor.setPosition(0.f, window.getSize().y - floorHeight);
+    floor.setPosition(0.f, Constants::WINDOW_HEIGHT - floorHeight);
 }
 
 void Game::collisionX()

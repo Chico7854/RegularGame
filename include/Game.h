@@ -8,6 +8,7 @@
 #include"HardObstacle.h"
 #include"MediumObstacle.h"
 #include"EasyEnemy.h"
+#include "Utility/Constants.h"
 
 class Game
 {
