@@ -9,33 +9,29 @@ Game::Game():
     platform(platformTexture, 86, 24),
     spike(spikeTexture, 25, 17), //uncomment when you have the sprites for the obstacles
 	saw(sawTexture, 96, 96),
-    player1(samuraiTexture, Constants::P1_WIDTH, Constants::P1_HEIGHT),
-    player2(shinobiTexture, Constants::P2_WIDTH, Constants::P2_HEIGHT),
+    player1(Constants::P1_WIDTH, Constants::P1_HEIGHT),
+    player2(Constants::P2_WIDTH, Constants::P2_HEIGHT),
     youkai(youkaiTexture, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT)
 {
     /*yudi*/
-	// if (!samuraiTexture.loadFromFile("images/samurai_run.png") || //remember to give credit to the authors of the images
-    //     !shinobiTexture.loadFromFile("images/shinobi_run.png") ||
-    //     !youkaiTexture.loadFromFile("images/youkai_walk.png") ||
-    //     !floorTexture.loadFromFile("images/floor_mine.png") ||
-    //     !platformTexture.loadFromFile("images/platform.png") ||
-    //     !bgTexture.loadFromFile("images/bgsimao.png") ||
-    //     !spikeTexture.loadFromFile("images/spike.png") ||
-    //     !sawTexture.loadFromFile("images/saw.png")) { //find sprites for the oyher enemys
-    //     std::cerr << "Failed to load image file\n";
-    // }
+    // player1.setTexture("images/samurai_run.png");
+    // player2.setTexture("images/shinobi_run.png");
+    // youkai.setTexture("images/youkai_walk.png");
+    // floorTexture.loadFromFile("images/floor_mine.png");
+    // platform.setTexture("images/platform.png");
+    // bgTexture.loadFromFile("images/bgsimao.png");
+    // spike.setTexture("images/spike.png");
+    // saw.setTexture("images/saw.png");
 
     /*lucas*/
-    if (!samuraiTexture.loadFromFile("../images/samurai_run.png") || //remember to give credit to the authors of the images
-        !shinobiTexture.loadFromFile("../images/shinobi_run.png") ||
-        !youkaiTexture.loadFromFile("../images/youkai_walk.png") ||
-        !floorTexture.loadFromFile("../images/floor_mine.png") ||
-        !platformTexture.loadFromFile("../images/platform.png") ||
-        !bgTexture.loadFromFile("../images/bgsimao.png") ||
-        !spikeTexture.loadFromFile("../images/spike.png") ||
-        !sawTexture.loadFromFile("../images/saw.png")) { //find sprites for the oyher enemys
-        std::cerr << "Failed to load image file\n";
-    }
+    player1.setTexture("../images/samurai_run.png");
+    player2.setTexture("../images/shinobi_run.png");
+    youkai.setTexture("../images/youkai_walk.png");
+    floorTexture.loadFromFile("../images/floor_mine.png");
+    platform.setTexture("../images/platform.png");
+    bgTexture.loadFromFile("../images/bgsimao.png");
+    spike.setTexture("../images/spike.png");
+    saw.setTexture("../images/saw.png");
 
     youkai.setInitialPosition(sf::Vector2f(100.f, Constants::WINDOW_HEIGHT - floorHeight - 75.f));
 

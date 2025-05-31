@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <string>
 
 namespace Manager{ class GraphicsManager; }
 
@@ -11,6 +12,7 @@ class Ent {
         const int width;
         const int height;
         sf::Sprite sprite;
+        sf::Texture texture;
 
         static Manager::GraphicsManager* pGraphicsManager;
         
@@ -21,6 +23,6 @@ class Ent {
 
         const int getId() const;
         const sf::Sprite* getSprite();
-        // void setTexture(sf::Texture texture);
+        void setTexture(std::string path);
         void draw();
 };

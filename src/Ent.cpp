@@ -34,9 +34,12 @@ const sf::Sprite* Ent::getSprite() {
     return &sprite;
 }
 
-// void Ent::setTexture(sf::Texture texture) {
-//     sprite.setTexture(texture);
-// }
+void Ent::setTexture(std::string path) {
+    if (!texture.loadFromFile(path)) {
+        std::cerr << "Failed to load image file" << std::endl;
+    }
+    sprite.setTexture(texture);
+}
 
 void Ent::draw() {
     pGraphicsManager->drawEnt(this);

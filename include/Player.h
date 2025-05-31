@@ -12,7 +12,7 @@ private:
 
 public:
     Player() {}
-    Player(sf::Texture& texture, const int width, const int height);
+    Player(const int width, const int height);
     virtual ~Player() {}
 
     void run() override;
