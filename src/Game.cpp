@@ -1,28 +1,40 @@
 #include "../include/Game.h"
 
-Game::Game() :
+Game::Game():
     window(sf::VideoMode(1100, 650), "Simao Game"),
     floorHeight(50),
     speed(0.3f),
     frame2(0.f),
     platform(platformTexture, 86, 24),
     spike(spikeTexture, 25, 17), //uncomment when you have the sprites for the obstacles
-	saw(sawTexture, 96, 96)
+	saw(sawTexture, 96, 96),
+    player1(samuraiTexture, 73, 104),
+    player2(shinobiTexture, 80, 82),
+    youkai(youkaiTexture, 52, 75)
 {
-	if (!samuraiTexture.loadFromFile("images/samurai_run.png") || //remember to give credit to the authors of the images
-        !shinobiTexture.loadFromFile("images/shinobi_run.png") ||
-        !youkaiTexture.loadFromFile("images/youkai_walk.png") ||
-        !floorTexture.loadFromFile("images/floor_mine.png") ||
-        !platformTexture.loadFromFile("images/platform.png") ||
-        !bgTexture.loadFromFile("images/bgsimao.png") ||
-        !spikeTexture.loadFromFile("images/spike.png") ||
-        !sawTexture.loadFromFile("images/saw.png")) { //find sprites for the oyher enemys
+    /*yudi*/
+	// if (!samuraiTexture.loadFromFile("images/samurai_run.png") || //remember to give credit to the authors of the images
+    //     !shinobiTexture.loadFromFile("images/shinobi_run.png") ||
+    //     !youkaiTexture.loadFromFile("images/youkai_walk.png") ||
+    //     !floorTexture.loadFromFile("images/floor_mine.png") ||
+    //     !platformTexture.loadFromFile("images/platform.png") ||
+    //     !bgTexture.loadFromFile("images/bgsimao.png") ||
+    //     !spikeTexture.loadFromFile("images/spike.png") ||
+    //     !sawTexture.loadFromFile("images/saw.png")) { //find sprites for the oyher enemys
+    //     std::cerr << "Failed to load image file\n";
+    // }
+
+    /*lucas*/
+    if (!samuraiTexture.loadFromFile("../images/samurai_run.png") || //remember to give credit to the authors of the images
+        !shinobiTexture.loadFromFile("../images/shinobi_run.png") ||
+        !youkaiTexture.loadFromFile("../images/youkai_walk.png") ||
+        !floorTexture.loadFromFile("../images/floor_mine.png") ||
+        !platformTexture.loadFromFile("../images/platform.png") ||
+        !bgTexture.loadFromFile("../images/bgsimao.png") ||
+        !spikeTexture.loadFromFile("../images/spike.png") ||
+        !sawTexture.loadFromFile("../images/saw.png")) { //find sprites for the oyher enemys
         std::cerr << "Failed to load image file\n";
     }
-
-    player1 = Player(samuraiTexture, 73, 104);
-    player2 = Player(shinobiTexture, 80, 82);
-    youkai = EasyEnemy(youkaiTexture, 52, 75);
 
     youkai.setInitialPosition(sf::Vector2f(100.f, window.getSize().y - floorHeight - 75.f));
 
