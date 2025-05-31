@@ -2,19 +2,9 @@
 
 #include "../include/Enemy.h"
 
-EasyEnemy::EasyEnemy(sf::Texture& texture, int sprite_width, int sprite_height) :
-    frame(0),
-    speed(0.3f),
-    width(sprite_width),
-    height(sprite_height),
-    dx(0.1f),
-    dy(0.1f)
-{
-    sprite.setTexture(texture);
-    sprite.setTextureRect(sf::IntRect(0, 0, width, height));
-    sprite.setPosition(0, ground - height);
-    hitbox = sf::FloatRect(0, ground - height, width, height);
-}
+EasyEnemy::EasyEnemy(sf::Texture& texture, int width, int height):
+    Enemy(texture, width, height)
+{}
 
 void EasyEnemy::setInitialPosition(sf::Vector2f pos)
 {

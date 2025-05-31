@@ -7,7 +7,6 @@ class Enemy : public Character
 {
 protected:
     float frame, speed;
-    int width, height;
     float dx, dy;
     int ground;
 

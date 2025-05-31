@@ -3,12 +3,10 @@
 class EasyEnemy : public Enemy
 {
 private:
-    float frame, speed;
-    int width, height;
-    float dx, dy;
+
 public:
     EasyEnemy() {}
-    EasyEnemy(sf::Texture& texture, int sprite_width, int sprite_height);
+    EasyEnemy(sf::Texture& texture, int width, int height);
     virtual ~EasyEnemy() {}
     void setInitialPosition(sf::Vector2f pos);
     void run() override;
