@@ -1,7 +1,9 @@
 #include "Ent.h"
+#include "Managers/GraphicsManager.h"
 #include <iostream>
 
 int Ent::cont(0);
+Manager::GraphicsManager* Ent::pGraphicsManager(nullptr);
 
 Ent::Ent():
     id(0),
@@ -18,6 +20,7 @@ Ent::Ent(const int width, const int height):
     height(height),
     sprite()
 {
+    pGraphicsManager = Manager::GraphicsManager::getGraphicsManager();
     sprite.setTextureRect(sf::IntRect(0, 0, width, height));
 }
 

@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+namespace Manager{ class GraphicsManager; }
+
 class Ent {
     protected:
         const int id;
@@ -9,6 +11,8 @@ class Ent {
         const int width;
         const int height;
         sf::Sprite sprite;
+
+        static Manager::GraphicsManager* pGraphicsManager;
         
     public:
         Ent();

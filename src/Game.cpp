@@ -2,7 +2,8 @@
 
 
 Game::Game():
-    window(sf::VideoMode(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT), "Simao Game"),
+    pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
+    window(pGraphicsManager->getWindow()),
     floorHeight(50),
     speed(0.3f),
     frame2(0.f),
@@ -39,12 +40,12 @@ Game::Game():
 
     youkai.setInitialPosition(sf::Vector2f(100.f, Constants::WINDOW_HEIGHT - floorHeight - 75.f));
 
-    player1.setWindow(&window);
-    player2.setWindow(&window);
-    youkai.setWindow(&window);
-    platform.setWindow(&window);
-    spike.setWindow(&window);
-	saw.setWindow(&window);
+    player1.setWindow(window);
+    player2.setWindow(window);
+    youkai.setWindow(window);
+    platform.setWindow(window);
+    spike.setWindow(window);
+	saw.setWindow(window);
 
     background.setTexture(bgTexture);
 
@@ -67,17 +68,17 @@ void Game::collisionX()
 
 void Game::run()
 {
-    while (window.isOpen())
+    while (pGraphicsManager->isWindowOpen())
     {
         float time = clock.getElapsedTime().asMicroseconds();
         clock.restart();
         time = time / 800;
 
         sf::Event event;
-        while (window.pollEvent(event))
+        while (window->pollEvent(event))
         {
             if (event.type == sf::Event::Closed) {
-                window.close();
+                pGraphicsManager->closeWindow();
             }
         }
 
@@ -93,15 +94,15 @@ void Game::run()
 
 		saw.animation(time);
 
-        window.clear();
-        window.draw(background);
-        window.draw(floor);
+        pGraphicsManager->clearWindow();
+        window->draw(background);
+        window->draw(floor);
         platform.draw();
         spike.draw();
 		saw.draw();
         player2.draw();
         player1.draw();
         youkai.draw();
-        window.display();
+        pGraphicsManager->displayWindow();
     }
 }

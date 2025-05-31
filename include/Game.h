@@ -9,11 +9,13 @@
 #include"MediumObstacle.h"
 #include"EasyEnemy.h"
 #include "Utility/Constants.h"
+#include "Managers/GraphicsManager.h"
 
 class Game
 {
 private:
-    sf::RenderWindow window;
+    Manager::GraphicsManager* pGraphicsManager;
+    sf::RenderWindow* window;
     sf::Texture floorTexture, bgTexture, shinobiTexture, youkaiTexture, samuraiTexture, platformTexture,spikeTexture, sawTexture;
     sf::Sprite background;
     sf::Sprite floor;
