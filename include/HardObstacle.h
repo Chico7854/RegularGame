@@ -5,14 +5,11 @@
 class HardObstacle : public Obstacle //implement damage, +50 damage for tounching it and it thwrows the player back
 {
 private:
-	int width, height;
 	float damage;
 	float frame;
 public:
-	HardObstacle() : width(0), height(0), damage(10.f), frame(0) {}
-	HardObstacle(sf::Texture& texture,int sprite_width, int sprite_height) :
-		width(sprite_width),
-		height(sprite_height)
+	HardObstacle() : damage(10.f), frame(0) {}
+	HardObstacle(sf::Texture& texture,int sprite_width, int sprite_height): Obstacle(texture, sprite_width, sprite_height), damage(10.f), frame(0)
 	{
 		sprite.setTexture(texture);
 		sprite.setTextureRect(sf::IntRect(0, 0, width, height));

@@ -7,9 +7,9 @@ protected:
     bool harmful;
 public:
     Obstacle() : harmful(false) {}
-    Obstacle(sf::Texture& texture, int sprite_width, int sprite_height) {
+    Obstacle(sf::Texture& texture, int sprite_width, int sprite_height): Entity(sprite_width, sprite_height)
+    {
         sprite.setTexture(texture);
-        sprite.setTextureRect(sf::IntRect(0, 0, sprite_width, sprite_height));
         hitbox = sf::FloatRect(0, 0, sprite_width, sprite_height);
     }
     virtual ~Obstacle() {}
