@@ -10,7 +10,7 @@ Game::Game():
     spike(spikeTexture, 25, 17), //uncomment when you have the sprites for the obstacles
 	saw(sawTexture, 96, 96),
     player1(samuraiTexture, Constants::P1_WIDTH, Constants::P1_HEIGHT),
-    player2(shinobiTexture, Constants::P1_WIDTH, Constants::P2_HEIGHT),
+    player2(shinobiTexture, Constants::P2_WIDTH, Constants::P2_HEIGHT),
     youkai(youkaiTexture, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT)
 {
     /*yudi*/
@@ -99,7 +99,7 @@ void Game::run()
         platform.draw();
         spike.draw();
 		saw.draw();
-        //player2.draw();
+        player2.draw();
         player1.draw();
         youkai.draw();
         window.display();

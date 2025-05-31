@@ -7,6 +7,7 @@ protected:
     int lives;
 public:
     Character();
+    Character(const int width, const int height);
     ~Character();
 
     virtual void run() = 0;

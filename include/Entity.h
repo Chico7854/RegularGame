@@ -1,23 +1,19 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 
-class Entity
+#include <SFML/Graphics.hpp>
+#include "Ent.h"
+
+class Entity : public Ent
 {
-    // What every entity should have:
-    // - Sprite
-    // - Texture
-    // - Initial position (some entities won't move, so only implement initial position in parent class)
-    // - Hitbox
-    // - Ability to appear on screen (draw)
 protected:
-    sf::RenderWindow* window;  // sf::Texture& texture, int sprite_width, int sprite_height
-    sf::Sprite sprite;
-    sf::Texture texture;
+    sf::RenderWindow* window;  
     sf::FloatRect hitbox;
     sf::Vector2f initialPosition;
     int ground;
+
 public:
-    Entity() : window(nullptr),ground(600/*floor height, declared statcally, chenge after*/) {}
+    Entity() {}
+    Entity(const int width, const int height): Ent(width, height), window(nullptr),ground(600/*floor height, declared statcally, chenge after*/) {}
     virtual ~Entity() {}
 
     virtual void run() = 0;          

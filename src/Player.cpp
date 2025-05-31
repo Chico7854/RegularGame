@@ -1,15 +1,13 @@
 #include "../include/Player.h"
 
-Player::Player(sf::Texture& texture, int sprite_width, int sprite_height) :
+Player::Player(sf::Texture& texture, const int width, const int height):
+    Character(width, height),
     dx(0.1), dy(0.1),
     on_ground(true),
     frame(0),
-    speed(0.3f),
-    width(sprite_width),
-    height(sprite_height)
+    speed(0.3f)
 {
     sprite.setTexture(texture);
-    sprite.setTextureRect(sf::IntRect(0, 0, width, height));
     sprite.setPosition(0.f, ground + height);
 
     hitbox = sf::FloatRect(0, ground - height, width, height);

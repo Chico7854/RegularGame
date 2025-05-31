@@ -8,12 +8,11 @@ class Player : public Character
 private:
     bool on_ground;
     float frame, speed;
-    int width, height;
     float dx, dy;
 
 public:
     Player() {}
-    Player(sf::Texture& texture, int sprite_width, int sprite_height);
+    Player(sf::Texture& texture, const int width, const int height);
     virtual ~Player() {}
 
     void run() override;
