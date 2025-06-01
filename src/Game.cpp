@@ -1,4 +1,5 @@
-#include "../include/Game.h"
+#include "Game.h"
+#include "Utility/Texture.h"
 
 
 Game::Game():
@@ -6,32 +7,20 @@ Game::Game():
     floorHeight(50),
     speed(0.3f),
     frame2(0.f),
-    platform(platformTexture, 86, 24),
-    spike(spikeTexture, 25, 17), //uncomment when you have the sprites for the obstacles
-	saw(sawTexture, 96, 96),
-    player1(Constants::P1_WIDTH, Constants::P1_HEIGHT),
-    player2(Constants::P2_WIDTH, Constants::P2_HEIGHT),
-    youkai(youkaiTexture, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT)
+    platform(Texture::Platform, 86, 24),
+    spike(Texture::Spike, 25, 17), //uncomment when you have the sprites for the obstacles
+	saw(Texture::Saw, 96, 96),
+    player1(Texture::Player1, Constants::P1_WIDTH, Constants::P1_HEIGHT),
+    player2(Texture::Player2, Constants::P2_WIDTH, Constants::P2_HEIGHT),
+    youkai(Texture::Youkai, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT)
 {
-    /*yudi*/
-    // player1.setTexture("images/samurai_run.png");
-    // player2.setTexture("images/shinobi_run.png");
-    // youkai.setTexture("images/youkai_walk.png");
-    // floorTexture.loadFromFile("images/floor_mine.png");
-    // platform.setTexture("images/platform.png");
-    // bgTexture.loadFromFile("images/bgsimao.png");
-    // spike.setTexture("images/spike.png");
-    // saw.setTexture("images/saw.png");
-
-    /*lucas*/
-    player1.setTexture("../images/samurai_run.png");
-    player2.setTexture("../images/shinobi_run.png");
-    youkai.setTexture("../images/youkai_walk.png");
-    floorTexture.loadFromFile("../images/floor_mine.png");
-    platform.setTexture("../images/platform.png");
-    bgTexture.loadFromFile("../images/bgsimao.png");
-    spike.setTexture("../images/spike.png");
-    saw.setTexture("../images/saw.png");
+    #ifdef _WIN32
+        floorTexture.loadFromFile("images/floor_mine.png");
+        bgTexture.loadFromFile("images/bgsimao.png");
+    #else
+        floorTexture.loadFromFile("../images/floor_mine.png");
+        bgTexture.loadFromFile("../images/bgsimao.png");
+    #endif
 
     youkai.setInitialPosition(sf::Vector2f(100.f, Constants::WINDOW_HEIGHT - floorHeight - 75.f));
 

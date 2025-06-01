@@ -2,8 +2,8 @@
 #include "Utility/Constants.h"
 #include "../include/Enemy.h"
 
-EasyEnemy::EasyEnemy(sf::Texture& texture, int width, int height):
-    Enemy(texture, width, height)
+EasyEnemy::EasyEnemy(Texture::ID id, int width, int height):
+    Enemy(id, width, height)
 {}
 
 void EasyEnemy::setInitialPosition(sf::Vector2f pos)

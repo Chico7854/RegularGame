@@ -4,8 +4,8 @@ Character::Character() : lives(0)
 {
 }
 
-Character::Character(const int width, const int height):
-    Entity(width, height), 
+Character::Character(Texture::ID id, const int width, const int height):
+    Entity(id, width, height), 
     lives(0)
 {}
 

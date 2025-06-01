@@ -1,7 +1,7 @@
 #include "../include/Player.h"
 
-Player::Player(const int width, const int height):
-    Character(width, height),
+Player::Player(Texture::ID id, const int width, const int height):
+    Character(id, width, height),
     dx(0.1), dy(0.1),
     on_ground(true),
     frame(0),

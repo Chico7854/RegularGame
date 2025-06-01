@@ -1,7 +1,9 @@
 #pragma once
-#include "Character.h"
+
 #include <SFML/Graphics.hpp>
-#include<iostream>
+#include <iostream>
+#include "Character.h"
+#include "Utility/Texture.h"
 
 class Enemy : public Character
 {
@@ -12,7 +14,7 @@ protected:
 
 public:
     Enemy() {}
-    Enemy(sf::Texture& texture, int sprite_width, int sprite_height);
+    Enemy(Texture::ID id, int sprite_width, int sprite_height);
     virtual ~Enemy() {}
     virtual void setInitialPosition(sf::Vector2f pos){}
     void run() override;

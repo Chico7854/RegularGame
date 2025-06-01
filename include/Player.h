@@ -1,7 +1,9 @@
 #pragma once
-#include "Character.h"
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Character.h"
+#include "Utility/Texture.h"
 
 class Player : public Character
 {
@@ -12,7 +14,7 @@ private:
 
 public:
     Player() {}
-    Player(const int width, const int height);
+    Player(Texture::ID id, const int width, const int height);
     virtual ~Player() {}
 
     void run() override;

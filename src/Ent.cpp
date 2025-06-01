@@ -14,13 +14,14 @@ Ent::Ent():
     std::cerr << "No Parameters in Ent Constructor" << std::endl;
 }
 
-Ent::Ent(const int width, const int height):
+Ent::Ent(Texture::ID idTexture, const int width, const int height):
     id(cont++),
     width(width),
     height(height),
     sprite()
 {
     pGraphicsManager = Manager::GraphicsManager::getGraphicsManager();  //it has to be here because there goes a compiler error if you initialize in the static
+    setTexture(idTexture);
     sprite.setTextureRect(sf::IntRect(0, 0, width, height));
 }
 
@@ -34,11 +35,12 @@ const sf::Sprite* Ent::getSprite() {
     return &sprite;
 }
 
-void Ent::setTexture(std::string path) {
-    if (!texture.loadFromFile(path)) {
-        std::cerr << "Failed to load image file" << std::endl;
+void Ent::setTexture(Texture::ID id) {
+    sf::Texture* pTexture = nullptr;
+    pTexture = pGraphicsManager->getTexture(id);
+    if (pTexture) {
+        sprite.setTexture(*pTexture);
     }
-    sprite.setTexture(texture);
 }
 
 void Ent::draw() {

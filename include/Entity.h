@@ -1,7 +1,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Ent.h"
+#include "Utility/Texture.h"
 
 class Entity : public Ent
 {
@@ -12,7 +14,7 @@ protected:
 
 public:
     Entity() {}
-    Entity(const int width, const int height): Ent(width, height), ground(600/*floor height, declared statcally, chenge after*/) {}
+    Entity(Texture::ID id, int width, const int height): Ent(id, width, height), ground(600/*floor height, declared statcally, chenge after*/) {}
     virtual ~Entity() {}
 
     virtual void run() = 0;          

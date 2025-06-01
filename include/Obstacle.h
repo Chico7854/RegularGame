@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Entity.h"
+#include "Utility/Texture.h"
 
 class Obstacle : public Entity
 {
@@ -7,9 +9,8 @@ protected:
     bool harmful;
 public:
     Obstacle() : harmful(false) {}
-    Obstacle(sf::Texture& texture, int sprite_width, int sprite_height): Entity(sprite_width, sprite_height)
+    Obstacle(Texture::ID id, int sprite_width, int sprite_height): Entity(id, sprite_width, sprite_height)
     {
-        sprite.setTexture(texture);
         hitbox = sf::FloatRect(0, 0, sprite_width, sprite_height);
     }
     virtual ~Obstacle() {}

@@ -1,12 +1,15 @@
 #pragma once
+
 #include "Obstacle.h"
+#include "Utility/Texture.h"
+
 class MediumObstacle : public Obstacle //implement damage to player, +10 damage per second of contact
 {
 private:
 	float damage;
 public:
 	MediumObstacle() : damage(10.f) {}
-	MediumObstacle(sf::Texture& texture, int sprite_width, int sprite_height): Obstacle(texture, sprite_width, sprite_height), damage(10)
+	MediumObstacle(Texture::ID id, int sprite_width, int sprite_height): Obstacle(id, sprite_width, sprite_height), damage(10)
 	{
 		sprite.setPosition(200, ground - height);
 	}
