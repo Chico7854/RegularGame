@@ -20,6 +20,9 @@ namespace Manager {
                 delete vectorTextures[i];
             }
         }
+        if (pSelf) {
+            delete pSelf;
+        }
     }
 
     GraphicsManager* GraphicsManager::getGraphicsManager() {

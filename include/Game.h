@@ -23,7 +23,7 @@ private:
     float frame2;
 
     Player player1;
-    Player player2;
+    // Player player2;
 
     EasyEnemy youkai;
 

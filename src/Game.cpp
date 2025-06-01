@@ -11,7 +11,7 @@ Game::Game():
     spike(Texture::Spike, Constants::SPIKE_WIDTH, Constants::SPIKE_HEIGHT), //uncomment when you have the sprites for the obstacles
 	saw(Texture::Saw, Constants::SAW_WIDTH, Constants::SAW_HEIGHT),
     player1(Texture::Player1, Constants::P1_WIDTH, Constants::P1_HEIGHT),
-    player2(Texture::Player2, Constants::P2_WIDTH, Constants::P2_HEIGHT),
+    // player2(Texture::Player2, Constants::P2_WIDTH, Constants::P2_HEIGHT),
     youkai(Texture::Youkai, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT)
 {
     #ifdef _WIN32
@@ -60,12 +60,12 @@ void Game::run()
         }
 
         player1.keyboardInput(0);
-        player2.keyboardInput(1);
+        // player2.keyboardInput(1);
 
         collisionX();
 
         player1.update(time);
-        player2.update(time);
+        // player2.update(time);
 
         youkai.update(time);
 
@@ -77,7 +77,7 @@ void Game::run()
         platform.draw();
         spike.draw();
 		saw.draw();
-        player2.draw();
+        // player2.draw();
         player1.draw();
         youkai.draw();
         pGraphicsManager->displayWindow();
