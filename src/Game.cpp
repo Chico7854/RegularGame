@@ -7,9 +7,9 @@ Game::Game():
     floorHeight(50),
     speed(0.3f),
     frame2(0.f),
-    platform(Texture::Platform, 86, 24),
-    spike(Texture::Spike, 25, 17), //uncomment when you have the sprites for the obstacles
-	saw(Texture::Saw, 96, 96),
+    platform(Texture::Platform, Constants::PLATFORM_WIDTH, Constants::PLATFORM_HEIGHT),
+    spike(Texture::Spike, Constants::SPIKE_WIDTH, Constants::SPIKE_HEIGHT), //uncomment when you have the sprites for the obstacles
+	saw(Texture::Saw, Constants::SAW_WIDTH, Constants::SAW_HEIGHT),
     player1(Texture::Player1, Constants::P1_WIDTH, Constants::P1_HEIGHT),
     player2(Texture::Player2, Constants::P2_WIDTH, Constants::P2_HEIGHT),
     youkai(Texture::Youkai, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT)
