@@ -89,13 +89,12 @@ void Player::update(float time)
         frame = 0;
     }
 
-    if (on_ground) {
-        if (dx > 0) {
-            sprite.setTextureRect(sf::IntRect(width * (int)frame, 0, width, height));
-        }
-        if (dx < 0) {
-            sprite.setTextureRect(sf::IntRect(width * ((int)frame + 1), 0, -width, height));
-        }
+    /*animation*/
+    if (dx > 0) {
+        sprite.setTextureRect(sf::IntRect(width * (int)frame, 0, width, height));
+    }
+    if (dx < 0) {
+        sprite.setTextureRect(sf::IntRect(width * ((int)frame + 1), 0, -width, height));
     }
 
     dx = 0;
