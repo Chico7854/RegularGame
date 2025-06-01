@@ -1,5 +1,4 @@
-#ifndef LIST_H
-#define LIST_H
+#pragma once
 
 /* Standard Library */
 #include <iostream>
@@ -260,5 +259,3 @@ template <class TL>
 List<TL>::Element<TL>* List<TL>::getTail() const {
   return m_tail;
 }
-
-#endif
