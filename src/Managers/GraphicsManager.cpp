@@ -11,6 +11,7 @@ namespace Manager {
         vectorTextures()
     {
         vectorTextures.clear();
+        windowSetup();
         loadAllTextures();
     }
 
@@ -27,6 +28,12 @@ namespace Manager {
             pSelf = new GraphicsManager;
         }
         return pSelf;
+    }
+
+    void GraphicsManager::windowSetup() {
+        window.setFramerateLimit(60);
+        window.setVerticalSyncEnabled(true);
+        window.setMouseCursorVisible(false);
     }
 
     sf::RenderWindow* GraphicsManager::getWindow() {

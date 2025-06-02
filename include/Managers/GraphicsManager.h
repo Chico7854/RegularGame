@@ -9,16 +9,19 @@
 namespace Manager {
     class GraphicsManager {
         private:
-            static GraphicsManager* pSelf;
             sf::RenderWindow window;
             std::vector<sf::Texture*> vectorTextures;
-            GraphicsManager();
+            void windowSetup();
+
+            static GraphicsManager* pSelf;
+            GraphicsManager();            
 
         public:
             ~GraphicsManager();
             static GraphicsManager* getGraphicsManager();
 
             sf::RenderWindow* getWindow();
+
             const bool isWindowOpen() const;
             void clearWindow();
             void displayWindow();
