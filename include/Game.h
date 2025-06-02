@@ -34,7 +34,7 @@ private:
 	HardObstacle saw;
 public:
     Game();
-    virtual ~Game() {}
+    ~Game();
     void collisionX();
     void run();
 };

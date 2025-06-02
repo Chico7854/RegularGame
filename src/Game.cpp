@@ -36,17 +36,9 @@ Game::Game():
     pEventManager->setEntity(&saw);
 }
 
-void Game::collisionX()
-{
-    sf::FloatRect playerHitbox = player1.getHitbox();
-    sf::FloatRect platformHitbox = platform.getHitbox();
-    for (int i = playerHitbox.top; i < playerHitbox.left + playerHitbox.height; i++) {
-        for (int j = playerHitbox.left; j < playerHitbox.left + playerHitbox.width; j++) {
-            if (playerHitbox.intersects(platformHitbox)) {
-                player1.setCollision(j);
-            }
-        }
-    }
+Game::~Game() {
+    delete pGraphicsManager;
+    delete pEventManager;
 }
 
 void Game::run()
