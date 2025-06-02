@@ -10,8 +10,7 @@ namespace Entities {
         public:
             EasyEnemy() {}
             EasyEnemy(Texture::ID id, int width, int height);
-            virtual ~EasyEnemy() {}
-            void setInitialPosition(sf::Vector2f pos);
+            virtual ~EasyEnemy();
             void run() override;
             void save() override;
             void update(float time) override;

@@ -5,8 +5,6 @@ Game::Game():
     pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
     pEventManager(Manager::EventManager::getEventManager()),
     floorHeight(50),
-    speed(0.3f),
-    frame2(0.f),
     platform(Texture::Platform, Constants::PLATFORM_WIDTH, Constants::PLATFORM_HEIGHT),
     spike(Texture::Spike, Constants::SPIKE_WIDTH, Constants::SPIKE_HEIGHT), //uncomment when you have the sprites for the obstacles
 	saw(Texture::Saw, Constants::SAW_WIDTH, Constants::SAW_HEIGHT),
@@ -22,8 +20,6 @@ Game::Game():
         bgTexture.loadFromFile("../images/bgsimao.png");
     #endif
 
-    youkai.setInitialPosition(sf::Vector2f(100.f, Constants::WINDOW_HEIGHT - floorHeight - 75.f));
-
     background.setTexture(bgTexture);
 
     floor.setTexture(floorTexture);
@@ -37,8 +33,8 @@ Game::Game():
 }
 
 Game::~Game() {
-    delete pGraphicsManager;
-    delete pEventManager;
+    pGraphicsManager = nullptr;
+    pEventManager = nullptr;
 }
 
 void Game::run()

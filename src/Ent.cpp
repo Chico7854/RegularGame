@@ -7,8 +7,6 @@ Manager::GraphicsManager* Ent::pGraphicsManager(nullptr);
 
 Ent::Ent():
     id(0),
-    width(-1),
-    height(-1),
     sprite()
 {
     std::cerr << "No Parameters in Ent Constructor" << std::endl;
@@ -16,12 +14,11 @@ Ent::Ent():
 
 Ent::Ent(Texture::ID idTexture, const int width, const int height):
     id(cont++),
-    width(width),
-    height(height),
     sprite()
 {
     pGraphicsManager = Manager::GraphicsManager::getGraphicsManager();  //it has to be here because there goes a compiler error if you initialize in the static
     setTexture(idTexture);
+    sprite.setHitbox({0.f, 0.f, (float)width, (float)height});
     sprite.setTextureRect(sf::IntRect(0, 0, width, height));
 }
 

@@ -7,6 +7,9 @@ namespace Entities {
     class Character : public Entity {
         protected:
             int lives;
+            float speed;
+            float dx, dy;
+
         public:
             Character();
             Character(Texture::ID id, const int width, const int height);

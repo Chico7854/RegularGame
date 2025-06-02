@@ -12,7 +12,6 @@ namespace Entities {
         Obstacle() : harmful(false) {}
         Obstacle(Texture::ID id, int sprite_width, int sprite_height): Entity(id, sprite_width, sprite_height)
         {
-            hitbox = sf::FloatRect(0, 0, sprite_width, sprite_height);
         }
         virtual ~Obstacle() {}
         virtual void run() override {}

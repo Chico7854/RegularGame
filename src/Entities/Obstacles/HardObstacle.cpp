@@ -7,6 +7,5 @@ namespace Entities {
 		if (frame > 7) {
 			frame = 0;
 		}
-		sprite.setTextureRect(sf::IntRect(static_cast<int>(frame) * width,0 , width, height));
 	}
 }

@@ -12,7 +12,6 @@ namespace Entities {
 		MediumObstacle() : damage(10.f) {}
 		MediumObstacle(Texture::ID id, int sprite_width, int sprite_height): Obstacle(id, sprite_width, sprite_height), damage(10)
 		{
-			sprite.setPosition(200, ground - height);
 		}
 		virtual ~MediumObstacle() {}
 		void run() override {}

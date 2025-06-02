@@ -7,13 +7,7 @@ namespace Entities {
         Enemy(id, width, height)
     {}
 
-    void EasyEnemy::setInitialPosition(sf::Vector2f pos)
-    {
-        initialPosition = pos;
-        hitbox.left = pos.x;
-        hitbox.top = pos.y;
-        sprite.setPosition(pos);
-    }
+    EasyEnemy::~EasyEnemy() {}
 
     void EasyEnemy::run()
     {
@@ -25,23 +19,23 @@ namespace Entities {
 
     void EasyEnemy::update(float time)
     {
-        hitbox.left += dx * time;
-        if (hitbox.left < 0 || hitbox.left + width > Constants::WINDOW_WIDTH) {
+        dx = speed;
+        if (sprite.getGlobalBounds().left - dx< 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
             dx = -dx; // Reverse direction if hits borders
         }
+        sprite.move(dx, 0);
+        sprite.updateHitbox();
 
-        frame += 0.008f * time; // Animation speed
-        if (frame >= 6) {
-            frame = 0;
-        }
+        // frame += 0.008f * time; // Animation speed
+        // if (frame >= 6) {
+        //     frame = 0;
+        // }
 
-        if (dx > 0) {
-            sprite.setTextureRect(sf::IntRect(width * (int)frame, 0, width, height));
-        }
-        if (dx < 0) {
-            sprite.setTextureRect(sf::IntRect(width * ((int)frame + 1), 0, -width, height));
-        }
-
-        sprite.setPosition(hitbox.left, hitbox.top);
+        // if (dx > 0) {
+        //     sprite.setTextureRect(sf::IntRect(width * (int)frame, 0, width, height));
+        // }
+        // if (dx < 0) {
+        //     sprite.setTextureRect(sf::IntRect(width * ((int)frame + 1), 0, -width, height));
+        // }
     }
 }

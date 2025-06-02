@@ -21,8 +21,7 @@ private:
     sf::Texture floorTexture, bgTexture;
     sf::Sprite background;
     sf::Sprite floor;
-    const float floorHeight, speed;
-    float frame2;
+    const float floorHeight;
 
     Player player1;
     // Player player2;

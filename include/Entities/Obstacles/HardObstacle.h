@@ -14,7 +14,6 @@ namespace Entities {
 		HardObstacle() : damage(10.f), frame(0) {}
 		HardObstacle(Texture::ID id, int sprite_width, int sprite_height): Obstacle(id, sprite_width, sprite_height), damage(10.f), frame(0)
 		{
-			sprite.setPosition(400, ground - height);
 		}
 		virtual ~HardObstacle() {}
 		void run() override {}

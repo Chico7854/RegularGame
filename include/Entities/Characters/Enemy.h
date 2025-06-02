@@ -8,8 +8,6 @@
 namespace Entities {
     class Enemy : public Character {
         protected:
-            float frame, speed;
-            float dx, dy;
             int ground;
 
         public:

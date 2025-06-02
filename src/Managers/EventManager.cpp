@@ -9,7 +9,8 @@ namespace Manager {
         entList()
     {}
 
-    EventManager::~EventManager() {}
+    EventManager::~EventManager() {
+    }
 
     EventManager* EventManager::getEventManager() {
         if (!pSelf) {

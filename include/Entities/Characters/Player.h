@@ -9,8 +9,6 @@ namespace Entities {
     class Player : public Character {
         private:
             bool on_ground;
-            float frame, speed;
-            float dx, dy;
 
         public:
             Player() {}
@@ -21,7 +19,6 @@ namespace Entities {
             void save() override;
             void update(float time) override;
 
-            void setCollision(int position);
             void keyboardInput(int playerNumber);
             bool getOnGround() { return on_ground; }
     };
