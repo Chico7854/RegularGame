@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "Entities/Entity.h"
 #include "Utility/Texture.h"
 
 class Character : public Entity

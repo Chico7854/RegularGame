@@ -1,6 +1,6 @@
 #pragma once
 #include "GraphicsManager.h"
-#include "Player.h"
+#include "Entities/Characters/Player.h"
 
 namespace Manager {
     class EventManager {

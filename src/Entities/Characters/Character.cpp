@@ -1,4 +1,4 @@
-#include "../include/Character.h"
+#include "Entities/Characters/Character.h"
 
 Character::Character() : lives(0)
 {

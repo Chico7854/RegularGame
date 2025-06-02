@@ -1,4 +1,4 @@
-#include "../include/HardObstacle.h"
+#include "Entities/Obstacles/HardObstacle.h"
 
 void HardObstacle::animation(float time)
 {

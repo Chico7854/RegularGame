@@ -1,4 +1,4 @@
-#include "../include/Player.h"
+#include "Entities/Characters/Player.h"
 
 Player::Player(Texture::ID id, const int width, const int height):
     Character(id, width, height),

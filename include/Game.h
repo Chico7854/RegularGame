@@ -1,13 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include<iostream>
-#include"Entity.h"
-#include"Player.h"
-#include"Enemy.h"
-#include"Platform.h"
-#include"HardObstacle.h"
-#include"MediumObstacle.h"
-#include"EasyEnemy.h"
+#include <iostream>
+#include "Entities/Entity.h"
+#include "Entities/Characters/Player.h"
+#include "Entities/Characters/Enemy.h"
+#include "Entities/Obstacles/Platform.h"
+#include "Entities/Obstacles/HardObstacle.h"
+#include "Entities/Obstacles/MediumObstacle.h"
+#include "Entities/Characters/EasyEnemy.h"
 #include "Utility/Constants.h"
 #include "Managers/GraphicsManager.h"
 

@@ -1,6 +1,6 @@
-#include "../include/EasyEnemy.h"
+#include "Entities/Characters/EasyEnemy.h"
 #include "Utility/Constants.h"
-#include "../include/Enemy.h"
+#include "Entities/Characters/Enemy.h"
 
 EasyEnemy::EasyEnemy(Texture::ID id, int width, int height):
     Enemy(id, width, height)

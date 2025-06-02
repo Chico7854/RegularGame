@@ -1,4 +1,4 @@
-#include "../include/Enemy.h"
+#include "Entities/Characters/Enemy.h"
 
 Enemy::Enemy(Texture::ID id, int sprite_width, int sprite_height):
     Character(id, sprite_width, sprite_height),
