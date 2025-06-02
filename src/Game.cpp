@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "Utility/Texture.h"
 
-
 Game::Game():
     pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
     floorHeight(50),

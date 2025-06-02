@@ -10,6 +10,7 @@
 #include "Entities/Characters/EasyEnemy.h"
 #include "Utility/Constants.h"
 #include "Managers/GraphicsManager.h"
+using namespace Entities;
 
 class Game
 {
