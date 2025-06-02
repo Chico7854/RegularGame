@@ -16,7 +16,7 @@ namespace Entities {
         virtual ~Obstacle() {}
         virtual void run() override {}
         virtual void save() override {}
-        virtual void update(float time) {};
+        virtual void update() {};
         void setHarmful(bool harmful) { this->harmful = harmful; }
         bool isHarmful() const { return harmful; }
     };

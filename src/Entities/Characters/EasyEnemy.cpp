@@ -17,7 +17,7 @@ namespace Entities {
     {
     }
 
-    void EasyEnemy::update(float time)
+    void EasyEnemy::update()
     {
         /*GAMBIARRA*/
         if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {

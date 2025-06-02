@@ -24,11 +24,11 @@ void EntityList::printEntities() {
     }
 }
 
-void EntityList::updateEntities(float time) {
+void EntityList::updateEntities() {
     List<Entities::Entity*>::Iterator it = entities.getHead();
     while (it != nullptr) {
         if (*it) {
-            (*it)->update(time);
+            (*it)->update();
         }
         it++;
     }

@@ -14,7 +14,7 @@ namespace Entities {
     {
     }
 
-    void Player::update(float time)
+    void Player::update()
     {
         if (!onGround) {
             dy += 6.f;

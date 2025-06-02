@@ -18,7 +18,7 @@ namespace Entities {
 		virtual ~HardObstacle() {}
 		void run() override {}
 		void save() override {}
-		void update(float time) override;
+		void update() override;
 		float getDamage() const { return damage; }
 		void setDamage(float damage_value) { damage = damage_value; }
 

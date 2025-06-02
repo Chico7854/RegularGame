@@ -74,11 +74,11 @@ namespace Manager {
         /*Drawing entities*/
         //THIS SHOULD NOT BE HERE, ITS NOT THE JOB OF EVENTMANAGER TO DO THIS, NEED TO FIX LATER
         keyboardEvent();
-        player->update(time);
+        player->update();
         player->draw();
         // player2.keyboardInput(1);
 
-        entList.updateEntities(time);
+        entList.updateEntities();
         entList.drawEntities();
     }
 }

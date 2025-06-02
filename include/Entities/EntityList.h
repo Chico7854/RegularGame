@@ -12,7 +12,7 @@ class EntityList {
 
         void append(Entities::Entity* ent);
         void printEntities();
-        void updateEntities(float time);
+        void updateEntities();
         void drawEntities();
 
         List<Entities::Entity*>::Iterator begin();

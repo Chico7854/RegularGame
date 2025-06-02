@@ -13,6 +13,6 @@ namespace Entities {
             virtual ~EasyEnemy();
             void run() override;
             void save() override;
-            void update(float time) override;
+            void update() override;
     };
 }

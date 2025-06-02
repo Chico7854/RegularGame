@@ -17,7 +17,7 @@ namespace Entities {
         Entity(Texture::ID id, int width, const int height);
         virtual ~Entity() {}
 
-        virtual void update(float time) = 0;
+        virtual void update() = 0;
         virtual void run() = 0;          
         virtual void save() = 0;         
     };
