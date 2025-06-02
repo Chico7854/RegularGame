@@ -19,6 +19,8 @@ namespace Manager {
             static EventManager* getEventManager();
             void setEntity(Entities::Entity* ent);
             void setPlayer(Entities::Player* p);
+
+            void keyboardEvent();
             void exec();
     };
 }

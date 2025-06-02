@@ -31,6 +31,33 @@ namespace Manager {
         }
     }
 
+    void EventManager::keyboardEvent() {
+        /*Player 1*/
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            player->setDx(player->getSpeed());
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            player->setDx(-(player->getSpeed()));
+        }
+
+        // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && getOnGround()) {
+        //     dy = -speed * 1.3;
+        // }
+
+        /*Player 2*/
+        // if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        //     dx = speed;
+        // }
+
+        // if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        //     dx = -speed;
+        // }
+
+        // if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && getOnGround()) {
+        //     dy = -speed * 1.3;
+        // }
+    }
+
     void EventManager::exec() {
         float time = clock.getElapsedTime().asMicroseconds();
         clock.restart();
@@ -46,7 +73,7 @@ namespace Manager {
 
         /*Drawing entities*/
         //THIS SHOULD NOT BE HERE, ITS NOT THE JOB OF EVENTMANAGER TO DO THIS, NEED TO FIX LATER
-        player->keyboardInput(0);
+        keyboardEvent();
         player->update(time);
         player->draw();
         // player2.keyboardInput(1);

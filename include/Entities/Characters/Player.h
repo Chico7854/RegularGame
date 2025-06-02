@@ -8,7 +8,7 @@
 namespace Entities {
     class Player : public Character {
         private:
-            bool on_ground;
+            bool onGround;
 
         public:
             Player() {}
@@ -19,7 +19,6 @@ namespace Entities {
             void save() override;
             void update(float time) override;
 
-            void keyboardInput(int playerNumber);
-            bool getOnGround() { return on_ground; }
+            const bool getOnGround() const;
     };
 }
