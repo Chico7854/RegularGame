@@ -40,9 +40,9 @@ namespace Manager {
             player->setDx(-(player->getSpeed()));
         }
 
-        // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && getOnGround()) {
-        //     dy = -speed * 1.3;
-        // }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && player->getOnGround()) {
+            player->setDy(-60.f);
+        }
 
         /*Player 2*/
         // if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {

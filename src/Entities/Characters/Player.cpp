@@ -16,14 +16,13 @@ namespace Entities {
 
     void Player::update(float time)
     {
-
         if (!onGround) {
-            dy = dy + 0.0006 * time; // Jump height calculation
+            dy += 6.f;
         }
 
         onGround = false;
 
-        if (sprite.getGlobalBounds().top > ground - sprite.getGlobalBounds().height) {
+        if (sprite.getGlobalBounds().top + sprite.getGlobalBounds().height + dy > ground) {
             dy = 0;
             onGround = true;
         }
