@@ -13,7 +13,7 @@ HitboxSprite::~HitboxSprite() {
 }
 
 sf::FloatRect HitboxSprite::getGlobalHitbox() const {
-  return getTransform().transformRect(hitbox);
+  return hitbox;
 }
 
 void HitboxSprite::setHitbox(const sf::FloatRect& hb) {

@@ -10,7 +10,6 @@ namespace Entities {
         Platform() {}
         Platform(Texture::ID id, int sprite_width, int sprite_height): Obstacle(id, sprite_width, sprite_height)
         {
-            sprite.setPosition(600, 500);
         }
         virtual ~Platform() {}
 

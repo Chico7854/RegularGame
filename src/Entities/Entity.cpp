@@ -5,7 +5,6 @@ namespace Entities {
         Ent(id, width, height), 
         ground(600) /*floor height, declared statcally, chenge after*/
     {
-        sprite.setPosition(10.f, ground - height);
     }
 
 }

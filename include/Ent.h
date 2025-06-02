@@ -22,6 +22,10 @@ class Ent {
 
         const int getId() const;
         const sf::Sprite* getSprite();
+        const sf::FloatRect getGlobalHitbox() const;
         void setTexture(Texture::ID id);
+
+        void setSpritePosition(float x, float y);
+
         void draw();
 };

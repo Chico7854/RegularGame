@@ -11,6 +11,7 @@
 #include "Utility/Constants.h"
 #include "Managers/GraphicsManager.h"
 #include "Managers/EventManager.h"
+#include "Managers/CollisionManager.h"
 using namespace Entities;
 
 class Game
@@ -18,6 +19,7 @@ class Game
 private:
     Manager::GraphicsManager* pGraphicsManager;
     Manager::EventManager* pEventManager;
+    Manager::CollisionManager* pCollisionManager;
     sf::Texture floorTexture, bgTexture;
     sf::Sprite background;
     sf::Sprite floor;

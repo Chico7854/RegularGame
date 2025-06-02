@@ -4,6 +4,7 @@
 Game::Game():
     pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
     pEventManager(Manager::EventManager::getEventManager()),
+    pCollisionManager(Manager::CollisionManager::getCollisionManager()),
     floorHeight(50),
     platform(Texture::Platform, Constants::PLATFORM_WIDTH, Constants::PLATFORM_HEIGHT),
     spike(Texture::Spike, Constants::SPIKE_WIDTH, Constants::SPIKE_HEIGHT), //uncomment when you have the sprites for the obstacles
@@ -30,6 +31,10 @@ Game::Game():
     pEventManager->setEntity(&platform);
     pEventManager->setEntity(&spike);
     pEventManager->setEntity(&saw);
+    pCollisionManager->appendEnemy(&youkai);
+    pCollisionManager->appendObstacle(&platform);
+
+    platform.setSpritePosition(600, 400);
 }
 
 Game::~Game() {
@@ -45,6 +50,7 @@ void Game::run()
         pGraphicsManager->draw(background);
         pGraphicsManager->draw(floor);
         pEventManager->exec();
+        pCollisionManager->verifyCollision(std::make_pair(&player1, &platform));
         pGraphicsManager->displayWindow();
     }
 }
