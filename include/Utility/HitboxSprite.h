@@ -1,3 +1,4 @@
+//I do think this is unecessary, you could use only sprite as a hitbox
 #pragma once
 #include <SFML/Graphics.hpp>
 

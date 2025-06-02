@@ -11,7 +11,7 @@ class Ent {
     protected:
         const int id;
         static int cont;
-        HitboxSprite sprite;
+        HitboxSprite sprite;    //I think you can use only the sprite as a hitbox, no need for the extra class but whatever
 
         static Manager::GraphicsManager* pGraphicsManager;
         
