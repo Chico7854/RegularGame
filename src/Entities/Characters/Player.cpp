@@ -1,4 +1,5 @@
 #include "Entities/Characters/Player.h"
+#include "Utility/Constants.h"
 
 namespace Entities {
     Player::Player(Texture::ID id, const int width, const int height):
@@ -17,12 +18,12 @@ namespace Entities {
     void Player::update()
     {
         if (!onGround) {
-            dy += 6.f;
+            dy += Constants::SPEED / 4;
         }
 
         onGround = false;
 
-        if (sprite.getGlobalBottom() + dy > ground) {
+        if (sprite.getGlobalBottom() + (dy) > ground) {
             dy = 0;
             onGround = true;
         }

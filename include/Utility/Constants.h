@@ -18,5 +18,7 @@ namespace Constants {
     constexpr unsigned int SAW_WIDTH = 96;
     constexpr unsigned int SAW_HEIGHT = 96;
 
+    constexpr float SPEED = 7.f;
+
     constexpr char GAME_NAME[] = "PUTA";
 }

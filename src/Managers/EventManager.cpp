@@ -41,7 +41,7 @@ namespace Manager {
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && player->getOnGround()) {
-            player->setDy(-60.f);
+            player->setDy(-4*(player->getSpeed()));
         }
 
         /*Player 2*/
@@ -76,7 +76,6 @@ namespace Manager {
         keyboardEvent();
         player->update();
         player->draw();
-        // player2.keyboardInput(1);
 
         entList.updateEntities();
         entList.drawEntities();
