@@ -21,10 +21,6 @@ namespace Entities {
     {
     }
 
-    void Player::move()
-    {
-    }
-
     void Player::setCollision(int position)
     {
         if (dx > 0) {

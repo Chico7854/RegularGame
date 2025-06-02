@@ -19,11 +19,10 @@ namespace Entities {
 
             void run() override;
             void save() override;
-            void move() override;
+            void update(float time) override;
 
             void setCollision(int position);
             void keyboardInput(int playerNumber);
-            void update(float time);
             bool getOnGround() { return on_ground; }
     };
 }

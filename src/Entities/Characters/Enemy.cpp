@@ -21,8 +21,4 @@ namespace Entities {
     {
     }
 
-    void Enemy::move()
-    {
-    }
-
 }

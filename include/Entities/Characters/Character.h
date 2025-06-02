@@ -14,6 +14,6 @@ namespace Entities {
 
             virtual void run() = 0;
             virtual void save() = 0;
-            virtual void move() = 0;
+            virtual void update(float time) = 0;
     };
 }

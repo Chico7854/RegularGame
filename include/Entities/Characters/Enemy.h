@@ -19,7 +19,6 @@ namespace Entities {
             virtual void setInitialPosition(sf::Vector2f pos){}
             void run() override;
             void save() override;
-            void move() override;
-            virtual void update(float time){}
+            virtual void update(float time) {}
     };
 }

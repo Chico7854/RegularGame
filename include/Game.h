@@ -10,16 +10,17 @@
 #include "Entities/Characters/EasyEnemy.h"
 #include "Utility/Constants.h"
 #include "Managers/GraphicsManager.h"
+#include "Managers/EventManager.h"
 using namespace Entities;
 
 class Game
 {
 private:
     Manager::GraphicsManager* pGraphicsManager;
+    Manager::EventManager* pEventManager;
     sf::Texture floorTexture, bgTexture;
     sf::Sprite background;
     sf::Sprite floor;
-    sf::Clock clock;
     const float floorHeight, speed;
     float frame2;
 

@@ -23,10 +23,6 @@ namespace Entities {
     {
     }
 
-    void EasyEnemy::move()
-    {
-    }
-
     void EasyEnemy::update(float time)
     {
         hitbox.left += dx * time;

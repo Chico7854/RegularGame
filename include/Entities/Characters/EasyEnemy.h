@@ -14,7 +14,6 @@ namespace Entities {
             void setInitialPosition(sf::Vector2f pos);
             void run() override;
             void save() override;
-            void move() override;
-            void update(float time);
+            void update(float time) override;
     };
 }

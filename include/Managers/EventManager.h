@@ -1,13 +1,15 @@
 #pragma once
 #include "GraphicsManager.h"
 #include "Entities/Characters/Player.h"
-using namespace Entities;
+#include "Entities/EntityList.h"
 
 namespace Manager {
     class EventManager {
         private:
             GraphicsManager* pGraphicsManager;
-            Player* player;
+            sf::Clock clock;
+            EntityList entList;
+            Entities::Player* player;
 
             static EventManager* pSelf;
             EventManager();
@@ -15,7 +17,8 @@ namespace Manager {
         public:
             ~EventManager();
             static EventManager* getEventManager();
-            void setPlayer(Player* p);
+            void setEntity(Entities::Entity* ent);
+            void setPlayer(Entities::Player* p);
             void exec();
     };
 }

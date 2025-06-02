@@ -3,6 +3,7 @@
 
 Game::Game():
     pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
+    pEventManager(Manager::EventManager::getEventManager()),
     floorHeight(50),
     speed(0.3f),
     frame2(0.f),
@@ -27,6 +28,12 @@ Game::Game():
 
     floor.setTexture(floorTexture);
     floor.setPosition(0.f, Constants::WINDOW_HEIGHT - floorHeight);
+
+    pEventManager->setPlayer(&player1);
+    pEventManager->setEntity(&youkai);
+    pEventManager->setEntity(&platform);
+    pEventManager->setEntity(&spike);
+    pEventManager->setEntity(&saw);
 }
 
 void Game::collisionX()
@@ -46,39 +53,10 @@ void Game::run()
 {
     while (pGraphicsManager->isWindowOpen())
     {
-        float time = clock.getElapsedTime().asMicroseconds();
-        clock.restart();
-        time = time / 800;
-
-        sf::Event event;
-        while (pGraphicsManager->getWindow()->pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed) {
-                pGraphicsManager->closeWindow();
-            }
-        }
-
-        player1.keyboardInput(0);
-        // player2.keyboardInput(1);
-
-        collisionX();
-
-        player1.update(time);
-        // player2.update(time);
-
-        youkai.update(time);
-
-		saw.animation(time);
-
         pGraphicsManager->clearWindow();
         pGraphicsManager->draw(background);
         pGraphicsManager->draw(floor);
-        platform.draw();
-        spike.draw();
-		saw.draw();
-        // player2.draw();
-        player1.draw();
-        youkai.draw();
+        pEventManager->exec();
         pGraphicsManager->displayWindow();
     }
 }
