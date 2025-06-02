@@ -21,6 +21,7 @@ namespace Entities {
             void setSpeed(float s);
             void setDx(float x);
             void setDy(float y);
+            void moveHitboxSprite(float dx, float dy);
 
             virtual void run() = 0;
             virtual void save() = 0;

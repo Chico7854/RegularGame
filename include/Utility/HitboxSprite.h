@@ -10,7 +10,11 @@ class HitboxSprite : public sf::Sprite {
   public:
     HitboxSprite();
     ~HitboxSprite();
+
     sf::FloatRect getGlobalHitbox() const;
     void setHitbox(const sf::FloatRect& hb);
     void updateHitbox();
+
+    const float getGlobalBottom() const;
+    const float getGlobalRight()const;
 };

@@ -23,3 +23,11 @@ void HitboxSprite::setHitbox(const sf::FloatRect& hb) {
 void HitboxSprite::updateHitbox() {
   setHitbox(getGlobalBounds());
 }
+
+const float HitboxSprite::getGlobalBottom() const {
+  return hitbox.top + hitbox.height;
+}
+
+const float HitboxSprite::getGlobalRight() const {
+  return hitbox.left + hitbox.width;
+}

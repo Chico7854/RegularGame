@@ -22,12 +22,12 @@ namespace Entities {
 
         onGround = false;
 
-        if (sprite.getGlobalBounds().top + sprite.getGlobalBounds().height + dy > ground) {
+        if (sprite.getGlobalBottom() + dy > ground) {
             dy = 0;
             onGround = true;
         }
 
-        sprite.move(dx, dy);
+        moveHitboxSprite(dx, dy);
 
         // frame += 0.008f * time; // Animation speed
         // if (frame >= 8) {

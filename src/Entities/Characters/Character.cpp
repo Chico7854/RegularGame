@@ -38,4 +38,10 @@ namespace Entities {
     void Character::setDy(float y) {
         dy = y;
     }
+
+    void Character::moveHitboxSprite(float dx, float dy) {
+        sprite.move(dx, dy);
+        sprite.updateHitbox();
+    }
+
 }
