@@ -22,7 +22,6 @@ private:
     Manager::CollisionManager* pCollisionManager;
     sf::Texture floorTexture, bgTexture;
     sf::Sprite background;
-    sf::Sprite floor;
     const float floorHeight;
 
     Player player1;
@@ -30,7 +29,7 @@ private:
 
     EasyEnemy youkai;
 
-    Platform platform;
+    Platform floor, platform;
     MediumObstacle spike;
 	HardObstacle saw;
 public:

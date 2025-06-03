@@ -6,6 +6,7 @@ Game::Game():
     pEventManager(Manager::EventManager::getEventManager()),
     pCollisionManager(Manager::CollisionManager::getCollisionManager()),
     floorHeight(50),
+    floor(Texture::Floor, 2000, 50),
     platform(Texture::Platform, Constants::PLATFORM_WIDTH, Constants::PLATFORM_HEIGHT),
     spike(Texture::Spike, Constants::SPIKE_WIDTH, Constants::SPIKE_HEIGHT), //uncomment when you have the sprites for the obstacles
 	saw(Texture::Saw, Constants::SAW_WIDTH, Constants::SAW_HEIGHT),
@@ -13,22 +14,16 @@ Game::Game():
     // player2(Texture::Player2, Constants::P2_WIDTH, Constants::P2_HEIGHT),
     youkai(Texture::Youkai, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT)
 {
-    #ifdef _WIN32
-        floorTexture.loadFromFile("images/floor_mine.png");
-        bgTexture.loadFromFile("images/bgsimao.png");
-    #else
-        floorTexture.loadFromFile("../images/floor_mine.png");
         bgTexture.loadFromFile("../images/bgsimao.png");
-    #endif
 
     background.setTexture(bgTexture);
 
-    floor.setTexture(floorTexture);
-    floor.setPosition(0.f, Constants::WINDOW_HEIGHT - floorHeight);
+    floor.setSpritePosition(0.f, Constants::WINDOW_HEIGHT - 50);
 
     pEventManager->setPlayer(&player1);
     pEventManager->setEntity(&youkai);
     pEventManager->setEntity(&platform);
+    pEventManager->setEntity(&floor);
     pEventManager->setEntity(&spike);
     pEventManager->setEntity(&saw);
     pEventManager->setPlatform(&platform);
@@ -49,7 +44,6 @@ void Game::run()
     {
         pGraphicsManager->clearWindow();
         pGraphicsManager->draw(background);
-        pGraphicsManager->draw(floor);
         pEventManager->exec();
         pGraphicsManager->displayWindow();
     }

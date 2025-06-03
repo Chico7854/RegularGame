@@ -19,7 +19,7 @@ namespace Entities {
     void Player::update()
     {
         if (!onGround) {
-            dy += Constants::SPEED / 4;
+            dy += Constants::GRAVITY;
         }
 
         onGround = false;

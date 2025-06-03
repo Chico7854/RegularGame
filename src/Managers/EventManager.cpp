@@ -1,5 +1,6 @@
 #include "Managers/EventManager.h"
 #include "Utility/List.h"
+#include "Utility/Constants.h"
 
 namespace Manager {
     EventManager* EventManager::pSelf(nullptr);
@@ -47,7 +48,7 @@ namespace Manager {
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && player->getOnGround()) {
-            player->setDy(-4*(player->getSpeed()));
+            player->setDy(Constants::JUMP_SPEED);
         }
 
         /*Player 2*/
@@ -77,10 +78,9 @@ namespace Manager {
         //THIS SHOULD NOT BE HERE, ITS NOT THE JOB OF EVENTMANAGER TO DO THIS, NEED TO FIX LATER
         keyboardEvent();
         player->update();
-        player->draw();
-
         entList.updateEntities();
         pCollisionManager->verifyCollision(player, platform);
+        player->draw();
         entList.drawEntities();
     }
 }

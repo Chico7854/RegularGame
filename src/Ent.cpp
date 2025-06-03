@@ -50,6 +50,10 @@ void Ent::setSpritePosition(float x, float y) {
     sprite.updateHitbox();
 }
 
+void Ent::setScale(sf::Vector2f scale) {
+    sprite.setScale(scale);
+}
+
 void Ent::draw() {
     pGraphicsManager->drawEnt(this);
 }

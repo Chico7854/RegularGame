@@ -51,19 +51,17 @@ namespace Manager {
 
             /*Check vertical collision*/
             if (yOverlap < xOverlap) {
+                character->setDy(0.f);
                 if (entCoordinates.top > charCoordinates.top)
                     yOverlap *= -1;
                 character->moveHitboxSprite(0, yOverlap);
-                std::cout << "Vertical\n";
             } 
             /*Horizontal collision*/
             else {
                 if (entCoordinates.left > charCoordinates.left)
                     xOverlap *= -1;
                 character->moveHitboxSprite(xOverlap, 0);
-                std::cout << "Horizontal\n";
             }
         }
-        std::cout << "None\n";
     }
 }

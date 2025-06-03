@@ -91,6 +91,7 @@ namespace Manager {
         loadTexture(Texture::Platform, Texture::PLATFORM);
         loadTexture(Texture::Spike, Texture::SPIKE);
         loadTexture(Texture::Saw, Texture::SAW);
+        loadTexture(Texture::Floor, Texture::FLOOR);
     }
 
     sf::Texture* GraphicsManager::getTexture(Texture::ID id) {

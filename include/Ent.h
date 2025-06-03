@@ -26,6 +26,7 @@ class Ent {
         void setTexture(Texture::ID id);
 
         void setSpritePosition(float x, float y);
+        void setScale(sf::Vector2f scale);
 
         void draw();
 };

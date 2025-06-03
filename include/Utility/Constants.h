@@ -19,6 +19,8 @@ namespace Constants {
     constexpr unsigned int SAW_HEIGHT = 96;
 
     constexpr float SPEED = 7.f;
+    constexpr float GRAVITY = SPEED / 4.f;
+    constexpr float JUMP_SPEED = SPEED * -4;
 
     constexpr char GAME_NAME[] = "PUTA";
 }
