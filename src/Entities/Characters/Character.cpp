@@ -7,7 +7,9 @@ namespace Entities {
         lives(0),
         speed(Constants::SPEED),
         dx(0.f),
-        dy(0.f)
+        dy(0.f),
+        onGround(true),
+        isHurt(false)
     {}
 
     Character::Character(): Entity(), lives(-1), speed(0), dx(-1.f), dy(0.f) {}
@@ -38,6 +40,18 @@ namespace Entities {
 
     void Character::setDy(float y) {
         dy = y;
+    }
+
+    void Character::setIsHurt(bool hurt) {
+        isHurt = hurt;
+    }
+
+    const bool Character::getIsHurt() const {
+        return isHurt;
+    }
+
+    void Character::setOnGround(bool o) {
+        onGround = o;
     }
 
     void Character::moveHitboxSprite(float dx, float dy) {

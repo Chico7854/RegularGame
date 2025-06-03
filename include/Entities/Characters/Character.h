@@ -9,6 +9,7 @@ namespace Entities {
             int lives;
             float speed;
             float dx, dy;
+            bool onGround, isHurt;
 
         public:
             Character();
@@ -21,6 +22,9 @@ namespace Entities {
             void setSpeed(float s);
             void setDx(float x);
             void setDy(float y);
+            void setOnGround(bool o);
+            void setIsHurt(bool hurt);
+            const bool getIsHurt() const;
             void moveHitboxSprite(float dx, float dy);
 
             virtual void run() = 0;

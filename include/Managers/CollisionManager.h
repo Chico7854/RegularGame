@@ -14,7 +14,7 @@ namespace Manager {
             std::vector<Entities::Enemy*> enemies;
             std::list<Entities::Obstacle*> obstacles;
             //TODO: Set for porjectiles
-            Entities::Player* player;
+            Entities::Player* p1;
 
             static CollisionManager* pSelf;
             CollisionManager();
@@ -26,7 +26,8 @@ namespace Manager {
             void appendEnemy(Entities::Enemy* enemy);
             void appendObstacle(Entities::Obstacle* obstacle);
             void setPlayer(Entities::Player* p);
-            void verifyCollision(Entities::Character* character, Entities::Entity* entity);
+            void applyNoDamageCollision(Entities::Character* character, Entities::Entity* entity);
+            void applyDamageCollision(Entities::Player* player, Entities::Entity* entity);
 
         private:
     };

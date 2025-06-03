@@ -1,4 +1,5 @@
 #include "Managers/CollisionManager.h"
+#include "Utility/Constants.h"
 
 namespace Manager {
     CollisionManager* CollisionManager::pSelf(nullptr);
@@ -6,7 +7,7 @@ namespace Manager {
     CollisionManager::CollisionManager():
         enemies(),
         obstacles(),
-        player(nullptr)
+        p1(nullptr)
     {
         enemies.clear();
         obstacles.clear();
@@ -35,16 +36,18 @@ namespace Manager {
 
     void CollisionManager::setPlayer(Entities::Player* p) {
         if (p) {
-            player = p;
+            p1 = p;
         }
     }
 
-    void CollisionManager::verifyCollision(Entities::Character* character, Entities::Entity* entity) {
+    void CollisionManager::applyNoDamageCollision(Entities::Character* character, Entities::Entity* entity) {
         sf::FloatRect intersectionRect;
 
         const sf::FloatRect charCoordinates = character->getGlobalHitbox();
         const sf::FloatRect entCoordinates = entity->getGlobalHitbox();
 
+        character->setOnGround(false);
+        
         if (charCoordinates.intersects(entCoordinates, intersectionRect)) {
             float xOverlap = intersectionRect.width;
             float yOverlap = intersectionRect.height;
@@ -54,6 +57,8 @@ namespace Manager {
                 character->setDy(0.f);
                 if (entCoordinates.top > charCoordinates.top)
                     yOverlap *= -1;
+                    character->setOnGround(true);
+                    character->setIsHurt(false);
                 character->moveHitboxSprite(0, yOverlap);
             } 
             /*Horizontal collision*/
@@ -62,6 +67,28 @@ namespace Manager {
                     xOverlap *= -1;
                 character->moveHitboxSprite(xOverlap, 0);
             }
+        }
+    }
+
+    void CollisionManager::applyDamageCollision(Entities::Player* player, Entities::Entity* entity) {
+        const sf::FloatRect playerCoordinates = player->getGlobalHitbox();
+        const sf::FloatRect entCoordinates = entity->getGlobalHitbox();
+
+
+        if (playerCoordinates.intersects(entCoordinates)) {
+            const float middlePointPlayer = playerCoordinates.left + (playerCoordinates.width / 2);
+            const float middlePointEntity = entCoordinates.left + (entCoordinates.width / 2);
+
+            const float dy = Constants::JUMP_SPEED / 1.5;
+            float dx = Constants::SPEED * 2;
+
+            if (middlePointPlayer < middlePointEntity) {
+                dx *= -1;
+            }
+
+            player->setDy(dy);
+            player->setDx(dx);
+            player->setIsHurt(true);
         }
     }
 }

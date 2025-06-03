@@ -3,8 +3,7 @@
 
 namespace Entities {
     Player::Player(Texture::ID id, const int width, const int height):
-        Character(id, width, height),
-        onGround(true)
+        Character(id, width, height)
     {
     }
 
@@ -18,18 +17,11 @@ namespace Entities {
 
     void Player::update()
     {
-        if (!onGround) {
-            dy += Constants::GRAVITY;
-        }
-
-        onGround = false;
-
-        if (sprite.getGlobalBottom() + (dy) > ground) {
-            dy = 0;
-            onGround = true;
-        }
-
+        dy += Constants::GRAVITY;
         moveHitboxSprite(dx, dy);
+        if (!isHurt) {
+            dx = 0;
+        }
 
         // frame += 0.008f * time; // Animation speed
         // if (frame >= 8) {
@@ -43,8 +35,6 @@ namespace Entities {
         // if (dx < 0) {
         //     sprite.setTextureRect(sf::IntRect(width * ((int)frame + 1), 0, -width, height));
         // }
-
-        dx = 0;
     }
 
     const bool Player::getOnGround() const {

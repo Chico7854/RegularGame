@@ -8,7 +8,6 @@
 namespace Entities {
     class Player : public Character {
         private:
-            bool onGround;
 
         public:
             Player() {}

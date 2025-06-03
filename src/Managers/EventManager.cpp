@@ -38,6 +38,10 @@ namespace Manager {
         platform = p;
     }
 
+    void EventManager::setFloor(Entities::Platform* f) {
+        floor = f;
+    }
+
     void EventManager::keyboardEvent() {
         /*Player 1*/
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
@@ -76,10 +80,13 @@ namespace Manager {
 
         /*Drawing entities*/
         //THIS SHOULD NOT BE HERE, ITS NOT THE JOB OF EVENTMANAGER TO DO THIS, NEED TO FIX LATER
-        keyboardEvent();
+        if (!player->getIsHurt()) {
+            keyboardEvent();
+        }
         player->update();
         entList.updateEntities();
-        pCollisionManager->verifyCollision(player, platform);
+        pCollisionManager->applyNoDamageCollision(player, floor);
+        pCollisionManager->applyDamageCollision(player, platform);
         player->draw();
         entList.drawEntities();
     }
