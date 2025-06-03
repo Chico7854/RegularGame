@@ -39,17 +39,31 @@ namespace Manager {
         }
     }
 
-    void CollisionManager::verifyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities) {
+    void CollisionManager::verifyCollision(Entities::Character* character, Entities::Entity* entity) {
         sf::FloatRect intersectionRect;
-        const sf::FloatRect firstCoordinates = entities.first->getGlobalHitbox();
-        const sf::FloatRect secondCoordinates = entities.second->getGlobalHitbox();
 
-        std::cout << "Player left: " << firstCoordinates.left << "\nPlatform left: " << secondCoordinates.left << std::endl;
-        std::cout << "Player top: " << firstCoordinates.top << "\nPlatform top: " << secondCoordinates.top << std::endl;
+        const sf::FloatRect charCoordinates = character->getGlobalHitbox();
+        const sf::FloatRect entCoordinates = entity->getGlobalHitbox();
 
+        if (charCoordinates.intersects(entCoordinates, intersectionRect)) {
+            float xOverlap = intersectionRect.width;
+            float yOverlap = intersectionRect.height;
 
-        if (firstCoordinates.intersects(secondCoordinates, intersectionRect)) {
-            std::cout << "Intersecting" << std::endl;
+            /*Check vertical collision*/
+            if (yOverlap < xOverlap) {
+                if (entCoordinates.top > charCoordinates.top)
+                    yOverlap *= -1;
+                character->moveHitboxSprite(0, yOverlap);
+                std::cout << "Vertical\n";
+            } 
+            /*Horizontal collision*/
+            else {
+                if (entCoordinates.left > charCoordinates.left)
+                    xOverlap *= -1;
+                character->moveHitboxSprite(xOverlap, 0);
+                std::cout << "Horizontal\n";
+            }
         }
+        std::cout << "None\n";
     }
 }

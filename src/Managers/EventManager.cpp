@@ -6,7 +6,9 @@ namespace Manager {
 
     EventManager::EventManager():
         pGraphicsManager(GraphicsManager::getGraphicsManager()),
-        entList()
+        pCollisionManager(CollisionManager::getCollisionManager()),
+        entList(),
+        platform()
     {}
 
     EventManager::~EventManager() {
@@ -29,6 +31,10 @@ namespace Manager {
         if (p) {
             player = p;
         }
+    }
+
+    void EventManager::setPlatform(Entities::Platform* p) {
+        platform = p;
     }
 
     void EventManager::keyboardEvent() {
@@ -59,10 +65,6 @@ namespace Manager {
     }
 
     void EventManager::exec() {
-        float time = clock.getElapsedTime().asMicroseconds();
-        clock.restart();
-        time = time / 800;
-
         sf::Event event;
         while (pGraphicsManager->getWindow()->pollEvent(event))
         {
@@ -78,6 +80,7 @@ namespace Manager {
         player->draw();
 
         entList.updateEntities();
+        pCollisionManager->verifyCollision(player, platform);
         entList.drawEntities();
     }
 }

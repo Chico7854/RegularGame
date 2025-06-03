@@ -7,6 +7,7 @@
 #include "Entities/Obstacles/Obstacle.h"
 #include "Entities/Characters/Player.h"
 
+
 namespace Manager {
     class CollisionManager {
         private:
@@ -25,7 +26,7 @@ namespace Manager {
             void appendEnemy(Entities::Enemy* enemy);
             void appendObstacle(Entities::Obstacle* obstacle);
             void setPlayer(Entities::Player* p);
-            void verifyCollision(std::pair<Entities::Entity*, Entities::Entity*> entities);
+            void verifyCollision(Entities::Character* character, Entities::Entity* entity);
 
         private:
     };

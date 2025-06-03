@@ -31,10 +31,11 @@ Game::Game():
     pEventManager->setEntity(&platform);
     pEventManager->setEntity(&spike);
     pEventManager->setEntity(&saw);
+    pEventManager->setPlatform(&platform);
     pCollisionManager->appendEnemy(&youkai);
     pCollisionManager->appendObstacle(&platform);
 
-    platform.setSpritePosition(600, 400);
+    platform.setSpritePosition(600, 550);
 }
 
 Game::~Game() {
@@ -50,7 +51,6 @@ void Game::run()
         pGraphicsManager->draw(background);
         pGraphicsManager->draw(floor);
         pEventManager->exec();
-        pCollisionManager->verifyCollision(std::make_pair(&player1, &platform));
         pGraphicsManager->displayWindow();
     }
 }
