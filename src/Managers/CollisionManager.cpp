@@ -58,12 +58,13 @@ namespace Manager {
 
             /*Check vertical collision*/
             if (yOverlap < xOverlap) {
-                character->setDy(0.f);
-                if (entCoordinates.top > charCoordinates.top)
+                if (character->getDy() >= 0) {
                     yOverlap *= -1;
                     character->setOnGround(true);
                     character->setIsHurt(false);
+                }
                 character->moveHitboxSprite(0, yOverlap);
+                character->setDy(0.f);
             } 
             /*Horizontal collision*/
             else {
