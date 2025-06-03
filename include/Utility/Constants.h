@@ -3,6 +3,7 @@
 namespace Constants {
     constexpr unsigned int WINDOW_HEIGHT = 650;
     constexpr unsigned int WINDOW_WIDTH = 1100;
+    constexpr unsigned int FLOOR_HEIGHT = 600;
 
     /*Textures and sprites sizes*/
     constexpr unsigned int P1_HEIGHT = 104;

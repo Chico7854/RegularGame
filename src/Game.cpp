@@ -18,7 +18,12 @@ Game::Game():
 
     background.setTexture(bgTexture);
 
-    floor.setSpritePosition(0.f, Constants::WINDOW_HEIGHT - 50);
+    floor.setSpritePosition(0.f, Constants::FLOOR_HEIGHT);
+    player1.setSpritePosition(0, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT);
+    youkai.setSpritePosition(0, Constants::FLOOR_HEIGHT - Constants::YOKAI_HEIGHT);
+    spike.setSpritePosition(100, Constants::FLOOR_HEIGHT - Constants::SPIKE_HEIGHT);
+    saw.setSpritePosition(200, Constants::FLOOR_HEIGHT - Constants::SAW_HEIGHT);
+
 
     pEventManager->setPlayer(&player1);
     pEventManager->setEntity(&youkai);

@@ -19,7 +19,6 @@ Ent::Ent(Texture::ID idTexture, const int width, const int height):
     pGraphicsManager = Manager::GraphicsManager::getGraphicsManager();  //it has to be here because there goes a compiler error if you initialize in the static
     setTexture(idTexture);
     sprite.setHitbox({0.f, 0.f, (float)width, (float)height});
-    sprite.setPosition(10.f, 600 - height);
     sprite.setTextureRect(sf::IntRect(0, 0, width, height));
 }
 
