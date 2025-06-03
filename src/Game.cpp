@@ -22,8 +22,8 @@ Game::Game():
     player1.setSpritePosition(0, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT);
     youkai.setSpritePosition(0, Constants::FLOOR_HEIGHT - Constants::YOKAI_HEIGHT);
     spike.setSpritePosition(100, Constants::FLOOR_HEIGHT - Constants::SPIKE_HEIGHT);
-    saw.setSpritePosition(200, Constants::FLOOR_HEIGHT - Constants::SAW_HEIGHT);
-    platform.setSpritePosition(600, 550);
+    saw.setSpritePosition(1000, Constants::FLOOR_HEIGHT - Constants::SAW_HEIGHT);
+    platform.setSpritePosition(600, 400);
 
     pEventManager->setPlayer(&player1);
     pEventManager->setEntity(&youkai);
@@ -38,6 +38,8 @@ Game::Game():
     pCollisionManager->appendEnemy(&youkai);
     pCollisionManager->appendPlatform(&platform);
     pCollisionManager->appendPlatform(&floor);
+    pCollisionManager->appendObstacle(&spike);
+    pCollisionManager->appendObstacle(&saw);
 }
 
 Game::~Game() {

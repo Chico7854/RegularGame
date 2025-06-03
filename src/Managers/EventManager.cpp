@@ -87,6 +87,7 @@ namespace Manager {
         player->update();
         entList.updateEntities();
         pCollisionManager->verifyNoDamageCollisions();
+        pCollisionManager->verifyDamageCollisions();
         player->draw();
         entList.drawEntities();
     }

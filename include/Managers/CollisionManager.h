@@ -34,7 +34,7 @@ namespace Manager {
             void applyDamageCollision(Entities::Player* player, Entities::Entity* entity);
 
             void verifyNoDamageCollisions();
-            // void verifyDamageCollisions();
+            void verifyDamageCollisions();
 
         private:
     };

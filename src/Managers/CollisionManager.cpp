@@ -105,4 +105,14 @@ namespace Manager {
             it++;
         }
     }
+
+    void CollisionManager::verifyDamageCollisions() {
+        std::list<Entities::Obstacle*>::iterator it = obstacles.begin();
+        while(it != obstacles.end()) {
+            if (*it) {
+                applyDamageCollision(p1, *it);
+            }
+            it++;
+        }
+    }
 }
