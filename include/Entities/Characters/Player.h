@@ -17,7 +17,5 @@ namespace Entities {
             void run() override;
             void save() override;
             void update() override;
-
-            const bool getOnGround() const;
     };
 }

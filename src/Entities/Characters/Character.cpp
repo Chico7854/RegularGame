@@ -54,6 +54,10 @@ namespace Entities {
         onGround = o;
     }
 
+    const bool Character::getOnGround() const {
+        return onGround;
+    }
+
     void Character::moveHitboxSprite(float dx, float dy) {
         sprite.move(dx, dy);
         sprite.updateHitbox();

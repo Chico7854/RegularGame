@@ -34,8 +34,10 @@ Game::Game():
     pEventManager->setPlatform(&platform);
     pEventManager->setFloor(&floor);
 
+    pCollisionManager->setPlayer(&player1);
     pCollisionManager->appendEnemy(&youkai);
-    pCollisionManager->appendObstacle(&platform);
+    pCollisionManager->appendPlatform(&platform);
+    pCollisionManager->appendPlatform(&floor);
 }
 
 Game::~Game() {

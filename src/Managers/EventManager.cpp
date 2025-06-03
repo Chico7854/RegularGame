@@ -83,10 +83,10 @@ namespace Manager {
         if (!player->getIsHurt()) {
             keyboardEvent();
         }
+        player->setOnGround(false);
         player->update();
         entList.updateEntities();
-        pCollisionManager->applyNoDamageCollision(player, floor);
-        pCollisionManager->applyDamageCollision(player, platform);
+        pCollisionManager->verifyNoDamageCollisions();
         player->draw();
         entList.drawEntities();
     }

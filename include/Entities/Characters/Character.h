@@ -23,6 +23,7 @@ namespace Entities {
             void setDx(float x);
             void setDy(float y);
             void setOnGround(bool o);
+            const bool getOnGround() const;
             void setIsHurt(bool hurt);
             const bool getIsHurt() const;
             void moveHitboxSprite(float dx, float dy);

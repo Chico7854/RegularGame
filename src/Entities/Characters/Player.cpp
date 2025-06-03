@@ -36,8 +36,4 @@ namespace Entities {
         //     sprite.setTextureRect(sf::IntRect(width * ((int)frame + 1), 0, -width, height));
         // }
     }
-
-    const bool Player::getOnGround() const {
-        return onGround;
-    }
 }

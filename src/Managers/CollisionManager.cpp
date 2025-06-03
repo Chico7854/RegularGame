@@ -34,6 +34,12 @@ namespace Manager {
         }
     }
 
+    void CollisionManager::appendPlatform(Entities::Platform* platform) {
+        if (platform) {
+            platforms.push_back(platform);
+        }
+    }
+
     void CollisionManager::setPlayer(Entities::Player* p) {
         if (p) {
             p1 = p;
@@ -46,8 +52,6 @@ namespace Manager {
         const sf::FloatRect charCoordinates = character->getGlobalHitbox();
         const sf::FloatRect entCoordinates = entity->getGlobalHitbox();
 
-        character->setOnGround(false);
-        
         if (charCoordinates.intersects(entCoordinates, intersectionRect)) {
             float xOverlap = intersectionRect.width;
             float yOverlap = intersectionRect.height;
@@ -89,6 +93,16 @@ namespace Manager {
             player->setDy(dy);
             player->setDx(dx);
             player->setIsHurt(true);
+        }
+    }
+
+    void CollisionManager::verifyNoDamageCollisions() {
+        std::list<Entities::Platform*>::iterator it = platforms.begin();
+        while (it != platforms.end()) {
+            if (*it) {
+                applyNoDamageCollision(p1, *it);
+            }
+            it++;
         }
     }
 }
