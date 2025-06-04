@@ -1,6 +1,7 @@
 #pragma once
+#include "Entities/Entity.h"
+#include "Entities/Characters/Character.h"
 
-#include "../Entity.h"
 #include "Utility/Texture.h"
 
 namespace Entities {
@@ -14,9 +15,10 @@ namespace Entities {
         {
         }
         virtual ~Obstacle() {}
-        virtual void run() override {}
         virtual void save() override {}
         virtual void update() {};
+        virtual void obstruct(Entities::Character* character) = 0;
+
         void setHarmful(bool harmful) { this->harmful = harmful; }
         bool isHarmful() const { return harmful; }
     };

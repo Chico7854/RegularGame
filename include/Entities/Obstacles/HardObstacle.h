@@ -1,7 +1,9 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
+
 #include "Obstacle.h"
+#include "Entities/Characters/Character.h"
+
 #include "Utility/Texture.h"
 
 namespace Entities {
@@ -11,16 +13,14 @@ namespace Entities {
 		float damage;
 		float frame;
 	public:
-		HardObstacle() : damage(10.f), frame(0) {}
-		HardObstacle(Texture::ID id, int sprite_width, int sprite_height): Obstacle(id, sprite_width, sprite_height), damage(10.f), frame(0)
-		{
-		}
-		virtual ~HardObstacle() {}
-		void run() override {}
+		HardObstacle(Texture::ID id, int sprite_width, int sprite_height);
+		HardObstacle();
+		virtual ~HardObstacle();
 		void save() override {}
-		void update() override;
+		void update() override {};
 		float getDamage() const { return damage; }
 		void setDamage(float damage_value) { damage = damage_value; }
 
+        void obstruct(Entities::Character* character) override;
 	};
 }

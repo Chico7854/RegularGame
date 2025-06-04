@@ -36,8 +36,8 @@ Game::Game():
 
     pCollisionManager->setPlayer(&player1);
     pCollisionManager->appendEnemy(&youkai);
-    pCollisionManager->appendPlatform(&platform);
-    pCollisionManager->appendPlatform(&floor);
+    pCollisionManager->appendObstacle(&platform);
+    pCollisionManager->appendObstacle(&floor);
     pCollisionManager->appendObstacle(&spike);
     pCollisionManager->appendObstacle(&saw);
 }

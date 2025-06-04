@@ -18,7 +18,6 @@ namespace Entities {
         virtual ~Entity() {}
 
         virtual void update() = 0;
-        virtual void run() = 0;          
         virtual void save() = 0;
     };
 }
