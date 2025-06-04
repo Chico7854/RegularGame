@@ -14,7 +14,7 @@ Game::Game():
     // player2(Texture::Player2, Constants::P2_WIDTH, Constants::P2_HEIGHT),
     youkai(Texture::Youkai, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT)
 {
-        bgTexture.loadFromFile("../images/bgsimao.png");
+    bgTexture.loadFromFile("../images/bgsimao.png");
 
     background.setTexture(bgTexture);
 
@@ -53,6 +53,7 @@ void Game::run()
     {
         pGraphicsManager->clearWindow();
         pGraphicsManager->draw(background);
+        pGraphicsManager->setViewCenter(player1.getSprite()->getPosition().x);
         pEventManager->exec();
         pGraphicsManager->displayWindow();
     }

@@ -8,6 +8,7 @@ namespace Manager {
 
     GraphicsManager::GraphicsManager():
         window(sf::VideoMode(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT), Constants::GAME_NAME),
+        camera_view(sf::Vector2f(0.f,0.f),sf::Vector2f((float)Constants::WINDOW_WIDTH,(float)Constants::WINDOW_HEIGHT)),
         vectorTextures()
     {
         vectorTextures.clear();
@@ -104,4 +105,16 @@ namespace Manager {
         }
         return pTexture;
     }
+
+    /*View*/
+    void GraphicsManager::setView(const sf::View& view){
+        camera_view = view;
+        window.setView(camera_view);
+    }
+
+    void GraphicsManager::setViewCenter(float x){
+        camera_view.setCenter(sf::Vector2f(x,Constants::WINDOW_HEIGHT/2)); //camera just moves on the x axis
+        window.setView(camera_view);
+    }
 }
+

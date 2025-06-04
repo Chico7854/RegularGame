@@ -11,6 +11,7 @@ namespace Manager {
         private:
             sf::RenderWindow window;
             std::vector<sf::Texture*> vectorTextures;
+            sf::View camera_view;
             void windowSetup();
 
             static GraphicsManager* pSelf;
@@ -33,5 +34,9 @@ namespace Manager {
             void loadTexture(Texture::ID id, std::string path);
             void loadAllTextures();
             sf::Texture* getTexture(Texture::ID id);
+
+            /*View*/
+            void setView(const sf::View& view);
+            void setViewCenter(float x);
     };
 }
