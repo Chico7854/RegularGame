@@ -13,7 +13,7 @@ namespace Entities {
 
         public:
             Character();
-            Character(Texture::ID id, const int width, const int height);
+            Character(Texture::ID id, const int width, const int height, Constants::TYPE);
             ~Character();
 
             const float getSpeed() const;

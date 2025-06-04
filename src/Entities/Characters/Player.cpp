@@ -3,7 +3,7 @@
 
 namespace Entities {
     Player::Player(Texture::ID id, const int width, const int height):
-        Character(id, width, height)
+        Character(id, width, height, Constants::Player)
     {
     }
 
