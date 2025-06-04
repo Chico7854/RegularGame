@@ -52,8 +52,11 @@ void Game::run()
     while (pGraphicsManager->isWindowOpen())
     {
         pGraphicsManager->clearWindow();
+
+        sf::Vector2f playerPos = player1.getSprite()->getPosition();
+        pGraphicsManager->setViewCenter(playerPos.x);
+        background.setPosition(playerPos.x - (Constants::WINDOW_WIDTH / 2.f), 0);
         pGraphicsManager->draw(background);
-        pGraphicsManager->setViewCenter(player1.getSprite()->getPosition().x);
         pEventManager->exec();
         pGraphicsManager->displayWindow();
     }
