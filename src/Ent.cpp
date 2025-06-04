@@ -15,7 +15,8 @@ Ent::Ent():
 Ent::Ent(Texture::ID idTexture, const int width, const int height):
     id(cont++),
     sprite()
-{
+{   
+    //seg fault if not here for SOME FUCKING REASON
     pGraphicsManager = Manager::GraphicsManager::getGraphicsManager();  //it has to be here because there goes a compiler error if you initialize in the static
     setTexture(idTexture);
     sprite.setHitbox({0.f, 0.f, (float)width, (float)height});
@@ -55,4 +56,8 @@ void Ent::setScale(sf::Vector2f scale) {
 
 void Ent::draw() {
     pGraphicsManager->drawEnt(this);
+}
+
+void Ent::setGraphicsManager(Manager::GraphicsManager* pGM) {
+    pGraphicsManager = pGM;
 }

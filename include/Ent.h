@@ -29,4 +29,6 @@ class Ent {
         void setScale(sf::Vector2f scale);
 
         void draw();
+
+        static void setGraphicsManager(Manager::GraphicsManager* pGM);
 };

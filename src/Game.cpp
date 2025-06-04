@@ -18,6 +18,8 @@ Game::Game():
 
     background.setTexture(bgTexture);
 
+    Ent::setGraphicsManager(pGraphicsManager);
+
     floor.setSpritePosition(0.f, Constants::FLOOR_HEIGHT);
     player1.setSpritePosition(0, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT);
     youkai.setSpritePosition(200, Constants::FLOOR_HEIGHT - Constants::YOKAI_HEIGHT);
