@@ -20,7 +20,7 @@ Game::Game():
 
     floor.setSpritePosition(0.f, Constants::FLOOR_HEIGHT);
     player1.setSpritePosition(0, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT);
-    youkai.setSpritePosition(0, Constants::FLOOR_HEIGHT - Constants::YOKAI_HEIGHT);
+    youkai.setSpritePosition(200, Constants::FLOOR_HEIGHT - Constants::YOKAI_HEIGHT);
     spike.setSpritePosition(100, Constants::FLOOR_HEIGHT - Constants::SPIKE_HEIGHT);
     saw.setSpritePosition(1000, Constants::FLOOR_HEIGHT - Constants::SAW_HEIGHT);
     platform.setSpritePosition(600, 400);

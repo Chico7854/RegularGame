@@ -31,5 +31,8 @@ namespace Manager {
             void verifyCollisions();
 
         private:
+
+            void verifyPlayerCollisions();
+            void verifyEnemiesCollisions();
     };
 }

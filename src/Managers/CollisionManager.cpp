@@ -40,11 +40,11 @@ namespace Manager {
         }
     }
 
-    void CollisionManager::verifyCollisions() {
+    void CollisionManager::verifyPlayerCollisions() {
         std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
         std::vector<Entities::Enemy*>::iterator itEnemies = enemies.begin();
 
-        while(itObstacles != obstacles.end()) {
+        while (itObstacles != obstacles.end()) {
             if (*itObstacles) {
                 (*itObstacles)->obstruct(p1);
             }
@@ -57,5 +57,27 @@ namespace Manager {
             }
             itEnemies++;
         }
+    }
+
+    void CollisionManager::verifyEnemiesCollisions() {
+        std::vector<Entities::Enemy*>::iterator itEnemies = enemies.begin();
+        std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
+
+        while (itEnemies != enemies.end()) {
+            if (*itEnemies) {
+                while (itObstacles != obstacles.end()) {
+                    if (*itObstacles) {
+                        (*itObstacles)->obstruct(*itEnemies);
+                    }
+                    itObstacles++;
+                }
+            }
+            itEnemies++;
+        }
+    }
+
+    void CollisionManager::verifyCollisions() {
+        verifyPlayerCollisions();
+        verifyEnemiesCollisions();
     }
 }
