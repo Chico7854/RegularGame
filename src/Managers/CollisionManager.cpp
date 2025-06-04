@@ -41,12 +41,21 @@ namespace Manager {
     }
 
     void CollisionManager::verifyCollisions() {
-        std::list<Entities::Obstacle*>::iterator it = obstacles.begin();
-        while(it != obstacles.end()) {
-            if (*it) {
-                (*it)->obstruct(p1);
+        std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
+        std::vector<Entities::Enemy*>::iterator itEnemies = enemies.begin();
+
+        while(itObstacles != obstacles.end()) {
+            if (*itObstacles) {
+                (*itObstacles)->obstruct(p1);
             }
-            it++;
+            itObstacles++;
+        }
+
+        while (itEnemies != enemies.end()) {
+            if (*itEnemies) {
+                (*itEnemies)->obstruct(p1);
+            }
+            itEnemies++;
         }
     }
 }

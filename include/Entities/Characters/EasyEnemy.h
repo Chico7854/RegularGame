@@ -1,6 +1,7 @@
 #pragma once
-
 #include "Enemy.h"
+#include "Player.h"
+
 #include "Utility/Texture.h"
 
 namespace Entities {
@@ -11,8 +12,10 @@ namespace Entities {
             EasyEnemy() {}
             EasyEnemy(Texture::ID id, int width, int height);
             virtual ~EasyEnemy();
+
             void run() override;
             void save() override;
             void update() override;
+            void obstruct(Player* player) override;
     };
 }

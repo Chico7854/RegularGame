@@ -1,8 +1,10 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
 #include <iostream>
+
 #include "Character.h"
+#include "Player.h"
+
 #include "Utility/Texture.h"
 
 namespace Entities {
@@ -18,5 +20,6 @@ namespace Entities {
             void run() override;
             void save() override;
             virtual void update(float time) {}
+            virtual void obstruct(Player* player) = 0;
     };
 }
