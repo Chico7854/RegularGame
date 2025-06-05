@@ -9,11 +9,8 @@ namespace Texture {
         Floor,
         Spike,
         Saw,
-<<<<<<< HEAD
-        Background
-=======
-        Shuriken,
->>>>>>> main
+        Background,
+        Shuriken
     };
         constexpr char PLAYER1[] = "../images/samurai_run.png";
         constexpr char PLAYER2[] = "../images/shinobi_run.png";
@@ -22,9 +19,6 @@ namespace Texture {
         constexpr char FLOOR[] = "../images/floor_mine.png";
         constexpr char SPIKE[] = "../images/spike.png";
         constexpr char SAW[] = "../images/saw.png";
-<<<<<<< HEAD
         constexpr char BACKGROUND[] = "../images/bgsimao.png";
-=======
         constexpr char SHURIKEN[] = "../images/shuriken.png";
->>>>>>> main
 }
