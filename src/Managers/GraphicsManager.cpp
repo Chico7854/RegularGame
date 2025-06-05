@@ -112,11 +112,19 @@ namespace Manager {
         window.setView(camera_view);
     }
 
-    void GraphicsManager::setViewCenter(float x){
-        if(x > Constants::WINDOW_WIDTH/2) { //Ensure that camera dont go out off bounds
-            camera_view.setCenter(sf::Vector2f(x,Constants::WINDOW_HEIGHT/2)); //Camera just moves on the x axis
-            window.setView(camera_view);
-        }
+    void GraphicsManager::setViewCenter(float x_player){
+        if(x_player > Constants::WINDOW_WIDTH/2)  //Ensure that camera dont go out off bounds
+            camera_view.setCenter(sf::Vector2f(x_player,Constants::WINDOW_HEIGHT/2)); //Camera just moves on the x axis
+        else
+            camera_view.setCenter(sf::Vector2f(Constants::WINDOW_WIDTH/2,Constants::WINDOW_HEIGHT/2)); 
+        window.setView(camera_view);
+    }
+
+    sf::Vector2f GraphicsManager::getViewPosition() const {
+        sf::Vector2f position;
+        position.x = camera_view.getCenter().x - Constants::WINDOW_WIDTH/2;
+        position.y = 0; //Background dont get updated in the y axis
+        return position;
     }
 }
 
