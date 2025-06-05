@@ -44,11 +44,11 @@ namespace Entities {
     void EasyEnemy::update()
     {
         /*GAMBIARRA*/
+        dy += Constants::GRAVITY;
         if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
             dx = -dx; // Reverse direction if hits borders
         }
-        sprite.move(dx, 0);
-        sprite.updateHitbox();
+        moveHitboxSprite(dx, dy);
 
         // frame += 0.008f * time; // Animation speed
         // if (frame >= 6) {
