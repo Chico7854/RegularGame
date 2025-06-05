@@ -7,7 +7,7 @@
 #include "Entities/Obstacles/Platform.h"
 #include "Entities/Obstacles/HardObstacle.h"
 #include "Entities/Obstacles/MediumObstacle.h"
-#include "Entities/Characters/EasyEnemy.h"
+#include "Entities/Characters/Youkai.h"
 #include "Utility/Constants.h"
 #include "Managers/GraphicsManager.h"
 #include "Managers/EventManager.h"

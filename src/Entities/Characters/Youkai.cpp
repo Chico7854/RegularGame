@@ -1,4 +1,4 @@
-#include "Entities/Characters/EasyEnemy.h"
+#include "Entities/Characters/Youkai.h"
 #include "Utility/Constants.h"
 #include "Entities/Characters/Enemy.h"
 
