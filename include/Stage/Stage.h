@@ -25,7 +25,7 @@ namespace Stage {
             void createEntity(const char ent, const sf::Vector2i pos);
             void createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);
-            void createFloor();
+            void createFloor(const float x);
             void createPlayer();
 
             // virtual void createEnemies() = 0;

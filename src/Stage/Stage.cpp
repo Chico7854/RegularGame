@@ -17,10 +17,13 @@ namespace Stage {
     void Stage::createEntity(const char ent, const sf::Vector2i pos) {
         switch (ent) {
             case ('y'):
-                createYoukai(pos.x * 50.f, pos.y * 50.f);
+                createYoukai(pos.x, pos.y);
                 break;
             case ('p'):
-                createPlatform(pos.x * 50.f, pos.y * 50.f);
+                createPlatform(pos.x, pos.y);
+                break;
+            case ('f'):
+                createFloor(pos.x);
                 break;
         }
     }
@@ -41,10 +44,10 @@ namespace Stage {
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform));
     }
 
-    void Stage::createFloor() {
+    void Stage::createFloor(const float x) {
         using namespace Entities;
-        Platform* pFloor = new Platform(Texture::Floor, 5000.f, Constants::FLOOR_HEIGHT);
-        pFloor->setSpritePosition(0, Constants::FLOOR_HEIGHT);
+        Platform* pFloor = new Platform(Texture::Floor, Constants::FLOOR_SPRITE_WIDTH, Constants::FLOOR_SPRITE_HEIGHT);
+        pFloor->setSpritePosition(x, Constants::FLOOR_HEIGHT);
         obstaclesList.append(static_cast<Entity*>(pFloor));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pFloor));
     }
@@ -74,13 +77,12 @@ namespace Stage {
         while(std::getline(file, line)){
             for(int i = 0; i < line.size(); i++){
                 if(line[i] != ' ') {
-                    createEntity(line[i], {i, j});
+                    createEntity(line[i], {i * Constants::SCALE_TXT, j * Constants::SCALE_TXT});
                 }
             }
             j++;
         }
         createPlayer();
-        createFloor();
 
         file.close();
     }

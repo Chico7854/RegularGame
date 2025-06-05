@@ -52,6 +52,7 @@ void Ent::setSpritePosition(float x, float y) {
 
 void Ent::setScale(sf::Vector2f scale) {
     sprite.setScale(scale);
+    sprite.updateHitbox();
 }
 
 void Ent::draw() {

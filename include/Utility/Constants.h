@@ -13,6 +13,8 @@ namespace Constants {
     constexpr unsigned int WINDOW_WIDTH = 1100;
     constexpr unsigned int FLOOR_HEIGHT = 600;
 
+    constexpr int SCALE_TXT = 50;
+
     /*Textures and sprites sizes*/
     constexpr unsigned int P1_HEIGHT = 104;
     constexpr unsigned int P1_WIDTH = 73;
@@ -28,6 +30,9 @@ namespace Constants {
     constexpr unsigned int SAW_HEIGHT = 66;
     constexpr unsigned int SHURIKEN_WIDTH = 30;
     constexpr unsigned int SHURIKEN_HEIGHT = 30;
+    constexpr unsigned int FLOOR_SPRITE_WIDTH = 1000;
+    constexpr unsigned int FLOOR_SPRITE_HEIGHT = 50;
+    constexpr unsigned int FLOOR_SPRITE_SCALE = 5;
 
     constexpr float SPEED = 7.f;
     constexpr float GRAVITY = SPEED / 4.f;
