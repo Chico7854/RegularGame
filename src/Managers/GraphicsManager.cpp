@@ -86,13 +86,15 @@ namespace Manager {
     }
 
     void GraphicsManager::loadAllTextures() {
-        loadTexture(Texture::Player1, Texture::PLAYER1);
-        loadTexture(Texture::Player2, Texture::PLAYER2);
-        loadTexture(Texture::Youkai, Texture::YOUKAI);
-        loadTexture(Texture::Platform, Texture::PLATFORM);
-        loadTexture(Texture::Spike, Texture::SPIKE);
-        loadTexture(Texture::Saw, Texture::SAW);
-        loadTexture(Texture::Floor, Texture::FLOOR);
+        using namespace Texture;
+        loadTexture(Player1, PLAYER1);
+        loadTexture(Player2, PLAYER2);
+        loadTexture(Youkai, YOUKAI);
+        loadTexture(Platform, PLATFORM);
+        loadTexture(Spike, SPIKE);
+        loadTexture(Saw, SAW);
+        loadTexture(Floor, FLOOR);
+        loadTexture(Background, BACKGROUND);
     }
 
     sf::Texture* GraphicsManager::getTexture(Texture::ID id) {

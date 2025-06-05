@@ -9,6 +9,7 @@ namespace Texture {
         Floor,
         Spike,
         Saw,
+        Background
     };
         constexpr char PLAYER1[] = "../images/samurai_run.png";
         constexpr char PLAYER2[] = "../images/shinobi_run.png";
@@ -17,5 +18,5 @@ namespace Texture {
         constexpr char FLOOR[] = "../images/floor_mine.png";
         constexpr char SPIKE[] = "../images/spike.png";
         constexpr char SAW[] = "../images/saw.png";
-    
+        constexpr char BACKGROUND[] = "../images/bgsimao.png";
 }

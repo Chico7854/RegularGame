@@ -17,7 +17,7 @@ class Ent {
         
     public:
         Ent();
-        Ent(Texture::ID idTexture, int width, const int height);
+        Ent(const Texture::ID idTexture, const int width, const int height);
         virtual ~Ent();
 
         const int getId() const;

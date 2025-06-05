@@ -12,7 +12,7 @@ Ent::Ent():
     std::cerr << "No Parameters in Ent Constructor" << std::endl;
 }
 
-Ent::Ent(Texture::ID idTexture, const int width, const int height):
+Ent::Ent(const Texture::ID idTexture, const int width, const int height):
     id(cont++),
     sprite()
 {   

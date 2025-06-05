@@ -5,13 +5,13 @@
 #include "Utility/Texture.h"
 
 namespace Entities {
-    class EasyEnemy : public Enemy {
+    class Youkai : public Enemy {
         private:
 
         public:
-            EasyEnemy() {}
-            EasyEnemy(Texture::ID id, int width, int height);
-            virtual ~EasyEnemy();
+            Youkai() {}
+            Youkai(Texture::ID id, int width, int height);
+            virtual ~Youkai();
 
             void run() override;
             void save() override;

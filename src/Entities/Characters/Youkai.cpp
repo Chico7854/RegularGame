@@ -3,21 +3,21 @@
 #include "Entities/Characters/Enemy.h"
 
 namespace Entities {
-    EasyEnemy::EasyEnemy(Texture::ID id, int width, int height):
+    Youkai::Youkai(Texture::ID id, int width, int height):
         Enemy(id, width, height)
     {}
 
-    EasyEnemy::~EasyEnemy() {}
+    Youkai::~Youkai() {}
 
-    void EasyEnemy::run()
+    void Youkai::run()
     {
     }
 
-    void EasyEnemy::save()
+    void Youkai::save()
     {
     }
 
-    void EasyEnemy::update()
+    void Youkai::update()
     {
         /*GAMBIARRA*/
         dy += Constants::GRAVITY;

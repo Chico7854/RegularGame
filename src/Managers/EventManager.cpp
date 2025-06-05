@@ -83,11 +83,11 @@ namespace Manager {
         if (!player->getIsHurt()) {
             keyboardEvent();
         }
-        player->setOnGround(false);
-        player->update();
-        entList.updateEntities();
-        pCollisionManager->verifyCollisions();
-        player->draw();
-        entList.drawEntities();
+        // player->setOnGround(false);
+        // player->update();
+        // entList.updateEntities();
+        // pCollisionManager->verifyCollisions();
+        // player->draw();
+        // entList.drawEntities();
     }
 }
