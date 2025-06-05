@@ -13,6 +13,7 @@ Game::Game():
 Game::~Game() {
     pGraphicsManager = nullptr;
     pEventManager = nullptr;
+    pStateManager = nullptr;
 }
 
 void Game::run()
