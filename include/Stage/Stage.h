@@ -1,6 +1,7 @@
 #pragma once
-#include "Ent.h"
+#include <fstream>
 
+#include "Ent.h"
 #include "Entities/EntityList.h"
 #include "Entities/Characters/Youkai.h"
 #include "Managers/CollisionManager.h"
@@ -21,6 +22,7 @@ namespace Stage {
             const Entities::Player* getPlayer() const;
 
         protected:
+            void createEntity(const char ent, const sf::Vector2i pos);
             void createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);
             void createFloor();

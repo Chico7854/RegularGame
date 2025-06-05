@@ -14,6 +14,17 @@ namespace Stage {
         return player;
     }
 
+    void Stage::createEntity(const char ent, const sf::Vector2i pos) {
+        switch (ent) {
+            case ('y'):
+                createYoukai(pos.x * 50.f, pos.y * 50.f);
+                break;
+            case ('p'):
+                createPlatform(pos.x * 50.f, pos.y * 50.f);
+                break;
+        }
+    }
+
     void Stage::createYoukai(const float x, const float y) {
         using namespace Entities;
         Youkai* pYoukai = new Youkai(Texture::Youkai, Constants::YOUKAI_WIDTH, Constants::YOUKAI_HEIGHT);
@@ -48,13 +59,34 @@ namespace Stage {
     }
 
     void Stage::createMap() {
-        createFloor();
-        createYoukai(400.f, Constants::FLOOR_HEIGHT - Constants::YOUKAI_HEIGHT);
-        createPlatform(800.f, Constants::FLOOR_HEIGHT - 100.f);
+        // createFloor();
+        // createYoukai(400.f, Constants::FLOOR_HEIGHT - Constants::YOUKAI_HEIGHT);
+        // createPlatform(800.f, Constants::FLOOR_HEIGHT - 100.f);
+        // createPlayer();
+        std::ifstream file;
+        std::string line;
+        file.open("../assets/stages/fuck.txt");
+        if (!file.is_open()) {
+            std::cerr << "Couldnt open stage file\n";
+            exit(1);
+        }
+        int j = 0;
+        while(std::getline(file, line)){
+            for(int i = 0; i < line.size(); i++){
+                if(line[i] != ' ') {
+                    createEntity(line[i], {i, j});
+                }
+            }
+            j++;
+        }
         createPlayer();
+        createFloor();
+
+        file.close();
     }
 
     void Stage::exec() {
+        draw();   //draw background
         player->setOnGround(false);
         player->update();
         charactersList.updateEntities();
