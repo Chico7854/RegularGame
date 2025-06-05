@@ -12,15 +12,17 @@ namespace Entities {
     {
     protected:
         sf::Vector2f initialPosition;
-        Constants::TYPE type;
+        const Constants::TYPE type;
         int ground;
 
     public:
-        Entity() {}
         Entity(Texture::ID id, int width, const int height, Constants::TYPE t);
-        virtual ~Entity() {}
+        Entity();
+        virtual ~Entity();
 
         virtual void update() = 0;
         virtual void save() = 0;
+
+        const Constants::TYPE getType() const;
     };
 }

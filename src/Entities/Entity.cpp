@@ -8,4 +8,14 @@ namespace Entities {
     {
     }
 
+    Entity::Entity():
+        Ent(),
+        type(Constants::TYPE::None)
+    {}
+
+    Entity::~Entity() {}
+
+    const Constants::TYPE Entity::getType() const {
+        return type;
+    }
 }

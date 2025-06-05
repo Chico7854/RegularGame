@@ -12,6 +12,9 @@ namespace Entities {
         Obstacle(Texture::ID id, int sprite_width, int sprite_height);
         Obstacle();
         virtual ~Obstacle();
+
+        void nonDamageCollision(Character* character);
+
         virtual void save() override {}
         virtual void update() {};
         virtual void obstruct(Entities::Character* character) = 0;
