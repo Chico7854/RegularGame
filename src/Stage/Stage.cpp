@@ -61,6 +61,11 @@ namespace Stage {
         Manager::EventManager::getEventManager()->setPlayer(player);
     }
 
+    void Stage::updateView() {
+        pGraphicsManager->setViewCenter(player->getGlobalHitbox().left);
+        setSpritePosition(pGraphicsManager->getViewPositionX(), 0.f);
+    }
+
     void Stage::createMap() {
         // createFloor();
         // createYoukai(400.f, Constants::FLOOR_HEIGHT - Constants::YOUKAI_HEIGHT);
@@ -88,6 +93,7 @@ namespace Stage {
     }
 
     void Stage::exec() {
+        updateView();
         draw();   //draw background
         player->setOnGround(false);
         player->update();

@@ -21,9 +21,6 @@ void Game::run()
     while (pGraphicsManager->isWindowOpen())
     {
         pGraphicsManager->clearWindow();
-
-        pGraphicsManager->setViewCenter(stage.getPlayer()->getGlobalHitbox().left);
-        stage.setSpritePosition(pGraphicsManager->getViewPositionX(), 0.f);
         pEventManager->exec();
         stage.exec();
         pGraphicsManager->displayWindow();

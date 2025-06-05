@@ -27,6 +27,7 @@ namespace Stage {
             void createPlatform(const float x, const float y);
             void createFloor(const float x);
             void createPlayer();
+            void updateView();
 
             // virtual void createEnemies() = 0;
             // virtual void createObstacle() = 0;
