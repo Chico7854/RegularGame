@@ -2,7 +2,7 @@
 
 namespace Entities {
     Obstacle::Obstacle(Texture::ID id, int sprite_width, int sprite_height):
-        Entity(id, sprite_width, sprite_height, Constants::Obstacle)
+        Entity(id, sprite_width, sprite_height, EntityType::Obstacle)
     {}
 
     Obstacle::Obstacle() {}
@@ -34,7 +34,7 @@ namespace Entities {
                 if (obstacleCoordinates.left > charCoordinates.left)
                     xOverlap *= -1;
                 character->moveHitboxSprite(xOverlap, 0);
-                if (character->getType() == Constants::TYPE::Enemy) {
+                if (character->getType() == EntityType::Enemy) {
                     character->setDx(character->getDx() * -1);
                 }
             }

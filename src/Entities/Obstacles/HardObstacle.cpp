@@ -13,7 +13,7 @@ namespace Entities {
 	HardObstacle::~HardObstacle() {}
 
 	void HardObstacle::obstruct(Entities::Character* character) {
-		if (character->getType() == Constants::TYPE::Player) {
+		if (character->getType() == EntityType::Player) {
             const sf::FloatRect charCoordinates = character->getGlobalHitbox();
             const sf::FloatRect obstacleCoordinates = getGlobalHitbox();
 
@@ -34,7 +34,7 @@ namespace Entities {
                 character->setIsHurt(true);
             }
         }
-        else if (character->getType() == Constants::TYPE::Enemy) {
+        else if (character->getType() == EntityType::Enemy) {
             nonDamageCollision(character);
         }
 	}

@@ -8,21 +8,29 @@
 #include "Utility/Texture.h"
 
 namespace Entities {
+    enum class EntityType {
+        None = 0,
+
+        Player,
+        Enemy,
+        Obstacle
+    };
+
     class Entity : public Ent
     {
     protected:
         sf::Vector2f initialPosition;
-        const Constants::TYPE type;
+        const EntityType type;
         int ground;
 
     public:
-        Entity(Texture::ID id, int width, const int height, Constants::TYPE t);
+        Entity(Texture::ID id, int width, const int height, EntityType t);
         Entity();
         virtual ~Entity();
 
         virtual void update() = 0;
         virtual void save() = 0;
 
-        const Constants::TYPE getType() const;
+        const EntityType getType() const;
     };
 }

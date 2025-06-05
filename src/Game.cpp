@@ -20,8 +20,8 @@ void Game::run()
 {
     while (pGraphicsManager->isWindowOpen())
     {
-        pGraphicsManager->clearWindow();
         pEventManager->exec();
+        pGraphicsManager->clearWindow();
         pStateManager->exec();
         pGraphicsManager->displayWindow();
     }

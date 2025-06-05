@@ -2,7 +2,7 @@
 #include "Utility/Constants.h"
 
 namespace Entities {
-    Character::Character(Texture::ID id, const int width, const int height, Constants::TYPE type):
+    Character::Character(Texture::ID id, const int width, const int height, EntityType type):
         Entity(id, width, height, type), 
         lives(0),
         speed(Constants::SPEED),

@@ -1,14 +1,6 @@
 #pragma once
 
 namespace Constants {
-    enum TYPE {
-        None = 0,
-
-        Player,
-        Enemy,
-        Obstacle
-    };
-
     constexpr unsigned int WINDOW_HEIGHT = 650;
     constexpr unsigned int WINDOW_WIDTH = 1100;
     constexpr unsigned int FLOOR_HEIGHT = 600;
