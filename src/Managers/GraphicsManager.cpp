@@ -92,6 +92,7 @@ namespace Manager {
         loadTexture(Texture::Platform, Texture::PLATFORM);
         loadTexture(Texture::Spike, Texture::SPIKE);
         loadTexture(Texture::Saw, Texture::SAW);
+        loadTexture(Texture::Shuriken, Texture::SHURIKEN);
         loadTexture(Texture::Floor, Texture::FLOOR);
     }
 

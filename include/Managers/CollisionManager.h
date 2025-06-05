@@ -7,7 +7,7 @@
 #include "Entities/Obstacles/Obstacle.h"
 #include "Entities/Obstacles/Platform.h"
 #include "Entities/Characters/Player.h"
-
+#include "Entities/Projectile.h"
 
 namespace Manager {
     class CollisionManager {
@@ -26,6 +26,7 @@ namespace Manager {
 
             void appendEnemy(Entities::Enemy* enemy);
             void appendObstacle(Entities::Obstacle* obstacle);
+            void appendProjectile(Entities::Projectile* projectile);
             void setPlayer(Entities::Player* p);
 
             void verifyCollisions();
@@ -34,5 +35,6 @@ namespace Manager {
 
             void verifyPlayerCollisions();
             void verifyEnemiesCollisions();
+            void verifyProjectileCollisions();
     };
 }

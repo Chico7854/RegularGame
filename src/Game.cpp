@@ -12,7 +12,8 @@ Game::Game():
 	saw(Texture::Saw, Constants::SAW_WIDTH, Constants::SAW_HEIGHT),
     player1(Texture::Player1, Constants::P1_WIDTH, Constants::P1_HEIGHT),
     // player2(Texture::Player2, Constants::P2_WIDTH, Constants::P2_HEIGHT),
-    youkai(Texture::Youkai, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT)
+    youkai(Texture::Youkai, Constants::YOKAI_WIDTH, Constants::YOKAI_HEIGHT),
+    shuriken(Texture::Shuriken, Constants::SHURIKEN_WIDTH, Constants::SHURIKEN_HEIGHT)
 {
     bgTexture.loadFromFile("../images/bgsimao.png");
 
@@ -25,6 +26,7 @@ Game::Game():
     youkai.setSpritePosition(200, Constants::FLOOR_HEIGHT - Constants::YOKAI_HEIGHT);
     spike.setSpritePosition(100, Constants::FLOOR_HEIGHT - Constants::SPIKE_HEIGHT);
     saw.setSpritePosition(1000, Constants::FLOOR_HEIGHT - Constants::SAW_HEIGHT);
+    shuriken.setSpritePosition(300, Constants::FLOOR_HEIGHT - Constants::SHURIKEN_HEIGHT);
     platform.setSpritePosition(600, 400);
 
     pEventManager->setPlayer(&player1);
@@ -33,6 +35,7 @@ Game::Game():
     pEventManager->setEntity(&floor);
     pEventManager->setEntity(&spike);
     pEventManager->setEntity(&saw);
+    pEventManager->setEntity(&shuriken);
     pEventManager->setPlatform(&platform);
     pEventManager->setFloor(&floor);
 
@@ -42,6 +45,7 @@ Game::Game():
     pCollisionManager->appendObstacle(&floor);
     pCollisionManager->appendObstacle(&spike);
     pCollisionManager->appendObstacle(&saw);
+    pCollisionManager->appendProjectile(&shuriken);
 }
 
 Game::~Game() {

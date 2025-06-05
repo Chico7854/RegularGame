@@ -42,6 +42,10 @@ namespace Manager {
         floor = f;
     }
 
+    void EventManager::setShuriken(Entities::Projectile* s) {
+        shuriken = s;
+    }
+
     void EventManager::keyboardEvent() {
         /*Player 1*/
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {

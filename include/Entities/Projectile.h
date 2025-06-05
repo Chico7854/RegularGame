@@ -25,7 +25,7 @@ namespace Entities {
 
         const sf::FloatRect getGlobalHitbox() const;
 
-        void shoot(float startX, float startY, float dirX, float dirY);
+        void shoot(float startX, float startY, bool dir);
         void moveHitboxSprite(float dx, float dy);
     };
 }

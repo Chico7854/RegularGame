@@ -8,6 +8,7 @@
 #include "Entities/Obstacles/HardObstacle.h"
 #include "Entities/Obstacles/MediumObstacle.h"
 #include "Entities/Characters/Youkai.h"
+#include "Entities/Projectile.h"
 #include "Utility/Constants.h"
 #include "Managers/GraphicsManager.h"
 #include "Managers/EventManager.h"
@@ -32,6 +33,8 @@ private:
     Platform floor, platform;
     MediumObstacle spike;
 	HardObstacle saw;
+
+    Projectile shuriken;
 public:
     Game();
     ~Game();
