@@ -57,6 +57,10 @@ namespace Manager {
             }
             itEnemies++;
         }
+        //collision with initial border
+        if(p1->getSprite()->getPosition().x < 0){
+            p1->setSpritePosition(0, p1->getSprite()->getPosition().y);
+        }
     }
 
     void CollisionManager::verifyEnemiesCollisions() {
