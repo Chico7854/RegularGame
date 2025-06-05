@@ -25,7 +25,7 @@ namespace Constants {
     constexpr unsigned int SPIKE_WIDTH = 25;
     constexpr unsigned int SPIKE_HEIGHT = 17;
     constexpr unsigned int SAW_WIDTH = 96;
-    constexpr unsigned int SAW_HEIGHT = 96;
+    constexpr unsigned int SAW_HEIGHT = 66;
 
     constexpr float SPEED = 7.f;
     constexpr float GRAVITY = SPEED / 4.f;
