@@ -1,6 +1,7 @@
 #pragma once
 #include "Obstacle.h"
 #include "Entities/Characters/Character.h"
+#include "Entities/Obstructable.h"
 
 #include "Utility/Texture.h"
 

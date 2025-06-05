@@ -16,6 +16,5 @@ namespace Entities {
             void run() override;
             void save() override;
             void update() override;
-            void obstruct(Player* player) override;
     };
 }

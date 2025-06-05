@@ -1,11 +1,12 @@
 #pragma once
 #include "Entities/Entity.h"
 #include "Entities/Characters/Character.h"
+#include "Entities/Obstructable.h"
 
 #include "Utility/Texture.h"
 
 namespace Entities {
-    class Obstacle : public Entity
+    class Obstacle : public Entity, public Obstructable
     {
     protected:
     public:
