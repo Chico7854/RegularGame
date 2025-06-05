@@ -22,10 +22,8 @@ void Game::run()
     {
         pGraphicsManager->clearWindow();
 
-        // sf::Vector2f playerPos = player1.getSprite()->getPosition();
-        // pGraphicsManager->setViewCenter(playerPos.x);
-        // background.setPosition(pGraphicsManager->getViewPosition());
-        // pGraphicsManager->draw(background);
+        pGraphicsManager->setViewCenter(stage.getPlayer()->getGlobalHitbox().left);
+        stage.setSpritePosition(pGraphicsManager->getViewPositionX(), 0.f);
         pEventManager->exec();
         stage.draw();
         stage.exec();

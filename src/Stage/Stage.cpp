@@ -10,6 +10,10 @@ namespace Stage {
 
     Stage::~Stage() {}
 
+    const Entities::Player* Stage::getPlayer() const {
+        return player;
+    }
+
     void Stage::createYoukai(const float x, const float y) {
         using namespace Entities;
         Youkai* pYoukai = new Youkai(Texture::Youkai, Constants::YOUKAI_WIDTH, Constants::YOUKAI_HEIGHT);

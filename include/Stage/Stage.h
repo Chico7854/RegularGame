@@ -18,6 +18,8 @@ namespace Stage {
             Stage();
             ~Stage();
 
+            const Entities::Player* getPlayer() const;
+
         protected:
             void createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);

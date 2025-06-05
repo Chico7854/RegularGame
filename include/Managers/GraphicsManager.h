@@ -38,6 +38,6 @@ namespace Manager {
             /*View*/
             void setView(const sf::View& view);
             void setViewCenter(float x);
-            sf::Vector2f getViewPosition() const;
+            const float getViewPositionX() const;
     };
 }

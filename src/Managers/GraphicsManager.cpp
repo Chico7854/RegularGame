@@ -122,11 +122,8 @@ namespace Manager {
         window.setView(camera_view);
     }
 
-    sf::Vector2f GraphicsManager::getViewPosition() const {
-        sf::Vector2f position;
-        position.x = camera_view.getCenter().x - Constants::WINDOW_WIDTH/2;
-        position.y = 0; //Background dont get updated in the y axis
-        return position;
+    const float GraphicsManager::getViewPositionX() const {
+        return camera_view.getCenter().x - Constants::WINDOW_WIDTH/2;
     }
 }
 
