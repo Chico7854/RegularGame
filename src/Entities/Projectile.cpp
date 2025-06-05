@@ -15,14 +15,6 @@ namespace Entities {
     {
     }
 
-    void Projectile::update() {
-        dx = speed;
-        if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
-            // Implement destruction
-        }
-        moveHitboxSprite(dx, dy);
-    }
-
     void Projectile::save() {
     }
 
@@ -38,8 +30,27 @@ namespace Entities {
         dy = y;
     }
 
+    void Projectile::shoot(float startX, float startY, bool dir){
+        sprite.setPosition(startX, startY);
+        direction = dir;
+        if (direction) {
+            dx = speed; // Right
+        } else {
+            dx = -speed; // Left
+        }
+        dy = 0.f; //Implement falling after
+    }
+
     void Projectile::moveHitboxSprite(float dx, float dy) {
         sprite.move(dx, dy);
         sprite.updateHitbox();
+    }
+
+    void Projectile::update() {
+        dx = speed;
+        if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
+            // Implement destruction
+        }
+        moveHitboxSprite(dx, dy);
     }
 }

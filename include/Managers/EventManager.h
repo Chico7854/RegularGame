@@ -14,6 +14,7 @@ namespace Manager {
             Entities::Player* player;
             Entities::Platform* floor;
             Entities::Platform* platform;
+            Entities::Projectile* shuriken;
 
             static EventManager* pSelf;
             EventManager();
@@ -24,6 +25,7 @@ namespace Manager {
             void setEntity(Entities::Entity* ent);
             void setPlayer(Entities::Player* p);
             void setPlatform(Entities::Platform* p);
+            void setShuriken(Entities::Projectile* s);
             void setFloor(Entities::Platform* f);
 
             void keyboardEvent();

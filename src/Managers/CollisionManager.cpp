@@ -34,6 +34,10 @@ namespace Manager {
         }
     }
 
+    void CollisionManager::appendProjectile(Entities::Projectile* projectile) {
+
+    }
+
     void CollisionManager::setPlayer(Entities::Player* p) {
         if (p) {
             p1 = p;
@@ -78,6 +82,10 @@ namespace Manager {
             }
             itEnemies++;
         }
+    }
+
+    void CollisionManager::verifyProjectileCollisions() {
+        
     }
 
     void CollisionManager::verifyCollisions() {
