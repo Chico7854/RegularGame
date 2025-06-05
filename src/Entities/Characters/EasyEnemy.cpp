@@ -33,8 +33,8 @@ namespace Entities {
                 playerDx *= -1;
             }
 
-            player->setDy(Constants::JUMP_SPEED / 1.5);
-            player->setDx(Constants::SPEED * 2);
+            player->setDy(playerDy);
+            player->setDx(playerDx);
             player->setIsHurt(true);
 
             dx *= -1;
