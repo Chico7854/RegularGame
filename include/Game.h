@@ -14,6 +14,7 @@
 #include "Managers/GraphicsManager.h"
 #include "Managers/EventManager.h"
 #include "Managers/CollisionManager.h"
+#include "Managers/StateManager.h"
 #include "Stage/Stage.h"
 
 #include "Utility/Constants.h"
@@ -25,8 +26,7 @@ class Game
 private:
     Manager::GraphicsManager* pGraphicsManager;
     Manager::EventManager* pEventManager;
-    Manager::CollisionManager* pCollisionManager;
-    Stage::Stage stage;
+    Manager::StateManager* pStateManager;
     // sf::Texture floorTexture, bgTexture;
     // sf::Sprite background;
     // const float floorHeight;

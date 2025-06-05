@@ -4,11 +4,10 @@
 Game::Game():
     pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
     pEventManager(Manager::EventManager::getEventManager()),
-    pCollisionManager(Manager::CollisionManager::getCollisionManager()),
-    stage()
+    pStateManager(Manager::StateManager::getStateManager())
 {
     Ent::setGraphicsManager(pGraphicsManager);
-    stage.createMap();
+    pStateManager->addState(States::StateType::Game);
 }
 
 Game::~Game() {
@@ -22,7 +21,7 @@ void Game::run()
     {
         pGraphicsManager->clearWindow();
         pEventManager->exec();
-        stage.exec();
+        pStateManager->exec();
         pGraphicsManager->displayWindow();
     }
 }
