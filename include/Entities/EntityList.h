@@ -2,19 +2,21 @@
 #include "Utility/List.h"
 #include "Entities/Entity.h"
 
-class EntityList {
-    private:
-        List<Entities::Entity*> entities;
+namespace List {
+    class EntityList {
+        private:
+            List<Entities::Entity*> entities;
 
-    public:
-        EntityList();
-        ~EntityList();
+        public:
+            EntityList();
+            ~EntityList();
 
-        void append(Entities::Entity* ent);
-        void printEntities();
-        void updateEntities();
-        void drawEntities();
+            void append(Entities::Entity* ent);
+            void printEntities();
+            void updateEntities();
+            void drawEntities();
 
-        List<Entities::Entity*>::Iterator begin();
-        List<Entities::Entity*>::Iterator end();
-};
+            List<Entities::Entity*>::Iterator begin();
+            List<Entities::Entity*>::Iterator end();
+    };
+}

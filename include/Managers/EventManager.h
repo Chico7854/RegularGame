@@ -10,7 +10,7 @@ namespace Manager {
         private:
             GraphicsManager* pGraphicsManager;
             CollisionManager* pCollisionManager;
-            EntityList entList;
+            List::EntityList entList;
             Entities::Player* player;
             Entities::Platform* floor;
             Entities::Platform* platform;
