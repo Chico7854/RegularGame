@@ -13,7 +13,6 @@ namespace States {
                 std::cerr << "ERROR Failed to create State because there is no state with matching ID\n";
                 exit(1);
         }
-        return nullptr;
     }
 
     State* StateFactory::createGameState() {
