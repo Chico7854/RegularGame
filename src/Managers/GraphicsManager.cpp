@@ -94,7 +94,8 @@ namespace Manager {
         loadTexture(Spike, SPIKE);
         loadTexture(Saw, SAW);
         loadTexture(Floor, FLOOR);
-        loadTexture(Background, BACKGROUND);
+        loadTexture(BackgroundDayMountain, BACKGROUND_DAY_MOUNTAIN);
+        loadTexture(BackgroundNightMountain, BACKGROUND_NIGHT_MOUNTAIN);
         loadTexture(Ball, BALL);
         loadTexture(Cannonhead, CANNONHEAD);
     }

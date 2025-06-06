@@ -3,7 +3,8 @@
 namespace States {
     enum class StateType {
         None = -1,
-        Game
+        GameDay,
+        GameNight
     };
 
     class State {

@@ -9,7 +9,8 @@ namespace Texture {
         Floor,
         Spike,
         Saw,
-        Background,
+        BackgroundDayMountain,
+        BackgroundNightMountain,
         Ball,
         Cannonhead
     };
@@ -20,7 +21,8 @@ namespace Texture {
         constexpr char FLOOR[] = "../assets/images/floor_mine.png";
         constexpr char SPIKE[] = "../assets/images/spike.png";
         constexpr char SAW[] = "../assets/images/saw.png";
-        constexpr char BACKGROUND[] = "../assets/images/bgsimao.png";
+        constexpr char BACKGROUND_DAY_MOUNTAIN[] = "../assets/images/bgsimao.png";
+        constexpr char BACKGROUND_NIGHT_MOUNTAIN[] = "../assets/images/night_mountain.png";
         constexpr char BALL[] = "../assets/images/ball.png";
         constexpr char CANNONHEAD[] = "../assets/images/cannonhead_walk.png";
 }

@@ -19,7 +19,7 @@ namespace Stage {
             Entities::Player* player;
 
         public:
-            Stage();
+            Stage(const Texture::ID background);
             ~Stage();
 
             const Entities::Player* getPlayer() const;

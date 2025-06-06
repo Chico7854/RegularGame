@@ -16,8 +16,6 @@ Ent::Ent(const Texture::ID idTexture, const int width, const int height):
     id(cont++),
     sprite()
 {   
-    //seg fault if not here for SOME FUCKING REASON
-    pGraphicsManager = Manager::GraphicsManager::getGraphicsManager();  //it has to be here because there goes a compiler error if you initialize in the static
     setTexture(idTexture);
     sprite.setHitbox({0.f, 0.f, (float)width, (float)height});
     sprite.setTextureRect(sf::IntRect(0, 0, width, height));

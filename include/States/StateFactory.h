@@ -2,6 +2,8 @@
 #include "States/State.h"
 #include "States/GameState.h"
 #include "Stage/Stage.h"
+#include "Stage/DayMountainStage.h"
+#include "Stage/NightMountainStage.h"
 
 namespace States {
     class StateFactory {
@@ -12,6 +14,7 @@ namespace States {
             State* createState(const States::StateType id);
 
         private:
-            State* createGameState();
+            State* createGameDayState();
+            State* createGameNightState();
     };
 }

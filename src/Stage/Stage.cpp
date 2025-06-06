@@ -1,8 +1,8 @@
 #include "Stage/Stage.h"
 
 namespace Stage {
-    Stage::Stage():
-        Ent(Texture::ID::Background, Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT),
+    Stage::Stage(const Texture::ID background):
+        Ent(background, Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT),
         charactersList(),
         obstaclesList(),
         entityFactory(),

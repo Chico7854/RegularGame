@@ -21,7 +21,7 @@ namespace Entities {
 
             /*Check vertical collision*/
             if (yOverlap < xOverlap) {
-                if (character->getDy() >= 0) {
+                if ((character->getDy() >= 0) && (charCoordinates.top < obstacleCoordinates.top)) {
                     yOverlap *= -1;
                     character->setOnGround(true);
                     character->setIsHurt(false);
