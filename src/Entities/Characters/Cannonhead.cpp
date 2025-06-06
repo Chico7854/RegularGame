@@ -10,7 +10,9 @@ namespace Entities {
         direction(false),
         projectileList(nullptr),
         cont_balls(0)
-    {}
+    {
+        setProjectileList();
+    }
 
     Cannonhead::~Cannonhead() {}
 
@@ -30,11 +32,15 @@ namespace Entities {
         }
         moveHitboxSprite(dx, dy);
 
-        shoot(); 
+        if(cont_balls<1)//Change logic after 
+            shoot(); 
 
         if(projectileList){
             projectileList->updateEntities();
         }
+
+        if(projectileList)
+            projectileList->drawEntities();
 
         // frame += 0.008f * time; // Animation speed
         // if (frame >= 6) {
@@ -58,16 +64,14 @@ namespace Entities {
     }
 
     void Cannonhead::shoot(){
-        setProjectileList();
 
-        if(cont_balls < 5/*change for constant or change the logic for new balls after*/){
             Projectile* new_ball = new Projectile(Texture::Ball, Constants::BALL_WIDTH, Constants::BALL_HEIGHT);
             setBallDirection(); 
             
             float startX = sprite.getGlobalBounds().left + Constants::CANNONHEAD_WIDTH / 2.f;
             float startY = sprite.getGlobalBounds().top + Constants::CANNONHEAD_WIDTH / 2.f;
             
-            new_ball->setInitPosition(sprite.getGlobalBounds().left + Constants::CANNONHEAD_WIDTH / 2.f, sprite.getGlobalBounds().top + Constants::CANNONHEAD_WIDTH / 2.f);
+            new_ball->setInitPosition(startX, startY);
             
             if(direction){
                 new_ball->setDx(speed);
@@ -77,17 +81,11 @@ namespace Entities {
 
             projectileList->append(new_ball);
             cont_balls++;
-
-        }
-
     }
 
     void Cannonhead::setProjectileList(){
         if (projectileList == nullptr) {
             projectileList = new List::EntityList();
-        }
-        else {
-            std::cerr << "Projectile list already exists.\n";
         }
     }
 }
