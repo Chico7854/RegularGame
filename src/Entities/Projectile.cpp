@@ -18,27 +18,9 @@ namespace Entities {
     void Projectile::save() {
     }
 
-    void Projectile::setSpeed(float s) {
-        speed = s;
-    }
-
-    void Projectile::setDx(float x) {
-        dx = x;
-    }
-
-    void Projectile::setDy(float y) {
-        dy = y;
-    }
-
-    void Projectile::shoot(float startX, float startY, bool dir){
-        sprite.setPosition(startX, startY);
-        direction = dir;
-        if (direction) {
-            dx = speed; // Right
-        } else {
-            dx = -speed; // Left
-        }
-        dy = 0.f; //Implement falling after
+    void Projectile::setInitPosition(float x, float y) {
+        sprite.setPosition(x, y);
+        sprite.updateHitbox();
     }
 
     void Projectile::moveHitboxSprite(float dx, float dy) {

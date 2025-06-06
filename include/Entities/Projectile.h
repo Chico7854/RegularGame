@@ -9,6 +9,7 @@ namespace Entities {
         float speed;
         bool direction; //true for right, false for left 
         float dx, dy;
+        bool active;
 
     public:
         Projectile(Texture::ID id, int sprite_width, int sprite_height);
@@ -17,15 +18,12 @@ namespace Entities {
 
         void update();
         void save();
-
-        void setSpeed(float newSpeed);
-        void setDirection(float newDirection);
-        void setDx(float x);
-        void setDy(float y);
-
+        
         const sf::FloatRect getGlobalHitbox() const;
-
-        void shoot(float startX, float startY, bool dir);
+        void setInitPosition(float x, float y);
         void moveHitboxSprite(float dx, float dy);
+
+        void setDx(float dx) { this->dx = dx; }
+        void setDy(float dy) { this->dy = dy; }
     };
 }
