@@ -4,12 +4,11 @@
 
 #include "Character.h"
 #include "Player.h"
-#include "Entities/Obstructable.h"
 
 #include "Utility/Texture.h"
 
 namespace Entities {
-    class Enemy : public Character, public Obstructable {
+    class Enemy : public Character {
         protected:
             int ground;
 
@@ -21,6 +20,6 @@ namespace Entities {
             void run() override;
             void save() override;
             virtual void update(float time) {}
-            void obstruct(Character* character) override;
+            void obstruct(Character* character);
     };
 }
