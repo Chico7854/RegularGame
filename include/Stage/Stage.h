@@ -22,7 +22,7 @@ namespace Stage {
 
 
         public:
-            Stage(const Texture::ID background, const std::string path);
+            Stage(const Texture::ID background, const std::string path, const float sprite_width, const float sprite_height);
             ~Stage();
 
             const Entities::Player* getPlayer() const;

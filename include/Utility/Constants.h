@@ -27,6 +27,8 @@ namespace Constants {
     constexpr unsigned int FLOOR_SPRITE_SCALE = 5;
     constexpr unsigned int CANNONHEAD_WIDTH = 70;
     constexpr unsigned int CANNONHEAD_HEIGHT = 50;
+    constexpr unsigned int BACKGROUND_NIGHT_WIDTH = 2304;
+    constexpr unsigned int BACKGROUND_NIGHT_HEIGHT = 1296;
 
     constexpr float SPEED = 7.f;
     constexpr float GRAVITY = SPEED / 4.f;

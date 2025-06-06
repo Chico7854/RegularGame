@@ -6,8 +6,8 @@ Game::Game():
     pStateManager(Manager::StateManager::getStateManager())
 {
     Ent::setGraphicsManager(pGraphicsManager);
-    pStateManager->addState(States::StateType::GameDay);
-    // pStateManager->addState(States::StateType::GameNight);
+    // pStateManager->addState(States::StateType::GameDay);
+    pStateManager->addState(States::StateType::GameNight);
 }
 
 Game::~Game() {
