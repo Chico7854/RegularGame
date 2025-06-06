@@ -3,6 +3,8 @@
 
 namespace Entities {
     Projectile::Projectile(Texture::ID id, const int width, const int height):
+        Entity(id, width, height, EntityType::Ball),
+        active(true),
         speed(Constants::SPEED),
         dx(0.f),
         dy(0.f),
@@ -29,10 +31,13 @@ namespace Entities {
     }
 
     void Projectile::update() {
+        if (!active) return;
+
         dx = speed;
+
         if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
-            // Implement destruction
-        }
+            active = false; 
+        }   
         moveHitboxSprite(dx, dy);
     }
 }
