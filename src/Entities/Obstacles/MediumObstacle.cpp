@@ -4,7 +4,7 @@
 namespace Entities
 {
     MediumObstacle::MediumObstacle(Texture::ID id, int sprite_width, int sprite_height):
-        Obstacle(id, sprite_width, sprite_height),
+        Obstacle(id, sprite_width, sprite_height, EntityType::Spike),
         damage(10)
     {}
 
@@ -34,7 +34,7 @@ namespace Entities
                 character->setIsHurt(true);
             }
         }
-        else if (character->getType() == EntityType::Enemy) {
+        else {
             nonDamageCollision(character);
         }
     }

@@ -1,8 +1,8 @@
 #include "Entities/Obstacles/Obstacle.h"
 
 namespace Entities {
-    Obstacle::Obstacle(Texture::ID id, int sprite_width, int sprite_height):
-        Entity(id, sprite_width, sprite_height, EntityType::Obstacle)
+    Obstacle::Obstacle(const Texture::ID id, const int sprite_width, const int sprite_height, const EntityType type):
+        Entity(id, sprite_width, sprite_height, type)
     {}
 
     Obstacle::Obstacle() {}
@@ -34,7 +34,7 @@ namespace Entities {
                 if (obstacleCoordinates.left > charCoordinates.left)
                     xOverlap *= -1;
                 character->moveHitboxSprite(xOverlap, 0);
-                if (character->getType() == EntityType::Enemy) {
+                if (character->getType() != EntityType::Player) {
                     character->setDx(character->getDx() * -1);
                 }
             }

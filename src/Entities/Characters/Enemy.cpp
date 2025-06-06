@@ -1,8 +1,8 @@
 #include "Entities/Characters/Enemy.h"
 
 namespace Entities {
-    Enemy::Enemy(Texture::ID id, int sprite_width, int sprite_height):
-        Character(id, sprite_width, sprite_height, EntityType::Enemy),
+    Enemy::Enemy(const Texture::ID id, const int sprite_width, const int sprite_height, const EntityType type):
+        Character(id, sprite_width, sprite_height, type),
         ground(600)
     {
         dx = speed; //GAMBIARRA

@@ -8,9 +8,8 @@
 namespace Entities {
     class Obstacle : public Entity, public Obstructable
     {
-    protected:
     public:
-        Obstacle(Texture::ID id, int sprite_width, int sprite_height);
+        Obstacle(const Texture::ID id, const int sprite_width, const int sprite_height, const EntityType type);
         Obstacle();
         virtual ~Obstacle();
 
@@ -19,5 +18,13 @@ namespace Entities {
         virtual void save() override {}
         virtual void update() {};
         virtual void obstruct(Entities::Character* character) = 0;
+
+        enum class ObstacleType {
+            None = -1,
+
+            Platform,
+            Spike,
+            Saw
+        };
     };
 }

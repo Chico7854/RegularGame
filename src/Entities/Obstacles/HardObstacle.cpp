@@ -3,7 +3,7 @@
 
 namespace Entities {
 	HardObstacle::HardObstacle(Texture::ID id, int sprite_width, int sprite_height):
-		Obstacle(id, sprite_width, sprite_height), 
+		Obstacle(id, sprite_width, sprite_height, EntityType::Saw), 
 		damage(10.f), 
 		frame(0)
 	{}
@@ -34,7 +34,7 @@ namespace Entities {
                 character->setIsHurt(true);
             }
         }
-        else if (character->getType() == EntityType::Enemy) {
+        else {
             nonDamageCollision(character);
         }
 	}

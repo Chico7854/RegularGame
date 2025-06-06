@@ -12,8 +12,10 @@ namespace Entities {
         None = 0,
 
         Player,
-        Enemy,
-        Obstacle
+        Youkai,
+        Platform,
+        Spike,
+        Saw
     };
 
     class Entity : public Ent

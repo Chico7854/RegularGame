@@ -15,7 +15,7 @@ namespace Entities {
 
         public:
             Enemy() {}
-            Enemy(Texture::ID id, int sprite_width, int sprite_height);
+            Enemy(const Texture::ID id, const int sprite_width, const int sprite_height, const EntityType type);
             virtual ~Enemy() {}
             virtual void setInitialPosition(sf::Vector2f pos){}
             void run() override;

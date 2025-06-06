@@ -2,7 +2,7 @@
 
 namespace Entities {
     Platform::Platform(Texture::ID id, int sprite_width, int sprite_height):
-        Obstacle(id, sprite_width, sprite_height)
+        Obstacle(id, sprite_width, sprite_height, EntityType::Platform)
     {}
 
     Platform::Platform(): Obstacle() {}

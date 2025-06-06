@@ -3,8 +3,8 @@
 #include "Entities/Characters/Enemy.h"
 
 namespace Entities {
-    Youkai::Youkai(Texture::ID id, int width, int height):
-        Enemy(id, width, height)
+    Youkai::Youkai(const Texture::ID id, const int width, const int height):
+        Enemy(id, width, height, EntityType::Youkai)
     {}
 
     Youkai::~Youkai() {}
