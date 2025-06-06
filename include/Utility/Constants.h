@@ -20,11 +20,13 @@ namespace Constants {
     constexpr unsigned int SPIKE_HEIGHT = 17;
     constexpr unsigned int SAW_WIDTH = 96;
     constexpr unsigned int SAW_HEIGHT = 66;
-    constexpr unsigned int SHURIKEN_WIDTH = 30;
-    constexpr unsigned int SHURIKEN_HEIGHT = 30;
+    constexpr unsigned int BALL_WIDTH = 30;
+    constexpr unsigned int BALL_HEIGHT = 30;
     constexpr unsigned int FLOOR_SPRITE_WIDTH = 1000;
     constexpr unsigned int FLOOR_SPRITE_HEIGHT = 50;
     constexpr unsigned int FLOOR_SPRITE_SCALE = 5;
+    constexpr unsigned int CANNONHEAD_WIDTH = 70;
+    constexpr unsigned int CANNONHEAD_HEIGHT = 50;
 
     constexpr float SPEED = 7.f;
     constexpr float GRAVITY = SPEED / 4.f;

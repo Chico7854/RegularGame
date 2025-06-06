@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "Characters/Youkai.h"
+#include "Characters/Cannonhead.h"
 #include "Obstacles/Obstacle.h"
 #include "Obstacles/Platform.h"
 #include "Obstacles/MediumObstacle.h"
@@ -16,6 +17,7 @@ namespace Entities {
 
         private:
             Entity* createYoukai(const float x, const float y);
+            Entity* createCannonhead(const float x, const float y);
 
             Entity* createPlatform(const float x, const float y);
             Entity* createSpike(const float x, const float y);

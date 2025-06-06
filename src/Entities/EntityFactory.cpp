@@ -10,6 +10,9 @@ namespace Entities {
             case (EntityType::Youkai):
                 return createYoukai(x, y);
 
+            case (EntityType::Cannonhead):
+                return createCannonhead(x, y);
+
             case (EntityType::Platform):
                 return createPlatform(x, y);
 
@@ -35,6 +38,12 @@ namespace Entities {
         Youkai* pYoukai = new Youkai(Texture::Youkai, Constants::YOUKAI_WIDTH, Constants::YOUKAI_HEIGHT);
         pYoukai->setSpritePosition(x, y);
         return static_cast<Entity*>(pYoukai);
+    }
+
+    Entity* EntityFactory::createCannonhead(const float x, const float y){
+        Cannonhead* pCannonhead = new Cannonhead(Texture::Cannonhead, Constants::CANNONHEAD_WIDTH, Constants::CANNONHEAD_HEIGHT);
+        pCannonhead->setSpritePosition(x, y);
+        return static_cast<Entity*>(pCannonhead);
     }
 
     Entity* EntityFactory::createPlatform(const float x, const float y) {

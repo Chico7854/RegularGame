@@ -16,7 +16,9 @@ namespace Entities {
         Floor,
         Platform,
         Spike,
-        Saw
+        Saw,
+        Ball,
+        Cannonhead
     };
 
     class Entity : public Ent

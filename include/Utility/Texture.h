@@ -10,7 +10,8 @@ namespace Texture {
         Spike,
         Saw,
         Background,
-        Shuriken
+        Ball,
+        Cannonhead
     };
         constexpr char PLAYER1[] = "../assets/images/samurai_run.png";
         constexpr char PLAYER2[] = "../assets/images/shinobi_run.png";
@@ -20,5 +21,6 @@ namespace Texture {
         constexpr char SPIKE[] = "../assets/images/spike.png";
         constexpr char SAW[] = "../assets/images/saw.png";
         constexpr char BACKGROUND[] = "../assets/images/bgsimao.png";
-        constexpr char SHURIKEN[] = "../assets/images/shuriken.png";
+        constexpr char BALL[] = "../assets/images/ball.png";
+        constexpr char CANNONHEAD[] = "../assets/images/cannonhead_walk.png";
 }

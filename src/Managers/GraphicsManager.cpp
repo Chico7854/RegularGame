@@ -93,9 +93,10 @@ namespace Manager {
         loadTexture(Platform, PLATFORM);
         loadTexture(Spike, SPIKE);
         loadTexture(Saw, SAW);
-        loadTexture(Shuriken, SHURIKEN);
         loadTexture(Floor, FLOOR);
         loadTexture(Background, BACKGROUND);
+        loadTexture(Ball, BALL);
+        loadTexture(Cannonhead, CANNONHEAD);
     }
 
     sf::Texture* GraphicsManager::getTexture(Texture::ID id) {
