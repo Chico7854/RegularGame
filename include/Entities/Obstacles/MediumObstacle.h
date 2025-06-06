@@ -1,11 +1,11 @@
 #pragma once
-#include "Obstacle.h"
+#include "DamageObstacle.h"
 #include "Entities/Characters/Character.h"
 
 #include "Utility/Texture.h"
 
 namespace Entities {
-	class MediumObstacle : public Obstacle //implement damage to player, +10 damage per second of contact
+	class MediumObstacle : public DamageObstacle //implement damage to player, +10 damage per second of contact
 	{
 	private:
 		float damage;
@@ -17,7 +17,5 @@ namespace Entities {
 		void save() override {}
 		float getDamage() const { return damage; }
 		void setDamage(float damage_value) { damage = damage_value; }
-
-        void obstruct(Entities::Character* character) override;
 	};
 }

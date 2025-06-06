@@ -26,6 +26,11 @@ namespace Stage {
             case ('f'):
                 createObstacle(Entities::EntityType::Floor, pos.x, pos.y);
                 break;
+            case ('s'):
+                createObstacle(Entities::EntityType::Spike, pos.x, pos.y);
+                break;
+            case ('S'):
+                createObstacle(Entities::EntityType::Saw, pos.x, pos.y);
         }
     }
 
