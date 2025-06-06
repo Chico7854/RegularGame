@@ -2,11 +2,16 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "Utility/Texture.h"
+#include "Entities/Projectile.h"
+#include "../EntityList.h"
 
 namespace Entities {
     class Cannonhead : public Enemy {
     private:
-       
+        bool direction; // true for right, false for left
+        List::EntityList* projectileList;
+        int cont_balls;
+
     public:     
         Cannonhead(Texture::ID id, int width, int height);
         Cannonhead(){}
@@ -15,6 +20,10 @@ namespace Entities {
         void run() override;
         void save() override;
         void update() override;
+
+        void setBallDirection();
+        void shoot();
+        void setProjectileList();
     };
 }
 

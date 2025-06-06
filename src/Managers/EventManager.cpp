@@ -42,8 +42,8 @@ namespace Manager {
         floor = f;
     }
 
-    void EventManager::setShuriken(Entities::Projectile* s) {
-        shuriken = s;
+    void EventManager::setBall(Entities::Projectile* b) {
+        ball = b;
     }
 
     void EventManager::keyboardEvent() {

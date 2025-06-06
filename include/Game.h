@@ -16,6 +16,7 @@
 #include "Managers/CollisionManager.h"
 #include "Managers/StateManager.h"
 #include "Stage/Stage.h"
+#include "Entities/Characters/Cannonhead.h"
 
 #include "Utility/Constants.h"
 
