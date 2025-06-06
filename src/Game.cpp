@@ -7,6 +7,7 @@ Game::Game():
 {
     Ent::setGraphicsManager(pGraphicsManager);
     pStateManager->addState(States::StateType::GameDay);
+    // pStateManager->addState(States::StateType::GameNight);
 }
 
 Game::~Game() {

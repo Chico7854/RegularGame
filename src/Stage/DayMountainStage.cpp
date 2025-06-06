@@ -2,7 +2,7 @@
 
 namespace Stage {
     DayMountainStage::DayMountainStage():
-        Stage(Texture::ID::BackgroundDayMountain)
+        Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt")
     {}
 
     DayMountainStage::~DayMountainStage() {}

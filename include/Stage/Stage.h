@@ -1,5 +1,6 @@
 #pragma once
 #include <fstream>
+#include <string>
 
 #include "Ent.h"
 #include "Entities/EntityList.h"
@@ -17,9 +18,11 @@ namespace Stage {
             Entities::EntityFactory entityFactory;
             Manager::CollisionManager* pCollisionManager;
             Entities::Player* player;
+            std::string mapPath;
+
 
         public:
-            Stage(const Texture::ID background);
+            Stage(const Texture::ID background, const std::string path);
             ~Stage();
 
             const Entities::Player* getPlayer() const;

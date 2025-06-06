@@ -1,12 +1,13 @@
 #include "Stage/Stage.h"
 
 namespace Stage {
-    Stage::Stage(const Texture::ID background):
+    Stage::Stage(const Texture::ID background, const std::string path):
         Ent(background, Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT),
         charactersList(),
         obstaclesList(),
         entityFactory(),
-        pCollisionManager(Manager::CollisionManager::getCollisionManager())
+        pCollisionManager(Manager::CollisionManager::getCollisionManager()),
+        mapPath(path)
     {}
 
     Stage::~Stage() {}
@@ -67,7 +68,7 @@ namespace Stage {
     void Stage::createMap() {
         std::ifstream file;
         std::string line;
-        file.open("../assets/stages/fuck.txt");
+        file.open(mapPath);
         if (!file.is_open()) {
             std::cerr << "Couldnt open stage file\n";
             exit(1);
