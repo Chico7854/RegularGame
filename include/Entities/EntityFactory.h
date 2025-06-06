@@ -1,6 +1,10 @@
 #pragma once
 #include "Entity.h"
+#include "Characters/Youkai.h"
 #include "Obstacles/Obstacle.h"
+#include "Obstacles/Platform.h"
+#include "Obstacles/MediumObstacle.h"
+#include "Obstacles/HardObstacle.h"
 
 namespace Entities {
     class EntityFactory {
@@ -8,11 +12,15 @@ namespace Entities {
             EntityFactory();
             ~EntityFactory();
 
-            Entity* createEntity(EntityType type);
+            Entity* createEntity(const EntityType type, const float x, const float y);
 
         private:
-            Entity* createObstacle(Obstacle::ObstacleType obstacleType);
-            Entity* createPlatform();
+            Entity* createYoukai(const float x, const float y);
 
+            Entity* createPlatform(const float x, const float y);
+            Entity* createSpike(const float x, const float y);
+            Entity* createSaw(const float x, const float y);
+            Entity* createFloor(const float x);
+            Entity* createPlayer();
     };
 }
