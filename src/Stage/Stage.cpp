@@ -20,6 +20,9 @@ namespace Stage {
             case ('y'):
                 createCharacter(Entities::EntityType::Youkai, pos.x, pos.y);
                 break;
+            case ('c'):
+                createCharacter(Entities::EntityType::Cannonhead, pos.x, pos.y);
+                break;
             case ('p'):
                 createObstacle(Entities::EntityType::Platform,  pos.x, pos.y);
                 break;

@@ -4,6 +4,7 @@
 #include "Ent.h"
 #include "Entities/EntityList.h"
 #include "Entities/Characters/Youkai.h"
+#include "Entities/Characters/Cannonhead.h"
 #include "Entities/EntityFactory.h"
 #include "Managers/CollisionManager.h"
 #include "Managers/EventManager.h"
