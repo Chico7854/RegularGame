@@ -4,8 +4,8 @@
 #include "Characters/Cannonhead.h"
 #include "Obstacles/Obstacle.h"
 #include "Obstacles/Platform.h"
-#include "Obstacles/MediumObstacle.h"
-#include "Obstacles/HardObstacle.h"
+#include "Obstacles/Spike.h"
+#include "Obstacles/Saw.h"
 
 namespace Entities {
     class EntityFactory {
