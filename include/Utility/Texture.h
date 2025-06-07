@@ -12,7 +12,7 @@ namespace Texture {
         BackgroundDayMountain,
         BackgroundNightMountain,
         Ball,
-        Cannonhead
+        Cannonhead  //Remeber to give credits for the assests used
     };
         constexpr char PLAYER1[] = "../assets/images/samurai_run.png";
         constexpr char PLAYER2[] = "../assets/images/shinobi_run.png";

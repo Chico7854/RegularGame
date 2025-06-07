@@ -11,6 +11,7 @@ namespace Entities {
         bool direction; // true for right, false for left
         List::EntityList* projectileList;
         int cont_balls;
+        float dtime;//Gambiarra
 
     public:     
         Cannonhead(Texture::ID id, int width, int height);

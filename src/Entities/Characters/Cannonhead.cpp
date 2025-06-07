@@ -9,7 +9,8 @@ namespace Entities {
         Enemy(id, width, height, EntityType::Cannonhead),
         direction(false),
         projectileList(nullptr),
-        cont_balls(0)
+        cont_balls(0),
+        dtime(0.f)
     {
         setProjectileList();
     }
@@ -32,15 +33,16 @@ namespace Entities {
         }
         moveHitboxSprite(dx, dy);
 
-        if(cont_balls<1)//Change logic after 
+        dtime += 0.5f;
+        if(cont_balls<=3 && dtime > 50.f){//Change logic after 
             shoot(); 
+            dtime = 0.f; // Reset dtime after shooting
+        }
 
         if(projectileList){
             projectileList->updateEntities();
-        }
-
-        if(projectileList)
             projectileList->drawEntities();
+        }
 
         // frame += 0.008f * time; // Animation speed
         // if (frame >= 6) {
@@ -68,8 +70,8 @@ namespace Entities {
             Projectile* new_ball = new Projectile(Texture::Ball, Constants::BALL_WIDTH, Constants::BALL_HEIGHT);
             setBallDirection(); 
             
-            float startX = sprite.getGlobalBounds().left + Constants::CANNONHEAD_WIDTH / 2.f;
-            float startY = sprite.getGlobalBounds().top + Constants::CANNONHEAD_WIDTH / 2.f;
+            float startX = sprite.getGlobalBounds().left ;//+ Constants::CANNONHEAD_WIDTH / 2.f;
+            float startY = sprite.getGlobalBounds().top ;//+ Constants::CANNONHEAD_WIDTH / 2.f;
             
             new_ball->setInitPosition(startX, startY);
             

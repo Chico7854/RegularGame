@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Constants {
-    constexpr unsigned int WINDOW_HEIGHT = 650;
+    constexpr unsigned int WINDOW_HEIGHT = 650;//probably is better to change for something divisible by 16 or 32
     constexpr unsigned int WINDOW_WIDTH = 1100;
     constexpr unsigned int FLOOR_HEIGHT = 600;
 
@@ -32,7 +32,8 @@ namespace Constants {
 
     constexpr float SPEED = 7.f;
     constexpr float GRAVITY = SPEED / 4.f;
-    constexpr float JUMP_SPEED = SPEED * -4;
+    constexpr float JUMP_SPEED = SPEED * -4.f;
+    constexpr float BALL_SPEED = SPEED * 2.f;
 
     constexpr char GAME_NAME[] = "PUTA";
 }

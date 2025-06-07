@@ -5,7 +5,7 @@ namespace Entities {
     Projectile::Projectile(Texture::ID id, const int width, const int height):
         Entity(id, width, height, EntityType::Ball),
         active(true),
-        speed(Constants::SPEED),
+        speed(Constants::BALL_SPEED),
         dx(0.f),
         dy(0.f),
         direction(false)
@@ -34,6 +34,7 @@ namespace Entities {
         if (!active) return;
 
         dx = speed;
+        dy = 0.f; //still no gravity
 
         if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
             active = false; 
