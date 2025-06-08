@@ -14,6 +14,7 @@ namespace Manager {
         private:
             std::vector<Entities::Enemy*> enemies;
             std::list<Entities::Obstacle*> obstacles;
+            std::vector<Entities::Projectile*> balls;
             //TODO: Set for porjectiles
             Entities::Player* p1;
 

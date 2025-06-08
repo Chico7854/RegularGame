@@ -30,6 +30,30 @@ namespace Entities {
         sprite.updateHitbox();
     }
 
+    void Projectile::obstruct(Character* character){//took from enemy class
+        Player* player = static_cast<Player*>(character);
+        const sf::FloatRect charCoordinates = player->getGlobalHitbox();
+        const sf::FloatRect ballCoordinates = sprite.getGlobalHitbox();
+
+        if (charCoordinates.intersects(ballCoordinates)) {
+            const float middlePointPlayer = charCoordinates.left + (charCoordinates.width / 2);
+            const float middlePointEntity = ballCoordinates.left + (ballCoordinates.width / 2);
+
+            const float playerDy = Constants::JUMP_SPEED / 1.5;
+            float playerDx = Constants::SPEED * 2;
+
+            if (middlePointPlayer < middlePointEntity) {
+                playerDx *= -1;
+            }
+
+            player->setDy(playerDy);
+            player->setDx(playerDx);
+            player->setIsHurt(true);
+
+            dx *= -1;
+        }
+    }
+
     void Projectile::update() {
         if (!active) return;
 

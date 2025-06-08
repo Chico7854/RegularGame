@@ -1,7 +1,7 @@
 #include "Entities/Characters/Cannonhead.h"
 #include "Utility/Constants.h"
 #include "Entities/Characters/Enemy.h"
-
+#include "Managers/CollisionManager.h"
 
 namespace Entities {
 
@@ -67,22 +67,23 @@ namespace Entities {
 
     void Cannonhead::shoot(){
 
-            Projectile* new_ball = new Projectile(Texture::Ball, Constants::BALL_WIDTH, Constants::BALL_HEIGHT);
-            setBallDirection(); 
-            
-            float startX = sprite.getGlobalBounds().left ;//+ Constants::CANNONHEAD_WIDTH / 2.f;
-            float startY = sprite.getGlobalBounds().top ;//+ Constants::CANNONHEAD_WIDTH / 2.f;
-            
-            new_ball->setInitPosition(startX, startY);
-            
-            if(direction){
-                new_ball->setDx(speed);
-            } else {
-                new_ball->setDx(-speed);
-            }
+        Projectile* new_ball = new Projectile(Texture::Ball, Constants::BALL_WIDTH, Constants::BALL_HEIGHT);
+        Manager::CollisionManager::getCollisionManager()->appendProjectile(new_ball);
+        setBallDirection(); 
+        
+        float startX = sprite.getGlobalBounds().left ;//+ Constants::CANNONHEAD_WIDTH / 2.f;
+        float startY = sprite.getGlobalBounds().top ;//+ Constants::CANNONHEAD_WIDTH / 2.f;
+        
+        new_ball->setInitPosition(startX, startY);
+        
+        if(direction){
+            new_ball->setDx(speed);
+        } else {
+            new_ball->setDx(-speed);
+        }
 
-            projectileList->append(new_ball);
-            cont_balls++;
+        projectileList->append(new_ball);
+        cont_balls++;
     }
 
     void Cannonhead::setProjectileList(){

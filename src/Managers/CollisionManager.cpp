@@ -7,10 +7,12 @@ namespace Manager {
     CollisionManager::CollisionManager():
         enemies(),
         obstacles(),
+        balls(),
         p1(nullptr)
     {
         enemies.clear();
         obstacles.clear();
+        balls.clear();
     }
 
     CollisionManager::~CollisionManager() {}
@@ -35,7 +37,9 @@ namespace Manager {
     }
 
     void CollisionManager::appendProjectile(Entities::Projectile* projectile) {
-
+        if (projectile) {
+            balls.push_back(projectile);
+        }
     }
 
     void CollisionManager::setPlayer(Entities::Player* p) {
@@ -47,6 +51,7 @@ namespace Manager {
     void CollisionManager::verifyPlayerCollisions() {
         std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
         std::vector<Entities::Enemy*>::iterator itEnemies = enemies.begin();
+        std::vector<Entities::Projectile*>::iterator itBalls = balls.begin();
 
         while (itObstacles != obstacles.end()) {
             if (*itObstacles) {
@@ -61,6 +66,14 @@ namespace Manager {
             }
             itEnemies++;
         }
+        
+        while (itBalls != balls.end()) {
+            if (*itBalls) {
+                (*itBalls)->obstruct(p1);
+            }
+            itBalls++;
+        }
+
         //collision with initial border
         if(p1->getSprite()->getPosition().x < 0){
             p1->setSpritePosition(0, p1->getSprite()->getPosition().y);
@@ -85,7 +98,8 @@ namespace Manager {
     }
 
     void CollisionManager::verifyProjectileCollisions() {
-        
+        //collision of ball with rest
+
     }
 
     void CollisionManager::verifyCollisions() {

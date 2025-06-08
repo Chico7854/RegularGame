@@ -1,6 +1,8 @@
 #pragma once
 #include "Entities/Entity.h"
 #include "Utility/Texture.h"
+#include "Entities/Characters/Character.h"
+#include "Entities/Characters/Player.h"
 
 namespace Entities {
     class Projectile : public Entity
@@ -22,6 +24,7 @@ namespace Entities {
         const sf::FloatRect getGlobalHitbox() const;
         void setInitPosition(float x, float y);
         void moveHitboxSprite(float dx, float dy);
+        void obstruct(Character* character);
 
         void setDx(float dx) { this->dx = dx; }
         void setDy(float dy) { this->dy = dy; }
