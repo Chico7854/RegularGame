@@ -24,7 +24,7 @@ namespace Stage {
             case ('c'):
                 createCharacter(Entities::EntityType::Cannonhead, pos.x, pos.y);
                 break;
-            case ('p'):
+            case ('#'):
                 createObstacle(Entities::EntityType::Platform,  pos.x, pos.y);
                 break;
             case ('f'):

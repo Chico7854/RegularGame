@@ -1,11 +1,11 @@
 #pragma once
 
 namespace Constants {
-    constexpr unsigned int WINDOW_HEIGHT = 650;//probably is better to change for something divisible by 16 or 32
-    constexpr unsigned int WINDOW_WIDTH = 1100;
-    constexpr unsigned int FLOOR_HEIGHT = 600;
+    constexpr unsigned int WINDOW_HEIGHT = 640;//probably is better to change for something divisible by 16 or 32
+    constexpr unsigned int WINDOW_WIDTH = 1088;
+    constexpr unsigned int FLOOR_HEIGHT = 608;
 
-    constexpr int SCALE_TXT = 50;
+    constexpr int SCALE_TXT = 32;
 
     /*Textures and sprites sizes*/
     constexpr unsigned int P1_HEIGHT = 104;
@@ -14,8 +14,8 @@ namespace Constants {
     constexpr unsigned int P2_WIDTH = 80;
     constexpr unsigned int YOUKAI_HEIGHT = 75;
     constexpr unsigned int YOUKAI_WIDTH = 52;
-    constexpr unsigned int PLATFORM_WIDTH = 86;
-    constexpr unsigned int PLATFORM_HEIGHT = 24;
+    constexpr unsigned int PLATFORM_WIDTH = 32;
+    constexpr unsigned int PLATFORM_HEIGHT = 32;
     constexpr unsigned int SPIKE_WIDTH = 25;
     constexpr unsigned int SPIKE_HEIGHT = 17;
     constexpr unsigned int SAW_WIDTH = 96;
