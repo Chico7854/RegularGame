@@ -90,7 +90,6 @@ namespace Stage {
     void Stage::exec() {
         updateView();
         draw();   //draw background
-        player->setOnGround(false);
         player->update();
         charactersList.updateEntities();
         pCollisionManager->verifyCollisions();

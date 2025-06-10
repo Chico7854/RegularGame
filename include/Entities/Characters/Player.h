@@ -8,6 +8,7 @@
 namespace Entities {
     class Player : public Character {
         private:
+            void checkKeyboardInput();
 
         public:
             Player() {}

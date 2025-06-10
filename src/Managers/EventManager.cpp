@@ -45,34 +45,7 @@ namespace Manager {
     void EventManager::setBall(Entities::Projectile* b) {
         ball = b;
     }
-
-    void EventManager::keyboardEvent() {
-        /*Player 1*/
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            player->setDx(player->getSpeed());
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            player->setDx(-(player->getSpeed()));
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && player->getOnGround()) {
-            player->setDy(Constants::JUMP_SPEED);
-        }
-
-        /*Player 2*/
-        // if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        //     dx = speed;
-        // }
-
-        // if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        //     dx = -speed;
-        // }
-
-        // if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && getOnGround()) {
-        //     dy = -speed * 1.3;
-        // }
-    }
-
+    
     void EventManager::exec() {
         sf::Event event;
         while (pGraphicsManager->getWindow()->pollEvent(event))
@@ -81,17 +54,5 @@ namespace Manager {
                 pGraphicsManager->closeWindow();
             }
         }
-
-        /*Drawing entities*/
-        //THIS SHOULD NOT BE HERE, ITS NOT THE JOB OF EVENTMANAGER TO DO THIS, NEED TO FIX LATER
-        if (!player->getIsHurt()) {
-            keyboardEvent();
-        }
-        // player->setOnGround(false);
-        // player->update();
-        // entList.updateEntities();
-        // pCollisionManager->verifyCollisions();
-        // player->draw();
-        // entList.drawEntities();
     }
 }

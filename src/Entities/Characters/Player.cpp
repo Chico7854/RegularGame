@@ -7,6 +7,21 @@ namespace Entities {
     {
     }
 
+    void Player::checkKeyboardInput() {
+        if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) && (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))) {
+            dx = 0;       }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            dx = Constants::SPEED;
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            dx = Constants::SPEED * -1;
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && getOnGround()) {
+            setDy(Constants::JUMP_SPEED);
+        }
+    }
+
     void Player::run()
     {
     }
@@ -17,6 +32,7 @@ namespace Entities {
 
     void Player::update()
     {
+        checkKeyboardInput();
         dy += Constants::GRAVITY;
         moveHitboxSprite(dx, dy);
         if (!isHurt) {

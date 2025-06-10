@@ -53,6 +53,7 @@ namespace Manager {
         std::vector<Entities::Enemy*>::iterator itEnemies = enemies.begin();
         std::vector<Entities::Projectile*>::iterator itBalls = balls.begin();
 
+        p1->setOnGround(false);
         while (itObstacles != obstacles.end()) {
             if (*itObstacles) {
                 (*itObstacles)->obstruct(p1);
