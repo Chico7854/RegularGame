@@ -8,8 +8,7 @@ namespace Manager {
     EventManager::EventManager():
         pGraphicsManager(GraphicsManager::getGraphicsManager()),
         pCollisionManager(CollisionManager::getCollisionManager()),
-        entList(),
-        platform()
+        entList()
     {}
 
     EventManager::~EventManager() {
@@ -32,18 +31,6 @@ namespace Manager {
         if (p) {
             player = p;
         }
-    }
-
-    void EventManager::setPlatform(Entities::Platform* p) {
-        platform = p;
-    }
-
-    void EventManager::setFloor(Entities::Platform* f) {
-        floor = f;
-    }
-
-    void EventManager::setBall(Entities::Projectile* b) {
-        ball = b;
     }
     
     void EventManager::exec() {

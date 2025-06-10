@@ -12,9 +12,6 @@ namespace Manager {
             CollisionManager* pCollisionManager;
             List::EntityList entList;
             Entities::Player* player;
-            Entities::Platform* floor;
-            Entities::Platform* platform;
-            Entities::Projectile* ball;
 
             static EventManager* pSelf;
             EventManager();
@@ -24,11 +21,7 @@ namespace Manager {
             static EventManager* getEventManager();
             void setEntity(Entities::Entity* ent);
             void setPlayer(Entities::Player* p);
-            void setPlatform(Entities::Platform* p);
-            void setBall(Entities::Projectile* b);
-            void setFloor(Entities::Platform* f);
 
-            void keyboardEvent();
             void exec();
     };
 }
