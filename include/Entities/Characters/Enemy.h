@@ -10,12 +10,11 @@
 namespace Entities {
     class Enemy : public Character {
         protected:
-            int ground;
-
+            const int evilness;
         public:
-            Enemy() {}
             Enemy(const Texture::ID id, const int sprite_width, const int sprite_height, const EntityType type);
-            virtual ~Enemy() {}
+            Enemy();
+            virtual ~Enemy();
             virtual void setInitialPosition(sf::Vector2f pos){}
             void run() override;
             void save() override;
