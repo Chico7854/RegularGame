@@ -29,6 +29,7 @@ namespace Entities {
             character->setDy(dy);
             character->setDx(dx);
             character->setIsHurt(true);
+            character->moveHitboxSprite(dx, dy);
         }
     }
 

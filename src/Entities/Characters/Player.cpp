@@ -32,7 +32,9 @@ namespace Entities {
 
     void Player::update()
     {
-        checkKeyboardInput();
+        if (!isHurt) {
+            checkKeyboardInput();
+        }
         dy += Constants::GRAVITY;
         moveHitboxSprite(dx, dy);
         if (!isHurt) {

@@ -54,13 +54,13 @@ namespace Entities {
 
     Entity* EntityFactory::createSpike(const float x, const float y) {
         Spike* pSpike = new Spike(Texture::Spike, Constants::SPIKE_WIDTH, Constants::SPIKE_HEIGHT);
-        pSpike->setSpritePosition(x, y);
+        pSpike->setSpritePosition(x, y + Constants::SCALE_TXT - Constants::SPIKE_HEIGHT);
         return static_cast<Entity*>(pSpike);
     }
 
     Entity* EntityFactory::createSaw(const float x, const float y) {
         Saw* pSaw = new Saw(Texture::Saw, Constants::SAW_WIDTH, Constants::SAW_HEIGHT);
-        pSaw->setSpritePosition(x, y);
+        pSaw->setSpritePosition(x, y + Constants::SCALE_TXT - Constants::SAW_HEIGHT);
         return static_cast<Entity*>(pSaw);
     }
 

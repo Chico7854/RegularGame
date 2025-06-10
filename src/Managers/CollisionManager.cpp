@@ -54,18 +54,19 @@ namespace Manager {
         std::vector<Entities::Projectile*>::iterator itBalls = balls.begin();
 
         p1->setOnGround(false);
-        while (itObstacles != obstacles.end()) {
-            if (*itObstacles) {
-                (*itObstacles)->obstruct(p1);
-            }
-            itObstacles++;
-        }
-
+        
         while (itEnemies != enemies.end()) {
             if (*itEnemies) {
                 (*itEnemies)->obstruct(p1);
             }
             itEnemies++;
+        }
+        
+        while (itObstacles != obstacles.end()) {
+            if (*itObstacles) {
+                (*itObstacles)->obstruct(p1);
+            }
+            itObstacles++;
         }
         
         while (itBalls != balls.end()) {
