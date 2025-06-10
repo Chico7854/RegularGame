@@ -36,6 +36,9 @@ namespace Entities {
             checkKeyboardInput();
         }
         dy += Constants::GRAVITY;
+        if (dy > 20) {
+            dy = 20;
+        }
         moveHitboxSprite(dx, dy);
         if (!isHurt) {
             dx = 0;

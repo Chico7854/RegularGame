@@ -20,7 +20,7 @@ namespace Entities {
             float yOverlap = intersectionRect.height;
 
             /*Check vertical collision*/
-            if (yOverlap < xOverlap) {
+            if (yOverlap <= xOverlap) {
                 if ((character->getDy() >= 0) && (charCoordinates.top < obstacleCoordinates.top)) {
                     yOverlap *= -1;
                     character->setOnGround(true);
