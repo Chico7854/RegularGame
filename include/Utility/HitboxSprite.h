@@ -1,3 +1,4 @@
+//Código baseado no projeto ASCENT no link https://github.com/0x4D4453/ASCENT
 //I do think this is unecessary, you could use only sprite as a hitbox
 #pragma once
 #include <SFML/Graphics.hpp>

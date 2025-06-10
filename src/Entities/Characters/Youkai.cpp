@@ -4,7 +4,12 @@
 
 namespace Entities {
     Youkai::Youkai(const Texture::ID id, const int width, const int height):
-        Enemy(id, width, height, EntityType::Youkai)
+        Enemy(id, width, height, EntityType::Youkai),
+        collisionDamage(evilness)
+    {}
+
+    Youkai::Youkai():
+        collisionDamage(-1)    
     {}
 
     Youkai::~Youkai() {}

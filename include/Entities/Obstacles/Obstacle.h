@@ -7,12 +7,13 @@
 namespace Entities {
     class Obstacle : public Entity
     {
+    protected:
+        const bool isHarmful;
+
     public:
-        Obstacle(const Texture::ID id, const int sprite_width, const int sprite_height, const EntityType type);
+        Obstacle(const Texture::ID id, const int sprite_width, const int sprite_height, const EntityType type, const bool harmful);
         Obstacle();
         virtual ~Obstacle();
-
-        void nonDamageCollision(Character* character);
 
         virtual void save() override {}
         virtual void update() {};

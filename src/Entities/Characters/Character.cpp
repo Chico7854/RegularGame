@@ -4,7 +4,7 @@
 namespace Entities {
     Character::Character(Texture::ID id, const int width, const int height, EntityType type):
         Entity(id, width, height, type), 
-        lives(0),
+        lives(10),
         speed(Constants::SPEED),
         dx(0.f),
         dy(0.f),

@@ -3,9 +3,16 @@
 
 namespace Entities {
     Player::Player(Texture::ID id, const int width, const int height):
-        Character(id, width, height, EntityType::Player)
+        Character(id, width, height, EntityType::Player),
+        swordDamage(1)
     {
     }
+
+    Player::Player():
+        swordDamage(-1)
+    {}
+
+    Player::~Player() {}
 
     void Player::checkKeyboardInput() {
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) && (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))) {

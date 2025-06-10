@@ -8,15 +8,18 @@
 namespace Entities {
     class Player : public Character {
         private:
-            void checkKeyboardInput();
+            const int swordDamage;
 
         public:
-            Player() {}
             Player(Texture::ID id, const int width, const int height);
-            virtual ~Player() {}
+            Player();
+            virtual ~Player();
 
             void run() override;
             void save() override;
             void update() override;
+
+        private:
+            void checkKeyboardInput();
     };
 }
