@@ -36,6 +36,8 @@ namespace Entities {
         const sf::FloatRect ballCoordinates = sprite.getGlobalHitbox();
 
         if (charCoordinates.intersects(ballCoordinates)) {
+
+            
             const float middlePointPlayer = charCoordinates.left + (charCoordinates.width / 2);
             const float middlePointEntity = ballCoordinates.left + (ballCoordinates.width / 2);
 
@@ -58,7 +60,7 @@ namespace Entities {
         if (!active) return;
 
         dx = speed;
-        dy = 0.f; //still no gravity
+        dy = Constants::GRAVITY; //still no gravity
 
         if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
             active = false; 
