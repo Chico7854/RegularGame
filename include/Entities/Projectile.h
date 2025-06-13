@@ -21,11 +21,11 @@ namespace Entities {
         void update();
         void save();
         
-        const sf::FloatRect getGlobalHitbox() const;
         void setInitPosition(float x, float y);
         void moveHitboxSprite(float dx, float dy);
         void obstruct(Character* character);
 
+        void setActive(bool act) {this->active = act; }
         void setDx(float dx) { this->dx = dx; }
         void setDy(float dy) { this->dy = dy; }
     };

@@ -12,6 +12,7 @@ namespace List {
             ~EntityList();
 
             void append(Entities::Entity* ent);
+            void deleteFromList(Entities::Entity* ent);
             void printEntities();
             void updateEntities();
             void drawEntities();

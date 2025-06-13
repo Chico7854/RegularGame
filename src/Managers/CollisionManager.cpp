@@ -8,7 +8,8 @@ namespace Manager {
         enemies(),
         obstacles(),
         balls(),
-        p1(nullptr)
+        p1(nullptr),
+        pEntityList(nullptr)
     {
         enemies.clear();
         obstacles.clear();
@@ -100,12 +101,33 @@ namespace Manager {
     }
 
     void CollisionManager::verifyProjectileCollisions() {
-        //collision of ball with rest
+        std::vector<Entities::Projectile*>::iterator itBalls = balls.begin();
+        std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
+
+        while (itBalls != balls.end()) {
+            if (*itBalls) {
+                const sf::FloatRect ballCoordinates = (*itBalls)->getGlobalHitbox();
+                while (itObstacles != obstacles.end()) {
+                    if (*itObstacles) {
+                        const sf::FloatRect obsCoordinates = (*itObstacles)->getGlobalHitbox();
+                        if((ballCoordinates).intersects(obsCoordinates) && pEntityList){
+                            (*itBalls)->setActive(false);
+                            pEntityList->deleteFromList(*itBalls);
+                            balls.erase(itBalls);
+                            itBalls--;
+                        }
+                    }
+                    itObstacles++;
+                }
+            }
+            itBalls++;
+        }
 
     }
 
     void CollisionManager::verifyCollisions() {
         verifyPlayerCollisions();
         verifyEnemiesCollisions();
+        verifyProjectileCollisions();
     }
 }

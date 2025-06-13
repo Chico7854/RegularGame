@@ -16,6 +16,13 @@ namespace List {
         }
     }
 
+    void EntityList::deleteFromList(Entities::Entity* ent){
+        if(ent){
+            entities.remove(ent);
+            delete ent;
+        }
+    }
+
     void EntityList::printEntities() {
         List<Entities::Entity*>::Iterator it = entities.getHead();
 

@@ -60,7 +60,7 @@ namespace Entities {
         if (!active) return;
 
         dx = speed;
-        dy = Constants::GRAVITY; //still no gravity
+        dy += Constants::GRAVITY/2; //still no gravity
 
         if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
             active = false; 

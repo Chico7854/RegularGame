@@ -8,6 +8,7 @@
 #include "Entities/Obstacles/Platform.h"
 #include "Entities/Characters/Player.h"
 #include "Entities/Projectile.h"
+#include "Entities/EntityList.h"
 
 namespace Manager {
     class CollisionManager {
@@ -17,6 +18,7 @@ namespace Manager {
             std::vector<Entities::Projectile*> balls;
             //TODO: Set for porjectiles
             Entities::Player* p1;
+            List::EntityList* pEntityList;
 
             static CollisionManager* pSelf;
             CollisionManager();
