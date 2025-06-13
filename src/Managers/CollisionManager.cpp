@@ -8,8 +8,7 @@ namespace Manager {
         enemies(),
         obstacles(),
         balls(),
-        p1(nullptr),
-        pEntityList(nullptr)
+        p1(nullptr)
     {
         enemies.clear();
         obstacles.clear();
@@ -102,32 +101,47 @@ namespace Manager {
 
     void CollisionManager::verifyProjectileCollisions() {
         std::vector<Entities::Projectile*>::iterator itBalls = balls.begin();
-        std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
 
         while (itBalls != balls.end()) {
+            bool erased = false;
             if (*itBalls) {
                 const sf::FloatRect ballCoordinates = (*itBalls)->getGlobalHitbox();
+                std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
                 while (itObstacles != obstacles.end()) {
                     if (*itObstacles) {
                         const sf::FloatRect obsCoordinates = (*itObstacles)->getGlobalHitbox();
-                        if((ballCoordinates).intersects(obsCoordinates) && pEntityList){
-                            (*itBalls)->setActive(false);
-                            pEntityList->deleteFromList(*itBalls);
+                        if((ballCoordinates).intersects(obsCoordinates)){
+                            (*itBalls)->setToDelete(true);
                             balls.erase(itBalls);
-                            itBalls--;
+                            erased = true;
+                            break;
                         }
                     }
                     itObstacles++;
                 }
             }
-            itBalls++;
+            if (!erased) {
+                ++itBalls;
+            }
         }
+    }
 
+    void CollisionManager::verifyDelete(){
+        for (int i = 0; i < balls.size(); i++) {
+            Entities::Projectile* currentball = balls[i];
+        
+            if (!currentball || currentball->getToDelete()) {
+                balls.erase(balls.begin() + i);
+                i--;
+                continue;
+            }
+        }
     }
 
     void CollisionManager::verifyCollisions() {
         verifyPlayerCollisions();
         verifyEnemiesCollisions();
         verifyProjectileCollisions();
+        verifyDelete();
     }
 }

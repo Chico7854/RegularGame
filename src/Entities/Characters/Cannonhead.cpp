@@ -68,7 +68,6 @@ namespace Entities {
     void Cannonhead::shoot(){
 
         Projectile* new_ball = new Projectile(Texture::Ball, Constants::BALL_WIDTH, Constants::BALL_HEIGHT);
-        Manager::CollisionManager::getCollisionManager()->appendProjectile(new_ball);
         setBallDirection(); 
         
         float startX = sprite.getGlobalBounds().left ;//+ Constants::CANNONHEAD_WIDTH / 2.f;
@@ -82,13 +81,13 @@ namespace Entities {
             new_ball->setDx(-speed);
         }
 
+        Manager::CollisionManager::getCollisionManager()->appendProjectile(new_ball);
         projectileList->append(new_ball);
         cont_balls++;
     }
 
     void Cannonhead::setProjectileList(){
-        if (projectileList == nullptr) {
-            projectileList = new List::EntityList();
-        }
+        projectileList = new List::EntityList();
     }
+
 }

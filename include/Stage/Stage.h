@@ -20,7 +20,6 @@ namespace Stage {
             Entities::Player* player;
             std::string mapPath;
 
-
         public:
             Stage(const Texture::ID background, const std::string path, const float sprite_width, const float sprite_height);
             ~Stage();

@@ -27,6 +27,7 @@ namespace Entities {
         sf::Vector2f initialPosition;
         const EntityType type;
         int ground;
+        bool toDelete;
 
     public:
         Entity(Texture::ID id, int width, const int height, EntityType t);
@@ -37,5 +38,7 @@ namespace Entities {
         virtual void save() = 0;
 
         const EntityType getType() const;
+        bool getToDelete() const;
+        void setToDelete(bool del);
     };
 }

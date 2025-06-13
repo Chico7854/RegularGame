@@ -36,7 +36,12 @@ namespace List {
         List<Entities::Entity*>::Iterator it = entities.getHead();
         while (it != nullptr) {
             if (*it) {
-                (*it)->update();
+                if((*it)->getToDelete()){
+                    deleteFromList(*it);
+                }
+                else {
+                    (*it)->update();
+                }
             }
             it++;
         }

@@ -26,6 +26,7 @@ namespace Entities {
         void obstruct(Character* character);
 
         void setActive(bool act) {this->active = act; }
+        bool isActive() const { return active; }
         void setDx(float dx) { this->dx = dx; }
         void setDy(float dy) { this->dy = dy; }
     };

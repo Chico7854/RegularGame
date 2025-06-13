@@ -18,7 +18,6 @@ namespace Manager {
             std::vector<Entities::Projectile*> balls;
             //TODO: Set for porjectiles
             Entities::Player* p1;
-            List::EntityList* pEntityList;
 
             static CollisionManager* pSelf;
             CollisionManager();
@@ -39,5 +38,6 @@ namespace Manager {
             void verifyPlayerCollisions();
             void verifyEnemiesCollisions();
             void verifyProjectileCollisions();
+            void verifyDelete();
     };
 }
