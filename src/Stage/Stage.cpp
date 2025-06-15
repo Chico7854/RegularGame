@@ -6,12 +6,10 @@ namespace Stage {
         entityList(),
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
         mapPath(path),
-        maxEnemies(10),
-        numberOfYoukais(rand() % maxEnemies)
+        maxEnemies(10)
     {
-        if (numberOfYoukais < 3) {
-            numberOfYoukais = 3;
-        }
+        numberOfYoukais = rand() % (maxEnemies - 3);
+        numberOfYoukais += 3;
     }
 
     Stage::~Stage() {}
@@ -22,17 +20,6 @@ namespace Stage {
 
     void Stage::drawBackground() {
         draw();
-    }
-
-    void Stage::createEntity(const char ent, const sf::Vector2i pos) {
-        switch (ent) {
-            case ('y'):
-                createYoukai(pos.x, pos.y);
-                break;
-            case ('#'):
-                createPlatform(pos.x, pos.y);
-                break;
-        }
     }
 
     void Stage::createYoukai(const float x, const float y) {

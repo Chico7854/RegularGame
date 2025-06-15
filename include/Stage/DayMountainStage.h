@@ -3,12 +3,16 @@
 
 namespace Stage {
     class DayMountainStage : public Stage {
+        private:
+            int numberOfCannonheads;
+
         public:
             DayMountainStage();
             ~DayMountainStage();
 
         private:
-            void createEnemies();
-            void createObstacles();
+            void createCannonhead(const float x, const float y);
+            void createEnemies() override;
+            void createObstacles() override;
     };
 }

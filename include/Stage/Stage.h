@@ -27,10 +27,10 @@ namespace Stage {
             void exec();
 
         protected:
-            void createEntity(const char ent, const sf::Vector2i pos);
             void createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);
             void createPlayer();
+            
             void updateView();
 
             virtual void createEnemies() = 0;

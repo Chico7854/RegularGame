@@ -1,8 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
 
 #include "Managers/GraphicsManager.h"
 #include "Managers/EventManager.h"
