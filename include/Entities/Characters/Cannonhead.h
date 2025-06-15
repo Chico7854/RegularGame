@@ -14,8 +14,7 @@ namespace Entities {
         float dtime;//Gambiarra, maybe add clock on main loop after
 
     public:     
-        Cannonhead(Texture::ID id, int width, int height);
-        Cannonhead(){}
+        Cannonhead();
         virtual ~Cannonhead();
 
         void run() override;

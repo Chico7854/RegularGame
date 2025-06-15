@@ -5,8 +5,8 @@
 
 namespace Entities {
 
-    Cannonhead::Cannonhead(const Texture::ID id,const int width,const int height):
-        Enemy(id, width, height, EntityType::Cannonhead),
+    Cannonhead::Cannonhead():
+        Enemy(Texture::Cannonhead, Constants::CANNONHEAD_WIDTH, Constants::CANNONHEAD_HEIGHT, EntityType::Cannonhead),
         direction(false),
         projectileList(nullptr),
         cont_balls(0),

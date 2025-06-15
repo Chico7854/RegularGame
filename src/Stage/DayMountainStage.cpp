@@ -13,7 +13,7 @@ namespace Stage {
 
     void DayMountainStage::createCannonhead(const float x, const float y) {
         using namespace Entities;
-        Cannonhead* pCannonhead = new Cannonhead(Texture::Cannonhead, Constants::CANNONHEAD_WIDTH, Constants::CANNONHEAD_HEIGHT);
+        Cannonhead* pCannonhead = new Cannonhead();
         pCannonhead->setSpritePosition(x, y);
         entityList.append(static_cast<Entity*>(pCannonhead));
         pCollisionManager->appendEnemy(static_cast<Enemy*>(pCannonhead));
@@ -25,6 +25,7 @@ namespace Stage {
         pSpike->setSpritePosition(x, y);
         entityList.append(static_cast<Entity*>(pSpike));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSpike));
+
     }
 
     void DayMountainStage::createEnemies() {
