@@ -6,7 +6,6 @@
 #include "Entities/EntityList.h"
 #include "Entities/Characters/Youkai.h"
 #include "Entities/Characters/Cannonhead.h"
-#include "Entities/EntityFactory.h"
 #include "Managers/CollisionManager.h"
 #include "Managers/EventManager.h"
 
@@ -15,7 +14,6 @@ namespace Stage {
         protected:
             List::EntityList charactersList;
             List::EntityList obstaclesList;
-            Entities::EntityFactory entityFactory;
             Manager::CollisionManager* pCollisionManager;
             Entities::Player* player;
             std::string mapPath;
@@ -28,8 +26,8 @@ namespace Stage {
 
         protected:
             void createEntity(const char ent, const sf::Vector2i pos);
-            void createCharacter(const Entities::EntityType type, const float x, const float y);
-            void createObstacle(const Entities::EntityType type, const float x, const float y);
+            void createYoukai(const float x, const float y);
+            void createPlatform(const float x, const float y);
             void createPlayer();
             void updateView();
 

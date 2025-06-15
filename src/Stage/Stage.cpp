@@ -5,7 +5,6 @@ namespace Stage {
         Ent(background, sprite_width, sprite_height),
         charactersList(),
         obstaclesList(),
-        entityFactory(),
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
         mapPath(path)
     {}
@@ -19,50 +18,42 @@ namespace Stage {
     void Stage::createEntity(const char ent, const sf::Vector2i pos) {
         switch (ent) {
             case ('y'):
-                createCharacter(Entities::EntityType::Youkai, pos.x, pos.y);
-                break;
-            case ('c'):
-                createCharacter(Entities::EntityType::Cannonhead, pos.x, pos.y);
+                createYoukai(pos.x, pos.y);
                 break;
             case ('#'):
-                createObstacle(Entities::EntityType::Platform,  pos.x, pos.y);
+                createPlatform(pos.x, pos.y);
                 break;
-            case ('f'):
-                createObstacle(Entities::EntityType::Floor, pos.x, pos.y);
-                break;
-            case ('s'):
-                createObstacle(Entities::EntityType::Spike, pos.x, pos.y);
-                break;
-            case ('S'):
-                createObstacle(Entities::EntityType::Saw, pos.x, pos.y);
         }
     }
 
-    void Stage::createCharacter(const Entities::EntityType type, const float x, const float y) {
+    void Stage::createYoukai(const float x, const float y) {
         using namespace Entities;
-        Entity* pEntity = entityFactory.createEntity(type, x, y);
-        charactersList.append(pEntity);
-        if (type != EntityType::Player) 
-            pCollisionManager->appendEnemy(static_cast<Enemy*>(pEntity));
+        Youkai* pYoukai = new Youkai(Texture::Youkai, Constants::YOUKAI_WIDTH, Constants::YOUKAI_HEIGHT);
+        pYoukai->setSpritePosition(x, y);
+        Entity* pEntity = static_cast<Entity*>(pYoukai);
+        charactersList.append(pEntity); 
+        pCollisionManager->appendEnemy(static_cast<Enemy*>(pEntity));
     }
 
-    void Stage::createObstacle(const Entities::EntityType type, const float x, const float y) {
+    void Stage::createPlatform(const float x, const float y) {
         using namespace Entities;
-        Entity* pEntity = entityFactory.createEntity(type, x, y);
+        Platform* pPlatform = new Platform(Texture::Platform, Constants::PLATFORM_WIDTH, Constants::PLATFORM_HEIGHT);
+        pPlatform->setSpritePosition(x, y);
+        Entity* pEntity = static_cast<Entity*>(pPlatform);
         obstaclesList.append(pEntity);
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pEntity));
     }
 
     void Stage::createPlayer() {
         using namespace Entities;
-        player = static_cast<Player*>(entityFactory.createEntity(EntityType::Player, 0, 0));
+        player = new Player(Texture::Player1, Constants::P1_WIDTH, Constants::P1_HEIGHT);
+        player->setSpritePosition(0.f, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT);
         pCollisionManager->setPlayer(player);
         Manager::EventManager::getEventManager()->setPlayer(player);
     }
 
     void Stage::updateView() {
         pGraphicsManager->setViewCenter(player->getGlobalHitbox().left);
-        std::cout << "Here\n";
         setSpritePosition(pGraphicsManager->getViewPositionX(), 0.f);
     }
 
