@@ -108,7 +108,6 @@ namespace Manager {
 
     sf::Texture* GraphicsManager::getTexture(Texture::ID id) {
         std::list<Texture::Texture>::iterator it = listTextures.begin();
-
         while (it != listTextures.end()) {
             Texture::Texture textureStruct = *it;
             if (textureStruct.id == id) {

@@ -62,6 +62,7 @@ namespace Stage {
 
     void Stage::updateView() {
         pGraphicsManager->setViewCenter(player->getGlobalHitbox().left);
+        std::cout << "Here\n";
         setSpritePosition(pGraphicsManager->getViewPositionX(), 0.f);
     }
 

@@ -16,6 +16,7 @@ Ent::Ent(const Texture::ID idTexture, const int width, const int height):
     id(cont++),
     sprite()
 {   
+    pGraphicsManager = Manager::GraphicsManager::getGraphicsManager();  //fix later
     setTexture(idTexture);
     sprite.setHitbox({0.f, 0.f, (float)width, (float)height});
     sprite.setTextureRect(sf::IntRect(0, 0, width, height));
@@ -36,8 +37,7 @@ const sf::FloatRect Ent::getGlobalHitbox() const {
 }
 
 void Ent::setTexture(Texture::ID id) {
-    sf::Texture* pTexture = nullptr;
-    pTexture = pGraphicsManager->getTexture(id);
+    sf::Texture* pTexture = pGraphicsManager->getTexture(id);
     if (pTexture) {
         sprite.setTexture(*pTexture);
     }

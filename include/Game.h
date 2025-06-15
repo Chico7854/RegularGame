@@ -7,6 +7,7 @@
 #include "Managers/GraphicsManager.h"
 #include "Managers/EventManager.h"
 #include "Managers/StateManager.h"
+#include "Stage/NightMountainStage.h"
 
 #include "Utility/Constants.h"
 #include "Utility/Texture.h"
@@ -18,7 +19,8 @@ class Game
 private:
     Manager::GraphicsManager* pGraphicsManager;
     Manager::EventManager* pEventManager;
-    Manager::StateManager* pStateManager;
+    // Manager::StateManager* pStateManager;
+    Stage::NightMountainStage stage;
     
 public:
     Game();

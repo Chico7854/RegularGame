@@ -3,11 +3,15 @@
 Game::Game():
     pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
     pEventManager(Manager::EventManager::getEventManager()),
-    pStateManager(Manager::StateManager::getStateManager())
+    // pStateManager(Manager::StateManager::getStateManager())
+    stage()
 {
     Ent::setGraphicsManager(pGraphicsManager);
     // pStateManager->addState(States::StateType::GameDay);
-    pStateManager->addState(States::StateType::GameNight);
+    // pStateManager->addState(States::StateType::GameNight);
+    // stage.createMap();
+
+    stage.createMap();
 
     srand(time(NULL));
 }
@@ -15,7 +19,7 @@ Game::Game():
 Game::~Game() {
     pGraphicsManager = nullptr;
     pEventManager = nullptr;
-    pStateManager = nullptr;
+    // pStateManager = nullptr;
 }
 
 void Game::run()
@@ -24,7 +28,8 @@ void Game::run()
     {
         pGraphicsManager->clearWindow();
         pEventManager->exec();
-        pStateManager->exec();
+        // pStateManager->exec();
+        stage.exec();
         pGraphicsManager->displayWindow();
     }
 }
