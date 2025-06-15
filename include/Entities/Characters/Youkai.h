@@ -11,7 +11,6 @@ namespace Entities {
             const int collisionDamage;
 
         public:
-            Youkai(Texture::ID id, int width, int height);
             Youkai();
             virtual ~Youkai();
 

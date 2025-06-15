@@ -24,7 +24,7 @@ namespace Stage {
 
     void Stage::createYoukai(const float x, const float y) {
         using namespace Entities;
-        Youkai* pYoukai = new Youkai(Texture::Youkai, Constants::YOUKAI_WIDTH, Constants::YOUKAI_HEIGHT);
+        Youkai* pYoukai = new Youkai();
         pYoukai->setSpritePosition(x, y);
         entityList.append(static_cast<Entity*>(pYoukai)); 
         pCollisionManager->appendEnemy(static_cast<Enemy*>(pYoukai));
