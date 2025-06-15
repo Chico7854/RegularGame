@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <vector>
+#include <list>
 #include <string>
 #include "Ent.h"
 #include "Utility/Texture.h"
@@ -10,7 +10,7 @@ namespace Manager {
     class GraphicsManager {
         private:
             sf::RenderWindow window;
-            std::vector<sf::Texture*> vectorTextures;
+            std::list<Texture::Texture> listTextures;
             sf::View camera_view;
             void windowSetup();
 

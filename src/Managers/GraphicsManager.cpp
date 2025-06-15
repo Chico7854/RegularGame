@@ -9,19 +9,25 @@ namespace Manager {
     GraphicsManager::GraphicsManager():
         window(sf::VideoMode(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT), Constants::GAME_NAME),
         camera_view(sf::Vector2f(0.f,0.f),sf::Vector2f((float)Constants::WINDOW_WIDTH,(float)Constants::WINDOW_HEIGHT)),
-        vectorTextures()
+        listTextures()
     {
-        vectorTextures.clear();
+        listTextures.clear();
         windowSetup();
         loadAllTextures();
     }
 
     GraphicsManager::~GraphicsManager() {
-        for (int i = 0; i < (int)vectorTextures.size(); i++) {
-            if (vectorTextures[i]) {
-                delete vectorTextures[i];
+        std::list<Texture::Texture>::iterator it = listTextures.begin();
+
+        while (it != listTextures.end()) {
+            Texture::Texture textureStruct = *it;
+            if (textureStruct.texture) {
+                delete textureStruct.texture;
             }
+            it++;
         }
+
+        listTextures.clear();
     }
 
     GraphicsManager* GraphicsManager::getGraphicsManager() {
@@ -79,10 +85,10 @@ namespace Manager {
             std::cerr << "Failed to load image." << std::endl;
             return;
         }
-        if (id >= vectorTextures.size()) {
-            vectorTextures.resize(id + 1);
-        }
-        vectorTextures[id] = pTexture;
+
+        Texture::Texture textureStruct = {id, pTexture};
+
+        listTextures.push_back(textureStruct);
     }
 
     void GraphicsManager::loadAllTextures() {
@@ -101,14 +107,20 @@ namespace Manager {
     }
 
     sf::Texture* GraphicsManager::getTexture(Texture::ID id) {
-        sf::Texture* pTexture = nullptr;
-        if (!vectorTextures[id]) {
-            std::cerr << "Failed to find texture resource." << std::endl;
-        } 
-        else {
-            pTexture = vectorTextures[id];
+        std::list<Texture::Texture>::iterator it = listTextures.begin();
+
+        while (it != listTextures.end()) {
+            Texture::Texture textureStruct = *it;
+            if (textureStruct.id == id) {
+                if (textureStruct.texture) {
+                    return textureStruct.texture;
+                }
+            }
+            it++;
         }
-        return pTexture;
+
+        std::cerr << "Failed to find texture resource." << std::endl;
+        return nullptr;
     }
 
     /*View*/
