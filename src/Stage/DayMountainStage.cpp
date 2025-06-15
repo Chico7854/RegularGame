@@ -16,7 +16,15 @@ namespace Stage {
         Cannonhead* pCannonhead = new Cannonhead(Texture::Cannonhead, Constants::CANNONHEAD_WIDTH, Constants::CANNONHEAD_HEIGHT);
         pCannonhead->setSpritePosition(x, y);
         entityList.append(static_cast<Entity*>(pCannonhead));
-        pCollisionManager->appendEnemy(pCannonhead);
+        pCollisionManager->appendEnemy(static_cast<Enemy*>(pCannonhead));
+    }
+
+    void DayMountainStage::createSpike(const float x, const float y) {
+        using namespace Entities;
+        Spike* pSpike = new Spike(Texture::Spike, Constants::SPIKE_WIDTH, Constants::SPIKE_HEIGHT);
+        pSpike->setSpritePosition(x, y);
+        entityList.append(static_cast<Entity*>(pSpike));
+        pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSpike));
     }
 
     void DayMountainStage::createEnemies() {
@@ -62,8 +70,11 @@ namespace Stage {
         int j = 0;
         while(std::getline(file, line)){
             for(int i = 0; i < line.size(); i++){
-                if(line[i] == '#') {
+                if (line[i] == '#') {
                     createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                }
+                else if (line[i] == 's') {
+                    createSpike(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
             }
             j++;
