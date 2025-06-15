@@ -34,7 +34,7 @@ namespace Entities {
         Entity();
         virtual ~Entity();
 
-        virtual void update() = 0;
+        virtual void exec() = 0;
         virtual void save() = 0;
 
         const EntityType getType() const;

@@ -12,8 +12,7 @@
 namespace Stage {
     class Stage : public Ent {
         protected:
-            List::EntityList charactersList;
-            List::EntityList obstaclesList;
+            List::EntityList entityList;
             Manager::CollisionManager* pCollisionManager;
             Entities::Player* player;
             std::string mapPath;

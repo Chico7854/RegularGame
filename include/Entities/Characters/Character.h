@@ -30,6 +30,6 @@ namespace Entities {
 
             virtual void run() = 0;
             virtual void save() = 0;
-            virtual void update() = 0;
+            virtual void exec() = 0;
     };
 }

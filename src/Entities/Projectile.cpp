@@ -55,7 +55,7 @@ namespace Entities {
         }
     }
 
-    void Projectile::update() {
+    void Projectile::exec() {
         if (!active) return;
 
         //dx += speed/2;

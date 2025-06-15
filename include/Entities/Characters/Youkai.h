@@ -17,6 +17,6 @@ namespace Entities {
 
             void run() override;
             void save() override;
-            void update() override;
+            void exec() override;
     };
 }

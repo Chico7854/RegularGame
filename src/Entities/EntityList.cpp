@@ -32,7 +32,7 @@ namespace List {
         }
     }
 
-    void EntityList::updateEntities() {
+    void EntityList::execEntities() {
         List<Entities::Entity*>::Iterator it = entities.getHead();
         while (it != nullptr) {
             if (*it) {
@@ -40,7 +40,7 @@ namespace List {
                     deleteFromList(*it);
                 }
                 else {
-                    (*it)->update();
+                    (*it)->exec();
                 }
             }
             it++;

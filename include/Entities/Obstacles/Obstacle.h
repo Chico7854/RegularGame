@@ -16,7 +16,7 @@ namespace Entities {
         virtual ~Obstacle();
 
         virtual void save() override {}
-        virtual void update() {};
+        virtual void exec() {};
         virtual void obstruct(Entities::Character* character) = 0;
 
         enum class ObstacleType {

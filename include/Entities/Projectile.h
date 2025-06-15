@@ -18,7 +18,7 @@ namespace Entities {
         Projectile();
         virtual ~Projectile();
 
-        void update();
+        void exec();
         void save();
         
         void setInitPosition(float x, float y);

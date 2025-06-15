@@ -24,7 +24,7 @@ namespace Entities {
     void Cannonhead::save(){
     }
 
-    void Cannonhead::update()
+    void Cannonhead::exec()
     {
         /*GAMBIARRA*/
         dy += Constants::GRAVITY;
@@ -40,7 +40,7 @@ namespace Entities {
         }
 
         if(projectileList){
-            projectileList->updateEntities();
+            projectileList->execEntities();
             projectileList->drawEntities();
         }
 

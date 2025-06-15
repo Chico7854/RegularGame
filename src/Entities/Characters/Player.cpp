@@ -37,7 +37,7 @@ namespace Entities {
     {
     }
 
-    void Player::update()
+    void Player::exec()
     {
         if (!isHurt) {
             checkKeyboardInput();

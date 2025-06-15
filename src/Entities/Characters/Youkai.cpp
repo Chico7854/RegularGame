@@ -22,7 +22,7 @@ namespace Entities {
     {
     }
 
-    void Youkai::update()
+    void Youkai::exec()
     {
         /*GAMBIARRA*/
         dy += Constants::GRAVITY;

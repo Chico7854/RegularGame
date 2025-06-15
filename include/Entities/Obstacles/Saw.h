@@ -17,7 +17,7 @@ namespace Entities {
 		Saw();
 		virtual ~Saw();
 		void save() override {}
-		void update() override {};
+		void exec() override {};
 		float getDamage() const { return damage; }
 		void setDamage(float damage_value) { damage = damage_value; }
 	};
