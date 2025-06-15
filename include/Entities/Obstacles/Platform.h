@@ -11,7 +11,6 @@ namespace Entities {
         float magicalForce;
 
     public:
-        Platform(Texture::ID id, int sprite_width, int sprite_height);
         Platform();
         virtual ~Platform();
 

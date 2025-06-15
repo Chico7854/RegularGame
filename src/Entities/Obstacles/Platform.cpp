@@ -1,12 +1,10 @@
 #include "Entities/Obstacles/Platform.h"
 
 namespace Entities {
-    Platform::Platform(Texture::ID id, int sprite_width, int sprite_height):
-        Obstacle(id, sprite_width, sprite_height, EntityType::Platform, false),
+    Platform::Platform():
+        Obstacle(Texture::Platform, Constants::PLATFORM_WIDTH, Constants::PLATFORM_HEIGHT, EntityType::Platform, false),
         magicalForce(0.f)
     {}
-
-    Platform::Platform(): Obstacle() {}
 
     Platform::~Platform() {}
 

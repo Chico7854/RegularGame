@@ -32,7 +32,7 @@ namespace Stage {
 
     void Stage::createPlatform(const float x, const float y) {
         using namespace Entities;
-        Platform* pPlatform = new Platform(Texture::Platform, Constants::PLATFORM_WIDTH, Constants::PLATFORM_HEIGHT);
+        Platform* pPlatform = new Platform();
         pPlatform->setSpritePosition(x, y);
         entityList.append(static_cast<Entity*>(pPlatform));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform));
