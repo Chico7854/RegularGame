@@ -20,6 +20,10 @@ namespace Stage {
         return player;
     }
 
+    void Stage::drawBackground() {
+        draw();
+    }
+
     void Stage::createEntity(const char ent, const sf::Vector2i pos) {
         switch (ent) {
             case ('y'):
@@ -70,7 +74,7 @@ namespace Stage {
         updateView();
         entityList.execEntities();
         pCollisionManager->verifyCollisions();
-        draw();     //draw background
+        drawBackground();
         entityList.drawEntities();
     }
 }

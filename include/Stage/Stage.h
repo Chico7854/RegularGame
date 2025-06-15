@@ -36,5 +36,7 @@ namespace Stage {
             virtual void createEnemies() = 0;
             virtual void createObstacles() = 0;
             virtual void createMap();
+
+            void drawBackground();
     };
 }
