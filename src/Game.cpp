@@ -10,9 +10,6 @@ Game::Game():
     // pStateManager->addState(States::StateType::GameDay);
     // pStateManager->addState(States::StateType::GameNight);
     // stage.createMap();
-
-    stage.createMap();
-
     srand(time(NULL));
 }
 

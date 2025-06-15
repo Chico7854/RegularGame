@@ -6,5 +6,9 @@ namespace Stage {
         public:
             NightMountainStage();
             ~NightMountainStage();
+
+        private:
+            void createEnemies() override {};
+            void createObstacles() override {}
     };
 }

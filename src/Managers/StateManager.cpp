@@ -18,13 +18,13 @@ namespace Manager {
         return pSelf;
     }
 
-    void StateManager::addState(const States::StateType id) {
-        States::State* state = stateFactory.createState(id);
-        if (state == nullptr) {
-            std::cerr << "ERROR: Couldn't create state.\n";
-        }
-        statesStack.push(state);
-    }
+    // void StateManager::addState(const States::StateType id) {
+    //     States::State* state = stateFactory.createState(id);
+    //     if (state == nullptr) {
+    //         std::cerr << "ERROR: Couldn't create state.\n";
+    //     }
+    //     statesStack.push(state);
+    // }
 
     void StateManager::removeState() {
         if (statesStack.top()) {

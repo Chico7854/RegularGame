@@ -5,8 +5,14 @@ namespace Stage {
         Ent(background, sprite_width, sprite_height),
         entityList(),
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
-        mapPath(path)
-    {}
+        mapPath(path),
+        maxEnemies(10),
+        numberOfYoukais(rand() % maxEnemies)
+    {
+        if (numberOfYoukais < 3) {
+            numberOfYoukais = 3;
+        }
+    }
 
     Stage::~Stage() {}
 
@@ -55,25 +61,9 @@ namespace Stage {
     }
 
     void Stage::createMap() {
-        std::ifstream file;
-        std::string line;
-        file.open(mapPath);
-        if (!file.is_open()) {
-            std::cerr << "Couldnt open stage file\n";
-            exit(1);
-        }
-        int j = 0;
-        while(std::getline(file, line)){
-            for(int i = 0; i < line.size(); i++){
-                if(line[i] != ' ') {
-                    createEntity(line[i], {i * Constants::SCALE_TXT, j * Constants::SCALE_TXT});
-                }
-            }
-            j++;
-        }
+        createEnemies();
+        createObstacles();
         createPlayer();
-
-        file.close();
     }
 
     void Stage::exec() {

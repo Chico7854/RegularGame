@@ -6,5 +6,9 @@ namespace Stage {
         public:
             DayMountainStage();
             ~DayMountainStage();
+
+        private:
+            void createEnemies();
+            void createObstacles();
     };
 }

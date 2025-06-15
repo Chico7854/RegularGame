@@ -16,12 +16,15 @@ namespace Stage {
             Manager::CollisionManager* pCollisionManager;
             Entities::Player* player;
             std::string mapPath;
+            const int maxEnemies;
+            int numberOfYoukais;
 
         public:
             Stage(const Texture::ID background, const std::string path, const float sprite_width, const float sprite_height);
-            ~Stage();
+            virtual ~Stage();
 
             const Entities::Player* getPlayer() const;
+            void exec();
 
         protected:
             void createEntity(const char ent, const sf::Vector2i pos);
@@ -30,11 +33,8 @@ namespace Stage {
             void createPlayer();
             void updateView();
 
-            // virtual void createEnemies() = 0;
-            // virtual void createObstacle() = 0;
-
-        public:
+            virtual void createEnemies() = 0;
+            virtual void createObstacles() = 0;
             virtual void createMap();
-            void exec();
     };
 }
