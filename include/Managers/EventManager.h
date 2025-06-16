@@ -4,9 +4,10 @@
 #include "Entities/Characters/Player.h"
 #include "Entities/EntityList.h"
 #include "Entities/Obstacles/Platform.h"
+#include "Event/EventSubject.h"
 
 namespace Manager {
-    class EventManager {
+    class EventManager : public Event::EventSubject{
         private:
             GraphicsManager* pGraphicsManager;
             CollisionManager* pCollisionManager;

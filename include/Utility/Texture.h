@@ -16,7 +16,9 @@ namespace Texture {
         BackgroundDayMountain,
         BackgroundNightMountain,
         Ball,
-        Cannonhead
+        Cannonhead,
+        NewGameButton,
+        ExitGameButton
     };
 
     struct Texture {
@@ -35,4 +37,6 @@ namespace Texture {
     constexpr char BACKGROUND_NIGHT_MOUNTAIN[] = "../assets/images/night_mountain.png";
     constexpr char BALL[] = "../assets/images/ball.png";
     constexpr char CANNONHEAD[] = "../assets/images/cannonhead_walk.png";
+    constexpr char NEW_GAME[] = "../assets/images/newgame.png";
+    constexpr char EXIT_GAME[] = "../assets/images/exitgame.png";
 }

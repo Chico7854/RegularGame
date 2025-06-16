@@ -35,5 +35,8 @@ namespace Constants {
     constexpr float JUMP_SPEED = SPEED * -4.f;
     constexpr float BALL_SPEED = SPEED * 2.f;
 
+    constexpr float BUTTON_HEIGHT = 32.f;
+    constexpr float BUTTON_WIDTH = 256.f;
+
     constexpr char GAME_NAME[] = "Regular Game";
 }

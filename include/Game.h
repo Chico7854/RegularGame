@@ -7,6 +7,9 @@
 #include "Managers/StateManager.h"
 #include "Stage/DayMountainStage.h"
 
+#include "States/MenuState.h"
+#include "States/GameState.h"
+
 #include "Utility/Constants.h"
 #include "Utility/Texture.h"
 
@@ -19,6 +22,7 @@ private:
     Manager::EventManager* pEventManager;
     // Manager::StateManager* pStateManager;
     Stage::DayMountainStage stage;
+    States::StateStack* pStateStack;
     
 public:
     Game();

@@ -111,8 +111,8 @@ namespace Manager {
                     if (*itObstacles) {
                         const sf::FloatRect obsCoordinates = (*itObstacles)->getGlobalHitbox();
                         if((ballCoordinates).intersects(obsCoordinates)){
-                            (*itBalls)->setToDelete(true);
-                            balls.erase(itBalls);
+                            (*itBalls)->setToDelete(true);//will be deleted after on update of entity class
+                            balls.erase(itBalls);//erasinf from collision manager vector
                             erased = true;
                             break;
                         }

@@ -8,6 +8,7 @@ namespace Manager {
     EventManager::EventManager():
         pGraphicsManager(GraphicsManager::getGraphicsManager()),
         pCollisionManager(CollisionManager::getCollisionManager()),
+        Event::EventSubject(),
         entList()
     {}
 
@@ -37,8 +38,15 @@ namespace Manager {
         sf::Event event;
         while (pGraphicsManager->getWindow()->pollEvent(event))
         {
+            setEvent(event);
             if (event.type == sf::Event::Closed) {
                 pGraphicsManager->closeWindow();
+            } else if (event.type == sf::Event::KeyPressed) {
+                notifyKeyPressed(event.key.code);
+            } else if (event.type == sf::Event::KeyReleased) {
+                notifyKeyReleased(event.key.code);
+            } else if (event.type == sf::Event::TextEntered) {
+                notifyTextEntered(static_cast<char>(event.text.unicode));
             }
         }
     }

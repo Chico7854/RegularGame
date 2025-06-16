@@ -34,7 +34,7 @@ namespace Entities {
         moveHitboxSprite(dx, dy);
 
         dtime += 0.5f;
-        if(cont_balls<=3 && dtime > 50.f){//Change logic after 
+        if(dtime > 50.f){//Change logic after 
             shoot(); 
             dtime = 0.f; // Reset dtime after shooting
         }

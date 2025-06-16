@@ -3,6 +3,7 @@
 Game::Game():
     pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
     pEventManager(Manager::EventManager::getEventManager()),
+    pStateStack(States::StateStack::getInstance()),
     // pStateManager(Manager::StateManager::getStateManager())
     stage()
 {
@@ -10,6 +11,7 @@ Game::Game():
     // pStateManager->addState(States::StateType::GameDay);
     // pStateManager->addState(States::StateType::GameNight);
     // stage.createMap();
+    pStateStack->pushState(States::StateType::Menu);
 }
 
 Game::~Game() {
@@ -25,6 +27,7 @@ void Game::run()
         pGraphicsManager->clearWindow();
         pEventManager->exec();
         // pStateManager->exec();
+        pStateStack->exec();
         stage.exec();
         pGraphicsManager->displayWindow();
     }
