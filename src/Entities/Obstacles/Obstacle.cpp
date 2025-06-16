@@ -11,4 +11,27 @@ namespace Entities {
     {}
 
     Obstacle::~Obstacle() {}
+
+    void Obstacle::damageCollision(Character* character) {
+        const sf::FloatRect charCoordinates = character->getGlobalHitbox();
+        const sf::FloatRect obstacleCoordinates = getGlobalHitbox();
+
+
+        if (charCoordinates.intersects(obstacleCoordinates)) {
+            const float middlePointPlayer = charCoordinates.left + (charCoordinates.width / 2);
+            const float middlePointEntity = obstacleCoordinates.left + (obstacleCoordinates.width / 2);
+
+            const float dy = Constants::JUMP_SPEED / 1.5;
+            float dx = Constants::SPEED * 2;
+
+            if (middlePointPlayer < middlePointEntity) {
+                dx *= -1;
+            }
+
+            character->setDy(dy);
+            character->setDx(dx);
+            character->setIsHurt(true);
+            character->moveHitboxSprite(dx, dy);
+        }
+    }
 }

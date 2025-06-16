@@ -1,13 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-#include "DamageObstacle.h"
 #include "Entities/Characters/Character.h"
+#include "Entities/Obstacles/Obstacle.h"
 
 #include "Utility/Texture.h"
 
 namespace Entities {
-	class Saw : public DamageObstacle //implement damage, +50 damage for tounching it and it thwrows the player back
+	class Saw : public Obstacle //implement damage, +50 damage for tounching it and it thwrows the player back
 	{
 	private:
 		float damage;
@@ -18,6 +18,7 @@ namespace Entities {
 		virtual ~Saw();
 		void save() override {}
 		void exec() override {};
+		void obstruct(Character* character) override;
 		float getDamage() const { return damage; }
 		void setDamage(float damage_value) { damage = damage_value; }
 	};

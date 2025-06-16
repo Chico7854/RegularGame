@@ -1,11 +1,11 @@
 #pragma once
-#include "DamageObstacle.h"
 #include "Entities/Characters/Character.h"
+#include "Entities/Obstacles/Obstacle.h"
 
 #include "Utility/Texture.h"
 
 namespace Entities {
-	class Spike : public DamageObstacle //implement damage to player, +10 damage per second of contact
+	class Spike : public Obstacle //implement damage to player, +10 damage per second of contact
 	{
 	private:
 		float damage;
@@ -15,6 +15,7 @@ namespace Entities {
 		virtual ~Spike();
 
 		void save() override {}
+		void obstruct(Character* character) override;
 		float getDamage() const { return damage; }
 		void setDamage(float damage_value) { damage = damage_value; }
 	};
