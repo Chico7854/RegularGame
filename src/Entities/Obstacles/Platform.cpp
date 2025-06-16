@@ -27,7 +27,7 @@ namespace Entities {
             float yOverlap = intersectionRect.height;
 
             /*Horizontal collision*/
-            if ((yOverlap > xOverlap) && (yOverlap > (Constants::SCALE_TXT / 2))) {
+            if ((yOverlap > xOverlap) && (yOverlap == Constants::SCALE_TXT)) {
                 if (obstacleCoordinates.left > charCoordinates.left)
                     xOverlap *= -1;
                 character->moveHitboxSprite(xOverlap, 0);
@@ -37,6 +37,7 @@ namespace Entities {
             }
             /*Vertical collision*/
             else {
+                setMagicalForce(yOverlap);
                 if ((character->getDy() >= 0) && (charCoordinates.top < obstacleCoordinates.top)) {
                     setMagicalForce(yOverlap * -1);
                     character->setOnGround(true);
