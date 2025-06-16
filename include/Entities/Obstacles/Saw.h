@@ -13,7 +13,6 @@ namespace Entities {
 		float damage;
 		float frame;
 	public:
-		Saw(Texture::ID id, int sprite_width, int sprite_height);
 		Saw();
 		virtual ~Saw();
 		void save() override {}

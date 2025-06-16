@@ -21,7 +21,7 @@ namespace Stage {
 
     void DayMountainStage::createSpike(const float x, const float y) {
         using namespace Entities;
-        Spike* pSpike = new Spike(Texture::Spike, Constants::SPIKE_WIDTH, Constants::SPIKE_HEIGHT);
+        Spike* pSpike = new Spike();
         pSpike->setSpritePosition(x, y);
         entityList.append(static_cast<Entity*>(pSpike));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSpike));

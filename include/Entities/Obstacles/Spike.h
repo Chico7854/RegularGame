@@ -10,7 +10,6 @@ namespace Entities {
 	private:
 		float damage;
 	public:
-		Spike(Texture::ID id, int sprite_width, int sprite_height);
 		Spike();
 		virtual ~Spike();
 

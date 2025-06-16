@@ -3,12 +3,10 @@
 
 namespace Entities
 {
-    Spike::Spike(Texture::ID id, int sprite_width, int sprite_height):
-        Obstacle(id, sprite_width, sprite_height, EntityType::Spike, true),
+    Spike::Spike():
+        Obstacle(Texture::Spike, Constants::SPIKE_WIDTH, Constants::SPIKE_HEIGHT, EntityType::Spike, true),
         damage(10)
     {}
-
-    Spike::Spike() {}
 
     Spike::~Spike() {}
 

@@ -2,13 +2,11 @@
 #include "Utility/Constants.h"
 
 namespace Entities {
-	Saw::Saw(Texture::ID id, int sprite_width, int sprite_height):
-		Obstacle(id, sprite_width, sprite_height, EntityType::Saw, true), 
+	Saw::Saw():
+		Obstacle(Texture::Saw, Constants::SAW_WIDTH, Constants::SAW_HEIGHT, EntityType::Saw, true), 
 		damage(10.f), 
 		frame(0)
 	{}
-
-	Saw::Saw() {}
 
 	Saw::~Saw() {}
 
