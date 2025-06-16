@@ -40,7 +40,11 @@ namespace Entities {
     void Player::exec()
     {
         if (!isHurt) {
+            sprite.setColor(sf::Color::White);
             checkKeyboardInput();
+        }
+        else {
+            sprite.setColor(sf::Color::Red);
         }
         dy += Constants::GRAVITY;
         if (dy > 20) {
