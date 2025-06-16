@@ -48,7 +48,7 @@ namespace Stage {
 
     void Stage::updateView() {
         pGraphicsManager->setViewCenter(player->getGlobalHitbox().left);
-        setSpritePosition(pGraphicsManager->getViewPositionX(), 0.f);
+        sprite.setPosition(pGraphicsManager->getViewPositionX(), 0.f);
     }
 
     void Stage::createMap() {

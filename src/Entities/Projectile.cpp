@@ -22,18 +22,18 @@ namespace Entities {
 
     void Projectile::setInitPosition(float x, float y) {
         sprite.setPosition(x, y);
-        sprite.updateHitbox();
+        updateHitbox();
     }
 
     void Projectile::moveHitboxSprite(float dx, float dy) {
         sprite.move(dx, dy);
-        sprite.updateHitbox();
+        updateHitbox();
     }
 
     void Projectile::obstruct(Character* character){//took from enemy class
         Player* player = static_cast<Player*>(character);
         const sf::FloatRect charCoordinates = player->getGlobalHitbox();
-        const sf::FloatRect ballCoordinates = sprite.getGlobalHitbox();
+        const sf::FloatRect ballCoordinates = getGlobalHitbox();
 
         if (charCoordinates.intersects(ballCoordinates)) {
             const float middlePointPlayer = charCoordinates.left + (charCoordinates.width / 2);

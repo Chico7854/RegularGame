@@ -60,7 +60,7 @@ namespace Entities {
 
     void Character::moveHitboxSprite(float dx, float dy) {
         sprite.move(dx, dy);
-        sprite.updateHitbox();
+        updateHitbox();
     }
 
 }

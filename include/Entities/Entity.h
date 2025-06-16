@@ -24,9 +24,8 @@ namespace Entities {
     class Entity : public Ent
     {
     protected:
-        sf::Vector2f initialPosition;
         const EntityType type;
-        int ground;
+        sf::FloatRect hitbox;
         bool toDelete;
 
     public:
@@ -36,6 +35,12 @@ namespace Entities {
 
         virtual void exec() = 0;
         virtual void save() = 0;
+
+        /*Sprite and Hitbox*/
+        sf::FloatRect getGlobalHitbox() const;
+        void setHitbox(const sf::FloatRect& hb);
+        void updateHitbox();
+        void setSpritePosition(float x, float y);
 
         const EntityType getType() const;
         bool getToDelete() const;
