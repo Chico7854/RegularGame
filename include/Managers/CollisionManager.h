@@ -35,6 +35,7 @@ namespace Manager {
 
         private:
 
+            const bool verifyCollision(Entities::Entity* ent1, Entities::Entity* ent2) const;
             void verifyPlayerCollisions();
             void verifyEnemiesCollisions();
             void verifyProjectileCollisions();

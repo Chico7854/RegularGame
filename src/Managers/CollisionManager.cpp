@@ -48,6 +48,14 @@ namespace Manager {
         }
     }
 
+    const bool CollisionManager::verifyCollision(Entities::Entity* ent1, Entities::Entity* ent2) const {
+        sf::FloatRect coords1 = ent1->getGlobalHitbox();
+        sf::FloatRect coords2 = ent2->getGlobalHitbox();
+
+        return coords1.intersects(coords2);
+    }
+
+
     void CollisionManager::verifyPlayerCollisions() {
         std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
         std::vector<Entities::Enemy*>::iterator itEnemies = enemies.begin();

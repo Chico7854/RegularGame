@@ -26,8 +26,17 @@ namespace Entities {
             float xOverlap = intersectionRect.width;
             float yOverlap = intersectionRect.height;
 
-            /*Check vertical collision*/
-            if (yOverlap <= xOverlap) {
+            /*Horizontal collision*/
+            if ((yOverlap > xOverlap) && (yOverlap > (Constants::SCALE_TXT / 2))) {
+                if (obstacleCoordinates.left > charCoordinates.left)
+                    xOverlap *= -1;
+                character->moveHitboxSprite(xOverlap, 0);
+                if (character->getType() != EntityType::Player) {
+                    character->setDx(character->getDx() * -1);
+                }
+            }
+            /*Vertical collision*/
+            else {
                 if ((character->getDy() >= 0) && (charCoordinates.top < obstacleCoordinates.top)) {
                     setMagicalForce(yOverlap * -1);
                     character->setOnGround(true);
@@ -36,15 +45,6 @@ namespace Entities {
                 character->moveHitboxSprite(0, magicalForce);
                 character->setDy(0.f);
             } 
-            /*Horizontal collision*/
-            else {
-                if (obstacleCoordinates.left > charCoordinates.left)
-                    xOverlap *= -1;
-                character->moveHitboxSprite(xOverlap, 0);
-                if (character->getType() != EntityType::Player) {
-                    character->setDx(character->getDx() * -1);
-                }
-            }
         }
     }
 }
