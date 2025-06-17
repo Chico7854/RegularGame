@@ -14,6 +14,10 @@ namespace Entities {
 
     Enemy::~Enemy() {}
 
+    const int Enemy::getEvilness() const {
+        return evilness;
+    }
+
     void Enemy::save()
     {
     }
