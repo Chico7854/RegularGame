@@ -20,13 +20,5 @@ namespace Entities {
         virtual void obstruct(Entities::Character* character) = 0;
 
         void damageCollision(Character* character);
-
-        enum class ObstacleType {
-            None = -1,
-
-            Platform,
-            Spike,
-            Saw
-        };
     };
 }
