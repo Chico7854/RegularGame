@@ -6,13 +6,33 @@ namespace States{
         newGameButton(),
         exitGameButton()
     {
-        newGameButton.setTexture(*pGraphicsManager->getTexture(Texture::NewGameButton));
-        newGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2 + Constants::BUTTON_WIDTH,128.f/*random value*/));
-
-        exitGameButton.setTexture(*pGraphicsManager->getTexture(Texture::ExitGameButton));
-        exitGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2 + Constants::BUTTON_WIDTH,128.f * 2/*random value*/));
-        
+        setType(StateType::Menu);
+        pGraphicsManager->resetView();
+        if (pGraphicsManager) {
+            auto texNewGame = pGraphicsManager->getTexture(Texture::NewGameButton);
+            auto texExitGame = pGraphicsManager->getTexture(Texture::ExitGameButton);
+            if (texNewGame) {
+                newGameButton.setTexture(*texNewGame);
+            } else {
+                std::cerr << "NewGameButton texture error\n";
+            }
+            if (texExitGame) {
+                exitGameButton.setTexture(*texExitGame);
+            } else {
+                std::cerr << "ExitGameButton texture err\n";
+            }
+            newGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+                                                    128.f));
+            exitGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+                                                    128.f * 2));
+        }
         updateSelected();
+
+        if (pEventManager) {
+            pEventManager->attach(this);
+        } else {
+            std::cerr << "pEventManager is nullptr in MenuState constructor!\n";
+        }
     }
 
     MenuState::~MenuState(){
@@ -20,7 +40,6 @@ namespace States{
     }
 
     void MenuState::exec() {
-        std::cout << "cu cu cu exec menu";
         updateSelected();
         draw();
     }
@@ -28,13 +47,15 @@ namespace States{
     void MenuState::keyPressed(const sf::Keyboard::Key key) {
         if (key == sf::Keyboard::Up) {
             selected = Options::NewGame;
+            updateSelected();
         } else if (key == sf::Keyboard::Down) {
             selected = Options::ExitGame;
+            updateSelected();
         } else if (key == sf::Keyboard::Enter) {
             if (selected == Options::NewGame) {
                 Stage::DayMountainStage* newStage = new Stage::DayMountainStage();
                 GameState* gameState = new GameState(newStage);
-                pStateStack->pushState(States::StateType::GameDay, gameState);
+                pStateStack->pushState(States::StateType::GameDay, gameState, true);
             } else if (selected == Options::ExitGame) {
                 pGraphicsManager->closeWindow();
             }
@@ -65,8 +86,10 @@ namespace States{
     }
 
     void MenuState::draw(){
-        std::cout << "cu";
-        pGraphicsManager->draw(newGameButton);
-        pGraphicsManager->draw(exitGameButton);
+        if(pGraphicsManager){
+            pGraphicsManager->getWindow()->setView(sf::View(sf::FloatRect(0, 0, Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)));
+            pGraphicsManager->draw(newGameButton);
+            pGraphicsManager->draw(exitGameButton);
+        }
     }
 }

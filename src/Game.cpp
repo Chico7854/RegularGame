@@ -3,9 +3,9 @@
 Game::Game():
     pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
     pEventManager(Manager::EventManager::getEventManager()),
-    pStateStack(States::StateStack::getInstance()),
+    pStateStack(States::StateStack::getInstance())
     // pStateManager(Manager::StateManager::getStateManager())
-    stage()
+    //stage()
 {
     Ent::setGraphicsManager(pGraphicsManager);
     // pStateManager->addState(States::StateType::GameDay);
@@ -28,7 +28,7 @@ void Game::run()
         pEventManager->exec();
         // pStateManager->exec();
         pStateStack->exec();
-        stage.exec();
+        //stage.exec();
         pGraphicsManager->displayWindow();
     }
 }

@@ -39,5 +39,6 @@ namespace Manager {
             void setView(const sf::View& view);
             void setViewCenter(float x);
             const float getViewPositionX() const;
+            void resetView();
     };
 }

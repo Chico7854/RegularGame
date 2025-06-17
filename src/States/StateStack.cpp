@@ -80,7 +80,7 @@ namespace States {
     }
 
     if (m_stack.size() > 0)
-      //m_stack.back()->setIsActive(false);
+      m_stack.back()->setIsActive(false);
 
     m_stack.push_back(state);
   }
@@ -114,8 +114,8 @@ namespace States {
     delete tmpState;
     m_stack.erase(m_stack.end() - 1);
 
-    //if (m_stack.size() > 0)
-      //m_stack.back()->setIsActive(true);
+    if (m_stack.size() > 0)
+      m_stack.back()->setIsActive(true);
   }
 
   void StateStack::clearStates() {

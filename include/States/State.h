@@ -14,6 +14,7 @@ namespace States {
 
     class State {
         protected:
+            StateType type;
             Manager::GraphicsManager* pGraphicsManager;
             Manager::EventManager* pEventManager;
             States::StateStack* pStateStack;
@@ -26,5 +27,6 @@ namespace States {
             virtual void keyReleased(const sf::Keyboard::Key key) {}
             virtual void textEntered(const char character) {}
             virtual void setIsActive(bool) {}
+            void setType(StateType type);
     };
 }

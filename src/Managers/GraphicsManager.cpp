@@ -141,5 +141,10 @@ namespace Manager {
     const float GraphicsManager::getViewPositionX() const {
         return camera_view.getCenter().x - Constants::WINDOW_WIDTH/2;
     }
+
+    void GraphicsManager::resetView() {
+        camera_view = window.getDefaultView();
+        window.setView(camera_view);
+    }
 }
 

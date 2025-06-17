@@ -11,4 +11,8 @@ namespace States{
     State::~State(){
 
     }
+
+    void State::setType(StateType tp) {
+        type = tp;
+    }
 }
