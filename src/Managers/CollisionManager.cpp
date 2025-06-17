@@ -65,7 +65,7 @@ namespace Manager {
         
         while (itEnemies != enemies.end()) {
             if (*itEnemies) {
-                (*itEnemies)->obstruct(p1);
+                (*itEnemies)->applyCollisionDamage(p1);
             }
             itEnemies++;
         }

@@ -22,7 +22,7 @@ namespace Entities {
     {
     }
 
-    void Enemy::obstruct(Character* character) {
+    void Enemy::applyCollisionDamage(Character* character) {
         Player* player = static_cast<Player*>(character);
         const sf::FloatRect charCoordinates = player->getGlobalHitbox();
         const sf::FloatRect obstacleCoordinates = getGlobalHitbox();
