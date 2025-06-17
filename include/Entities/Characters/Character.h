@@ -28,7 +28,6 @@ namespace Entities {
             const bool getIsHurt() const;
             void moveHitboxSprite(const float dx, const float dy);
 
-            virtual void run() = 0;
             virtual void save() = 0;
             virtual void exec() = 0;
     };

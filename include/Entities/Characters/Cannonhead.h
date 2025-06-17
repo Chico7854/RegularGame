@@ -17,7 +17,6 @@ namespace Entities {
         Cannonhead();
         virtual ~Cannonhead();
 
-        void run() override;
         void save() override;
         void exec() override;
 

@@ -15,7 +15,6 @@ namespace Entities {
             Player();
             virtual ~Player();
 
-            void run() override;
             void save() override;
             void exec() override;
 

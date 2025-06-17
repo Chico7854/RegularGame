@@ -16,7 +16,6 @@ namespace Entities {
             Enemy();
             virtual ~Enemy();
             virtual void setInitialPosition(sf::Vector2f pos){}
-            void run() override;
             void save() override;
             virtual void exec() = 0;
             void obstruct(Character* character);

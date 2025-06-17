@@ -14,7 +14,6 @@ namespace Entities {
             Youkai();
             virtual ~Youkai();
 
-            void run() override;
             void save() override;
             void exec() override;
     };

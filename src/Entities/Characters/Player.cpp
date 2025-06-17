@@ -29,10 +29,6 @@ namespace Entities {
         }
     }
 
-    void Player::run()
-    {
-    }
-
     void Player::save()
     {
     }

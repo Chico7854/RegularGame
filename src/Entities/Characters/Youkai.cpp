@@ -10,10 +10,6 @@ namespace Entities {
 
     Youkai::~Youkai() {}
 
-    void Youkai::run()
-    {
-    }
-
     void Youkai::save()
     {
     }

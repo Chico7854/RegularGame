@@ -17,10 +17,6 @@ namespace Entities {
 
     Cannonhead::~Cannonhead() {}
 
-    void Cannonhead::run(){
-
-    }
-
     void Cannonhead::save(){
     }
 
