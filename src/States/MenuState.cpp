@@ -1,18 +1,25 @@
 #include "States/MenuState.h"
 
 namespace States{
-    MenuState::MenuState(Event::EventSubject* pES) : selected(Options::NewGame),
+    MenuState::MenuState(Event::EventSubject* pES) : selected(Options::NewDay),
         Event::EventObserver(pES),
-        newGameButton(),
+        newDayButton(),
+        newNightButton(),
         exitGameButton()
     {
         setType(StateType::Menu);
         pGraphicsManager->resetView();
         if (pGraphicsManager) {
-            auto texNewGame = pGraphicsManager->getTexture(Texture::NewGameButton);
+            auto texNewDay = pGraphicsManager->getTexture(Texture::NewDayButton);
+            auto texNewNight = pGraphicsManager->getTexture(Texture::NewNightButton);
             auto texExitGame = pGraphicsManager->getTexture(Texture::ExitGameButton);
-            if (texNewGame) {
-                newGameButton.setTexture(*texNewGame);
+            if (texNewDay) {
+                newDayButton.setTexture(*texNewDay);
+            } else {
+                std::cerr << "NewGameButton texture error\n";
+            }
+            if (texNewNight) {
+                newNightButton.setTexture(*texNewNight);
             } else {
                 std::cerr << "NewGameButton texture error\n";
             }
@@ -21,10 +28,12 @@ namespace States{
             } else {
                 std::cerr << "ExitGameButton texture err\n";
             }
-            newGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+            newDayButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
                                                     128.f));
-            exitGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+            newNightButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
                                                     128.f * 2));
+            exitGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+                                                    128.f * 3));
         }
         updateSelected();
 
@@ -36,7 +45,8 @@ namespace States{
     }
 
     MenuState::~MenuState(){
-
+        if (pEventManager)
+        pEventManager->detach(this);
     }
 
     void MenuState::exec() {
@@ -46,16 +56,32 @@ namespace States{
 
     void MenuState::keyPressed(const sf::Keyboard::Key key) {
         if (key == sf::Keyboard::Up) {
-            selected = Options::NewGame;
+            if (selected == Options::NewDay) {
+                selected = Options::ExitGame;
+            } else if (selected == Options::NewNight) {
+                selected = Options:: NewDay;
+            } else if (selected == Options::ExitGame) {
+                selected = Options::NewNight;
+            }
             updateSelected();
         } else if (key == sf::Keyboard::Down) {
-            selected = Options::ExitGame;
+            if (selected == Options::NewDay) {
+                selected = Options::NewNight;
+            } else if (selected == Options::NewNight) {
+                selected = Options::ExitGame;
+            } else if (selected == Options::ExitGame) {
+                selected = Options::NewDay;
+            }
             updateSelected();
         } else if (key == sf::Keyboard::Enter) {
-            if (selected == Options::NewGame) {
-                Stage::DayMountainStage* newStage = new Stage::DayMountainStage();
-                GameState* gameState = new GameState(newStage);
-                pStateStack->pushState(States::StateType::GameDay, gameState, true);
+            if (selected == Options::NewDay) {
+                Stage::DayMountainStage* newDayStage = new Stage::DayMountainStage();
+                DayState* dayState = new DayState(newDayStage);
+                pStateStack->pushState(States::StateType::GameDay, dayState, true);
+            } else if (selected == Options::NewNight) {
+                Stage::NightMountainStage* newNightStage = new Stage::NightMountainStage();
+                NightState* nightState = new NightState(newNightStage);
+                pStateStack->pushState(States::StateType::GameNight, nightState, true);
             } else if (selected == Options::ExitGame) {
                 pGraphicsManager->closeWindow();
             }
@@ -75,11 +101,14 @@ namespace States{
     }
 
     void MenuState::updateSelected(){
-        newGameButton.setColor(sf::Color::White);
+        newDayButton.setColor(sf::Color::White);
+        newNightButton.setColor(sf::Color::White);
         exitGameButton.setColor(sf::Color::White);
 
-        if (selected == Options::NewGame) {
-            newGameButton.setColor(sf::Color::Yellow);
+        if (selected == Options::NewDay) {
+            newDayButton.setColor(sf::Color::Yellow);
+        } else if (selected == Options::NewNight){
+            newNightButton.setColor(sf::Color::Yellow);
         } else {
             exitGameButton.setColor(sf::Color::Yellow);
         }
@@ -88,7 +117,8 @@ namespace States{
     void MenuState::draw(){
         if(pGraphicsManager){
             pGraphicsManager->getWindow()->setView(sf::View(sf::FloatRect(0, 0, Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)));
-            pGraphicsManager->draw(newGameButton);
+            pGraphicsManager->draw(newDayButton);
+            pGraphicsManager->draw(newNightButton);
             pGraphicsManager->draw(exitGameButton);
         }
     }

@@ -1,9 +1,8 @@
-/* Main Include */
 #include "States/StateStack.h"
 
-/* Program Defined */
 #include "States/State.h"
-#include "States/GameState.h"
+#include "States/DayState.h"
+#include "States/NightState.h"
 //#include "States/LoadingState.h"
 #include "States/MenuState.h"
 /*#include "State/PauseState.h"
@@ -15,7 +14,6 @@
 #include "State/TitleState.h"
 #include "Utility/Context.h"*/
 
-/* Standard Library */
 #include <iostream>
 
 namespace States {
@@ -87,7 +85,6 @@ namespace States {
 
   StateStack::~StateStack() {
     clearStates();
-    //delete m_pContext;
   }
 
   StateStack* StateStack::getInstance() {

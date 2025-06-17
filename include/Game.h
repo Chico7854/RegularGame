@@ -8,7 +8,8 @@
 #include "Stage/DayMountainStage.h"
 
 #include "States/MenuState.h"
-#include "States/GameState.h"
+#include "States/DayState.h"
+#include "States/NightState.h"
 
 #include "Utility/Constants.h"
 #include "Utility/Texture.h"

@@ -1,21 +1,25 @@
 #pragma once
 #include "Managers/GraphicsManager.h"
 #include "States/State.h"
-#include "States/GameState.h"
+#include "States/DayState.h"
+#include "States/NightState.h"
 #include "Event/EventObserver.h"
 #include "Stage/Stage.h"
 #include "Stage/DayMountainStage.h"
+#include "Stage/NightMountainStage.h"
 #include <SFML/Graphics.hpp>
 
 namespace States {
     enum class Options {
-        NewGame,
+        NewDay,
+        NewNight,
         ExitGame
     };
 
     class MenuState : public State, public Event::EventObserver {
         private:
-            sf::Sprite newGameButton;
+            sf::Sprite newDayButton;
+            sf::Sprite newNightButton;
             sf::Sprite exitGameButton;
             Options selected;
 

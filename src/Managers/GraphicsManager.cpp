@@ -104,7 +104,8 @@ namespace Manager {
         loadTexture(BackgroundNightMountain, BACKGROUND_NIGHT_MOUNTAIN);
         loadTexture(Ball, BALL);
         loadTexture(Cannonhead, CANNONHEAD);
-        loadTexture(NewGameButton, NEW_GAME);
+        loadTexture(NewDayButton, NEW_DAY);
+        loadTexture(NewNightButton, NEW_NIGHT);
         loadTexture(ExitGameButton, EXIT_GAME);
     }
 
