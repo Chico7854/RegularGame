@@ -71,6 +71,9 @@ namespace Stage {
         while(std::getline(file, line)){
             for(int i = 0; i < line.size(); i++){
                 if (line[i] == '#') {
+                    createBlock(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                }
+                else if (line[i] == '&') {
                     createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == 'S') {

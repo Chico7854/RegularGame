@@ -30,6 +30,7 @@ namespace Stage {
         protected:
             void createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);
+            void createBlock(const float x, const float y);
             void createPlayer();
             
             void updateView();
