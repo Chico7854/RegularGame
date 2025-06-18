@@ -50,18 +50,17 @@ namespace Entities {
             player->setDx(playerDx);
             player->setIsHurt(true);
 
-            dx *= -1;
-            active = false;
+            setActive(false);
         }
     }
 
     void Projectile::exec() {
-        if (!active) return;
-
         //dx += speed/2;
         dy += Constants::GRAVITY/2; //still no gravity
 
-        if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
+        if (sprite.getGlobalBounds().left + dx < 0 || 
+            sprite.getGlobalBounds().top + dy < 0 || 
+            sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH ) {
             active = false; 
         }   
         moveHitboxSprite(dx, dy);
