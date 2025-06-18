@@ -55,8 +55,13 @@ namespace Entities {
     }
 
     void Projectile::exec() {
-        //dx += speed/2;
-        dy += Constants::GRAVITY/2; //still no gravity
+        if(direction){
+            dx += speed/2;
+        }
+        else{
+            dx -= speed/2;
+        }
+        dy += Constants::GRAVITY/2; 
 
         if (sprite.getGlobalBounds().left + dx < 0 || 
             sprite.getGlobalBounds().top + dy < 0 || 

@@ -27,6 +27,7 @@ namespace Entities {
 
         void setActive(bool act) {this->active = act; }
         bool isActive() const { return active; }
+        void setDirection(bool dir) { direction = dir; }
         void setDx(float dx) { this->dx = dx; }
         void setDy(float dy) { this->dy = dy; }
     };
