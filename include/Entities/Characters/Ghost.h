@@ -2,13 +2,13 @@
 #include "Entities/Characters/Enemy.h"
 
 namespace Entities {
-    class Boss : public Enemy {
+    class Ghost : public Enemy {
         private:
             const int bloodDamage;
 
         public:
-            Boss();
-            ~Boss();
+            Ghost();
+            ~Ghost();
 
             const int getBloodDamage() const;
     };

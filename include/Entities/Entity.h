@@ -18,7 +18,8 @@ namespace Entities {
         Spike,
         Saw,
         Ball,
-        Cannonhead
+        Cannonhead,
+        Ghost
     };
 
     class Entity : public Ent

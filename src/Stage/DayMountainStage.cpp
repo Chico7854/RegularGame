@@ -40,7 +40,6 @@ namespace Stage {
     void DayMountainStage::createEnemies() {
         int youkaiCount = 0;
         int cannonheadCount = 0;
-        std::cout << numberOfCannonheads << "\n" << numberOfYoukais << "\n";
         std::ifstream file;
         std::string line;
         file.open(mapPath);

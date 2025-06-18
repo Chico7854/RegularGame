@@ -2,11 +2,83 @@
 
 namespace Stage {
     NightMountainStage::NightMountainStage():
-        Stage(Texture::ID::BackgroundNightMountain, "../assets/stages/NightMountainMap.txt", Constants::BACKGROUND_NIGHT_WIDTH, Constants::BACKGROUND_NIGHT_HEIGHT)
+        Stage(Texture::ID::BackgroundNightMountain, "../assets/stages/NightMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)
     {
-        sprite.setScale({0.5, 0.5});
+        numberOfGhosts = rand() % (maxEnemies - 3);
+        numberOfGhosts += 3;
         createMap();
     }
 
     NightMountainStage::~NightMountainStage() {}
+
+    void NightMountainStage::createGhost(const float x, const float y) {
+        using namespace Entities;
+        Cannonhead* pCannonhead = new Cannonhead();
+        pCannonhead->setSpritePosition(x, y);
+        pEntityList->append(static_cast<Entity*>(pCannonhead));
+        pCollisionManager->appendEnemy(static_cast<Enemy*>(pCannonhead));
+    }
+
+    void NightMountainStage::createSaw(const float x, const float y) {
+        using namespace Entities;
+        Saw* pSaw = new Saw();
+        pSaw->setSpritePosition(x, y);
+        pEntityList->append(static_cast<Entity*>(pSaw));
+        pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSaw));
+
+    }
+
+    void NightMountainStage::createEnemies() {
+        int youkaiCount = 0;
+        int ghostCount = 0;
+        std::ifstream file;
+        std::string line;
+        file.open(mapPath);
+        if (!file.is_open()) {
+            std::cerr << "Couldnt open stage file\n";
+            exit(1);
+        }
+        int j = 0;
+        while(std::getline(file, line)){
+            for(int i = 0; i < line.size(); i++){
+                if(line[i] == 'y') {
+                    if (youkaiCount < numberOfYoukais) {
+                        createYoukai(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                        youkaiCount++;
+                    }
+                }
+                else if (line[i] == 'c') {
+                    if (ghostCount < numberOfGhosts) {
+                        createGhost(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                        ghostCount++;
+                    }
+                }
+            }
+            j++;
+        }
+        file.close();
+    }
+
+    void NightMountainStage::createObstacles() {
+        std::ifstream file;
+        std::string line;
+        file.open(mapPath);
+        if (!file.is_open()) {
+            std::cerr << "Couldnt open stage file\n";
+            exit(1);
+        }
+        int j = 0;
+        while(std::getline(file, line)){
+            for(int i = 0; i < line.size(); i++){
+                if (line[i] == '#') {
+                    createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                }
+                else if (line[i] == 'S') {
+                    createSaw(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                }
+            }
+            j++;
+        }
+        file.close();
+    }
 }
