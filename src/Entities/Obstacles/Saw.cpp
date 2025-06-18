@@ -5,10 +5,18 @@ namespace Entities {
 	Saw::Saw():
 		Obstacle(Texture::Saw, Constants::SAW_WIDTH, Constants::SAW_HEIGHT, EntityType::Saw, true), 
 		damage(10.f), 
+        dx(Constants::SPEED),
+        dy(0.f),
+        moving_area(128.f),
+        dx_sum(0.f),
 		frame(0)
 	{}
 
 	Saw::~Saw() {}
+
+    void Saw::exec(){
+        moveSaw();
+    }
 
 	void Saw::obstruct(Character* character) {
 		if (character->getType() == EntityType::Player) {
@@ -46,4 +54,22 @@ namespace Entities {
             }
         }
 	}
+
+    void Saw::moveHitboxSprite(float dx, float dy) {
+        sprite.move(dx, dy);
+        updateHitbox();
+    }
+
+    void Saw::moveSaw(){
+        if (dx_sum > moving_area) {
+            dx *= -1; 
+            dx_sum = 0;
+        } else{
+            if (dx > 0)
+                dx_sum += dx;
+            else
+                dx_sum += dx*(-1);
+        }
+        moveHitboxSprite(dx, dy);
+    }
 }

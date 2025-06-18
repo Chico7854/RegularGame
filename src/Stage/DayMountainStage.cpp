@@ -28,6 +28,15 @@ namespace Stage {
 
     }
 
+    void DayMountainStage::createSaw(const float x, const float y) {
+        using namespace Entities;
+        Saw* pSaw = new Saw();
+        pSaw->setSpritePosition(x, y);
+        entityList.append(static_cast<Entity*>(pSaw));
+        pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSaw));
+
+    }
+
     void DayMountainStage::createEnemies() {
         int youkaiCount = 0;
         int cannonheadCount = 0;
@@ -76,6 +85,9 @@ namespace Stage {
                 }
                 else if (line[i] == 's') {
                     createSpike(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                }
+                else if (line[i] == 'S') {
+                    createSaw(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
             }
             j++;
