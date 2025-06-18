@@ -5,11 +5,12 @@
 #include "Entities/Projectile.h"
 #include "../EntityList.h"
 
+
 namespace Entities {
     class Cannonhead : public Enemy {
     private:
         bool direction; // true for right, false for left
-        List::EntityList* projectileList;
+        List::EntityList* pProjectileList;
         int cont_balls;
         float dtime;//Gambiarra, maybe add clock on main loop after
 

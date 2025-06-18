@@ -15,7 +15,7 @@ namespace Stage {
         using namespace Entities;
         Cannonhead* pCannonhead = new Cannonhead();
         pCannonhead->setSpritePosition(x, y);
-        entityList.append(static_cast<Entity*>(pCannonhead));
+        pEntityList->append(static_cast<Entity*>(pCannonhead));
         pCollisionManager->appendEnemy(static_cast<Enemy*>(pCannonhead));
     }
 
@@ -23,7 +23,7 @@ namespace Stage {
         using namespace Entities;
         Spike* pSpike = new Spike();
         pSpike->setSpritePosition(x, y);
-        entityList.append(static_cast<Entity*>(pSpike));
+        pEntityList->append(static_cast<Entity*>(pSpike));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSpike));
 
     }
@@ -32,7 +32,7 @@ namespace Stage {
         using namespace Entities;
         Saw* pSaw = new Saw();
         pSaw->setSpritePosition(x, y);
-        entityList.append(static_cast<Entity*>(pSaw));
+        pEntityList->append(static_cast<Entity*>(pSaw));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSaw));
 
     }

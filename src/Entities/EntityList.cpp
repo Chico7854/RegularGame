@@ -1,11 +1,20 @@
 #include "Entities/EntityList.h"
 
 namespace List {
+    EntityList* EntityList::pSelf(nullptr);
+
     EntityList::EntityList():
         entities()
     {}
 
     EntityList::~EntityList() {}
+
+    EntityList* EntityList::getEntityList() {
+        if (!pSelf) {
+            pSelf = new EntityList();
+        }
+        return pSelf;
+    }
 
     void EntityList::append(Entities::Entity* ent) {
         if (ent) {

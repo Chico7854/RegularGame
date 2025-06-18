@@ -78,7 +78,7 @@ namespace Manager {
         }
         
         while (itBalls != balls.end()) {
-            if (*itBalls) {
+            if (*itBalls && (*itBalls)->isActive() ) {
                 (*itBalls)->obstruct(p1);
             }
             itBalls++;

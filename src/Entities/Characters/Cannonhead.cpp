@@ -8,7 +8,7 @@ namespace Entities {
     Cannonhead::Cannonhead():
         Enemy(Texture::Cannonhead, Constants::CANNONHEAD_WIDTH, Constants::CANNONHEAD_HEIGHT, EntityType::Cannonhead),
         direction(false),
-        projectileList(nullptr),
+        pProjectileList(nullptr),
         cont_balls(0),
         dtime(0.f)
     {
@@ -35,10 +35,10 @@ namespace Entities {
             dtime = 0.f; // Reset dtime after shooting
         }
 
-        if(projectileList){
+        /*if(pProjectileList){
             projectileList->execEntities();
             projectileList->drawEntities();
-        }
+        }*/
 
         // frame += 0.008f * time; // Animation speed
         // if (frame >= 6) {
@@ -78,12 +78,12 @@ namespace Entities {
         }
 
         Manager::CollisionManager::getCollisionManager()->appendProjectile(new_ball);
-        projectileList->append(new_ball);
+        pProjectileList->append(new_ball);
         cont_balls++;
     }
 
     void Cannonhead::setProjectileList(){
-        projectileList = new List::EntityList();
+        pProjectileList = List::EntityList::getEntityList();
     }
 
 }

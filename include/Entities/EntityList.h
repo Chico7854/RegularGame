@@ -6,10 +6,13 @@ namespace List {
     class EntityList {
         private:
             List<Entities::Entity*> entities;
+            static EntityList* pSelf;
 
         public:
             EntityList();
             ~EntityList();
+
+            static EntityList* getEntityList();
 
             void append(Entities::Entity* ent);
             void deleteFromList(Entities::Entity* ent);

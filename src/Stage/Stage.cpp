@@ -3,11 +3,12 @@
 namespace Stage {
     Stage::Stage(const Texture::ID background, const std::string path, const float sprite_width, const float sprite_height):
         Ent(background, sprite_width, sprite_height),
-        entityList(),
+        pEntityList(nullptr),
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
         mapPath(path),
         maxEnemies(10)
     {
+        setEntityList();
         numberOfYoukais = rand() % (maxEnemies - 3);
         numberOfYoukais += 3;
     }
@@ -18,6 +19,10 @@ namespace Stage {
         return player;
     }
 
+    void Stage::setEntityList(){
+        pEntityList = List::EntityList::getEntityList();
+    }
+
     void Stage::drawBackground() {
         draw();
     }
@@ -26,7 +31,7 @@ namespace Stage {
         using namespace Entities;
         Youkai* pYoukai = new Youkai();
         pYoukai->setSpritePosition(x, y);
-        entityList.append(static_cast<Entity*>(pYoukai)); 
+        pEntityList->append(static_cast<Entity*>(pYoukai)); 
         pCollisionManager->appendEnemy(static_cast<Enemy*>(pYoukai));
     }
 
@@ -34,7 +39,7 @@ namespace Stage {
         using namespace Entities;
         Platform* pPlatform = new Platform();
         pPlatform->setSpritePosition(x, y);
-        entityList.append(static_cast<Entity*>(pPlatform));
+        pEntityList->append(static_cast<Entity*>(pPlatform));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform));
     }
 
@@ -42,7 +47,7 @@ namespace Stage {
         using namespace Entities;
         player = new Player(Texture::Player1, Constants::P1_WIDTH, Constants::P1_HEIGHT);
         player->setSpritePosition(0.f, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT);
-        entityList.append(static_cast<Entity*>(player));
+        pEntityList->append(static_cast<Entity*>(player));
         Manager::CollisionManager::getCollisionManager()->setPlayer(player);
     }
 
@@ -59,9 +64,9 @@ namespace Stage {
 
     void Stage::exec() {
         updateView();
-        entityList.execEntities();
+        pEntityList->execEntities();
         pCollisionManager->verifyCollisions();
         drawBackground();
-        entityList.drawEntities();
+        pEntityList->drawEntities();
     }
 }

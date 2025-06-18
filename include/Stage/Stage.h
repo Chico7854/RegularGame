@@ -12,7 +12,7 @@
 namespace Stage {
     class Stage : public Ent {
         protected:
-            List::EntityList entityList;
+            List::EntityList* pEntityList;
             Manager::CollisionManager* pCollisionManager;
             Entities::Player* player;
             std::string mapPath;
@@ -23,6 +23,7 @@ namespace Stage {
             Stage(const Texture::ID background, const std::string path, const float sprite_width, const float sprite_height);
             virtual ~Stage();
 
+            void setEntityList();
             const Entities::Player* getPlayer() const;
             void exec();
 
