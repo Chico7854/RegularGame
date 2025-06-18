@@ -18,6 +18,7 @@ namespace States {
             Manager::GraphicsManager* pGraphicsManager;
             Manager::EventManager* pEventManager;
             States::StateStack* pStateStack;
+            
         public:
             State();
             virtual ~State();
