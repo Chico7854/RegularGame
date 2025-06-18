@@ -96,6 +96,7 @@ namespace Manager {
         loadTexture(Player1, PLAYER1);
         loadTexture(Player2, PLAYER2);
         loadTexture(Youkai, YOUKAI);
+        loadTexture(Ghost, GHOST);
         loadTexture(Platform, PLATFORM);
         loadTexture(Spike, SPIKE);
         loadTexture(Saw, SAW);

@@ -10,6 +10,7 @@ namespace Texture {
         Player1 = 0,
         Player2,
         Youkai, 
+        Ghost,
         Platform,
         Floor,
         Spike,
@@ -31,6 +32,7 @@ namespace Texture {
     constexpr char PLAYER1[] = "../assets/images/samurai_run.png";
     constexpr char PLAYER2[] = "../assets/images/shinobi_run.png";
     constexpr char YOUKAI[] = "../assets/images/youkai_walk.png";
+    constexpr char GHOST[] = "../assets/images/ghost_run.png";
     constexpr char PLATFORM[] = "../assets/images/Tile_10.png";
     constexpr char FLOOR[] = "../assets/images/floor_mine.png";
     constexpr char SPIKE[] = "../assets/images/spike.png";
