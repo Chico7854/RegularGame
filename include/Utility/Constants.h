@@ -16,10 +16,10 @@ namespace Constants {
     constexpr unsigned int YOUKAI_WIDTH = 52;
     constexpr unsigned int PLATFORM_WIDTH = 32;
     constexpr unsigned int PLATFORM_HEIGHT = 32;
-    constexpr unsigned int SPIKE_WIDTH = 25;
-    constexpr unsigned int SPIKE_HEIGHT = 17;
-    constexpr unsigned int SAW_WIDTH = 96;
-    constexpr unsigned int SAW_HEIGHT = 66;
+    constexpr unsigned int SPIKE_WIDTH = 32;
+    constexpr unsigned int SPIKE_HEIGHT = 32;
+    constexpr unsigned int SAW_WIDTH = 64;
+    constexpr unsigned int SAW_HEIGHT = 64;
     constexpr unsigned int BALL_WIDTH = 15;
     constexpr unsigned int BALL_HEIGHT = 15;
     constexpr unsigned int FLOOR_SPRITE_WIDTH = 1000;

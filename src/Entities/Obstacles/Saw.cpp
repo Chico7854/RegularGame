@@ -16,6 +16,12 @@ namespace Entities {
 
     void Saw::exec(){
         moveSaw();
+        /*frame += 0.005f * 5;  
+        if (frame >= 6) {
+            frame = 0;
+        }
+
+        sprite.setTextureRect(sf::IntRect(64 * (int)frame, 0, 64, 64));*/
     }
 
 	void Saw::obstruct(Character* character) {
