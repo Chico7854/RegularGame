@@ -65,7 +65,7 @@ namespace Stage {
     void Stage::exec() {
         updateView();
         pEntityList->execEntities();
-        pCollisionManager->verifyCollisions();
+        pCollisionManager->exec();
         drawBackground();
         pEntityList->drawEntities();
     }

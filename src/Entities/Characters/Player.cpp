@@ -51,6 +51,8 @@ namespace Entities {
             dx = 0;
         }
 
+        setOnGround(false);
+
         // frame += 0.008f * time; // Animation speed
         // if (frame >= 8) {
         //     frame = 0;

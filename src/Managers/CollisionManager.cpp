@@ -55,42 +55,43 @@ namespace Manager {
         return coords1.intersects(coords2);
     }
 
+    void CollisionManager::applyPlayerObstacleCollisions() {
+        std::list<Entities::Obstacle*>::iterator it = obstacles.begin();
+        while (it != obstacles.end()) {
+            if (*it) {
+                (*it)->obstruct(p1);
+            }
+            it++;
+        }
+    }
 
-    void CollisionManager::verifyPlayerCollisions() {
-        std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
-        std::vector<Entities::Enemy*>::iterator itEnemies = enemies.begin();
+    void CollisionManager::applyPlayerEnemiesCollisions() {
+        std::vector<Entities::Enemy*>::iterator it = enemies.begin();
+        while (it != enemies.end()) {
+            if (*it) {
+                (*it)->applyCollisionDamage(p1);
+            }
+            it++;
+        }
+    }
+
+    void CollisionManager::applyPlayerProjectilesCollisions() {
         std::vector<Entities::Projectile*>::iterator itBalls = balls.begin();
-
-        p1->setOnGround(false);
-        
-        while (itEnemies != enemies.end()) {
-            if (*itEnemies) {
-                (*itEnemies)->applyCollisionDamage(p1);
-            }
-            itEnemies++;
-        }
-        
-        while (itObstacles != obstacles.end()) {
-            if (*itObstacles) {
-                (*itObstacles)->obstruct(p1);
-            }
-            itObstacles++;
-        }
-        
         while (itBalls != balls.end()) {
             if (*itBalls) {
                 (*itBalls)->obstruct(p1);
             }
             itBalls++;
         }
+    }
 
-        //collision with initial border
-        if(p1->getSprite()->getPosition().x < 0){
-            p1->setSpritePosition(0, p1->getSprite()->getPosition().y);
+    void CollisionManager::applyPlayerBorderCollision() {
+        if(p1->getGlobalHitbox().left < 0){
+            p1->setSpritePosition(0, p1->getGlobalHitbox().top);
         }
     }
 
-    void CollisionManager::verifyEnemiesCollisions() {
+    void CollisionManager::applyEnemiesObstaclesCollision() {
         std::vector<Entities::Enemy*>::iterator itEnemies = enemies.begin();
         std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
 
@@ -107,17 +108,17 @@ namespace Manager {
         }
     }
 
-    void CollisionManager::verifyProjectileCollisions() {
+    void CollisionManager::applyProjectileCollisions() {
         std::vector<Entities::Projectile*>::iterator itBalls = balls.begin();
 
         while (itBalls != balls.end()) {
             bool erased = false;
             if (*itBalls) {
                 const sf::FloatRect ballCoordinates = (*itBalls)->getGlobalHitbox();
-                std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
-                while (itObstacles != obstacles.end()) {
-                    if (*itObstacles) {
-                        const sf::FloatRect obsCoordinates = (*itObstacles)->getGlobalHitbox();
+                std::list<Entities::Obstacle*>::iterator it = obstacles.begin();
+                while (it != obstacles.end()) {
+                    if (*it) {
+                        const sf::FloatRect obsCoordinates = (*it)->getGlobalHitbox();
                         if((ballCoordinates).intersects(obsCoordinates)){
                             (*itBalls)->setToDelete(true);//will be deleted after on update of entity class
                             balls.erase(itBalls);//erasinf from collision manager vector
@@ -125,7 +126,7 @@ namespace Manager {
                             break;
                         }
                     }
-                    itObstacles++;
+                    it++;
                 }
             }
             if (!erased) {
@@ -146,10 +147,13 @@ namespace Manager {
         }
     }
 
-    void CollisionManager::verifyCollisions() {
-        verifyPlayerCollisions();
-        verifyEnemiesCollisions();
-        verifyProjectileCollisions();
+    void CollisionManager::exec() {
+        applyPlayerEnemiesCollisions();
+        applyPlayerProjectilesCollisions();
+        applyPlayerObstacleCollisions();
+        applyPlayerBorderCollision();
+        applyEnemiesObstaclesCollision();
+        applyProjectileCollisions();
         verifyDelete();
     }
 }

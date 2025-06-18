@@ -31,13 +31,16 @@ namespace Manager {
             void appendProjectile(Entities::Projectile* projectile);
             void setPlayer(Entities::Player* p);
 
-            void verifyCollisions();
+            void exec();
 
         private:
             const bool verifyCollision(Entities::Entity* ent1, Entities::Entity* ent2) const;
-            void verifyPlayerCollisions();
-            void verifyEnemiesCollisions();
-            void verifyProjectileCollisions();
+            void applyPlayerObstacleCollisions();
+            void applyPlayerEnemiesCollisions();
+            void applyPlayerProjectilesCollisions();
+            void applyPlayerBorderCollision();
+            void applyEnemiesObstaclesCollision();
+            void applyProjectileCollisions();
             void verifyDelete();
     };
 }
