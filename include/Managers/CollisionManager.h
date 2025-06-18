@@ -4,6 +4,7 @@
 #include <set>
 
 #include "Entities/Characters/Enemy.h"
+#include "Entities/Characters/Character.h"
 #include "Entities/Obstacles/Obstacle.h"
 #include "Entities/Obstacles/Platform.h"
 #include "Entities/Characters/Player.h"

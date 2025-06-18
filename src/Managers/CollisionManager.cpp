@@ -59,7 +59,7 @@ namespace Manager {
         std::list<Entities::Obstacle*>::iterator it = obstacles.begin();
         while (it != obstacles.end()) {
             if (*it) {
-                (*it)->obstruct(p1);
+                (*it)->obstruct(static_cast<Entities::Character*>(p1));
             }
             it++;
         }
@@ -93,13 +93,13 @@ namespace Manager {
 
     void CollisionManager::applyEnemiesObstaclesCollision() {
         std::vector<Entities::Enemy*>::iterator itEnemies = enemies.begin();
-        std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
 
         while (itEnemies != enemies.end()) {
+            std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
             if (*itEnemies) {
                 while (itObstacles != obstacles.end()) {
                     if (*itObstacles) {
-                        (*itObstacles)->obstruct(*itEnemies);
+                        (*itObstacles)->obstruct(static_cast<Entities::Character*>(*itEnemies));
                     }
                     itObstacles++;
                 }
