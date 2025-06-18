@@ -8,8 +8,8 @@ namespace Constants {
     constexpr int SCALE_TXT = 32;
 
     /*Textures and sprites sizes*/
-    constexpr unsigned int P1_HEIGHT = 104;
-    constexpr unsigned int P1_WIDTH = 73;
+    constexpr unsigned int P1_HEIGHT = 96;
+    constexpr unsigned int P1_WIDTH = 84;
     constexpr unsigned int P2_HEIGHT = 82;
     constexpr unsigned int P2_WIDTH = 80;
     constexpr unsigned int YOUKAI_HEIGHT = 75;
@@ -25,8 +25,8 @@ namespace Constants {
     constexpr unsigned int FLOOR_SPRITE_WIDTH = 1000;
     constexpr unsigned int FLOOR_SPRITE_HEIGHT = 50;
     constexpr unsigned int FLOOR_SPRITE_SCALE = 5;
-    constexpr unsigned int CANNONHEAD_WIDTH = 70;
-    constexpr unsigned int CANNONHEAD_HEIGHT = 50;
+    constexpr unsigned int CANNONHEAD_WIDTH = 64;
+    constexpr unsigned int CANNONHEAD_HEIGHT = 64;
     constexpr unsigned int BACKGROUND_NIGHT_WIDTH = 2304;
     constexpr unsigned int BACKGROUND_NIGHT_HEIGHT = 1296;
 
