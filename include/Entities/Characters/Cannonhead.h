@@ -10,7 +10,7 @@ namespace Entities {
     class Cannonhead : public Enemy {
     private:
         bool direction; // true for right, false for left
-        List::EntityList* pProjectileList;
+        List::EntityList* pEntityList;
         int cont_balls;
         float dtime;//Gambiarra, maybe add clock on main loop after
 
@@ -23,7 +23,7 @@ namespace Entities {
 
         void setBallDirection();
         void shoot();
-        void setProjectileList();
+        void setEntityList();
     };
 }
 

@@ -88,14 +88,6 @@ namespace States{
         }
     }
 
-    void MenuState::keyReleased(const sf::Keyboard::Key key) {
-
-    }
-
-    void MenuState::textEntered(const char character) {
-
-    }
-
     void MenuState::setIsActive(bool isA){
         Event::EventObserver::setIsActive(isA);
     }

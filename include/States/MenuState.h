@@ -33,8 +33,6 @@ namespace States {
 
             void exec() override;
             void keyPressed(const sf::Keyboard::Key key) override;
-            void keyReleased(const sf::Keyboard::Key key) override;
-            void textEntered(const char character) override;
             void setIsActive(bool isA) override;
     };
 }

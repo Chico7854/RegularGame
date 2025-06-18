@@ -8,11 +8,11 @@ namespace Entities {
     Cannonhead::Cannonhead():
         Enemy(Texture::Cannonhead, Constants::CANNONHEAD_WIDTH, Constants::CANNONHEAD_HEIGHT, EntityType::Cannonhead),
         direction(false),
-        pProjectileList(nullptr),
+        pEntityList(nullptr),
         cont_balls(0),
         dtime(0.f)
     {
-        setProjectileList();
+        setEntityList();
     }
 
     Cannonhead::~Cannonhead() {}
@@ -75,12 +75,12 @@ namespace Entities {
         
 
         Manager::CollisionManager::getCollisionManager()->appendProjectile(new_ball);
-        pProjectileList->append(new_ball);
+        pEntityList->append(new_ball);
         cont_balls++;
     }
 
-    void Cannonhead::setProjectileList(){
-        pProjectileList = List::EntityList::getEntityList();
+    void Cannonhead::setEntityList(){
+        pEntityList = List::EntityList::getEntityList();
     }
 
 }

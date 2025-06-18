@@ -13,5 +13,6 @@ namespace States {
             ~NightState();
 
             void exec();
+            void keyPressed(const sf::Keyboard::Key key) {}
     };
 }

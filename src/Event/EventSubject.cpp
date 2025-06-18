@@ -44,24 +44,4 @@ namespace Event {
         it++;
       }
     }
-
-    void EventSubject::notifyKeyReleased(const sf::Keyboard::Key key) {
-      std::list<EventObserver*>::iterator it = observers.begin();
-
-      while (it != observers.end()) {
-        if ((*it)->getIsActive())
-          (*it)->keyReleased(key);
-        it++;
-      }
-    }
-
-    void EventSubject::notifyTextEntered(const char character) {
-      std::list<EventObserver*>::iterator it = observers.begin();
-
-      while (it != observers.end()) {
-        if ((*it)->getIsActive())
-          (*it)->textEntered(character);
-        it++;
-      }
-    }
 };

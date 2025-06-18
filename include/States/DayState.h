@@ -4,7 +4,7 @@
 #include "Stage/DayMountainStage.h"
 
 namespace States {
-    class DayState : public State {
+    class DayState : public State , public Event::EventObserver{
         private:
             Stage::DayMountainStage* dayMountainStage;
 
@@ -13,5 +13,6 @@ namespace States {
             ~DayState();
 
             void exec();
+            void keyPressed(const sf::Keyboard::Key key) {}
     };
 }
