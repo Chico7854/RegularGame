@@ -17,7 +17,7 @@ namespace Entities {
             virtual ~Enemy();
 
             const int getEvilness() const;
-            void applyCollisionDamage(Character* character);
+            void applyCollisionDamage(Player* player);
 
             virtual void save();
             virtual void exec() = 0;

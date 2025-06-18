@@ -22,8 +22,7 @@ namespace Entities {
     {
     }
 
-    void Enemy::applyCollisionDamage(Character* character) {
-        Player* player = static_cast<Player*>(character);
+    void Enemy::applyCollisionDamage(Player* player) {
         const sf::FloatRect charCoordinates = player->getGlobalHitbox();
         const sf::FloatRect obstacleCoordinates = getGlobalHitbox();
 
@@ -42,6 +41,7 @@ namespace Entities {
             player->setDy(playerDy);
             player->setDx(playerDx);
             player->setIsHurt(true);
+            player->moveHitboxSprite(playerDx, playerDy);
 
             dx *= -1;
         }
