@@ -11,6 +11,10 @@ namespace Entities {
             ~Ghost();
 
             const int getBloodDamage() const;
+
+            void damage(Player* player) override;
+            void save() override {}
+            void exec() override {}
     };
 }
 

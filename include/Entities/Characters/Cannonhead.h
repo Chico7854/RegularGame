@@ -18,6 +18,7 @@ namespace Entities {
         Cannonhead();
         virtual ~Cannonhead();
 
+        void damage(Player* player) override;
         void save() override;
         void exec() override;
 

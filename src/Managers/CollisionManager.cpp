@@ -69,7 +69,7 @@ namespace Manager {
         std::vector<Entities::Enemy*>::iterator it = enemies.begin();
         while (it != enemies.end()) {
             if (*it) {
-                (*it)->applyCollisionDamage(p1);
+                (*it)->damage(p1);
             }
             it++;
         }

@@ -14,6 +14,7 @@ namespace Entities {
             Youkai();
             virtual ~Youkai();
 
+            void damage(Player* player) override;
             void save() override;
             void exec() override;
     };
