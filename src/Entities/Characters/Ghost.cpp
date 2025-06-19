@@ -4,7 +4,7 @@ namespace Entities {
     Ghost::Ghost():
         Enemy(Texture::Ghost, Constants::GHOST_WIDTH, Constants::GHOST_HEIGHT, EntityType::Ghost),
         bloodDamage(1),
-        jumpDirection(false),
+        direction(false),
         dtime(0.f)
     {}
 
@@ -14,16 +14,27 @@ namespace Entities {
         return bloodDamage;
     }
 
-    void Ghost::setLandingSpot(){
+    void Ghost::setPlayer(Player* p){
+        p1 = p;
+    }
 
-     }
+    void Ghost::setDirection(){
+        sf::Vector2f playerPos = p1->getPosition();
 
-    void Ghost::setJumpDirection(){
-        
+        if(sprite.getPosition().x > playerPos.x){
+            if(dx>0){
+                dx *= -1;
+            }
+        }
+        else {
+            if(dx<0){
+                dx *= -1;
+            }
+        }
     }
 
     void Ghost::jump(){
-
+        dy += Constants::JUMP_SPEED;
     }
 
     void Ghost::damage(Player* player) {
@@ -54,9 +65,15 @@ namespace Entities {
     void Ghost::exec(){
         /*GAMBIARRA*/
         dy += Constants::GRAVITY;
-        if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
-            dx = -dx; // Reverse direction if hits borders
+        //if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
+        //    dx = -dx; // Reverse direction if hits borders
+        //}
+        dtime += 0.5f;
+        if(dtime > 50.f){//Change logic after 
+            jump(); 
+            dtime = 0.f; // Reset dtime after shooting
         }
+        setDirection();
         moveHitboxSprite(dx, dy);
     }
 }

@@ -8,7 +8,8 @@ namespace Entities {
         private:
             const int bloodDamage;
             float dtime;
-            bool jumpDirection; //True for right
+            bool direction; //True for right
+            Player* p1;
 
         public:
             Ghost();
@@ -16,8 +17,8 @@ namespace Entities {
 
             const int getBloodDamage() const;
 
-            void setLandingSpot();
-            void setJumpDirection();
+            void setPlayer(Player* p);
+            void setDirection();
             void jump();
             void damage(Player* player) override;
             void save() override {}

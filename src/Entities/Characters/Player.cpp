@@ -29,6 +29,10 @@ namespace Entities {
         }
     }
 
+    sf::Vector2f Player::getPosition(){
+        return sprite.getPosition();
+    }
+
     void Player::save()
     {
     }

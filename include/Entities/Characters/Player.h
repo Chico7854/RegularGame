@@ -15,6 +15,7 @@ namespace Entities {
             Player();
             virtual ~Player();
 
+            sf::Vector2f getPosition();
             void save() override;
             void exec() override;
 

@@ -17,6 +17,7 @@ namespace States {
         pGhost->setSpritePosition(x, y);
         pEntityList->append(static_cast<Entity*>(pGhost));
         pCollisionManager->appendEnemy(static_cast<Enemy*>(pGhost));
+        pGhost->setPlayer(player);
     }
 
     void NightMountainStage::createSaw(const float x, const float y) {

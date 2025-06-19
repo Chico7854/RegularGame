@@ -84,9 +84,9 @@ namespace States {
     }
 
     void Stage::createMap() {
+        createPlayer();
         createEnemies();
         createObstacles();
-        createPlayer();
     }
 
     void Stage::exec() {
