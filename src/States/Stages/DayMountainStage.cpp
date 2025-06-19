@@ -1,4 +1,4 @@
-#include "States/DayMountainStage.h"
+#include "States/Stages/DayMountainStage.h"
 
 namespace States {
     DayMountainStage::DayMountainStage():
@@ -25,15 +25,6 @@ namespace States {
         pSpike->setSpritePosition(x, y);
         pEntityList->append(static_cast<Entity*>(pSpike));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSpike));
-
-    }
-
-    void DayMountainStage::createSaw(const float x, const float y) {
-        using namespace Entities;
-        Saw* pSaw = new Saw();
-        pSaw->setSpritePosition(x, y);
-        pEntityList->append(static_cast<Entity*>(pSaw));
-        pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSaw));
 
     }
 
@@ -87,9 +78,6 @@ namespace States {
                 }
                 else if (line[i] == 's') {
                     createSpike(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
-                }
-                else if (line[i] == 'S') {
-                    createSaw(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
             }
             j++;

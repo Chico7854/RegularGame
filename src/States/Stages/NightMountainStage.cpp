@@ -1,4 +1,4 @@
-#include "States/NightMountainStage.h"
+#include "States/Stages/NightMountainStage.h"
 
 namespace States {
     NightMountainStage::NightMountainStage():
@@ -13,10 +13,10 @@ namespace States {
 
     void NightMountainStage::createGhost(const float x, const float y) {
         using namespace Entities;
-        Cannonhead* pCannonhead = new Cannonhead();
-        pCannonhead->setSpritePosition(x, y);
-        pEntityList->append(static_cast<Entity*>(pCannonhead));
-        pCollisionManager->appendEnemy(static_cast<Enemy*>(pCannonhead));
+        Ghost* pGhost = new Ghost();
+        pGhost->setSpritePosition(x, y);
+        pEntityList->append(static_cast<Entity*>(pGhost));
+        pCollisionManager->appendEnemy(static_cast<Enemy*>(pGhost));
     }
 
     void NightMountainStage::createSaw(const float x, const float y) {

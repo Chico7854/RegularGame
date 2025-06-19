@@ -6,9 +6,9 @@
 #include "Managers/EventManager.h"
 #include "Managers/StateManager.h"
 
-#include "States/MenuState.h"
-#include "States/DayMountainStage.h"
-#include "States/NightMountainStage.h"
+#include "States/Menus/MenuState.h"
+#include "States/Stages/DayMountainStage.h"
+#include "States/Stages/NightMountainStage.h"
 
 #include "Utility/Constants.h"
 #include "Utility/Texture.h"

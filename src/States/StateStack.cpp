@@ -1,10 +1,10 @@
 #include "States/StateStack.h"
 
 #include "States/State.h"
-#include "States/DayMountainStage.h"
-#include "States/NightMountainStage.h"
+#include "States/Stages/DayMountainStage.h"
+#include "States/Stages/NightMountainStage.h"
 //#include "States/LoadingState.h"
-#include "States/MenuState.h"
+#include "States/Menus/MenuState.h"
 /*#include "State/PauseState.h"
 #include "State/PlayerSelectState.h"
 #include "State/StageSelectState.h"

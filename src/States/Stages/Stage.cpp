@@ -1,4 +1,4 @@
-#include "States/Stage.h"
+#include "States/Stages/Stage.h"
 
 namespace States {
     Stage::Stage(const Texture::ID background, const std::string path, const float sprite_width, const float sprite_height):

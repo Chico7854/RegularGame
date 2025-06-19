@@ -2,9 +2,9 @@
 #include "Managers/GraphicsManager.h"
 #include "States/State.h"
 #include "Event/EventObserver.h"
-#include "States/Stage.h"
-#include "States/DayMountainStage.h"
-#include "States/NightMountainStage.h"
+#include "States/Stages/Stage.h"
+#include "States/Stages/DayMountainStage.h"
+#include "States/Stages/NightMountainStage.h"
 #include <SFML/Graphics.hpp>
 
 namespace States {
