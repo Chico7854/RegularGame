@@ -14,8 +14,8 @@ namespace Constants {
     constexpr unsigned int P2_WIDTH = 80;
     constexpr unsigned int YOUKAI_HEIGHT = 75;
     constexpr unsigned int YOUKAI_WIDTH = 52;
-    constexpr unsigned int GHOST_WIDTH = 128;
-    constexpr unsigned int GHOST_HEIGHT = 128;
+    constexpr unsigned int GHOST_WIDTH = 64;
+    constexpr unsigned int GHOST_HEIGHT = 96;
     constexpr unsigned int PLATFORM_WIDTH = 32;
     constexpr unsigned int PLATFORM_HEIGHT = 32;
     constexpr unsigned int SPIKE_WIDTH = 32;

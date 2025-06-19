@@ -49,6 +49,7 @@ namespace Entities {
             player->setDy(playerDy);
             player->setDx(playerDx);
             player->setIsHurt(true);
+            player->moveHitboxSprite(playerDx, playerDy);
 
             setActive(false);
         }
