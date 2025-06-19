@@ -8,8 +8,10 @@ namespace Entities {
         private:
             const int bloodDamage;
             float dtime;
-            bool direction; //True for right
+            bool inRange;
             Player* p1;
+            float detection_range;
+            float distanceFromPlayer;
 
         public:
             Ghost();
@@ -17,6 +19,7 @@ namespace Entities {
 
             const int getBloodDamage() const;
 
+            void setDistance();
             void setPlayer(Player* p);
             void setDirection();
             void jump();
