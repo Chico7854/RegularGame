@@ -2,7 +2,7 @@
 #include "Stage.h"
 #include "Entities/Obstacles/Saw.h"
 
-namespace Stage {
+namespace States {
     class NightMountainStage : public Stage {
         private:
             int numberOfGhosts;

@@ -3,7 +3,7 @@
 #include "Entities/Obstacles/Spike.h"
 #include "Entities/Obstacles/Saw.h"
 
-namespace Stage {
+namespace States {
     class DayMountainStage : public Stage {
         private:
             int numberOfCannonheads;

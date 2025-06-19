@@ -3,13 +3,27 @@
 namespace Entities {
     Ghost::Ghost():
         Enemy(Texture::Ghost, Constants::GHOST_WIDTH, Constants::GHOST_HEIGHT, EntityType::Ghost),
-        bloodDamage(1)
+        bloodDamage(1),
+        jumpDirection(false),
+        dtime(0.f)
     {}
 
     Ghost::~Ghost() {}
 
     const int Ghost::getBloodDamage() const {
         return bloodDamage;
+    }
+
+    void Ghost::setLandingSpot(){
+
+     }
+
+    void Ghost::setJumpDirection(){
+        
+    }
+
+    void Ghost::jump(){
+
     }
 
     void Ghost::damage(Player* player) {
@@ -35,5 +49,9 @@ namespace Entities {
 
             dx *= -1;
         }
+    }
+
+    void Ghost::exec(){
+
     }
 }

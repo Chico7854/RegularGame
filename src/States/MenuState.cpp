@@ -8,11 +8,11 @@ namespace States{
         exitGameButton()
     {
         setType(StateType::Menu);
-        pGraphicsManager->resetView();
-        if (pGraphicsManager) {
-            auto texNewDay = pGraphicsManager->getTexture(Texture::NewDayButton);
-            auto texNewNight = pGraphicsManager->getTexture(Texture::NewNightButton);
-            auto texExitGame = pGraphicsManager->getTexture(Texture::ExitGameButton);
+        Manager::GraphicsManager::getGraphicsManager()->resetView();
+        if (Manager::GraphicsManager::getGraphicsManager()) {
+            auto texNewDay = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::NewDayButton);
+            auto texNewNight = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::NewNightButton);
+            auto texExitGame = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::ExitGameButton);
             if (texNewDay) {
                 newDayButton.setTexture(*texNewDay);
             } else {
@@ -75,15 +75,13 @@ namespace States{
             updateSelected();
         } else if (key == sf::Keyboard::Enter) {
             if (selected == Options::NewDay) {
-                Stage::DayMountainStage* newDayStage = new Stage::DayMountainStage();
-                DayState* dayState = new DayState(newDayStage);
-                pStateStack->pushState(States::StateType::GameDay, dayState, true);
+                States::DayMountainStage* newDayStage = new States::DayMountainStage();
+                pStateStack->pushState(States::StateType::GameDay, newDayStage, true);
             } else if (selected == Options::NewNight) {
-                Stage::NightMountainStage* newNightStage = new Stage::NightMountainStage();
-                NightState* nightState = new NightState(newNightStage);
-                pStateStack->pushState(States::StateType::GameNight, nightState, true);
+                States::NightMountainStage* newNightStage = new States::NightMountainStage();
+                pStateStack->pushState(States::StateType::GameNight, newNightStage, true);
             } else if (selected == Options::ExitGame) {
-                pGraphicsManager->closeWindow();
+                Manager::GraphicsManager::getGraphicsManager()->closeWindow();
             }
         }
     }
@@ -107,11 +105,11 @@ namespace States{
     }
 
     void MenuState::draw(){
-        if(pGraphicsManager){
-            pGraphicsManager->getWindow()->setView(sf::View(sf::FloatRect(0, 0, Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)));
-            pGraphicsManager->draw(newDayButton);
-            pGraphicsManager->draw(newNightButton);
-            pGraphicsManager->draw(exitGameButton);
+        if(Manager::GraphicsManager::getGraphicsManager()){
+            Manager::GraphicsManager::getGraphicsManager()->getWindow()->setView(sf::View(sf::FloatRect(0, 0, Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)));
+            Manager::GraphicsManager::getGraphicsManager()->draw(newDayButton);
+            Manager::GraphicsManager::getGraphicsManager()->draw(newNightButton);
+            Manager::GraphicsManager::getGraphicsManager()->draw(exitGameButton);
         }
     }
 }

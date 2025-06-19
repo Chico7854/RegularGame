@@ -1,6 +1,6 @@
-#include "Stage/NightMountainStage.h"
+#include "States/NightMountainStage.h"
 
-namespace Stage {
+namespace States {
     NightMountainStage::NightMountainStage():
         Stage(Texture::ID::BackgroundNightMountain, "../assets/stages/NightMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)
     {
@@ -47,7 +47,7 @@ namespace Stage {
                         youkaiCount++;
                     }
                 }
-                else if (line[i] == 'c') {
+                else if (line[i] == 'g') {
                     if (ghostCount < numberOfGhosts) {
                         createGhost(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                         ghostCount++;

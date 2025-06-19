@@ -1,8 +1,8 @@
 #include "States/StateStack.h"
 
 #include "States/State.h"
-#include "States/DayState.h"
-#include "States/NightState.h"
+#include "States/DayMountainStage.h"
+#include "States/NightMountainStage.h"
 //#include "States/LoadingState.h"
 #include "States/MenuState.h"
 /*#include "State/PauseState.h"

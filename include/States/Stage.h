@@ -3,14 +3,16 @@
 #include <string>
 
 #include "Ent.h"
+#include "States/State.h"
 #include "Entities/EntityList.h"
 #include "Entities/Characters/Youkai.h"
 #include "Entities/Characters/Cannonhead.h"
 #include "Managers/CollisionManager.h"
 #include "Managers/EventManager.h"
+#include "States/StateStack.h"
 
-namespace Stage {
-    class Stage : public Ent {
+namespace States {
+    class Stage : public Ent, public States::State {
         protected:
             List::EntityList* pEntityList;
             Manager::CollisionManager* pCollisionManager;

@@ -1,6 +1,6 @@
-#include "Stage/Stage.h"
+#include "States/Stage.h"
 
-namespace Stage {
+namespace States {
     Stage::Stage(const Texture::ID background, const std::string path, const float sprite_width, const float sprite_height):
         Ent(background, sprite_width, sprite_height),
         pEntityList(nullptr),

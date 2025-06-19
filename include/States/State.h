@@ -15,7 +15,6 @@ namespace States {
     class State {
         protected:
             StateType type;
-            Manager::GraphicsManager* pGraphicsManager;
             Manager::EventManager* pEventManager;
             States::StateStack* pStateStack;
             

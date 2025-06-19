@@ -1,12 +1,10 @@
 #pragma once
 #include "Managers/GraphicsManager.h"
 #include "States/State.h"
-#include "States/DayState.h"
-#include "States/NightState.h"
 #include "Event/EventObserver.h"
-#include "Stage/Stage.h"
-#include "Stage/DayMountainStage.h"
-#include "Stage/NightMountainStage.h"
+#include "States/Stage.h"
+#include "States/DayMountainStage.h"
+#include "States/NightMountainStage.h"
 #include <SFML/Graphics.hpp>
 
 namespace States {

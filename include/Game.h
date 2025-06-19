@@ -5,11 +5,10 @@
 #include "Managers/GraphicsManager.h"
 #include "Managers/EventManager.h"
 #include "Managers/StateManager.h"
-#include "Stage/DayMountainStage.h"
 
 #include "States/MenuState.h"
-#include "States/DayState.h"
-#include "States/NightState.h"
+#include "States/DayMountainStage.h"
+#include "States/NightMountainStage.h"
 
 #include "Utility/Constants.h"
 #include "Utility/Texture.h"

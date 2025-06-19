@@ -1,7 +1,7 @@
 #include "States/State.h"
 
 namespace States{
-    State::State() : pGraphicsManager(Manager::GraphicsManager::getGraphicsManager()),
+    State::State() :
         pEventManager(Manager::EventManager::getEventManager()),
         pStateStack(States::StateStack::getInstance())
     {

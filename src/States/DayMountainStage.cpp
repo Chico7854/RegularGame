@@ -1,6 +1,6 @@
-#include "Stage/DayMountainStage.h"
+#include "States/DayMountainStage.h"
 
-namespace Stage {
+namespace States {
     DayMountainStage::DayMountainStage():
         Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)
     {
