@@ -9,6 +9,7 @@ namespace Entities {
     class Player : public Character {
         private:
             const int swordDamage;
+            const float attack_radius;
 
         public:
             Player(Texture::ID id, const int width, const int height);
@@ -21,5 +22,6 @@ namespace Entities {
 
         private:
             void checkKeyboardInput();
+            void attack();
     };
 }

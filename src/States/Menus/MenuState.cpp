@@ -9,6 +9,17 @@ namespace States{
     {
         setType(StateType::Menu);
         Manager::GraphicsManager::getGraphicsManager()->resetView();
+        initializeAssets();
+        updateSelected();
+
+        if (pEventManager) {
+            pEventManager->attach(this);
+        } else {
+            std::cerr << "pEventManager is nullptr in MenuState constructor!\n";
+        }
+    }
+
+    void MenuState::initializeAssets(){
         if (Manager::GraphicsManager::getGraphicsManager()) {
             auto texNewDay = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::NewDayButton);
             auto texNewNight = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::NewNightButton);
@@ -35,18 +46,11 @@ namespace States{
             exitGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
                                                     128.f * 3));
         }
-        updateSelected();
-
-        if (pEventManager) {
-            pEventManager->attach(this);
-        } else {
-            std::cerr << "pEventManager is nullptr in MenuState constructor!\n";
-        }
     }
 
     MenuState::~MenuState(){
         if (pEventManager)
-        pEventManager->detach(this);
+            pEventManager->detach(this);
     }
 
     void MenuState::exec() {

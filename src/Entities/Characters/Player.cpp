@@ -4,12 +4,14 @@
 namespace Entities {
     Player::Player(Texture::ID id, const int width, const int height):
         Character(id, width, height, EntityType::Player),
-        swordDamage(1)
+        swordDamage(1),
+        attack_radius(64.f)
     {
     }
 
     Player::Player():
-        swordDamage(-1)
+        swordDamage(-1),
+        attack_radius()
     {}
 
     Player::~Player() {}
@@ -27,6 +29,14 @@ namespace Entities {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && getOnGround()) {
             setDy(Constants::JUMP_SPEED);
         }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Slash)) {
+            attack();
+        }
+    }
+
+    void Player::attack(){
+        //Manager::CollisionManager::getCollisionManager();
     }
 
     sf::Vector2f Player::getPosition(){

@@ -21,7 +21,9 @@ namespace Texture {
         Cannonhead,
         NewDayButton,
         NewNightButton,
-        ExitGameButton
+        ExitGameButton,
+        Continue,
+        Menu
     };
 
     struct Texture {
@@ -44,4 +46,7 @@ namespace Texture {
     constexpr char NEW_DAY[] = "../assets/images/daystage.png";
     constexpr char NEW_NIGHT[] = "../assets/images/nightstage.png";
     constexpr char EXIT_GAME[] = "../assets/images/exitgame.png";
+    constexpr char CONTINUE[] = "../assets/images/continue.png";
+    constexpr char MENU[] = "../assets/images/menu.png";
+
 }

@@ -7,6 +7,7 @@ namespace States {
     enum class StateType {
         None = -1,
         Menu,
+        Paused,
         GameDay,
         GameNight,
         TotalStates

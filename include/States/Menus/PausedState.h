@@ -12,12 +12,17 @@ namespace States {
         TotalStates
     };
 
-    class PausedState{
+    class PausedState : public State, public Event::EventObserver{
         private:
+            sf::Sprite continueButton;
+            sf::Sprite menuButton;
             Options selected;
 
+            void initializeAssets(); 
+            void updateSelected();
+            void draw();
         public:
-            PausedState();
+            PausedState(Event::EventSubject* pES);
             ~PausedState();
 
             void exec();

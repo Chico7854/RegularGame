@@ -10,7 +10,7 @@ namespace Entities {
             float dtime;
             bool inRange;
             Player* p1;
-            float detection_range;
+            const float detection_range;
             float distanceFromPlayer;
 
         public:
