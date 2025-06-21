@@ -4,13 +4,12 @@
 namespace Entities {
     Player::Player(Texture::ID id, const int width, const int height):
         Character(id, width, height, EntityType::Player),
-        swordDamage(1),
-        attack_radius(64.f)
+        attack_radius(64.f),
+        isAttacking(false)
     {
     }
 
     Player::Player():
-        swordDamage(-1),
         attack_radius()
     {}
 
@@ -31,32 +30,45 @@ namespace Entities {
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            // collide();
+            isAttacking = true;
         }
     }
 
     void Player::collide(Enemy* pEnemy){
-        const sf::FloatRect charCoordinates = getGlobalHitbox();
+        sf::FloatRect charCoordinates = getGlobalHitbox();
         const sf::FloatRect enemyCoordinates = pEnemy->getGlobalHitbox();
+
+        if (isAttacking) {
+            charCoordinates.width += attack_radius;
+        }
 
 
         if (charCoordinates.intersects(enemyCoordinates)) {
             const float middlePointPlayer = charCoordinates.left + (charCoordinates.width / 2);
             const float middlePointEntity = enemyCoordinates.left + (enemyCoordinates.width / 2);
 
-            const float playerDy = Constants::JUMP_SPEED / 1.5;
-            float playerDx = Constants::SPEED * 2;
-
-            if (middlePointPlayer < middlePointEntity) {
-                playerDx *= -1;
-            }
-
-            setDy(playerDy);
-            setDx(playerDx);
-            setIsHurt(true);
-            moveHitboxSprite(playerDx, playerDy);
-
             pEnemy->setDx(pEnemy->getDx() * -1);
+
+            if (isAttacking) {
+                pEnemy->setLife(pEnemy->getLife() - 1);
+                pEnemy->setIsHurt(true);
+                pEnemy->setDy(Constants::JUMP_SPEED / 1.5);
+                pEnemy->moveHitboxSprite(pEnemy->getDx(), pEnemy->getDy());
+            }
+            else {
+                const float playerDy = Constants::JUMP_SPEED / 1.5;
+                float playerDx = Constants::SPEED * 2;
+
+                if (middlePointPlayer < middlePointEntity) {
+                    playerDx *= -1;
+                }
+
+                pEnemy->damage(this);
+                setDy(playerDy);
+                setDx(playerDx);
+                setIsHurt(true);
+                moveHitboxSprite(playerDx, playerDy);
+            }
         }
     }
 
@@ -72,6 +84,7 @@ namespace Entities {
     {
         if (!isHurt) {
             sprite.setColor(sf::Color::White);
+            isAttacking = false;
             checkKeyboardInput();
         }
         else {

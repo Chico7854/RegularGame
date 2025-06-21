@@ -12,8 +12,8 @@ namespace Entities {
 
     class Player : public Character {
         private:
-            const int swordDamage;
             const float attack_radius;
+            bool isAttacking;
 
         public:
             Player(Texture::ID id, const int width, const int height);
