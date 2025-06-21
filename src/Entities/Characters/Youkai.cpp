@@ -20,12 +20,17 @@ namespace Entities {
 
     void Youkai::exec()
     {
-        /*GAMBIARRA*/
         dy += Constants::GRAVITY;
         if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
             dx = -dx; // Reverse direction if hits borders
         }
         moveHitboxSprite(dx, dy);
+
+        if (isHurt) {
+            sprite.setColor(sf::Color::Red);
+        } else {
+            sprite.setColor(sf::Color::White);
+        }
 
         // frame += 0.008f * time; // Animation speed
         // if (frame >= 6) {

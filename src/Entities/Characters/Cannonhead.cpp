@@ -30,10 +30,15 @@ namespace Entities {
         }
         moveHitboxSprite(dx, dy);
 
-        dtime += 0.5f;
-        if(dtime > 50.f){//Change logic after 
-            shoot(); 
-            dtime = 0.f; // Reset dtime after shooting
+        if (!isHurt) {
+            sprite.setColor(sf::Color::White);
+            dtime += 0.5f;
+            if(dtime > 50.f){//Change logic after 
+                shoot(); 
+                dtime = 0.f; // Reset dtime after shooting
+            }
+        } else {
+            sprite.setColor(sf::Color::Red);
         }
 
         /*if(pProjectileList){

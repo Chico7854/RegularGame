@@ -68,16 +68,23 @@ namespace Entities {
     void Ghost::exec(){
         /*GAMBIARRA*/
         dy += Constants::GRAVITY;
-        //if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
+        // if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
         //    dx = -dx; // Reverse direction if hits borders
-        //}
+        // }
         dtime += 0.5f;
-        if(dtime > 50.f && inRange){//Change logic after 
-            jump(); 
-            dtime = 0.f; // Reset dtime after shooting
+        if (!isHurt) {
+            sprite.setColor(sf::Color::White);
+            if(dtime > 50.f && inRange){//Change logic after 
+                jump(); 
+                dtime = 0.f; // Reset dtime after shooting
+            }
+            setDistance();
+            setDirection();
         }
-        setDistance();
-        setDirection();
+        else {
+            sprite.setColor(sf::Color::Red);
+        }
+
         moveHitboxSprite(dx, dy);
     }
 }

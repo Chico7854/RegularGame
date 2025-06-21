@@ -39,7 +39,8 @@ namespace Entities {
         const sf::FloatRect enemyCoordinates = pEnemy->getGlobalHitbox();
 
         if (isAttacking) {
-            charCoordinates.width += attack_radius;
+            charCoordinates.width += (attack_radius * 2);
+            charCoordinates.left -= attack_radius;
         }
 
 
