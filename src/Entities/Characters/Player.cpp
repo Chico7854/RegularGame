@@ -93,7 +93,7 @@ namespace Entities {
         }
         dy += Constants::GRAVITY;
         if (dy > 20) {
-            dy = 20;
+            dy = 20;    //terminal velocity
         }
         moveHitboxSprite(dx, dy);
         if (!isHurt) {

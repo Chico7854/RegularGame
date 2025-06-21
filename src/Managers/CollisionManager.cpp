@@ -85,8 +85,12 @@ namespace Manager {
     }
 
     void CollisionManager::applyPlayerBorderCollision() {
-        if(p1->getGlobalHitbox().left < 0){
-            p1->setSpritePosition(0, p1->getGlobalHitbox().top);
+        const sf::FloatRect p1Coords = p1->getGlobalHitbox();
+        if(p1Coords.left < 0){
+            p1->setSpritePosition(0, p1Coords.top);
+        }
+        else if ((p1Coords.left + p1Coords.width) > Constants::MAP_WIDTH) {
+            p1->setSpritePosition(Constants::MAP_WIDTH - p1Coords.width, p1Coords.top);
         }
     }
 

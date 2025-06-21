@@ -68,9 +68,9 @@ namespace Entities {
     void Ghost::exec(){
         /*GAMBIARRA*/
         dy += Constants::GRAVITY;
-        // if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
-        //    dx = -dx; // Reverse direction if hits borders
-        // }
+        if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::MAP_WIDTH) {
+           dx = -dx; // Reverse direction if hits borders
+        }
         dtime += 0.5f;
         if (!isHurt) {
             sprite.setColor(sf::Color::White);

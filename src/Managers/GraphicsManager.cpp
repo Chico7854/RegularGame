@@ -135,10 +135,15 @@ namespace Manager {
     }
 
     void GraphicsManager::setViewCenter(float x_player){
-        if(x_player > Constants::WINDOW_WIDTH/2)  //Ensure that camera dont go out off bounds
-            camera_view.setCenter(sf::Vector2f(x_player,Constants::WINDOW_HEIGHT/2)); //Camera just moves on the x axis
-        else
+        if (x_player < Constants::WINDOW_WIDTH / 2) {
             camera_view.setCenter(sf::Vector2f(Constants::WINDOW_WIDTH/2,Constants::WINDOW_HEIGHT/2)); 
+        }
+        else if (x_player > Constants::MAP_WIDTH - (Constants::WINDOW_WIDTH / 2)) {
+            camera_view.setCenter(sf::Vector2f(Constants::MAP_WIDTH - (Constants::WINDOW_WIDTH/2),Constants::WINDOW_HEIGHT/2));
+        }
+        else {  //Ensure that camera dont go out off bounds
+            camera_view.setCenter(sf::Vector2f(x_player,Constants::WINDOW_HEIGHT/2)); //Camera just moves on the x axis
+        }
         window.setView(camera_view);
     }
 

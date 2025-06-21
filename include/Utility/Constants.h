@@ -4,6 +4,7 @@ namespace Constants {
     constexpr unsigned int WINDOW_HEIGHT = 640;//probably is better to change for something divisible by 16 or 32
     constexpr unsigned int WINDOW_WIDTH = 1088;
     constexpr unsigned int FLOOR_HEIGHT = 608;
+    constexpr unsigned int MAP_WIDTH = 6400;
 
     constexpr int SCALE_TXT = 32;
 

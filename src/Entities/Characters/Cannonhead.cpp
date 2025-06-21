@@ -25,7 +25,7 @@ namespace Entities {
     {
         /*GAMBIARRA*/
         dy += Constants::GRAVITY;
-        if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::WINDOW_WIDTH) {
+        if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::MAP_WIDTH) {
             dx = -dx; // Reverse direction if hits borders
         }
         moveHitboxSprite(dx, dy);
