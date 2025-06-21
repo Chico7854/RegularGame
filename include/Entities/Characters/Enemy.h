@@ -4,6 +4,7 @@
 
 #include "Entities/Characters/Character.h"
 #include "Entities/Characters/Player.h"
+#include "Entities/Obstacles/Obstacle.h"
 
 #include "Utility/Texture.h"
 
@@ -21,5 +22,7 @@ namespace Entities {
             virtual void damage(Player* player) = 0;
             virtual void save();
             virtual void exec() = 0;
+
+            void changeDirectionInPlatform();
     };
 }

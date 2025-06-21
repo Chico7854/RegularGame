@@ -21,4 +21,11 @@ namespace Entities {
     void Enemy::save()
     {
     }
+
+    void Enemy::changeDirectionInPlatform() {
+        if (!isHurt) {
+            dx *= -1;
+            moveHitboxSprite(dx, 0);
+        }
+    }
 }

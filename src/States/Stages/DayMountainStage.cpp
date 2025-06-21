@@ -77,7 +77,7 @@ namespace States {
                     createBlock(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == '&') {
-                    if (rand() % 2) 
+                    // if (rand() % 2) 
                         createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == 's') {

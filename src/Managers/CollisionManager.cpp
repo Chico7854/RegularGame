@@ -96,10 +96,13 @@ namespace Manager {
 
     void CollisionManager::applyEnemiesObstaclesCollision() {
         std::vector<Entities::Enemy*>::iterator itEnemies = enemies.begin();
+        Entities::Enemy* pEnemy = nullptr;
 
         while (itEnemies != enemies.end()) {
             std::list<Entities::Obstacle*>::iterator itObstacles = obstacles.begin();
-            if (*itEnemies) {
+            pEnemy = *itEnemies;
+            if (pEnemy) {
+                (pEnemy)->setOnGround(false);
                 while (itObstacles != obstacles.end()) {
                     if (*itObstacles) {
                         (*itObstacles)->obstruct(static_cast<Entities::Character*>(*itEnemies));
@@ -107,6 +110,10 @@ namespace Manager {
                     itObstacles++;
                 }
             }
+            if (pEnemy->getOnGround() == false) {
+                pEnemy->changeDirectionInPlatform();
+            }
+
             itEnemies++;
         }
     }
