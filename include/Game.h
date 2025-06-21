@@ -19,8 +19,6 @@ class Game
 private:
     Manager::GraphicsManager* pGraphicsManager;
     Manager::EventManager* pEventManager;
-    // Manager::StateManager* pStateManager;
-    //Stage::DayMountainStage stage;
     States::StateStack* pStateStack;
     
 public:

@@ -75,10 +75,10 @@ namespace States{
             updateSelected();
         } else if (key == sf::Keyboard::Enter) {
             if (selected == MenuOptions::NewDay) {
-                States::DayMountainStage* newDayStage = new States::DayMountainStage();
+                States::DayMountainStage* newDayStage = nullptr;
                 pStateStack->pushState(States::StateType::GameDay, newDayStage, true);
             } else if (selected == MenuOptions::NewNight) {
-                States::NightMountainStage* newNightStage = new States::NightMountainStage();
+                States::NightMountainStage* newNightStage = nullptr;
                 pStateStack->pushState(States::StateType::GameNight, newNightStage, true);
             } else if (selected == MenuOptions::ExitGame) {
                 Manager::GraphicsManager::getGraphicsManager()->closeWindow();
