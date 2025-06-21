@@ -93,8 +93,8 @@ namespace States {
         if(!isPaused) {
             drawBackground();
             updateView();
-            pEntityList->execEntities();
             pCollisionManager->exec();
+            pEntityList->execEntities();
             pEntityList->drawEntities();
         }
     }

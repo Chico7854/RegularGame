@@ -4,7 +4,6 @@
 
 #include "Managers/GraphicsManager.h"
 #include "Managers/EventManager.h"
-#include "Managers/StateManager.h"
 
 #include "States/Menus/MenuState.h"
 #include "States/Stages/DayMountainStage.h"
