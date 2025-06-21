@@ -23,6 +23,6 @@ namespace Entities {
             virtual void save();
             virtual void exec() = 0;
 
-            void changeDirectionInPlatform();
+            virtual void changeDirectionOnPlatform();
     };
 }

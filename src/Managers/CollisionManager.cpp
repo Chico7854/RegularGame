@@ -111,7 +111,7 @@ namespace Manager {
                 }
             }
             if (pEnemy->getOnGround() == false) {
-                pEnemy->changeDirectionInPlatform();
+                pEnemy->changeDirectionOnPlatform();
             }
 
             itEnemies++;

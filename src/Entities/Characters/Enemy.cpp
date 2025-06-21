@@ -22,7 +22,7 @@ namespace Entities {
     {
     }
 
-    void Enemy::changeDirectionInPlatform() {
+    void Enemy::changeDirectionOnPlatform() {
         if (!isHurt) {
             dx *= -1;
             moveHitboxSprite(dx, 0);

@@ -23,6 +23,7 @@ namespace Entities {
             void setPlayer(Player* p);
             void setDirection();
             void jump();
+            void changeDirectionOnPlatform() override;
             void damage(Player* player) override;
             void save() override {}
             void exec() override;

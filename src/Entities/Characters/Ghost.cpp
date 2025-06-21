@@ -61,6 +61,8 @@ namespace Entities {
         dy += Constants::JUMP_SPEED;
     }
 
+    void Ghost::changeDirectionOnPlatform() {}
+
     void Ghost::damage(Player* player) {
         player->setLife(player->getLife() - 1);
     }
