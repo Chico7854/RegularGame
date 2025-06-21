@@ -2,7 +2,9 @@
 
 namespace States {
     DayMountainStage::DayMountainStage():
-        Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)
+        Stage(Texture::ID::BackgroundDayMountain, 
+            "../assets/stages/DayMountainMap.txt", 
+            Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)
     {
         numberOfCannonheads = rand() % (maxEnemies - 3);
         numberOfCannonheads += 3;

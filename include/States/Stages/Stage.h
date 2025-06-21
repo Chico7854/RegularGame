@@ -11,9 +11,10 @@
 #include "Managers/CollisionManager.h"
 #include "Managers/EventManager.h"
 #include "States/StateStack.h"
+#include "States/Menus/PausedState.h"
 
 namespace States {
-    class Stage : public Ent, public States::State {
+    class Stage : public Ent, public States::State{
         protected:
             List::EntityList* pEntityList;
             Manager::CollisionManager* pCollisionManager;
@@ -21,15 +22,18 @@ namespace States {
             std::string mapPath;
             const int maxEnemies;
             int numberOfYoukais;
+            bool isPaused;
 
         public:
-            Stage(const Texture::ID background, const std::string path, const float sprite_width, const float sprite_height);
+            Stage(const Texture::ID background, const std::string path, 
+                  const float sprite_width, const float sprite_height);
             virtual ~Stage();
 
             void setEntityList();
             const Entities::Player* getPlayer() const;
             void exec();
 
+            void setIsPaused(bool isP);
         protected:
             void createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);
@@ -43,5 +47,8 @@ namespace States {
             virtual void createMap();
 
             void drawBackground();
+
+            void pauseGame();
+            void keyPressed(const sf::Keyboard::Key key);
     };
 }

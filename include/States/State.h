@@ -13,14 +13,14 @@ namespace States {
         TotalStates
     };
 
-    class State {
+    class State : public Event::EventObserver{
         protected:
             StateType type;
             Manager::EventManager* pEventManager;
             States::StateStack* pStateStack;
             
         public:
-            State();
+            State(Event::EventSubject* pES);
             virtual ~State();
 
             virtual void exec() = 0;

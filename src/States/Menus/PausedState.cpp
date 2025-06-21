@@ -1,8 +1,10 @@
 #include "States/Menus/PausedState.h"
+#include "States/Stages/Stage.h"
 
 namespace States{
-    PausedState::PausedState(Event::EventSubject* pES) : selected(Options::Continue),
-        Event::EventObserver(pES),
+    PausedState::PausedState(Stage* stage) : State(Manager::EventManager::getEventManager()),
+        pStage(stage),
+        selected(PausedOptions::Continue),
         continueButton(),
         menuButton()
     {
@@ -10,12 +12,6 @@ namespace States{
         Manager::GraphicsManager::getGraphicsManager()->resetView();
         initializeAssets();
         updateSelected();
-
-        if (pEventManager) {
-            pEventManager->attach(this);
-        } else {
-            std::cerr << "pEventManager is nullptr in MenuState constructor!\n";
-        }
     }
 
     void PausedState::initializeAssets(){
@@ -25,12 +21,12 @@ namespace States{
             if (texContinue) {
                 continueButton.setTexture(*texContinue);
             } else {
-                std::cerr << "NewGameButton texture error\n";
+                std::cerr << "Continue texture error\n";
             }
             if (texMenu) {
                 menuButton.setTexture(*texMenu);
             } else {
-                std::cerr << "NewGameButton texture error\n";
+                std::cerr << "Menu texture error\n";
             }
             
             continueButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
@@ -51,19 +47,27 @@ namespace States{
 
     void PausedState::keyPressed(const sf::Keyboard::Key key){
         if (key == sf::Keyboard::Up) {
-            if (selected == Options::Continue) {
-                selected = Options::Menu;
-            } else if (selected == Options::Menu) {
-                selected = Options:: Continue;
+            if (selected == PausedOptions::Continue) {
+                selected = PausedOptions::Menu;
+            } else if (selected == PausedOptions::Menu) {
+                selected = PausedOptions:: Continue;
             } 
             updateSelected();
         } else if (key == sf::Keyboard::Down) {
-            if (selected == Options::Continue) {
-                selected = Options::Menu;
-            } else if (selected == Options::Menu) {
-                selected = Options::Continue;
+            if (selected == PausedOptions::Continue) {
+                selected = PausedOptions::Menu;
+            } else if (selected == PausedOptions::Menu) {
+                selected = PausedOptions::Continue;
             }
             updateSelected();
+        } else if (key == sf::Keyboard::Enter) {
+            if (selected == PausedOptions::Continue) {
+                pStage->setIsPaused(false);
+                pStateStack->popState();
+            } else if (selected == PausedOptions::Menu) {
+                States::MenuState* newMenu = new States::MenuState;
+                pStateStack->pushState(States::StateType::Menu, newMenu, true);
+            }
         }
     }
 
@@ -71,9 +75,9 @@ namespace States{
         continueButton.setColor(sf::Color::White);
         menuButton.setColor(sf::Color::White);
 
-        if (selected == Options::Continue) {
+        if (selected == PausedOptions::Continue) {
             continueButton.setColor(sf::Color::Yellow);
-        } else if (selected == Options::Menu){
+        } else if (selected == PausedOptions::Menu){
             menuButton.setColor(sf::Color::Yellow);
         }
     }

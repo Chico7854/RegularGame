@@ -2,7 +2,9 @@
 
 namespace States {
     NightMountainStage::NightMountainStage():
-        Stage(Texture::ID::BackgroundNightMountain, "../assets/stages/NightMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)
+        Stage(Texture::ID::BackgroundNightMountain, 
+            "../assets/stages/NightMountainMap.txt", 
+            Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)
     {
         numberOfGhosts = rand() % (maxEnemies - 3);
         numberOfGhosts += 3;

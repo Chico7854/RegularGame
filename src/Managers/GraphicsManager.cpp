@@ -108,6 +108,8 @@ namespace Manager {
         loadTexture(NewDayButton, NEW_DAY);
         loadTexture(NewNightButton, NEW_NIGHT);
         loadTexture(ExitGameButton, EXIT_GAME);
+        loadTexture(Continue, CONTINUE);
+        loadTexture(Menu, MENU);
     }
 
     sf::Texture* GraphicsManager::getTexture(Texture::ID id) {

@@ -1,8 +1,10 @@
 #include "States/Menus/MenuState.h"
+#include "States/Stages/DayMountainStage.h"
+#include "States/Stages/NightMountainStage.h"
 
 namespace States{
-    MenuState::MenuState(Event::EventSubject* pES) : selected(Options::NewDay),
-        Event::EventObserver(pES),
+    MenuState::MenuState() : State(Manager::EventManager::getEventManager()),
+        selected(MenuOptions::NewDay),
         newDayButton(),
         newNightButton(),
         exitGameButton()
@@ -11,12 +13,6 @@ namespace States{
         Manager::GraphicsManager::getGraphicsManager()->resetView();
         initializeAssets();
         updateSelected();
-
-        if (pEventManager) {
-            pEventManager->attach(this);
-        } else {
-            std::cerr << "pEventManager is nullptr in MenuState constructor!\n";
-        }
     }
 
     void MenuState::initializeAssets(){
@@ -27,12 +23,12 @@ namespace States{
             if (texNewDay) {
                 newDayButton.setTexture(*texNewDay);
             } else {
-                std::cerr << "NewGameButton texture error\n";
+                std::cerr << "NewDayButton texture error\n";
             }
             if (texNewNight) {
                 newNightButton.setTexture(*texNewNight);
             } else {
-                std::cerr << "NewGameButton texture error\n";
+                std::cerr << "NewNightButton texture error\n";
             }
             if (texExitGame) {
                 exitGameButton.setTexture(*texExitGame);
@@ -60,31 +56,31 @@ namespace States{
 
     void MenuState::keyPressed(const sf::Keyboard::Key key) {
         if (key == sf::Keyboard::Up) {
-            if (selected == Options::NewDay) {
-                selected = Options::ExitGame;
-            } else if (selected == Options::NewNight) {
-                selected = Options:: NewDay;
-            } else if (selected == Options::ExitGame) {
-                selected = Options::NewNight;
+            if (selected == MenuOptions::NewDay) {
+                selected = MenuOptions::ExitGame;
+            } else if (selected == MenuOptions::NewNight) {
+                selected = MenuOptions:: NewDay;
+            } else if (selected == MenuOptions::ExitGame) {
+                selected = MenuOptions::NewNight;
             }
             updateSelected();
         } else if (key == sf::Keyboard::Down) {
-            if (selected == Options::NewDay) {
-                selected = Options::NewNight;
-            } else if (selected == Options::NewNight) {
-                selected = Options::ExitGame;
-            } else if (selected == Options::ExitGame) {
-                selected = Options::NewDay;
+            if (selected == MenuOptions::NewDay) {
+                selected = MenuOptions::NewNight;
+            } else if (selected == MenuOptions::NewNight) {
+                selected = MenuOptions::ExitGame;
+            } else if (selected == MenuOptions::ExitGame) {
+                selected = MenuOptions::NewDay;
             }
             updateSelected();
         } else if (key == sf::Keyboard::Enter) {
-            if (selected == Options::NewDay) {
+            if (selected == MenuOptions::NewDay) {
                 States::DayMountainStage* newDayStage = new States::DayMountainStage();
                 pStateStack->pushState(States::StateType::GameDay, newDayStage, true);
-            } else if (selected == Options::NewNight) {
+            } else if (selected == MenuOptions::NewNight) {
                 States::NightMountainStage* newNightStage = new States::NightMountainStage();
                 pStateStack->pushState(States::StateType::GameNight, newNightStage, true);
-            } else if (selected == Options::ExitGame) {
+            } else if (selected == MenuOptions::ExitGame) {
                 Manager::GraphicsManager::getGraphicsManager()->closeWindow();
             }
         }
@@ -99,9 +95,9 @@ namespace States{
         newNightButton.setColor(sf::Color::White);
         exitGameButton.setColor(sf::Color::White);
 
-        if (selected == Options::NewDay) {
+        if (selected == MenuOptions::NewDay) {
             newDayButton.setColor(sf::Color::Yellow);
-        } else if (selected == Options::NewNight){
+        } else if (selected == MenuOptions::NewNight){
             newNightButton.setColor(sf::Color::Yellow);
         } else {
             exitGameButton.setColor(sf::Color::Yellow);

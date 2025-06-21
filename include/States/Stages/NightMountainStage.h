@@ -1,9 +1,9 @@
 #pragma once
-#include "Stage.h"
+#include "States/Stages/Stage.h"
 #include "Entities/Obstacles/Saw.h"
 
 namespace States {
-    class NightMountainStage : public Stage {
+    class NightMountainStage : public States::Stage {
         private:
             int numberOfGhosts;
 

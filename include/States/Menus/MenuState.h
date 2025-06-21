@@ -2,31 +2,33 @@
 #include "Managers/GraphicsManager.h"
 #include "States/State.h"
 #include "Event/EventObserver.h"
-#include "States/Stages/Stage.h"
-#include "States/Stages/DayMountainStage.h"
-#include "States/Stages/NightMountainStage.h"
 #include <SFML/Graphics.hpp>
 
 namespace States {
-    enum class Options {
+    class DayMountainStage;
+    class NightMountainStage;
+}
+
+namespace States {
+    enum class MenuOptions {
         NewDay,
         NewNight,
         ExitGame
     };
 
-    class MenuState : public State, public Event::EventObserver {
+    class MenuState : public State {
         private:
             sf::Sprite newDayButton;
             sf::Sprite newNightButton;
             sf::Sprite exitGameButton;
-            Options selected;
+            MenuOptions selected;
 
             void initializeAssets(); 
             void updateSelected();
             void draw();
 
         public:
-            MenuState(Event::EventSubject* pES);
+            MenuState();
             ~MenuState();
 
             void exec() override;

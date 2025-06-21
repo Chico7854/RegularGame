@@ -3,7 +3,7 @@
 #include "States/State.h"
 #include "States/Stages/DayMountainStage.h"
 #include "States/Stages/NightMountainStage.h"
-//#include "States/LoadingState.h"
+#include "States/Menus/PausedState.h"
 #include "States/Menus/MenuState.h"
 /*#include "State/PauseState.h"
 #include "State/PlayerSelectState.h"
@@ -35,12 +35,15 @@ namespace States {
         state = new TitleState; 
         break;*/
       case (StateType::Menu): 
-        state = new MenuState(Manager::EventManager::getEventManager()); 
+        state = new MenuState; 
         break;
       case (StateType::GameDay):
-        state = pState;
+        state = new DayMountainStage;
         break;
       case (StateType::GameNight):
+        state = new NightMountainStage;
+        break;
+      case (StateType::Paused):
         state = pState;
         break;
       /*case (StateType::PlayerSelect): 
@@ -55,9 +58,6 @@ namespace States {
       
       /*case (StateType::Continue):
         state = new LoadingState(false);
-        break;
-      case (StateType::Pause):
-        state = new PauseState(static_cast<GameState*>(pState));
         break;
       case (StateType::EndStage):
         state = new EndStageState(static_cast<GameState*>(pState));

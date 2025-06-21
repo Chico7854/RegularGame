@@ -3,26 +3,30 @@
 #include "Managers/EventManager.h"
 #include "Event/EventObserver.h"
 #include "States/StateStack.h"
+#include "States/Menus/MenuState.h"
 
 namespace States {
-    enum class Options {
+    enum class PausedOptions {
         None = -1,
         Continue,
         Menu,
         TotalStates
     };
 
-    class PausedState : public State, public Event::EventObserver{
+    class Stage;
+
+    class PausedState : public State{
         private:
             sf::Sprite continueButton;
             sf::Sprite menuButton;
-            Options selected;
+            PausedOptions selected;
+            Stage* pStage;
 
             void initializeAssets(); 
             void updateSelected();
             void draw();
         public:
-            PausedState(Event::EventSubject* pES);
+            PausedState(Stage* stage);
             ~PausedState();
 
             void exec();

@@ -1,8 +1,10 @@
 #include "States/Stages/Stage.h"
 
 namespace States {
-    Stage::Stage(const Texture::ID background, const std::string path, const float sprite_width, const float sprite_height):
+    Stage::Stage(const Texture::ID background, const std::string path, 
+                 const float sprite_width, const float sprite_height):
         Ent(background, sprite_width, sprite_height),
+        State(Manager::EventManager::getEventManager()),
         pEntityList(nullptr),
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
         mapPath(path),
@@ -90,10 +92,28 @@ namespace States {
     }
 
     void Stage::exec() {
-        updateView();
-        pEntityList->execEntities();
-        pCollisionManager->exec();
-        drawBackground();
-        pEntityList->drawEntities();
+        if(!isPaused) {
+            drawBackground();
+            updateView();
+            pEntityList->execEntities();
+            pCollisionManager->exec();
+            pEntityList->drawEntities();
+        }
+    }
+
+    void Stage::setIsPaused(bool isP){
+        isPaused = isP;
+    }
+
+    void Stage::pauseGame(){
+        isPaused = true;
+        States::PausedState* paused = new States::PausedState(this);
+        pStateStack->pushState(States::StateType::Paused, paused, false); 
+    }
+
+    void Stage::keyPressed(const sf::Keyboard::Key key){
+        if (key == sf::Keyboard::Escape) {
+            pauseGame();
+        }
     }
 }
