@@ -1,5 +1,5 @@
 #include "Entities/Characters/Player.h"
-#include "Utility/Constants.h"
+#include "Entities/Characters/Enemy.h"
 
 namespace Entities {
     Player::Player(Texture::ID id, const int width, const int height):
@@ -30,13 +30,34 @@ namespace Entities {
             setDy(Constants::JUMP_SPEED);
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Slash)) {
-            attack();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            // collide();
         }
     }
 
-    void Player::attack(){
-        //Manager::CollisionManager::getCollisionManager();
+    void Player::collide(Enemy* pEnemy){
+        const sf::FloatRect charCoordinates = getGlobalHitbox();
+        const sf::FloatRect enemyCoordinates = pEnemy->getGlobalHitbox();
+
+
+        if (charCoordinates.intersects(enemyCoordinates)) {
+            const float middlePointPlayer = charCoordinates.left + (charCoordinates.width / 2);
+            const float middlePointEntity = enemyCoordinates.left + (enemyCoordinates.width / 2);
+
+            const float playerDy = Constants::JUMP_SPEED / 1.5;
+            float playerDx = Constants::SPEED * 2;
+
+            if (middlePointPlayer < middlePointEntity) {
+                playerDx *= -1;
+            }
+
+            setDy(playerDy);
+            setDx(playerDx);
+            setIsHurt(true);
+            moveHitboxSprite(playerDx, playerDy);
+
+            pEnemy->setDx(pEnemy->getDx() * -1);
+        }
     }
 
     sf::Vector2f Player::getPosition(){

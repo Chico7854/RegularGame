@@ -11,6 +11,8 @@
 #include "Entities/Projectile.h"
 #include "Entities/EntityList.h"
 
+#include "Utility/Constants.h"
+
 namespace Manager {
     class CollisionManager {
         private:

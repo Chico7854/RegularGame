@@ -1,9 +1,10 @@
 #pragma once
+#include "Managers/CollisionManager.h"
 #include "Enemy.h"
 #include "Player.h"
-#include "Utility/Texture.h"
 #include "Entities/Projectile.h"
 #include "../EntityList.h"
+#include "Utility/Texture.h"
 
 
 namespace Entities {

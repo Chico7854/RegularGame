@@ -1,5 +1,4 @@
 #include "Managers/CollisionManager.h"
-#include "Utility/Constants.h"
 
 namespace Manager {
     CollisionManager* CollisionManager::pSelf(nullptr);
@@ -69,7 +68,7 @@ namespace Manager {
         std::vector<Entities::Enemy*>::iterator it = enemies.begin();
         while (it != enemies.end()) {
             if (*it) {
-                (*it)->damage(p1);
+                p1->collide(static_cast<Entities::Enemy*>(*it));
             }
             it++;
         }

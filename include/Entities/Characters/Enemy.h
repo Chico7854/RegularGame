@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "Character.h"
-#include "Player.h"
+#include "Entities/Characters/Character.h"
+#include "Entities/Characters/Player.h"
 
 #include "Utility/Texture.h"
 
