@@ -6,7 +6,7 @@
 namespace Entities {
     class Character : public Entity {
         protected:
-            int lives;
+            int lifes;
             float speed;
             float dx, dy;
             bool onGround, isHurt;
@@ -19,13 +19,16 @@ namespace Entities {
             const float getSpeed() const;
             const float getDx() const;
             const float getDy() const;
+            const bool getOnGround() const;
+            const bool getIsHurt() const;
+            const int getLife() const;
             void setSpeed(const float s);
             void setDx(const float x);
             void setDy(const float y);
             void setOnGround(const bool o);
-            const bool getOnGround() const;
             void setIsHurt(const bool hurt);
-            const bool getIsHurt() const;
+            void setLife(const int numLifes);
+
             void moveHitboxSprite(const float dx, const float dy);
 
             virtual void save() = 0;

@@ -15,7 +15,7 @@ namespace Entities {
     Cannonhead::~Cannonhead() {}
 
     void Cannonhead::damage(Player* player) {
-        
+        player->setLife(player->getLife() - 1);
     }
 
     void Cannonhead::save(){

@@ -62,7 +62,7 @@ namespace Entities {
     }
 
     void Ghost::damage(Player* player) {
-        
+        player->setLife(player->getLife() - 1);
     }
 
     void Ghost::exec(){

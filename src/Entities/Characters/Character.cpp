@@ -4,7 +4,7 @@
 namespace Entities {
     Character::Character(Texture::ID id, const int width, const int height, EntityType type):
         Entity(id, width, height, type), 
-        lives(10),
+        lifes(10),
         speed(Constants::SPEED),
         dx(0.f),
         dy(0.f),
@@ -12,7 +12,7 @@ namespace Entities {
         isHurt(false)
     {}
 
-    Character::Character(): Entity(), lives(-1), speed(0), dx(-1.f), dy(0.f) {}
+    Character::Character(): Entity(), lifes(-1), speed(0), dx(-1.f), dy(0.f) {}
 
     Character::~Character()
     {
@@ -28,6 +28,10 @@ namespace Entities {
 
     const float Character::getDy() const {
         return dy;
+    }
+
+    const int Character::getLife() const {
+        return lifes;
     }
 
     void Character::setSpeed(float s) {
@@ -56,6 +60,10 @@ namespace Entities {
 
     const bool Character::getOnGround() const {
         return onGround;
+    }
+
+    void Character::setLife(const int numLifes) {
+        lifes = numLifes;
     }
 
     void Character::moveHitboxSprite(float dx, float dy) {

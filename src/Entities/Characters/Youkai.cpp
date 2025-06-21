@@ -11,7 +11,7 @@ namespace Entities {
     Youkai::~Youkai() {}
 
     void Youkai::damage(Player* player) {
-        
+        player->setLife(player->getLife() - 1);
     }
 
     void Youkai::save()
