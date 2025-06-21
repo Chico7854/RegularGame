@@ -5,7 +5,7 @@
 namespace States {
     class DayMountainStage : public States::Stage {
         private:
-            int numberOfCannonheads;
+            const int maxCannonheads;
 
         public:
             DayMountainStage();

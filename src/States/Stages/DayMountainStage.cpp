@@ -2,12 +2,9 @@
 
 namespace States {
     DayMountainStage::DayMountainStage():
-        Stage(Texture::ID::BackgroundDayMountain, 
-            "../assets/stages/DayMountainMap.txt", 
-            Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)
+        Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT),
+        maxCannonheads(5)
     {
-        numberOfCannonheads = rand() % (maxEnemies - 3);
-        numberOfCannonheads += 3;
         createMap();
     }
 
@@ -44,15 +41,19 @@ namespace States {
         while(std::getline(file, line)){
             for(int i = 0; i < line.size(); i++){
                 if(line[i] == 'y') {
-                    if (youkaiCount < numberOfYoukais) {
-                        createYoukai(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
-                        youkaiCount++;
+                    if (youkaiCount < maxYoukais) {
+                        if ((youkaiCount < 3) || (rand() % 2)) {
+                            createYoukai(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                            youkaiCount++;
+                        }
                     }
                 }
                 else if (line[i] == 'c') {
-                    if (cannonheadCount < numberOfCannonheads) {
-                        createCannonhead(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
-                        cannonheadCount++;
+                    if (cannonheadCount < maxCannonheads) {
+                        if ((cannonheadCount < 3) || (rand() % 2)) {
+                            createCannonhead(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                            cannonheadCount++;
+                        }
                     }
                 }
             }
@@ -76,10 +77,12 @@ namespace States {
                     createBlock(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == '&') {
-                    createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                    if (rand() % 2) 
+                        createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == 's') {
-                    createSpike(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                    if (rand() % 2)
+                        createSpike(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
             }
             j++;

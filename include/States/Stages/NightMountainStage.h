@@ -5,7 +5,7 @@
 namespace States {
     class NightMountainStage : public States::Stage {
         private:
-            int numberOfGhosts;
+            const int maxGhosts;
 
         public:
             NightMountainStage();

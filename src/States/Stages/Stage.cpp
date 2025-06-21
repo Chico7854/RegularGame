@@ -8,11 +8,9 @@ namespace States {
         pEntityList(nullptr),
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
         mapPath(path),
-        maxEnemies(10)
+        maxYoukais(10)
     {
         setEntityList();
-        numberOfYoukais = rand() % (maxEnemies - 3);
-        numberOfYoukais += 3;
     }
 
     Stage::~Stage() {}

@@ -2,12 +2,9 @@
 
 namespace States {
     NightMountainStage::NightMountainStage():
-        Stage(Texture::ID::BackgroundNightMountain, 
-            "../assets/stages/NightMountainMap.txt", 
-            Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)
+        Stage(Texture::ID::BackgroundNightMountain, "../assets/stages/NightMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT),
+        maxGhosts(3)
     {
-        numberOfGhosts = rand() % (maxEnemies - 3);
-        numberOfGhosts += 3;
         createMap();
     }
 
@@ -45,15 +42,19 @@ namespace States {
         while(std::getline(file, line)){
             for(int i = 0; i < line.size(); i++){
                 if(line[i] == 'y') {
-                    if (youkaiCount < numberOfYoukais) {
-                        createYoukai(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
-                        youkaiCount++;
+                    if (youkaiCount < maxYoukais) {
+                        if ((youkaiCount < 3) || (rand() % 2)) {
+                            createYoukai(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                            youkaiCount++;
+                        }
                     }
                 }
                 else if (line[i] == 'g') {
-                    if (ghostCount < numberOfGhosts) {
-                        createGhost(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
-                        ghostCount++;
+                    if (ghostCount < maxGhosts) {
+                        if ((ghostCount < 3) || (rand() % 2)) {
+                            createGhost(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                            ghostCount++;
+                        }
                     }
                 }
             }
@@ -77,10 +78,12 @@ namespace States {
                     createBlock(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == '&') {
-                    createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                    if (rand() % 2)
+                        createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == 'S') {
-                    createSaw(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                    if (rand() % 2)
+                        createSaw(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
             }
             j++;

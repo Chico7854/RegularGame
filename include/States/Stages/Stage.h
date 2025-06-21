@@ -20,8 +20,7 @@ namespace States {
             Manager::CollisionManager* pCollisionManager;
             Entities::Player* player;
             std::string mapPath;
-            const int maxEnemies;
-            int numberOfYoukais;
+            const int maxYoukais;
             bool isPaused;
 
         public:
