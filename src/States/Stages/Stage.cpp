@@ -8,9 +8,20 @@ namespace States {
         pEntityList(nullptr),
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
         mapPath(path),
-        maxYoukais(10)
+        maxYoukais(10),
+        points(0)
     {
         setEntityList();
+        sf::Font* pointsFont = Manager::GraphicsManager::getGraphicsManager()->getFont(Font::Pixelify);
+        if (pointsFont) {
+            pointsText.setFont(*pointsFont);
+            pointsText.setCharacterSize(24);
+            pointsText.setFillColor(sf::Color::White);
+            pointsText.setString("Points: 0");
+            pointsText.setPosition(10, 10); // Posição na tela
+        } else {
+            std::cerr << "Failed to load game font.\n";
+        }
     }
 
     Stage::~Stage() {}
@@ -80,11 +91,16 @@ namespace States {
         player->setSpritePosition(0.f, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT);
         pEntityList->append(static_cast<Entity*>(player));
         Manager::CollisionManager::getCollisionManager()->setPlayer(player);
+        player->setStage(this);
     }
 
     void Stage::updateView() {
         pGraphicsManager->setViewCenter(player->getGlobalHitbox().left);
         sprite.setPosition(pGraphicsManager->getViewPositionX(), 0.f);
+    }
+
+    void Stage::updatePointsText(){
+        pointsText.setString("Points: " + std::to_string(points));
     }
 
     void Stage::createMap() {
@@ -97,14 +113,20 @@ namespace States {
         if(!isPaused) {
             drawBackground();
             updateView();
+            updatePointsText();
             pCollisionManager->exec();
             pEntityList->execEntities();
             pEntityList->drawEntities();
+            pGraphicsManager->draw(pointsText);
         }
     }
 
     void Stage::setIsPaused(bool isP){
         isPaused = isP;
+    }
+
+    void Stage::updatePoints(int p){
+        points += p;
     }
 
     void Stage::pauseGame(){

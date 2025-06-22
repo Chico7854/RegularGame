@@ -14,6 +14,12 @@ namespace Manager {
         listTextures.clear();
         windowSetup();
         loadAllTextures();
+        pixelify.font = new sf::Font();
+        if (!pixelify.font->loadFromFile("../assets/fonts/PixelifySans-Regular.ttf")) {
+            std::cerr << "Failed to load font Pixelify";
+            delete pixelify.font;
+            pixelify.font = nullptr;
+        }
     }
 
     GraphicsManager::~GraphicsManager() {
@@ -129,6 +135,10 @@ namespace Manager {
 
         std::cerr << "Failed to find texture resource." << std::endl;
         return nullptr;
+    }
+
+    sf::Font* GraphicsManager::getFont(Font::ID id){
+        return pixelify.font;
     }
 
     /*View*/

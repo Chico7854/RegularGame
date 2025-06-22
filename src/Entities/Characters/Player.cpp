@@ -1,5 +1,6 @@
 #include "Entities/Characters/Player.h"
 #include "Entities/Characters/Enemy.h"
+#include "States/Stages/Stage.h"
 
 namespace Entities {
     Player::Player(Texture::ID id, const int width, const int height):
@@ -55,6 +56,13 @@ namespace Entities {
                 pEnemy->setIsHurt(true);
                 pEnemy->setDy(Constants::JUMP_SPEED / 1.5);
                 pEnemy->moveHitboxSprite(pEnemy->getDx(), pEnemy->getDy());
+                if (pEnemy->getType() == Entities::EntityType::Youkai){
+                    pStage->updatePoints(5);
+                } else if (pEnemy->getType() == Entities::EntityType::Cannonhead){
+                    pStage->updatePoints(10);
+                } else if (pEnemy->getType() == Entities::EntityType::Ghost){
+                    pStage->updatePoints(15);
+                }
             }
             else {
                 const float playerDy = Constants::JUMP_SPEED / 1.5;
@@ -71,6 +79,14 @@ namespace Entities {
                 moveHitboxSprite(playerDx, playerDy);
             }
         }
+    }
+
+    void Player::setStage(States::Stage* pSt){
+        pStage = pSt;
+    }
+
+    States::Stage* Player::getStage(){
+        return pStage;
     }
 
     sf::Vector2f Player::getPosition(){

@@ -12,6 +12,7 @@
 #include "Managers/EventManager.h"
 #include "States/StateStack.h"
 #include "States/Menus/PausedState.h"
+#include "Utility/Font.h"
 
 namespace States {
     class Stage : public Ent, public States::State{
@@ -20,8 +21,10 @@ namespace States {
             Manager::CollisionManager* pCollisionManager;
             Entities::Player* player;
             std::string mapPath;
+            sf::Text pointsText;
             const int maxYoukais;
             bool isPaused;
+            int points;
 
         public:
             Stage(const Texture::ID background, const std::string path, 
@@ -33,6 +36,7 @@ namespace States {
             void exec();
 
             void setIsPaused(bool isP);
+            void updatePoints(int p);
         protected:
             void createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);
@@ -40,6 +44,7 @@ namespace States {
             void createPlayer();
             
             void updateView();
+            void updatePointsText();
 
             virtual void createEnemies() = 0;
             virtual void createObstacles() = 0;

@@ -7,6 +7,10 @@
 #include "Utility/Texture.h"
 #include "Utility/Constants.h"
 
+namespace States {
+    class Stage;
+}
+
 namespace Entities {
     class Enemy;
 
@@ -14,6 +18,7 @@ namespace Entities {
         private:
             const float attack_radius;
             bool isAttacking;
+            States::Stage* pStage;
 
         public:
             Player(Texture::ID id, const int width, const int height);
@@ -24,6 +29,9 @@ namespace Entities {
             void save() override;
             void exec() override;
             void collide(Enemy* pEnemy);
+
+            void setStage(States::Stage* pSt);
+            States::Stage* getStage();
 
         private:
             void checkKeyboardInput();
