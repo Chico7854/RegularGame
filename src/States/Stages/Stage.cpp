@@ -42,24 +42,28 @@ namespace States {
         Platform* pPlatform3 = new Platform();
         Platform* pPlatform4 = new Platform();
         Platform* pPlatform5 = new Platform();
+        Platform* pPlatform6 = new Platform();
 
         pPlatform1->setSpritePosition(x, y);
         pPlatform2->setSpritePosition(x + Constants::SCALE_TXT * 1, y);
         pPlatform3->setSpritePosition(x + Constants::SCALE_TXT * 2, y);
         pPlatform4->setSpritePosition(x + Constants::SCALE_TXT * 3, y);
         pPlatform5->setSpritePosition(x + Constants::SCALE_TXT * 4, y);
+        pPlatform6->setSpritePosition(x + Constants::SCALE_TXT * 5, y);
 
         pEntityList->append(static_cast<Entity*>(pPlatform1));
         pEntityList->append(static_cast<Entity*>(pPlatform2));
         pEntityList->append(static_cast<Entity*>(pPlatform3));
         pEntityList->append(static_cast<Entity*>(pPlatform4));
         pEntityList->append(static_cast<Entity*>(pPlatform5));
+        pEntityList->append(static_cast<Entity*>(pPlatform6));
 
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform1));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform2));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform3));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform4));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform5));
+        pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform6));
     }
 
     void Stage::createBlock(const float x, const float y) {
