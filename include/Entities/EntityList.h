@@ -20,6 +20,8 @@ namespace List {
             void execEntities();
             void drawEntities();
 
+            void clear();
+
             List<Entities::Entity*>::Iterator begin();
             List<Entities::Entity*>::Iterator end();
     };

@@ -156,12 +156,15 @@ namespace States {
   void StateStack::exec() {
     applyPendingCommands();
 
-    std::vector<State*>::iterator it = m_stack.begin();
+    if (!m_stack.empty()) {
+      m_stack.back()->exec();
+    }
+    /*std::vector<State*>::iterator it = m_stack.begin();
 
     while (it != m_stack.end()) {
       (*it)->exec();
       ++it;
-    }
+    }*/
   }
 
 }

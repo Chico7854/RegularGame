@@ -65,6 +65,10 @@ namespace List {
             it++;
         }
     }
+    
+    void EntityList::clear() { 
+        entities = List<Entities::Entity*>(); //creating a new list the old one is deleted
+    }
 
     List<Entities::Entity*>::Iterator EntityList::begin() {
         return entities.getHead();

@@ -105,6 +105,8 @@ namespace States {
     }
 
     void Stage::createMap() {
+        pEntityList->clear(); //preventing entities leaking to other stages
+        pCollisionManager->clearLists();
         createPlayer();
         createEnemies();
         createObstacles();

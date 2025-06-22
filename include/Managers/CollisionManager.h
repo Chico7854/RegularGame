@@ -35,6 +35,7 @@ namespace Manager {
             void setPlayer(Entities::Player* p);
 
             void exec();
+            void clearLists();
 
         private:
             const bool verifyCollision(Entities::Entity* ent1, Entities::Entity* ent2) const;

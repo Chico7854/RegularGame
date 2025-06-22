@@ -166,4 +166,11 @@ namespace Manager {
         applyProjectileCollisions();
         verifyDelete();
     }
+
+    void CollisionManager::clearLists() { 
+        enemies.clear(); 
+        obstacles.clear(); 
+        balls.clear(); 
+        p1 = nullptr; 
+    }
 }

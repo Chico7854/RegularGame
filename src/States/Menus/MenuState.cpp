@@ -101,10 +101,8 @@ namespace States{
             updateSelected();
         } else if (key == sf::Keyboard::Enter) {
             if (selected == MenuOptions::NewDay) {
-                pStateStack->popState();
                 pStateStack->pushState(States::StateType::GameDay);
             } else if (selected == MenuOptions::NewNight) {
-                pStateStack->popState();
                 pStateStack->pushState(States::StateType::GameNight);
             } else if (selected == MenuOptions::ExitGame) {
                 Manager::GraphicsManager::getGraphicsManager()->closeWindow();
