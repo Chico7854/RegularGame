@@ -8,8 +8,9 @@
 namespace States {
     enum class PausedOptions {
         None = -1,
-        Continue,
-        Menu,
+        Continue = 0,
+        Menu = 1,
+        SaveGame = 2,
         TotalStates
     };
 
@@ -19,6 +20,7 @@ namespace States {
         private:
             sf::Sprite continueButton;
             sf::Sprite menuButton;
+            sf::Sprite saveGameButton;
             PausedOptions selected;
             Stage* pStage;
 

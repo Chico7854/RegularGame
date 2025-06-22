@@ -110,6 +110,9 @@ namespace Manager {
         loadTexture(ExitGameButton, EXIT_GAME);
         loadTexture(Continue, CONTINUE);
         loadTexture(Menu, MENU);
+        loadTexture(Save, SAVE);
+        loadTexture(Load, LOAD);
+        loadTexture(Leaderboard, LEADERBOARD);
     }
 
     sf::Texture* GraphicsManager::getTexture(Texture::ID id) {

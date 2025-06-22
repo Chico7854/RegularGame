@@ -23,7 +23,10 @@ namespace Texture {
         NewNightButton,
         ExitGameButton,
         Continue,
-        Menu
+        Menu,
+        Save,
+        Load,
+        Leaderboard
     };
 
     struct Texture {
@@ -48,5 +51,8 @@ namespace Texture {
     constexpr char EXIT_GAME[] = "../assets/images/exitgame.png";
     constexpr char CONTINUE[] = "../assets/images/continue.png";
     constexpr char MENU[] = "../assets/images/menu.png";
+    constexpr char SAVE[] = "../assets/images/save.png";
+    constexpr char LOAD[] = "../assets/images/load.png";
+    constexpr char LEADERBOARD[] = "../assets/images/leaderboard.png";
 
 }

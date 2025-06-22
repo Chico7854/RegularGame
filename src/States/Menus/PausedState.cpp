@@ -6,7 +6,8 @@ namespace States{
         pStage(stage),
         selected(PausedOptions::Continue),
         continueButton(),
-        menuButton()
+        menuButton(),
+        saveGameButton()
     {
         setType(StateType::Paused);
         Manager::GraphicsManager::getGraphicsManager()->resetView();
@@ -18,6 +19,7 @@ namespace States{
         if (Manager::GraphicsManager::getGraphicsManager()) {
             auto texContinue = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Continue);
             auto texMenu = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Menu);
+            auto texSave = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Save);
             if (texContinue) {
                 continueButton.setTexture(*texContinue);
             } else {
@@ -28,11 +30,18 @@ namespace States{
             } else {
                 std::cerr << "Menu texture error\n";
             }
+            if (texSave) {
+                saveGameButton.setTexture(*texSave);
+            } else {
+                std::cerr << "Save texture error\n";
+            }
             
             continueButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
                                                     128.f));
             menuButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
                                                     128.f * 2));
+            saveGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+                                                    128.f * 3));
         }
     }
 
@@ -48,15 +57,19 @@ namespace States{
     void PausedState::keyPressed(const sf::Keyboard::Key key){
         if (key == sf::Keyboard::Up) {
             if (selected == PausedOptions::Continue) {
-                selected = PausedOptions::Menu;
+                selected = PausedOptions::SaveGame;
             } else if (selected == PausedOptions::Menu) {
                 selected = PausedOptions:: Continue;
-            } 
+            } else if (selected == PausedOptions::SaveGame) {
+                selected = PausedOptions::Menu;
+            }
             updateSelected();
         } else if (key == sf::Keyboard::Down) {
             if (selected == PausedOptions::Continue) {
                 selected = PausedOptions::Menu;
             } else if (selected == PausedOptions::Menu) {
+                selected = PausedOptions::SaveGame;
+            } else if (selected == PausedOptions::SaveGame) {
                 selected = PausedOptions::Continue;
             }
             updateSelected();
@@ -67,18 +80,23 @@ namespace States{
             } else if (selected == PausedOptions::Menu) {
                 States::MenuState* newMenu = new States::MenuState;
                 pStateStack->pushState(States::StateType::Menu, newMenu, true);
+            } else if (selected == PausedOptions::SaveGame) {
+                
             }
-        }
+        } 
     }
 
     void PausedState::updateSelected(){
         continueButton.setColor(sf::Color::White);
         menuButton.setColor(sf::Color::White);
+        saveGameButton.setColor(sf::Color::White);
 
         if (selected == PausedOptions::Continue) {
             continueButton.setColor(sf::Color::Yellow);
         } else if (selected == PausedOptions::Menu){
             menuButton.setColor(sf::Color::Yellow);
+        } else if (selected == PausedOptions::SaveGame) {
+            saveGameButton.setColor(sf::Color::Yellow);
         }
     }
 
@@ -87,6 +105,7 @@ namespace States{
             Manager::GraphicsManager::getGraphicsManager()->getWindow()->setView(sf::View(sf::FloatRect(0, 0, Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)));
             Manager::GraphicsManager::getGraphicsManager()->draw(continueButton);
             Manager::GraphicsManager::getGraphicsManager()->draw(menuButton);
+            Manager::GraphicsManager::getGraphicsManager()->draw(saveGameButton);
         }
     }
 }

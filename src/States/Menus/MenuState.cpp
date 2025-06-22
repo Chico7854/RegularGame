@@ -7,7 +7,9 @@ namespace States{
         selected(MenuOptions::NewDay),
         newDayButton(),
         newNightButton(),
-        exitGameButton()
+        exitGameButton(),
+        loadGameButton(),
+        leaderboard()
     {
         setType(StateType::Menu);
         Manager::GraphicsManager::getGraphicsManager()->resetView();
@@ -20,6 +22,8 @@ namespace States{
             auto texNewDay = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::NewDayButton);
             auto texNewNight = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::NewNightButton);
             auto texExitGame = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::ExitGameButton);
+            auto texLoadGame = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Load);
+            auto texLeaderboard = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Leaderboard);
             if (texNewDay) {
                 newDayButton.setTexture(*texNewDay);
             } else {
@@ -35,12 +39,26 @@ namespace States{
             } else {
                 std::cerr << "ExitGameButton texture err\n";
             }
+            if (texLoadGame) {
+                loadGameButton.setTexture(*texLoadGame);
+            } else {
+                std::cerr << "Load texture err\n";
+            }
+            if (texLeaderboard) {
+                leaderboard.setTexture(*texLeaderboard);
+            } else {
+                std::cerr << "Leader texture err\n";
+            }
             newDayButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
-                                                    128.f));
+                                                    96.f));
             newNightButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
-                                                    128.f * 2));
+                                                    96.f * 2));
+            loadGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+                                                    96.f * 3));
+            leaderboard.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+                                                    96.f * 4));   
             exitGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
-                                                    128.f * 3));
+                                                    96.f * 5));                                                                             
         }
     }
 
@@ -60,14 +78,22 @@ namespace States{
                 selected = MenuOptions::ExitGame;
             } else if (selected == MenuOptions::NewNight) {
                 selected = MenuOptions:: NewDay;
-            } else if (selected == MenuOptions::ExitGame) {
+            } else if (selected == MenuOptions::LoadGame) {
                 selected = MenuOptions::NewNight;
+            } else if (selected == MenuOptions::Leaderboard) {
+                selected = MenuOptions::LoadGame;
+            } else if (selected == MenuOptions::ExitGame) {
+                selected = MenuOptions::Leaderboard;
             }
             updateSelected();
         } else if (key == sf::Keyboard::Down) {
             if (selected == MenuOptions::NewDay) {
                 selected = MenuOptions::NewNight;
             } else if (selected == MenuOptions::NewNight) {
+                selected = MenuOptions::LoadGame;
+            } else if (selected == MenuOptions::LoadGame) {
+                selected = MenuOptions::Leaderboard;
+            } else if (selected == MenuOptions::Leaderboard) {
                 selected = MenuOptions::ExitGame;
             } else if (selected == MenuOptions::ExitGame) {
                 selected = MenuOptions::NewDay;
@@ -82,6 +108,10 @@ namespace States{
                 pStateStack->pushState(States::StateType::GameNight, newNightStage, true);
             } else if (selected == MenuOptions::ExitGame) {
                 Manager::GraphicsManager::getGraphicsManager()->closeWindow();
+            } else if (selected == MenuOptions::LoadGame) {
+                
+            } else if (selected == MenuOptions::Leaderboard) {
+                
             }
         }
     }
@@ -94,13 +124,19 @@ namespace States{
         newDayButton.setColor(sf::Color::White);
         newNightButton.setColor(sf::Color::White);
         exitGameButton.setColor(sf::Color::White);
+        loadGameButton.setColor(sf::Color::White);
+        leaderboard.setColor(sf::Color::White);
 
         if (selected == MenuOptions::NewDay) {
             newDayButton.setColor(sf::Color::Yellow);
-        } else if (selected == MenuOptions::NewNight){
+        } else if (selected == MenuOptions::NewNight) {
             newNightButton.setColor(sf::Color::Yellow);
-        } else {
+        } else if (selected == MenuOptions::ExitGame) {
             exitGameButton.setColor(sf::Color::Yellow);
+        } else if (selected == MenuOptions::LoadGame) {
+            loadGameButton.setColor(sf::Color::Yellow);
+        } else if (selected == MenuOptions::Leaderboard) {
+            leaderboard.setColor(sf::Color::Yellow);
         }
     }
 
@@ -110,6 +146,8 @@ namespace States{
             Manager::GraphicsManager::getGraphicsManager()->draw(newDayButton);
             Manager::GraphicsManager::getGraphicsManager()->draw(newNightButton);
             Manager::GraphicsManager::getGraphicsManager()->draw(exitGameButton);
+            Manager::GraphicsManager::getGraphicsManager()->draw(loadGameButton);
+            Manager::GraphicsManager::getGraphicsManager()->draw(leaderboard);
         }
     }
 }

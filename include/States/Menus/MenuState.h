@@ -13,7 +13,9 @@ namespace States {
     enum class MenuOptions {
         NewDay,
         NewNight,
-        ExitGame
+        ExitGame,
+        LoadGame,
+        Leaderboard
     };
 
     class MenuState : public State {
@@ -21,6 +23,8 @@ namespace States {
             sf::Sprite newDayButton;
             sf::Sprite newNightButton;
             sf::Sprite exitGameButton;
+            sf::Sprite loadGameButton;
+            sf::Sprite leaderboard;
             MenuOptions selected;
 
             void initializeAssets(); 
