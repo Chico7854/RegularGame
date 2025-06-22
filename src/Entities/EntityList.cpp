@@ -28,7 +28,7 @@ namespace List {
     void EntityList::deleteFromList(Entities::Entity* ent){
         if(ent){
             entities.remove(ent);
-            delete ent;
+            ent->setToDelete(true);
         }
     }
 

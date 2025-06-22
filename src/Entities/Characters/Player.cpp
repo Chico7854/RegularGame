@@ -63,6 +63,9 @@ namespace Entities {
                 } else if (pEnemy->getType() == Entities::EntityType::Ghost){
                     pStage->updatePoints(15);
                 }
+                if (pEnemy->getLife() <= 0){
+                    pEnemy->setToDelete(true);  
+                }
             }
             else {
                 const float playerDy = Constants::JUMP_SPEED / 1.5;

@@ -155,6 +155,16 @@ namespace Manager {
                 continue;
             }
         }
+
+        for (int i = 0; i < enemies.size(); i++) {
+            Entities::Enemy* currentEnemy = enemies[i];
+
+            if (!currentEnemy || currentEnemy->getToDelete()) {
+                enemies.erase(enemies.begin() + i);
+                i--;
+                continue;
+            }
+        }
     }
 
     void CollisionManager::exec() {
