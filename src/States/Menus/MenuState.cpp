@@ -101,11 +101,11 @@ namespace States{
             updateSelected();
         } else if (key == sf::Keyboard::Enter) {
             if (selected == MenuOptions::NewDay) {
-                States::DayMountainStage* newDayStage = nullptr;
-                pStateStack->pushState(States::StateType::GameDay, newDayStage, true);
+                pStateStack->popState();
+                pStateStack->pushState(States::StateType::GameDay);
             } else if (selected == MenuOptions::NewNight) {
-                States::NightMountainStage* newNightStage = nullptr;
-                pStateStack->pushState(States::StateType::GameNight, newNightStage, true);
+                pStateStack->popState();
+                pStateStack->pushState(States::StateType::GameNight);
             } else if (selected == MenuOptions::ExitGame) {
                 Manager::GraphicsManager::getGraphicsManager()->closeWindow();
             } else if (selected == MenuOptions::LoadGame) {

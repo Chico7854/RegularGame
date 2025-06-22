@@ -8,9 +8,9 @@
 namespace States {
     enum class PausedOptions {
         None = -1,
-        Continue = 0,
-        Menu = 1,
-        SaveGame = 2,
+        Continue,
+        Menu,
+        SaveGame,
         TotalStates
     };
 

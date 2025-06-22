@@ -78,8 +78,8 @@ namespace States{
                 pStage->setIsPaused(false);
                 pStateStack->popState();
             } else if (selected == PausedOptions::Menu) {
-                States::MenuState* newMenu = new States::MenuState;
-                pStateStack->pushState(States::StateType::Menu, newMenu, true);
+                pStateStack->popState();
+                pStateStack->pushState(States::StateType::Menu);
             } else if (selected == PausedOptions::SaveGame) {
                 
             }
