@@ -101,6 +101,7 @@ namespace States {
 
     void Stage::updatePointsText(){
         pointsText.setString("Points: " + std::to_string(points));
+        pointsText.setPosition(pGraphicsManager->getViewPositionX()+10.f, 10.f);
     }
 
     void Stage::createMap() {
