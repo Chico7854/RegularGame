@@ -7,23 +7,15 @@
 #include "States/Menus/MenuState.h"
 #include "States/Menus/EndMenu.h"
 #include "States/Menus/Leaderboard.h"
-/*#include "State/PauseState.h"
-#include "State/PlayerSelectState.h"
-#include "State/StageSelectState.h"
-#include "State/EndStageState.h"
-#include "State/SaveScoreState.h"
-#include "State/TitleState.h"
-#include "Utility/Context.h"*/
 
 #include <iostream>
 
 namespace States {
-  StateStack* StateStack::m_instance(NULL);
+  StateStack* StateStack::pSelf(NULL);
 
   StateStack::StateStack()
-    : m_stack()
-    , m_commandQueue()
-    //, m_pContext(Context::getInstance())
+    : stack()
+    , commandQueue()
   {
     
   }
@@ -32,9 +24,6 @@ namespace States {
     State* state = NULL;
 
     switch (stateType) {
-      /*case (StateType::Title): 
-        state = new TitleState; 
-        break;*/
       case (StateType::Menu): 
         state = new MenuState; 
         break;
@@ -53,24 +42,6 @@ namespace States {
       case (StateType::Leaderboard):
         state = new Leaderboard;
         break;
-      /*case (StateType::PlayerSelect): 
-        state = new PlayerSelectState; 
-        break;
-      case (StateType::StageSelect): 
-        state = new StageSelectState; 
-        break;
-      case (StateType::Loading):
-        state = new LoadingState;
-        break;*/
-      
-      /*case (StateType::Continue):
-        state = new LoadingState(false);
-        break;
-      
-      case (StateType::SaveScore):
-        state = new SaveScoreState;
-        break;
-      */
       default:
         break;
     }
@@ -80,10 +51,10 @@ namespace States {
       return;
     }
 
-    if (m_stack.size() > 0)
-      m_stack.back()->setIsActive(false);
+    if (stack.size() > 0)
+      stack.back()->setIsActive(false);
 
-    m_stack.push_back(state);
+    stack.push_back(state);
   }
 
   StateStack::~StateStack() {
@@ -91,9 +62,9 @@ namespace States {
   }
 
   StateStack* StateStack::getInstance() {
-    if (m_instance == NULL)
-      m_instance = new StateStack;
-    return m_instance;
+    if (pSelf == NULL)
+      pSelf = new StateStack;
+    return pSelf;
   }
 
   void StateStack::pushState(StateType stateType, State* pState, const bool isReplacing) {
@@ -102,36 +73,36 @@ namespace States {
     if (isReplacing)
       command = Command::Clear;
 
-    m_commandQueue.push(CommandDetails{command, stateType, pState});
+    commandQueue.push(CommandDetails{command, stateType, pState});
   }
 
   void StateStack::popState() {
-    m_commandQueue.push(CommandDetails{Command::Pop, StateType::TotalStates, NULL});
+    commandQueue.push(CommandDetails{Command::Pop, StateType::TotalStates, NULL});
   }
 
   void StateStack::delayedPopState() {
-    States::State* tmpState = m_stack.back();
+    States::State* tmpState = stack.back();
     delete tmpState;
-    m_stack.erase(m_stack.end() - 1);
+    stack.erase(stack.end() - 1);
 
-    if (m_stack.size() > 0)
-      m_stack.back()->setIsActive(true);
+    if (stack.size() > 0)
+      stack.back()->setIsActive(true);
   }
 
   void StateStack::clearStates() {
-    std::vector<State*>::iterator it = m_stack.begin();
+    std::vector<State*>::iterator it = stack.begin();
 
-    while (it != m_stack.end()) {
+    while (it != stack.end()) {
       delete *it;
       ++it;
     } 
 
-    m_stack.clear(); 
+    stack.clear(); 
   }
 
   void StateStack::applyPendingCommands() {
-    while (!m_commandQueue.empty()) {
-      CommandDetails cmd = m_commandQueue.front();
+    while (!commandQueue.empty()) {
+      CommandDetails cmd = commandQueue.front();
 
       switch (cmd.command) {
         case (Command::Push):
@@ -148,26 +119,20 @@ namespace States {
           break;
       }
       
-      m_commandQueue.pop();
+      commandQueue.pop();
     }
   }
 
   State* StateStack::getBack() const {
-    return m_stack.back();
+    return stack.back();
   }
 
   void StateStack::exec() {
     applyPendingCommands();
 
-    if (!m_stack.empty()) {
-      m_stack.back()->exec();
+    if (!stack.empty()) {
+      stack.back()->exec();
     }
-    /*std::vector<State*>::iterator it = m_stack.begin();
-
-    while (it != m_stack.end()) {
-      (*it)->exec();
-      ++it;
-    }*/
   }
 
 }

@@ -30,9 +30,9 @@ namespace States {
       };
 
     private:
-      static StateStack* m_instance;
-      std::vector<State*> m_stack;
-      std::queue<CommandDetails> m_commandQueue;
+      static StateStack* pSelf;
+      std::vector<State*> stack;
+      std::queue<CommandDetails> commandQueue;
 
     private:
       StateStack();
