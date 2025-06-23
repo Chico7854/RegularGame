@@ -174,12 +174,16 @@ namespace States {
                     createBlock(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == '&') {
-                    if (rand() % 2) 
+                    if ((platformCount < 3) || (rand() % 2)) {
                         createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                        platformCount++;
+                    }
                 }
                 else if (line[i] == 's') {
-                    if (rand() % 2)
+                    if ((spikeCount < 3) || (rand() % 2)) {
                         createSpike(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                        spikeCount++;
+                    }
                 }
             }
             j++;

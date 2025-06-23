@@ -153,6 +153,8 @@ namespace States {
     void NightMountainStage::createObstacles() {
         std::ifstream file;
         std::string line;
+        int platformCount = 0;
+        int sawCount = 0;
         file.open(mapPath);
         if (!file.is_open()) {
             std::cerr << "Couldnt open stage file\n";
@@ -165,12 +167,16 @@ namespace States {
                     createBlock(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == '&') {
-                    if (rand() % 2)
+                    if ((platformCount < 3) || (rand() % 2)) {
                         createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                        platformCount++;
+                    }
                 }
                 else if (line[i] == 'S') {
-                    if (rand() % 2)
+                    if ((sawCount < 3) || (rand() % 2)) {
                         createSaw(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                        sawCount++;
+                    }
                 }
             }
             j++;

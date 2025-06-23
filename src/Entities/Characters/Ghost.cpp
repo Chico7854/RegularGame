@@ -7,9 +7,7 @@ namespace Entities {
         inRange(false),
         dtime(0.f),
         detection_range(480.f)
-    {
-        dx = speed;
-    }
+    {}
 
     Ghost::~Ghost() {}
 
