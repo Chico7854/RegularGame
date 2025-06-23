@@ -44,11 +44,18 @@ namespace States {
 
     Entities::Youkai* Stage::createYoukai(const float x, const float y) {
         using namespace Entities;
-        Youkai* pYoukai = new Youkai();
-        pYoukai->setSpritePosition(x, y);
-        pEntityList->append(static_cast<Entity*>(pYoukai)); 
-        pCollisionManager->appendEnemy(static_cast<Enemy*>(pYoukai));
-        return pYoukai;
+        try {
+            Youkai* pYoukai = new Youkai();
+            pYoukai->setSpritePosition(x, y);
+            pEntityList->append(static_cast<Entity*>(pYoukai)); 
+            pCollisionManager->appendEnemy(static_cast<Enemy*>(pYoukai));
+            return pYoukai;
+        }
+        catch (const std::exception& e) {
+            std::cerr << "ERROR Failed to create Youkai: " << e.what() << std::endl;
+            exit(1);
+        }
+        
     }
 
     void Stage::createPlatform(const float x, const float y) {
