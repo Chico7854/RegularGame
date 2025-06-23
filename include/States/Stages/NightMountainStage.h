@@ -8,12 +8,15 @@ namespace States {
             const int maxGhosts;
 
         public:
-            NightMountainStage();
+            NightMountainStage(const bool defaultMap = true);
             ~NightMountainStage();
 
+            void save() override;
+            void loadSave() override;
+
         private:
-            void createGhost(const float x, const float y);
-            void createSaw(const float x, const float y);
+            Entities::Ghost* createGhost(const float x, const float y);
+            Entities::Saw* createSaw(const float x, const float y);
             void createEnemies() override;
             void createObstacles() override;
     };

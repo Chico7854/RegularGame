@@ -40,13 +40,14 @@ namespace States {
             void updatePoints(int p);
             int getPoints();
             void checkEnd();
-            void save();
+            virtual void save() = 0;
+            virtual void loadSave() = 0;
 
         protected:
-            void createYoukai(const float x, const float y);
+            Entities::Youkai* createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);
             void createBlock(const float x, const float y);
-            void createPlayer();
+            void createPlayer(const float x, const float y);
             
             void updateView();
             void updatePointsText();

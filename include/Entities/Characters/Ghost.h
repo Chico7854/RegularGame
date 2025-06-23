@@ -17,10 +17,13 @@ namespace Entities {
             Ghost();
             ~Ghost();
 
+
+            void setPlayer(Player* p);
+            void setDtime(const float dt);
+            void setInRange(const bool inrg);
             const int getBloodDamage() const;
 
             void setDistance();
-            void setPlayer(Player* p);
             void setDirection();
             void jump();
             void changeDirectionOnPlatform() override;

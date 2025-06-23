@@ -105,7 +105,7 @@ namespace States{
             } else if (selected == MenuOptions::NewNight) {
                 pStateStack->pushState(States::StateType::GameNight);
             } else if (selected == MenuOptions::LoadGame) {
-                
+                pStateStack->pushState(States::StateType::LoadGame);
             } else if (selected == MenuOptions::Leaderboard) {
                 pStateStack->pushState(States::StateType::Leaderboard);
             } else if (selected == MenuOptions::ExitGame) {

@@ -24,7 +24,12 @@ namespace Entities {
 
         void setBallDirection();
         void shoot();
+        
         void setEntityList();
+        void setDtime(const float dt);
+        void setDirection(const bool d);
+        const bool getDirection() const;
+        const float getDtime() const;
     };
 }
 

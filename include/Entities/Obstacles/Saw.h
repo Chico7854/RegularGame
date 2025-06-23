@@ -28,6 +28,9 @@ namespace Entities {
 		void moveSaw();
 		void saveDataBuffer();
 
+		void setDx(const float DX);
+		void setDy(const float DY);
+		void setDx_sum(const float dxsum);
 		const float getDamage() const;
 	};
 }

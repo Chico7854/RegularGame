@@ -74,4 +74,19 @@ namespace Entities {
         pEntityList = List::EntityList::getEntityList();
     }
 
+    void Cannonhead::setDtime(const float dt) {
+        dtime = dt;
+    }
+
+    void Cannonhead::setDirection(const bool d) {
+        direction = d;
+    }
+
+    const bool Cannonhead::getDirection() const {
+        return direction;
+    }
+
+    const float Cannonhead::getDtime() const {
+        return dtime;
+    }
 }

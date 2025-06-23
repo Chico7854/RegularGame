@@ -17,7 +17,6 @@ namespace Entities {
 
         Player,
         Youkai,
-        Floor,
         Platform,
         Spike,
         Saw,

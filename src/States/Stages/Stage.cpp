@@ -38,12 +38,13 @@ namespace States {
         draw();
     }
 
-    void Stage::createYoukai(const float x, const float y) {
+    Entities::Youkai* Stage::createYoukai(const float x, const float y) {
         using namespace Entities;
         Youkai* pYoukai = new Youkai();
         pYoukai->setSpritePosition(x, y);
         pEntityList->append(static_cast<Entity*>(pYoukai)); 
         pCollisionManager->appendEnemy(static_cast<Enemy*>(pYoukai));
+        return pYoukai;
     }
 
     void Stage::createPlatform(const float x, const float y) {
@@ -85,10 +86,10 @@ namespace States {
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform));
     }
 
-    void Stage::createPlayer() {
+    void Stage::createPlayer(const float x, const float y) {
         using namespace Entities;
         player = new Player(Texture::Player1, Constants::P1_WIDTH, Constants::P1_HEIGHT);
-        player->setSpritePosition(0.f, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT);
+        player->setSpritePosition(x, y);
         pEntityList->append(static_cast<Entity*>(player));
         Manager::CollisionManager::getCollisionManager()->setPlayer(player);
         player->setStage(this);
@@ -107,7 +108,7 @@ namespace States {
     void Stage::createMap() {
         pEntityList->clear(); //preventing entities leaking to other stages
         pCollisionManager->clearLists();
-        createPlayer();
+        createPlayer(0.f, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT);
         createEnemies();
         createObstacles();
     }
@@ -143,20 +144,6 @@ namespace States {
             States::EndMenu* paused = new States::EndMenu(this);
             pStateStack->pushState(States::StateType::EndMenu, paused, false);
         }
-    }
-
-    void Stage::save() {
-        std::ofstream file("../data/save.json", std::ios::out);     //delete contents of the file
-        json endObj = {};
-        file << "[\n";
-        file.flush();
-        file.close();
-        pEntityList->saveEntities();
-        std::ofstream file2("../data/save.json", std::ios::app);
-        file2 << endObj.dump(4);
-        file2 << "\n]";
-        file2.flush();
-        file2.close();
     }
 
     void Stage::pauseGame(){

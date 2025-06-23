@@ -1,21 +1,111 @@
 #include "States/Stages/DayMountainStage.h"
 
 namespace States {
-    DayMountainStage::DayMountainStage():
+    DayMountainStage::DayMountainStage(const bool defaultMap):
         Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT),
         maxCannonheads(5)
     {
-        createMap();
+        if (defaultMap)
+            createMap();
+        else 
+            loadSave();
     }
 
     DayMountainStage::~DayMountainStage() {}
 
-    void DayMountainStage::createCannonhead(const float x, const float y) {
+    void DayMountainStage::save() {
+        std::ofstream file("../data/save.json", std::ios::out);     //delete contents of the file
+        json stageData = {{"map", "day"}, {"points", points}};
+        json endObj = {{"type",0}};
+        file << "[\n";
+        file << stageData.dump(4) << ",\n";
+        file.flush();
+        file.close();
+        pEntityList->saveEntities();
+        std::ofstream file2("../data/save.json", std::ios::app);
+        file2 << endObj.dump(4);
+        file2 << "\n]";
+        file2.flush();
+        file2.close();
+
+        std::cout << "Game Saved \n";
+    }
+
+    void DayMountainStage::loadSave() {
+        using namespace Entities;
+        std::cout << "Game Loaded \n";
+        pEntityList->clear(); //preventing entities leaking to other stages
+        pCollisionManager->clearLists();
+        std::ifstream file("../data/save.json");
+        json data = json::parse(file);
+        std::vector<json> entities = data.get<std::vector<json>>();
+        for (int i = 1; i < entities.size(); i++) {
+            json entityData = entities[i];
+            EntityType type = entityData["type"];
+            switch (type) {
+                case EntityType::Platform:
+                    createPlatform(entityData["left"], entityData["top"]);
+                    break;
+
+                case EntityType::Spike:
+                    createSpike(entityData["left"], entityData["top"]);
+                    break;
+
+                case EntityType::Player:
+                    createPlayer(entityData["left"], entityData["top"]);
+                    player->setDx(entityData["dx"]);
+                    player->setDy(entityData["dy"]);
+                    player->setLife(entityData["lifes"]);
+                    player->setOnGround(entityData["onGround"]);
+                    player->setIsHurt(entityData["isHurt"]);
+                    player->setIsAttacking(entityData["isAttacking"]);
+                    break;
+                
+                case EntityType::Youkai: {
+                    Youkai* pYoukai = createYoukai(entityData["left"], entityData["top"]);
+                    pYoukai->setDx(entityData["dx"]);
+                    pYoukai->setDy(entityData["dy"]);
+                    pYoukai->setLife(entityData["lifes"]);
+                    pYoukai->setOnGround(entityData["onGround"]);
+                    pYoukai->setIsHurt(entityData["isHurt"]);
+                    break;
+                }
+
+                case EntityType::Cannonhead: {
+                    Cannonhead* pCannonhead = createCannonhead(entityData["left"], entityData["top"]);
+                    pCannonhead->setLife(entityData["lifes"]);
+                    pCannonhead->setDx(entityData["dx"]);
+                    pCannonhead->setDy(entityData["dy"]);
+                    pCannonhead->setOnGround(entityData["onGround"]);
+                    pCannonhead->setIsHurt(entityData["isHurt"]);
+                    pCannonhead->setDirection(entityData["direction"]);
+                    pCannonhead->setDtime(entityData["dtime"]);
+                    break;
+                }
+
+                case EntityType::Ball: {
+                    Projectile* pBall = new Projectile(Texture::Ball, Constants::BALL_WIDTH, Constants::BALL_HEIGHT);
+                    pBall->setSpritePosition(entityData["left"], entityData["top"]);
+                    pBall->setDx(entityData["dx"]);
+                    pBall->setDy(entityData["dy"]);
+                    pBall->setToDelete(entityData["toDelete"]);
+                    pBall->setDirection(entityData["direction"]);
+                    pBall->setActive(entityData["isActive"]);
+                    pEntityList->append(pBall);
+                    pCollisionManager->appendProjectile(pBall);
+                    break;
+                }
+            }
+        }
+    }
+
+    Entities::Cannonhead* DayMountainStage::createCannonhead(const float x, const float y) {
         using namespace Entities;
         Cannonhead* pCannonhead = new Cannonhead();
         pCannonhead->setSpritePosition(x, y);
         pEntityList->append(static_cast<Entity*>(pCannonhead));
         pCollisionManager->appendEnemy(static_cast<Enemy*>(pCannonhead));
+        return pCannonhead;
     }
 
     void DayMountainStage::createSpike(const float x, const float y) {
@@ -24,7 +114,6 @@ namespace States {
         pSpike->setSpritePosition(x, y);
         pEntityList->append(static_cast<Entity*>(pSpike));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSpike));
-
     }
 
     void DayMountainStage::createEnemies() {

@@ -8,6 +8,7 @@ namespace States {
         None = -1,
         Menu,
         Paused,
+        LoadGame,
         GameDay,
         GameNight,
         EndMenu,

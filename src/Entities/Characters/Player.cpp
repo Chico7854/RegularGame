@@ -92,8 +92,12 @@ namespace Entities {
         return pStage;
     }
 
-    sf::Vector2f Player::getPosition(){
-        return sprite.getPosition();
+    void Player::setIsAttacking(const bool isAttack) {
+        isAttacking = isAttack;
+    }
+
+    const bool Player::getIsAttacking() const {
+        return isAttacking;
     }
 
     void Player::save()

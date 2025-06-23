@@ -76,6 +76,18 @@ namespace Entities {
         moveHitboxSprite(dx, dy);
     }
 
+    void Saw::setDx(const float DX) {
+        dx = DX;
+    }
+
+    void Saw::setDy(const float DY) {
+        dy = DY;
+    }
+
+    void Saw::setDx_sum(const float dxsum) {
+        dx_sum = dx_sum;
+    }
+
     const float Saw::getDamage() const {
         return damage;
     }

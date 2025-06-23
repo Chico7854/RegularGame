@@ -18,11 +18,11 @@ namespace Entities {
     }
 
     void Ghost::setDistance(){
-        if(sprite.getPosition().x > p1->getPosition().x) {
-            distanceFromPlayer = sprite.getPosition().x - p1->getPosition().x;
+        if(sprite.getPosition().x > p1->getGlobalHitbox().left) {
+            distanceFromPlayer = sprite.getPosition().x - p1->getGlobalHitbox().left;
         }
         else {
-            distanceFromPlayer = p1->getPosition().x - sprite.getPosition().x;
+            distanceFromPlayer = p1->getGlobalHitbox().left - sprite.getPosition().x;
         }
 
         if (distanceFromPlayer < detection_range){
@@ -38,10 +38,18 @@ namespace Entities {
         p1 = p;
     }
 
+    void Ghost::setDtime(const float dt) {
+        dtime = dt;
+    }
+
+    void Ghost::setInRange(const bool inrg) {
+        inRange = inrg;
+    }
+
     void Ghost::setDirection(){
         if (inRange) {
             dx = speed/2;
-            if(sprite.getPosition().x > p1->getPosition().x){
+            if(sprite.getPosition().x > p1->getGlobalHitbox().left){
                 if(dx>0){
                     dx *= -1;
                 }
@@ -71,7 +79,6 @@ namespace Entities {
         json data = Enemy::saveDataBuffer();
         data["dtime"] = dtime;
         data["inRange"] = inRange;
-        data["distanceFromPlayer"] = distanceFromPlayer;
         buffer << data.dump(4) << ",\n";
         buffer.flush();
     }

@@ -1,31 +1,112 @@
 #include "States/Stages/NightMountainStage.h"
 
 namespace States {
-    NightMountainStage::NightMountainStage():
+    NightMountainStage::NightMountainStage(const bool defaultMap):
         Stage(Texture::ID::BackgroundNightMountain, "../assets/stages/NightMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT),
         maxGhosts(3)
     {
-        createMap();
+        if (defaultMap)
+            createMap();
+        else
+            loadSave();
     }
 
     NightMountainStage::~NightMountainStage() {}
 
-    void NightMountainStage::createGhost(const float x, const float y) {
+    void NightMountainStage::save() {
+        std::ofstream file("../data/save.json", std::ios::out);     //delete contents of the file
+        json stageData = {{"map", "night"}, {"points", points}};
+        json endObj = {{"type",0}};
+        file << "[\n";
+        file << stageData.dump(4) << ",\n";
+        file.flush();
+        file.close();
+        pEntityList->saveEntities();
+        std::ofstream file2("../data/save.json", std::ios::app);
+        file2 << endObj.dump(4);
+        file2 << "\n]";
+        file2.flush();
+        file2.close();
+
+        std::cout << "Game Saved \n";
+    }
+
+    void NightMountainStage::loadSave() {
+        using namespace Entities;
+        std::cout << "Game Loaded \n";
+        pEntityList->clear(); //preventing entities leaking to other stages
+        pCollisionManager->clearLists();
+        std::ifstream file("../data/save.json");
+        json data = json::parse(file);
+        std::vector<json> entities = data.get<std::vector<json>>();
+        for (int i = 1; i < entities.size(); i++) {
+            json entityData = entities[i];
+            EntityType type = entityData["type"];
+            switch (type) {
+                case EntityType::Platform:
+                    createPlatform(entityData["left"], entityData["top"]);
+                    break;
+
+                case EntityType::Saw: {
+                    Saw* pSaw = createSaw(entityData["left"], entityData["top"]);
+                    pSaw->setDx(entityData["dx"]);
+                    pSaw->setDy(entityData["dy"]);
+                    pSaw->setDx_sum(entityData["dx_sum"]);
+                    break;
+                }
+
+                case EntityType::Player:
+                    createPlayer(entityData["left"], entityData["top"]);
+                    player->setDx(entityData["dx"]);
+                    player->setDy(entityData["dy"]);
+                    player->setLife(entityData["lifes"]);
+                    player->setOnGround(entityData["onGround"]);
+                    player->setIsHurt(entityData["isHurt"]);
+                    player->setIsAttacking(entityData["isAttacking"]);
+                    break;
+                
+                case EntityType::Youkai: {
+                    Youkai* pYoukai = createYoukai(entityData["left"], entityData["top"]);
+                    pYoukai->setDx(entityData["dx"]);
+                    pYoukai->setDy(entityData["dy"]);
+                    pYoukai->setLife(entityData["lifes"]);
+                    pYoukai->setOnGround(entityData["onGround"]);
+                    pYoukai->setIsHurt(entityData["isHurt"]);
+                    break;
+                }
+
+                case EntityType::Ghost: {
+                    Ghost* pGhost = createGhost(entityData["left"], entityData["top"]);
+                    pGhost->setLife(entityData["lifes"]);
+                    pGhost->setDx(entityData["dx"]);
+                    pGhost->setDy(entityData["dy"]);
+                    pGhost->setOnGround(entityData["onGround"]);
+                    pGhost->setIsHurt(entityData["isHurt"]);
+                    pGhost->setDtime(entityData["dtime"]);
+                    pGhost->setInRange(entityData["inRange"]);
+                    break;
+                }
+            }
+        }
+    }
+
+    Entities::Ghost* NightMountainStage::createGhost(const float x, const float y) {
         using namespace Entities;
         Ghost* pGhost = new Ghost();
         pGhost->setSpritePosition(x, y);
         pEntityList->append(static_cast<Entity*>(pGhost));
         pCollisionManager->appendEnemy(static_cast<Enemy*>(pGhost));
         pGhost->setPlayer(player);
+        return pGhost;
     }
 
-    void NightMountainStage::createSaw(const float x, const float y) {
+    Entities::Saw* NightMountainStage::createSaw(const float x, const float y) {
         using namespace Entities;
         Saw* pSaw = new Saw();
         pSaw->setSpritePosition(x, y);
         pEntityList->append(static_cast<Entity*>(pSaw));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSaw));
-
+        return pSaw;
     }
 
     void NightMountainStage::createEnemies() {

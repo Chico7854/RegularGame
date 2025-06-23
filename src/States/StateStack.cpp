@@ -42,6 +42,37 @@ namespace States {
       case (StateType::Leaderboard):
         state = new Leaderboard;
         break;
+      case (StateType::LoadGame): {
+        std::ifstream file("../data/save.json");
+        json jsonData = json::parse(file);
+        std::vector<json> data = jsonData.get<std::vector<json>>();
+        if (data[0]["map"] == "day") {
+          state = new DayMountainStage(false);
+        }
+        else if (data[0]["map"] == "night") {
+          state = new NightMountainStage(false);
+        }
+      }
+        
+        
+      /*case (StateType::PlayerSelect): 
+        state = new PlayerSelectState; 
+        break;
+      case (StateType::StageSelect): 
+        state = new StageSelectState; 
+        break;
+      case (StateType::Loading):
+        state = new LoadingState;
+        break;*/
+      
+      /*case (StateType::Continue):
+        state = new LoadingState(false);
+        break;
+      
+      case (StateType::SaveScore):
+        state = new SaveScoreState;
+        break;
+      */
       default:
         break;
     }

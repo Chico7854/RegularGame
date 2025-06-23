@@ -25,13 +25,14 @@ namespace Entities {
             Player();
             virtual ~Player();
 
-            sf::Vector2f getPosition();
             void save() override;
             void exec() override;
             void collide(Enemy* pEnemy);
 
             void setStage(States::Stage* pSt);
             States::Stage* getStage();
+            void setIsAttacking(const bool isAttack);
+            const bool getIsAttacking() const;
 
         private:
             void checkKeyboardInput();

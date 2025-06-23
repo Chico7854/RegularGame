@@ -8,11 +8,14 @@ namespace States {
             const int maxCannonheads;
 
         public:
-            DayMountainStage();
+            DayMountainStage(const bool defaultMap = true);
             ~DayMountainStage();
 
+            void save() override;
+            void loadSave() override;
+
         private:
-            void createCannonhead(const float x, const float y);
+            Entities::Cannonhead* createCannonhead(const float x, const float y);
             void createSpike(const float x, const float y);
             void createEnemies() override;
             void createObstacles() override;
