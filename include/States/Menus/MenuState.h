@@ -15,6 +15,7 @@ namespace States {
         NewNight,
         ExitGame,
         LoadGame,
+        GameMode,
         Leaderboard
     };
 
@@ -25,7 +26,11 @@ namespace States {
             sf::Sprite exitGameButton;
             sf::Sprite loadGameButton;
             sf::Sprite leaderboard;
+            sf::Sprite singleplayer;
+            sf::Sprite multiplayer;
             MenuOptions selected;
+
+            bool isSingle;
 
             void initializeAssets(); 
             void updateSelected();

@@ -9,7 +9,10 @@ namespace States{
         newNightButton(),
         exitGameButton(),
         loadGameButton(),
-        leaderboard()
+        leaderboard(),
+        singleplayer(),
+        multiplayer(),
+        isSingle(true)
     {
         setType(StateType::Menu);
         Manager::GraphicsManager::getGraphicsManager()->resetView();
@@ -24,6 +27,8 @@ namespace States{
             auto texExitGame = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::ExitGameButton);
             auto texLoadGame = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Load);
             auto texLeaderboard = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Leaderboard);
+            auto texSingle = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Single);
+            auto texMulti = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Multi);
             if (texNewDay) {
                 newDayButton.setTexture(*texNewDay);
             } else {
@@ -49,16 +54,30 @@ namespace States{
             } else {
                 std::cerr << "Leader texture err\n";
             }
+            if (texSingle) {
+                singleplayer.setTexture(*texSingle);
+            } else {
+                std::cerr << "Single texture err\n";
+            }
+            if (texMulti) {
+                multiplayer.setTexture(*texMulti);
+            } else {
+                std::cerr << "Multi texture err\n";
+            }
             newDayButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
                                                     96.f));
             newNightButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
                                                     96.f * 2));
-            loadGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+            singleplayer.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
                                                     96.f * 3));
+            multiplayer.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+                                                    96.f * 3));
+            loadGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+                                                    96.f * 4));
             leaderboard.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
-                                                    96.f * 4));   
+                                                    96.f * 5));   
             exitGameButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
-                                                    96.f * 5));                                                                             
+                                                    96.f * 6));                                                                             
         }
     }
 
@@ -78,8 +97,10 @@ namespace States{
                 selected = MenuOptions::ExitGame;
             } else if (selected == MenuOptions::NewNight) {
                 selected = MenuOptions:: NewDay;
-            } else if (selected == MenuOptions::LoadGame) {
+            } else if (selected == MenuOptions::GameMode) {
                 selected = MenuOptions::NewNight;
+            } else if (selected == MenuOptions::LoadGame) {
+                selected = MenuOptions::GameMode;
             } else if (selected == MenuOptions::Leaderboard) {
                 selected = MenuOptions::LoadGame;
             } else if (selected == MenuOptions::ExitGame) {
@@ -90,6 +111,8 @@ namespace States{
             if (selected == MenuOptions::NewDay) {
                 selected = MenuOptions::NewNight;
             } else if (selected == MenuOptions::NewNight) {
+                selected = MenuOptions::GameMode;
+            } else if (selected == MenuOptions::GameMode) {
                 selected = MenuOptions::LoadGame;
             } else if (selected == MenuOptions::LoadGame) {
                 selected = MenuOptions::Leaderboard;
@@ -102,8 +125,11 @@ namespace States{
         } else if (key == sf::Keyboard::Enter) {
             if (selected == MenuOptions::NewDay) {
                 pStateStack->pushState(States::StateType::GameDay);
-            } else if (selected == MenuOptions::NewNight) {
+            } else if (selected == MenuOptions::NewNight) {//
                 pStateStack->pushState(States::StateType::GameNight);
+            } else if (selected == MenuOptions::GameMode) {
+                if(isSingle){ isSingle = false; }
+                else { isSingle = true; }
             } else if (selected == MenuOptions::LoadGame) {
                 pStateStack->pushState(States::StateType::LoadGame);
             } else if (selected == MenuOptions::Leaderboard) {
@@ -124,6 +150,8 @@ namespace States{
         exitGameButton.setColor(sf::Color::White);
         loadGameButton.setColor(sf::Color::White);
         leaderboard.setColor(sf::Color::White);
+        singleplayer.setColor(sf::Color::White);
+        multiplayer.setColor(sf::Color::White);
 
         if (selected == MenuOptions::NewDay) {
             newDayButton.setColor(sf::Color::Yellow);
@@ -135,7 +163,10 @@ namespace States{
             loadGameButton.setColor(sf::Color::Yellow);
         } else if (selected == MenuOptions::Leaderboard) {
             leaderboard.setColor(sf::Color::Yellow);
-        }
+        } else if (selected == MenuOptions::GameMode) {
+            singleplayer.setColor(sf::Color::Yellow);
+            multiplayer.setColor(sf::Color::Yellow);
+        } 
     }
 
     void MenuState::draw(){
@@ -146,6 +177,11 @@ namespace States{
             Manager::GraphicsManager::getGraphicsManager()->draw(exitGameButton);
             Manager::GraphicsManager::getGraphicsManager()->draw(loadGameButton);
             Manager::GraphicsManager::getGraphicsManager()->draw(leaderboard);
+            if (isSingle) {
+                Manager::GraphicsManager::getGraphicsManager()->draw(singleplayer);
+            } else {
+                Manager::GraphicsManager::getGraphicsManager()->draw(multiplayer);
+            }
         }
     }
 }
