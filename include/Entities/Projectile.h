@@ -8,10 +8,10 @@ namespace Entities {
     class Projectile : public Entity
     {
     private:
-        float speed;
         bool direction; //true for right, false for left 
         float dx, dy;
         bool active;
+        const int projectileDamage;
 
     public:
         Projectile(Texture::ID id, int sprite_width, int sprite_height);

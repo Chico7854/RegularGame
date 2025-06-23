@@ -36,7 +36,6 @@ namespace Constants {
     constexpr float SPEED = 7.f;
     constexpr float GRAVITY = SPEED / 4.f;
     constexpr float JUMP_SPEED = SPEED * -4.f;
-    constexpr float BALL_SPEED = SPEED;
 
     constexpr float BUTTON_HEIGHT = 32.f;
     constexpr float BUTTON_WIDTH = 256.f;

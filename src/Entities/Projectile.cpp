@@ -5,13 +5,17 @@ namespace Entities {
     Projectile::Projectile(Texture::ID id, const int width, const int height):
         Entity(id, width, height, EntityType::Ball),
         active(true),
-        speed(Constants::BALL_SPEED),
-        dx(0.f),
+        dx(Constants::SPEED * 2),
         dy(0.f),
-        direction(false)
-    {}
+        direction(false),
+        projectileDamage(3)
+    {
+        if (!direction) {        //to the left
+            dx *= -1;
+        }
+    }
 
-    Projectile::Projectile(): Entity(), speed(0), dx(0.f), dy(0.f), direction(false){}
+    Projectile::Projectile(): Entity(), dx(-1.f), dy(-1.f), direction(false), projectileDamage(-1) {}
 
     Projectile::~Projectile()
     {
@@ -50,20 +54,14 @@ namespace Entities {
             player->setDx(playerDx);
             player->setIsHurt(true);
             player->moveHitboxSprite(playerDx, playerDy);
-            player->setLife(player->getLife() - 5);
+            player->setLife(player->getLife() - projectileDamage);
 
             setActive(false);
         }
     }
 
     void Projectile::exec() {
-        if(direction){
-            dx += speed/2;
-        }
-        else{
-            dx -= speed/2;
-        }
-        dy += Constants::GRAVITY/2; 
+        dy += Constants::GRAVITY/4; 
 
         if (sprite.getGlobalBounds().left + dx < 0 || 
             sprite.getGlobalBounds().top + dy < 0 || 
