@@ -45,8 +45,8 @@ namespace States{
             pointsText.setCharacterSize(24);
             pointsText.setFillColor(sf::Color::White);
             pointsText.setString("Points: " + std::to_string(points));
-            pointsText.setPosition(Constants::WINDOW_WIDTH/2, 
-                                   Constants::WINDOW_HEIGHT/2);//adjust to the midlle after
+            pointsText.setPosition(Constants::WINDOW_WIDTH/2 - pointsText.getGlobalBounds().width/2.f, 
+                                   Constants::WINDOW_HEIGHT/2);
             
             nameText.setFont(*Font);
             nameText.setCharacterSize(24);

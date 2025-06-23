@@ -6,12 +6,12 @@
 #include "States/Menus/PausedState.h"
 #include "States/Menus/MenuState.h"
 #include "States/Menus/EndMenu.h"
+#include "States/Menus/Leaderboard.h"
 /*#include "State/PauseState.h"
 #include "State/PlayerSelectState.h"
 #include "State/StageSelectState.h"
 #include "State/EndStageState.h"
 #include "State/SaveScoreState.h"
-#include "State/RankingState.h"
 #include "State/TitleState.h"
 #include "Utility/Context.h"*/
 
@@ -50,6 +50,9 @@ namespace States {
       case (StateType::EndMenu):
         state = pState;
         break;
+      case (StateType::Leaderboard):
+        state = new Leaderboard;
+        break;
       /*case (StateType::PlayerSelect): 
         state = new PlayerSelectState; 
         break;
@@ -67,9 +70,7 @@ namespace States {
       case (StateType::SaveScore):
         state = new SaveScoreState;
         break;
-      case (StateType::Ranking):
-        state = new RankingState();
-        break;*/
+      */
       default:
         break;
     }

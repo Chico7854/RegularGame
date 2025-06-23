@@ -107,7 +107,7 @@ namespace States{
             } else if (selected == MenuOptions::LoadGame) {
                 
             } else if (selected == MenuOptions::Leaderboard) {
-                
+                pStateStack->pushState(States::StateType::Leaderboard);
             } else if (selected == MenuOptions::ExitGame) {
                 Manager::GraphicsManager::getGraphicsManager()->closeWindow();
             } 

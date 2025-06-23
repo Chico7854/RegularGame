@@ -11,6 +11,7 @@ namespace States {
         GameDay,
         GameNight,
         EndMenu,
+        Leaderboard,
         TotalStates
     };
 
