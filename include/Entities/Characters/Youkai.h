@@ -8,11 +8,14 @@
 namespace Entities {
     class Youkai : public Enemy {
         private:
-            const int collisionDamage;
+            int scratchDamage;
 
         public:
             Youkai();
             virtual ~Youkai();
+
+            void setScratchDamage(const int damage);
+            const int getScrathDamage() const;
 
             void damage(Player* player) override;
             void save() override;

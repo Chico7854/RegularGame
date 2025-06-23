@@ -3,13 +3,15 @@
 namespace Entities {
     Enemy::Enemy(const Texture::ID id, const int sprite_width, const int sprite_height, const EntityType type):
         Character(id, sprite_width, sprite_height, type),
-        evilness(rand() % 10)
+        evilness((rand() % 5) + 1)
     {
-        dx = speed; //GAMBIARRA
+        speed = Constants::SPEED / (6 - evilness);      //attribute based on evilness
+        dx = speed;
+        lifes = evilness;
     }
 
     Enemy::Enemy(): 
-        evilness(-1) 
+        evilness(-10000) 
     {}
 
     Enemy::~Enemy() {}
@@ -18,8 +20,8 @@ namespace Entities {
         return evilness;
     }
 
-    void Enemy::save()
-    {
+    void Enemy::setEvilness(const int evilnessValue) {
+        evilness = evilnessValue;
     }
 
     void Enemy::changeDirectionOnPlatform() {

@@ -3,18 +3,22 @@
 namespace Entities {
     Ghost::Ghost():
         Enemy(Texture::Ghost, Constants::GHOST_WIDTH, Constants::GHOST_HEIGHT, EntityType::Ghost),
-        bloodDamage(1),
+        soulDamage(evilness * 2),
         inRange(false),
         dtime(0.f),
         detection_range(480.f)
     {
-        dx = speed/2;
+        dx = speed;
     }
 
     Ghost::~Ghost() {}
 
-    const int Ghost::getBloodDamage() const {
-        return bloodDamage;
+    void Ghost::setSoulDamage(const int damage) {
+        soulDamage = damage;
+    }
+
+    const int Ghost::getSoulDamage() const {
+        return soulDamage;
     }
 
     void Ghost::setDistance(){
@@ -72,11 +76,12 @@ namespace Entities {
     void Ghost::changeDirectionOnPlatform() {}
 
     void Ghost::damage(Player* player) {
-        player->setLife(player->getLife() - 1);
+        player->setLife(getLife() - soulDamage);
     }
 
     void Ghost::save() {
         json data = Enemy::saveDataBuffer();
+        data["soulDamage"] = soulDamage;
         data["dtime"] = dtime;
         data["inRange"] = inRange;
         buffer << data.dump(4) << ",\n";

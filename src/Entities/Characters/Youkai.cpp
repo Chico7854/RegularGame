@@ -5,18 +5,27 @@
 namespace Entities {
     Youkai::Youkai():
         Enemy(Texture::Youkai, Constants::YOUKAI_WIDTH, Constants::YOUKAI_HEIGHT, EntityType::Youkai),
-        collisionDamage(evilness)
+        scratchDamage(evilness)
     {}
 
     Youkai::~Youkai() {}
 
+    void Youkai::setScratchDamage(const int damage) {
+        scratchDamage = damage;
+    }
+
+    const int Youkai::getScrathDamage() const {
+        return scratchDamage;
+    }
+
     void Youkai::damage(Player* player) {
-        player->setLife(player->getLife() - 1);
+        player->setLife(player->getLife() - scratchDamage);
     }
 
     void Youkai::save()
     {
         json data = Enemy::saveDataBuffer();
+        data["scratchDamage"] = scratchDamage;
         buffer << data.dump(4) << ",\n";
         buffer.flush();
     }

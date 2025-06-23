@@ -6,7 +6,7 @@
 namespace Entities {
     class Ghost : public Enemy {
         private:
-            const int bloodDamage;
+            int soulDamage;
             float dtime;
             bool inRange;
             Player* p1;
@@ -17,15 +17,16 @@ namespace Entities {
             Ghost();
             ~Ghost();
 
-
             void setPlayer(Player* p);
             void setDtime(const float dt);
             void setInRange(const bool inrg);
-            const int getBloodDamage() const;
+            void setSoulDamage(const int damage);
+            const int getSoulDamage() const;
 
             void setDistance();
             void setDirection();
             void jump();
+
             void changeDirectionOnPlatform() override;
             void damage(Player* player) override;
             void save() override;

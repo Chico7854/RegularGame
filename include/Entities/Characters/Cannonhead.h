@@ -12,7 +12,8 @@ namespace Entities {
     private:
         bool direction; // true for right, false for left
         List::EntityList* pEntityList;
-        float dtime;//Gambiarra, maybe add clock on main loop after
+        float reloadTime;
+        float dtime;
 
     public:     
         Cannonhead();
@@ -28,6 +29,8 @@ namespace Entities {
         void setEntityList();
         void setDtime(const float dt);
         void setDirection(const bool d);
+        void setReloadTime(const float reloadT);
+        const float getReloadTime() const;
         const bool getDirection() const;
         const float getDtime() const;
     };

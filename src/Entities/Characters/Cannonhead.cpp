@@ -6,6 +6,7 @@ namespace Entities {
         Enemy(Texture::Cannonhead, Constants::CANNONHEAD_WIDTH, Constants::CANNONHEAD_HEIGHT, EntityType::Cannonhead),
         direction(false),
         pEntityList(nullptr),
+        reloadTime(150.f/evilness),
         dtime(0.f)
     {
         setEntityList();
@@ -14,11 +15,12 @@ namespace Entities {
     Cannonhead::~Cannonhead() {}
 
     void Cannonhead::damage(Player* player) {
-        player->setLife(player->getLife() - 1);
+        player->setLife(player->getLife() - evilness);
     }
 
     void Cannonhead::save() {
         json data = Enemy::saveDataBuffer();
+        data["reloadTime"] = reloadTime;
         data["direction"] = direction;
         data["dtime"] = dtime;
         buffer << data.dump(4) << ",\n";
@@ -80,6 +82,14 @@ namespace Entities {
 
     void Cannonhead::setDirection(const bool d) {
         direction = d;
+    }
+
+    void Cannonhead::setReloadTime(const float reloadT) {
+        reloadTime = 150.f/evilness;
+    }
+
+    const float Cannonhead::getReloadTime() const {
+        return reloadTime;
     }
 
     const bool Cannonhead::getDirection() const {

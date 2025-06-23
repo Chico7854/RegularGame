@@ -7,7 +7,7 @@ namespace Entities {
     class Character : public Entity {
         protected:
             int lifes;
-            const float speed;
+            float speed;
             float dx, dy;
             bool onGround, isHurt;
 
@@ -22,6 +22,7 @@ namespace Entities {
             const bool getOnGround() const;
             const bool getIsHurt() const;
             const int getLife() const;
+            void setSpeed(const float speedValue);
             void setDx(const float x);
             void setDy(const float y);
             void setOnGround(const bool o);

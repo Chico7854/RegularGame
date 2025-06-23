@@ -63,9 +63,12 @@ namespace States {
                 
                 case EntityType::Youkai: {
                     Youkai* pYoukai = createYoukai(entityData["left"], entityData["top"]);
+                    pYoukai->setEvilness(entityData["evilness"]);
+                    pYoukai->setSpeed(entityData["speed"]);
                     pYoukai->setDx(entityData["dx"]);
                     pYoukai->setDy(entityData["dy"]);
                     pYoukai->setLife(entityData["lifes"]);
+                    pYoukai->setScratchDamage(entityData["scratchDamage"]);
                     pYoukai->setOnGround(entityData["onGround"]);
                     pYoukai->setIsHurt(entityData["isHurt"]);
                     break;
@@ -73,11 +76,14 @@ namespace States {
 
                 case EntityType::Cannonhead: {
                     Cannonhead* pCannonhead = createCannonhead(entityData["left"], entityData["top"]);
+                    pCannonhead->setEvilness(entityData["evilness"]);
                     pCannonhead->setLife(entityData["lifes"]);
+                    pCannonhead->setSpeed(entityData["speed"]);
                     pCannonhead->setDx(entityData["dx"]);
                     pCannonhead->setDy(entityData["dy"]);
                     pCannonhead->setOnGround(entityData["onGround"]);
                     pCannonhead->setIsHurt(entityData["isHurt"]);
+                    pCannonhead->setReloadTime(entityData["reloadTime"]);
                     pCannonhead->setDirection(entityData["direction"]);
                     pCannonhead->setDtime(entityData["dtime"]);
                     break;

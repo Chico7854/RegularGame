@@ -3,9 +3,9 @@
 
 namespace Entities {
     Character::Character(Texture::ID id, const int width, const int height, EntityType type):
-        Entity(id, width, height, type), 
-        lifes(10),
+        Entity(id, width, height, type),
         speed(Constants::SPEED),
+        lifes(0),
         dx(0.f),
         dy(0.f),
         onGround(true),
@@ -32,6 +32,10 @@ namespace Entities {
 
     const int Character::getLife() const {
         return lifes;
+    }
+
+    void Character::setSpeed(const float speedValue) {
+        speed = speedValue;
     }
 
     void Character::setDx(float x) {
@@ -69,6 +73,7 @@ namespace Entities {
 
     json Character::saveDataBuffer() {
         json data = Entity::saveDataBuffer();
+        data["speed"] = speed;
         data["lifes"] = lifes;
         data["dx"] = dx;
         data["dy"] = dy;

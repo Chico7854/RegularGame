@@ -68,7 +68,7 @@ namespace Manager {
         std::vector<Entities::Enemy*>::iterator it = enemies.begin();
         while (it != enemies.end()) {
             if (*it) {
-                p1->collide(static_cast<Entities::Enemy*>(*it));
+                p1->collide(*it);
             }
             it++;
         }

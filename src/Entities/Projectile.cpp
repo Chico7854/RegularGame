@@ -30,7 +30,7 @@ namespace Entities {
         updateHitbox();
     }
 
-    void Projectile::obstruct(Character* character){//took from enemy class
+    void Projectile::obstruct(Character* character){
         Player* player = static_cast<Player*>(character);
         const sf::FloatRect charCoordinates = player->getGlobalHitbox();
         const sf::FloatRect ballCoordinates = getGlobalHitbox();
@@ -50,6 +50,7 @@ namespace Entities {
             player->setDx(playerDx);
             player->setIsHurt(true);
             player->moveHitboxSprite(playerDx, playerDy);
+            player->setLife(player->getLife() - 5);
 
             setActive(false);
         }
