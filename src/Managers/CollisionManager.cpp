@@ -7,14 +7,21 @@ namespace Manager {
         enemies(),
         obstacles(),
         balls(),
-        p1(nullptr)
+        p1(nullptr),
+        p2(nullptr)
     {
         enemies.clear();
         obstacles.clear();
         balls.clear();
     }
 
-    CollisionManager::~CollisionManager() {}
+    CollisionManager::~CollisionManager() {
+        p1 = nullptr;
+        p2 = nullptr;
+        enemies.clear();
+        obstacles.clear();
+        balls.clear();
+    }
 
     CollisionManager* CollisionManager::getCollisionManager() {
         if (!pSelf) {
@@ -41,9 +48,15 @@ namespace Manager {
         }
     }
 
-    void CollisionManager::setPlayer(Entities::Player* p) {
+    void CollisionManager::setPlayer1(Entities::Player* p) {
         if (p) {
             p1 = p;
+        }
+    }
+
+    void CollisionManager::setPlayer2(Entities::Player* p) {
+        if (p) {
+            p2 = p;
         }
     }
 
@@ -59,6 +72,9 @@ namespace Manager {
         while (it != obstacles.end()) {
             if (*it) {
                 (*it)->obstruct(static_cast<Entities::Character*>(p1));
+                if (p2) {
+                (*it)->obstruct(static_cast<Entities::Character*>(p2));
+                }
             }
             it++;
         }
@@ -69,6 +85,8 @@ namespace Manager {
         while (it != enemies.end()) {
             if (*it) {
                 p1->collide(*it);
+                if (p2)
+                    p2->collide(*it);
             }
             it++;
         }
@@ -79,6 +97,8 @@ namespace Manager {
         while (itBalls != balls.end()) {
             if (*itBalls) {
                 (*itBalls)->obstruct(p1);
+                if (p2) 
+                    (*itBalls)->obstruct(p2);
             }
             itBalls++;
         }
@@ -91,6 +111,15 @@ namespace Manager {
         }
         else if ((p1Coords.left + p1Coords.width) > Constants::MAP_WIDTH) {
             p1->setSpritePosition(Constants::MAP_WIDTH - p1Coords.width, p1Coords.top);
+        }
+        if (p2) {
+            const sf::FloatRect p2Coords = p2->getGlobalHitbox();
+            if(p2Coords.left < 0){
+            p2->setSpritePosition(0, p2Coords.top);
+        }
+        else if ((p2Coords.left + p2Coords.width) > Constants::MAP_WIDTH) {
+            p2->setSpritePosition(Constants::MAP_WIDTH - p2Coords.width, p2Coords.top);
+        }
         }
     }
 

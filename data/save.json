@@ -1,15 +1,15 @@
 [
 {
     "map": "day",
-    "points": 115
+    "points": 0
 },
 {
     "dx": 0.0,
     "dy": 1.75,
     "isAttacking": false,
     "isHurt": false,
-    "left": 6323.0,
-    "lifes": -17,
+    "left": 0.0,
+    "lifes": -280,
     "onGround": false,
     "speed": 7.0,
     "toDelete": false,
@@ -17,17 +17,107 @@
     "type": 1
 },
 {
+    "dx": 3.5,
+    "dy": 1.75,
+    "evilness": 4,
+    "isHurt": false,
+    "left": 1282.0,
+    "lifes": 4,
+    "onGround": true,
+    "scratchDamage": 4,
+    "speed": 3.5,
+    "toDelete": false,
+    "top": 374.75,
+    "type": 2
+},
+{
     "direction": false,
-    "dtime": 22.5,
-    "dx": 7.0,
+    "dtime": 20.0,
+    "dx": 1.75,
+    "dy": 1.75,
+    "evilness": 2,
+    "isHurt": false,
+    "left": 1766.5,
+    "lifes": 2,
+    "onGround": true,
+    "reloadTime": 75.0,
+    "speed": 1.75,
+    "toDelete": false,
+    "top": 545.75,
+    "type": 7
+},
+{
+    "dx": -2.3333332538604736,
+    "dy": 7.0,
+    "evilness": 3,
+    "isHurt": false,
+    "left": 2759.33349609375,
+    "lifes": 3,
+    "onGround": false,
+    "scratchDamage": 3,
+    "speed": 2.3333332538604736,
+    "toDelete": false,
+    "top": 518.5,
+    "type": 2
+},
+{
+    "direction": false,
+    "dtime": 20.0,
+    "dx": -7.0,
     "dy": 1.75,
     "evilness": 5,
     "isHurt": false,
-    "left": 1716.0,
+    "left": 3211.0,
     "lifes": 5,
     "onGround": true,
     "reloadTime": 30.0,
     "speed": 7.0,
+    "toDelete": false,
+    "top": 225.75,
+    "type": 7
+},
+{
+    "direction": false,
+    "dtime": 20.0,
+    "dx": 2.3333332538604736,
+    "dy": 1.75,
+    "evilness": 3,
+    "isHurt": false,
+    "left": 3997.330078125,
+    "lifes": 3,
+    "onGround": true,
+    "reloadTime": 50.0,
+    "speed": 2.3333332538604736,
+    "toDelete": false,
+    "top": 225.75,
+    "type": 7
+},
+{
+    "dx": 1.75,
+    "dy": 1.75,
+    "evilness": 2,
+    "isHurt": false,
+    "left": 4838.0,
+    "lifes": 2,
+    "onGround": true,
+    "scratchDamage": 2,
+    "speed": 1.75,
+    "toDelete": false,
+    "top": 214.75,
+    "type": 2
+},
+{
+    "direction": false,
+    "dtime": 20.0,
+    "dx": 1.75,
+    "dy": 1.75,
+    "evilness": 2,
+    "isHurt": false,
+    "left": 2282.5,
+    "lifes": 2,
+    "onGround": true,
+    "reloadTime": 75.0,
+    "speed": 1.75,
     "toDelete": false,
     "top": 545.75,
     "type": 7
@@ -37,7 +127,7 @@
     "dy": 1.75,
     "evilness": 2,
     "isHurt": false,
-    "left": 2452.25,
+    "left": 497.0,
     "lifes": 2,
     "onGround": true,
     "scratchDamage": 2,
@@ -48,48 +138,60 @@
 },
 {
     "direction": false,
-    "dtime": 22.5,
-    "dx": 7.0,
-    "dy": 1.75,
-    "evilness": 5,
-    "isHurt": false,
-    "left": 3274.0,
-    "lifes": 5,
-    "onGround": true,
-    "reloadTime": 30.0,
-    "speed": 7.0,
-    "toDelete": false,
-    "top": 225.75,
-    "type": 7
-},
-{
-    "direction": true,
-    "dtime": 22.5,
-    "dx": -1.75,
+    "dtime": 20.0,
+    "dx": 1.75,
     "dy": 1.75,
     "evilness": 2,
     "isHurt": false,
-    "left": 4003.75,
+    "left": 2609.0,
     "lifes": 2,
     "onGround": true,
     "reloadTime": 75.0,
     "speed": 1.75,
     "toDelete": false,
-    "top": 225.75,
+    "top": 545.75,
     "type": 7
 },
 {
-    "dx": 7.0,
+    "dx": -7.0,
     "dy": 1.75,
     "evilness": 5,
     "isHurt": false,
-    "left": 4824.0,
+    "left": 2955.0,
     "lifes": 5,
     "onGround": true,
     "scratchDamage": 5,
     "speed": 7.0,
     "toDelete": false,
     "top": 374.75,
+    "type": 2
+},
+{
+    "dx": -3.5,
+    "dy": 1.75,
+    "evilness": 4,
+    "isHurt": false,
+    "left": 3539.5,
+    "lifes": 4,
+    "onGround": true,
+    "scratchDamage": 4,
+    "speed": 3.5,
+    "toDelete": false,
+    "top": 374.75,
+    "type": 2
+},
+{
+    "dx": 1.399999976158142,
+    "dy": 1.75,
+    "evilness": 1,
+    "isHurt": false,
+    "left": 1880.0009765625,
+    "lifes": 1,
+    "onGround": true,
+    "scratchDamage": 1,
+    "speed": 1.399999976158142,
+    "toDelete": false,
+    "top": 534.75,
     "type": 2
 },
 {
@@ -201,6 +303,42 @@
     "type": 3
 },
 {
+    "left": 4032.0,
+    "toDelete": false,
+    "top": 160.0,
+    "type": 3
+},
+{
+    "left": 4064.0,
+    "toDelete": false,
+    "top": 160.0,
+    "type": 3
+},
+{
+    "left": 4096.0,
+    "toDelete": false,
+    "top": 160.0,
+    "type": 3
+},
+{
+    "left": 4128.0,
+    "toDelete": false,
+    "top": 160.0,
+    "type": 3
+},
+{
+    "left": 4160.0,
+    "toDelete": false,
+    "top": 160.0,
+    "type": 3
+},
+{
+    "left": 4192.0,
+    "toDelete": false,
+    "top": 160.0,
+    "type": 3
+},
+{
     "left": 3168.0,
     "toDelete": false,
     "top": 288.0,
@@ -273,37 +411,73 @@
     "type": 3
 },
 {
-    "left": 4960.0,
+    "left": 4736.0,
     "toDelete": false,
     "top": 288.0,
     "type": 3
 },
 {
-    "left": 4992.0,
+    "left": 4768.0,
     "toDelete": false,
     "top": 288.0,
     "type": 3
 },
 {
-    "left": 5024.0,
+    "left": 4800.0,
     "toDelete": false,
     "top": 288.0,
     "type": 3
 },
 {
-    "left": 5056.0,
+    "left": 4832.0,
     "toDelete": false,
     "top": 288.0,
     "type": 3
 },
 {
-    "left": 5088.0,
+    "left": 4864.0,
     "toDelete": false,
     "top": 288.0,
     "type": 3
 },
 {
-    "left": 5120.0,
+    "left": 4896.0,
+    "toDelete": false,
+    "top": 288.0,
+    "type": 3
+},
+{
+    "left": 5408.0,
+    "toDelete": false,
+    "top": 288.0,
+    "type": 3
+},
+{
+    "left": 5440.0,
+    "toDelete": false,
+    "top": 288.0,
+    "type": 3
+},
+{
+    "left": 5472.0,
+    "toDelete": false,
+    "top": 288.0,
+    "type": 3
+},
+{
+    "left": 5504.0,
+    "toDelete": false,
+    "top": 288.0,
+    "type": 3
+},
+{
+    "left": 5536.0,
+    "toDelete": false,
+    "top": 288.0,
+    "type": 3
+},
+{
+    "left": 5568.0,
     "toDelete": false,
     "top": 288.0,
     "type": 3
@@ -345,73 +519,37 @@
     "type": 3
 },
 {
-    "left": 1792.0,
+    "left": 2912.0,
     "toDelete": false,
     "top": 448.0,
     "type": 3
 },
 {
-    "left": 1824.0,
+    "left": 2944.0,
     "toDelete": false,
     "top": 448.0,
     "type": 3
 },
 {
-    "left": 1856.0,
+    "left": 2976.0,
     "toDelete": false,
     "top": 448.0,
     "type": 3
 },
 {
-    "left": 1888.0,
+    "left": 3008.0,
     "toDelete": false,
     "top": 448.0,
     "type": 3
 },
 {
-    "left": 1920.0,
+    "left": 3040.0,
     "toDelete": false,
     "top": 448.0,
     "type": 3
 },
 {
-    "left": 1952.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 2464.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 2496.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 2528.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 2560.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 2592.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 2624.0,
+    "left": 3072.0,
     "toDelete": false,
     "top": 448.0,
     "type": 3
@@ -453,114 +591,6 @@
     "type": 3
 },
 {
-    "left": 4256.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4288.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4320.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4352.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4384.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4416.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4704.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4736.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4768.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4800.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4832.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 4864.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 5376.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 5408.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 5440.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 5472.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 5504.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
-    "left": 5536.0,
-    "toDelete": false,
-    "top": 448.0,
-    "type": 3
-},
-{
     "left": 640.0,
     "toDelete": false,
     "top": 576.0,
@@ -585,7 +615,7 @@
     "type": 4
 },
 {
-    "left": 4160.0,
+    "left": 3072.0,
     "toDelete": false,
     "top": 576.0,
     "type": 4

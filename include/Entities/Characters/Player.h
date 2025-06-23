@@ -18,11 +18,12 @@ namespace Entities {
         private:
             const float swordDamage;
             const float attack_radius;
+            const bool isPlayer1;
             bool isAttacking;
             States::Stage* pStage;
 
         public:
-            Player(Texture::ID id, const int width, const int height);
+            Player(Texture::ID id, const int width, const int height, const bool isP1);
             Player();
             virtual ~Player();
 

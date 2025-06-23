@@ -8,7 +8,7 @@ namespace States {
             const int maxCannonheads;
 
         public:
-            DayMountainStage(const bool defaultMap = true);
+            DayMountainStage(const bool isSinglePlayer, const bool defaultMap = true);
             ~DayMountainStage();
 
             void save() override;

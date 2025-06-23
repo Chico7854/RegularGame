@@ -3,6 +3,8 @@
 #include "States/Stages/NightMountainStage.h"
 
 namespace States{
+    bool MenuState::isSingle(true);
+
     MenuState::MenuState() : State(Manager::EventManager::getEventManager()),
         selected(MenuOptions::NewDay),
         newDayButton(),
@@ -11,8 +13,7 @@ namespace States{
         loadGameButton(),
         leaderboard(),
         singleplayer(),
-        multiplayer(),
-        isSingle(true)
+        multiplayer()
     {
         setType(StateType::Menu);
         Manager::GraphicsManager::getGraphicsManager()->resetView();
@@ -142,6 +143,10 @@ namespace States{
 
     void MenuState::setIsActive(bool isA){
         Event::EventObserver::setIsActive(isA);
+    }
+
+    const bool MenuState::getIsSingle() {
+        return isSingle;
     }
 
     void MenuState::updateSelected(){

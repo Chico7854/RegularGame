@@ -3,37 +3,59 @@
 #include "States/Stages/Stage.h"
 
 namespace Entities {
-    Player::Player(Texture::ID id, const int width, const int height):
+    Player::Player(Texture::ID id, const int width, const int height, const bool isP1):
         Character(id, width, height, EntityType::Player),
         attack_radius(64.f),
         isAttacking(false),
-        swordDamage(1)
+        swordDamage(1),
+        isPlayer1(isP1)
     {
     }
 
     Player::Player():
-        attack_radius(-1),
-        swordDamage(-1)
+        attack_radius(-1.f),
+        swordDamage(-1.f),
+        isPlayer1(false)
     {}
 
     Player::~Player() {}
 
     void Player::checkKeyboardInput() {
-        if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) && (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))) {
-            dx = 0;       }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            dx = Constants::SPEED;
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            dx = Constants::SPEED * -1;
-        }
+        if (isPlayer1) {
+            if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) && (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))) {
+                dx = 0;       }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+                dx = Constants::SPEED;
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+                dx = Constants::SPEED * -1;
+            }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && getOnGround()) {
-            setDy(Constants::JUMP_SPEED);
-        }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && getOnGround()) {
+                setDy(Constants::JUMP_SPEED);
+            }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            isAttacking = true;
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+                isAttacking = true;
+            }
+        }
+        else {
+            if ((sf::Keyboard::isKeyPressed(sf::Keyboard::D)) && (sf::Keyboard::isKeyPressed(sf::Keyboard::A))) {
+                dx = 0;       }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+                dx = Constants::SPEED;
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+                dx = Constants::SPEED * -1;
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && getOnGround()) {
+                setDy(Constants::JUMP_SPEED);
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)) {
+                isAttacking = true;
+            }
         }
     }
 
@@ -54,7 +76,7 @@ namespace Entities {
             pEnemy->setDx(pEnemy->getDx() * -1);
 
             if (isAttacking) {
-                pEnemy->setLife(pEnemy->getLife() - swordDamage);
+                pEnemy->setLife(pEnemy->getLife() - 1);
                 pEnemy->setIsHurt(true);
                 pEnemy->setDy(Constants::JUMP_SPEED / 1.5);
                 pEnemy->moveHitboxSprite(pEnemy->getDx(), pEnemy->getDy());
@@ -105,6 +127,7 @@ namespace Entities {
     void Player::save()
     {
         json data = Character::saveDataBuffer();
+        data["isPlayer1"] = isPlayer1;
         data["isAttacking"] = isAttacking;
 
         buffer << data.dump(4) << ",\n";
@@ -131,18 +154,5 @@ namespace Entities {
         }
 
         setOnGround(false);
-
-        // frame += 0.008f * time; // Animation speed
-        // if (frame >= 8) {
-        //     frame = 0;
-        // }
-
-        // /*animation*/
-        // if (dx > 0) {
-        //     sprite.setTextureRect(sf::IntRect(width * (int)frame, 0, width, height));
-        // }
-        // if (dx < 0) {
-        //     sprite.setTextureRect(sf::IntRect(width * ((int)frame + 1), 0, -width, height));
-        // }
     }
 }

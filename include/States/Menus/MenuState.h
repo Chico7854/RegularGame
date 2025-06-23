@@ -30,7 +30,7 @@ namespace States {
             sf::Sprite multiplayer;
             MenuOptions selected;
 
-            bool isSingle;
+            static bool isSingle;
 
             void initializeAssets(); 
             void updateSelected();
@@ -43,5 +43,7 @@ namespace States {
             void exec() override;
             void keyPressed(const sf::Keyboard::Key key) override;
             void setIsActive(bool isA) override;
+
+            static const bool getIsSingle();
     };
 }

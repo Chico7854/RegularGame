@@ -28,10 +28,10 @@ namespace States {
         state = new MenuState; 
         break;
       case (StateType::GameDay):
-        state = new DayMountainStage;
+        state = new DayMountainStage(MenuState::getIsSingle());
         break;
       case (StateType::GameNight):
-        state = new NightMountainStage;
+        state = new NightMountainStage(MenuState::getIsSingle());
         break;
       case (StateType::Paused):
         state = pState;

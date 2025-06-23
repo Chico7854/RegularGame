@@ -1,8 +1,8 @@
 #include "States/Stages/DayMountainStage.h"
 
 namespace States {
-    DayMountainStage::DayMountainStage(const bool defaultMap):
-        Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT),
+    DayMountainStage::DayMountainStage(const bool isSinglePlayer, const bool defaultMap):
+        Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, isSinglePlayer),
         maxCannonheads(5)
     {
         if (defaultMap)
@@ -52,7 +52,7 @@ namespace States {
                     break;
 
                 case EntityType::Player:
-                    createPlayer(entityData["left"], entityData["top"]);
+                    createPlayer(entityData["left"], entityData["top"], entityData["isPlayer1"]);
                     player->setDx(entityData["dx"]);
                     player->setDy(entityData["dy"]);
                     player->setLife(entityData["lifes"]);

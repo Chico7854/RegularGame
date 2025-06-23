@@ -24,12 +24,13 @@ namespace States {
             std::string mapPath;
             sf::Text pointsText;
             const int maxYoukais;
+            const bool isSinglePlayer;
             bool isPaused;
             int points;
 
         public:
             Stage(const Texture::ID background, const std::string path, 
-                  const float sprite_width, const float sprite_height);
+                  const float sprite_width, const float sprite_height, const bool singlePlayer);
             virtual ~Stage();
 
             void setEntityList();
@@ -47,7 +48,7 @@ namespace States {
             Entities::Youkai* createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);
             void createBlock(const float x, const float y);
-            void createPlayer(const float x, const float y);
+            void createPlayer(const float x, const float y, const bool isPlayer1);
             
             void updateView();
             void updatePointsText();

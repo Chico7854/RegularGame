@@ -19,8 +19,8 @@ namespace Manager {
             std::vector<Entities::Enemy*> enemies;
             std::list<Entities::Obstacle*> obstacles;
             std::vector<Entities::Projectile*> balls;
-            //TODO: Set for porjectiles
             Entities::Player* p1;
+            Entities::Player* p2;
 
             static CollisionManager* pSelf;
             CollisionManager();
@@ -32,7 +32,8 @@ namespace Manager {
             void appendEnemy(Entities::Enemy* enemy);
             void appendObstacle(Entities::Obstacle* obstacle);
             void appendProjectile(Entities::Projectile* projectile);
-            void setPlayer(Entities::Player* p);
+            void setPlayer1(Entities::Player* p);
+            void setPlayer2(Entities::Player* p);
 
             void exec();
             void clearLists();

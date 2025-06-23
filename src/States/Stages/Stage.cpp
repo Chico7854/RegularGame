@@ -2,13 +2,14 @@
 
 namespace States {
     Stage::Stage(const Texture::ID background, const std::string path, 
-                 const float sprite_width, const float sprite_height):
+                 const float sprite_width, const float sprite_height, const bool singlePlayer):
         Ent(background, sprite_width, sprite_height),
         State(Manager::EventManager::getEventManager()),
         pEntityList(nullptr),
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
         mapPath(path),
         maxYoukais(10),
+        isSinglePlayer(singlePlayer),
         points(0)
     {
         setEntityList();
@@ -97,12 +98,20 @@ namespace States {
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform));
     }
 
-    void Stage::createPlayer(const float x, const float y) {
+    void Stage::createPlayer(const float x, const float y, const bool isPlayer1) {
         using namespace Entities;
-        player = new Player(Texture::Player1, Constants::P1_WIDTH, Constants::P1_HEIGHT);
-        player->setSpritePosition(x, y);
-        pEntityList->append(static_cast<Entity*>(player));
-        Manager::CollisionManager::getCollisionManager()->setPlayer(player);
+        Player* pPlayer = nullptr;
+        if (isPlayer1) {
+            pPlayer = new Player(Texture::Player1, Constants::P1_WIDTH, Constants::P1_HEIGHT, isPlayer1);
+            player = pPlayer;
+            Manager::CollisionManager::getCollisionManager()->setPlayer1(pPlayer);
+        }
+        else {
+            pPlayer = new Player(Texture::Player2, Constants::P2_WIDTH, Constants::P2_HEIGHT, isPlayer1);
+            Manager::CollisionManager::getCollisionManager()->setPlayer2(pPlayer);
+        }
+        pPlayer->setSpritePosition(x, y);
+        pEntityList->append(static_cast<Entity*>(pPlayer));
         player->setStage(this);
     }
 
@@ -119,7 +128,9 @@ namespace States {
     void Stage::createMap() {
         pEntityList->clear(); //preventing entities leaking to other stages
         pCollisionManager->clearLists();
-        createPlayer(0.f, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT);
+        createPlayer(0.f, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT, true);
+        if (!isSinglePlayer)
+            createPlayer(10.f, Constants::FLOOR_HEIGHT - Constants::P2_HEIGHT, false);
         createEnemies();
         createObstacles();
     }
