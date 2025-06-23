@@ -25,9 +25,13 @@ namespace States {
             sf::Sprite saveScoreButton;
             sf::Sprite menuButton;
 
-            sf::Text name;
+            sf::Text nameText;
+            std::string playerName; 
+            bool nameInputActive;
+
             sf::Text pointsText;
             int points;
+
             EndOptions selected;
             Stage* pStage;
 
@@ -43,5 +47,6 @@ namespace States {
 
             void exec();
             void keyPressed(const sf::Keyboard::Key key);
+            void textEntered(const sf::Uint32 unicode);
     };
 }

@@ -44,4 +44,14 @@ namespace Event {
         it++;
       }
     }
+
+    void EventSubject::notifyTextEntered(const sf::Uint32 unicode){
+      std::list<EventObserver*>::iterator it = observers.begin();
+
+        while (it != observers.end()) {
+            if ((*it)->getIsActive())
+                (*it)->textEntered(unicode);
+            it++;
+        }
+    }
 };

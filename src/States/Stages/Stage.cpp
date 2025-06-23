@@ -140,7 +140,8 @@ namespace States {
     void Stage::checkEnd(){
         const sf::FloatRect p1Coords = player->getGlobalHitbox();
         if ((p1Coords.left + p1Coords.width) > Constants::MAP_WIDTH) {
-            States::StateStack::getInstance()->pushState(States::StateType::EndMenu, new States::EndMenu(this));
+            States::EndMenu* paused = new States::EndMenu(this);
+            pStateStack->pushState(States::StateType::EndMenu, paused, false);
         }
     }
 

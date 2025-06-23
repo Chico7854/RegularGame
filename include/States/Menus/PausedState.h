@@ -5,6 +5,10 @@
 #include "States/StateStack.h"
 #include "States/Menus/MenuState.h"
 
+namespace States{
+    class Stage;
+}
+
 namespace States {
     enum class PausedOptions {
         None = -1,
@@ -13,8 +17,6 @@ namespace States {
         SaveGame,
         TotalStates
     };
-
-    class Stage;
 
     class PausedState : public State{
         private:

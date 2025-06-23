@@ -20,5 +20,6 @@ namespace Event {
             virtual void attach(EventObserver*);
             virtual void detach(EventObserver*);
             virtual void notifyKeyPressed(const sf::Keyboard::Key key);
+            virtual void notifyTextEntered(const sf::Uint32 unicode);
     };
 };

@@ -26,6 +26,7 @@ namespace States {
 
             virtual void exec() = 0;
             virtual void keyPressed(const sf::Keyboard::Key key) {}
+            virtual void textEntered(const sf::Uint32 unicode) {}
             virtual void setIsActive(bool isA) {}
             void setType(StateType type);
     };

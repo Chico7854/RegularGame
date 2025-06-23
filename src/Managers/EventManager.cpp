@@ -43,6 +43,8 @@ namespace Manager {
                 pGraphicsManager->closeWindow();
             } else if (event.type == sf::Event::KeyPressed) {
                 notifyKeyPressed(event.key.code);
+            } else if (event.type == sf::Event::TextEntered) { 
+                notifyTextEntered(event.text.unicode);
             }
         }
     }

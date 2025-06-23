@@ -7,7 +7,9 @@ namespace States{
         selected(EndOptions::SaveScore),
         saveScoreButton(),
         menuButton(),
-        points(0)
+        points(0),
+        playerName(""),
+        nameInputActive(true)
     {
         setType(StateType::EndMenu);
         Manager::GraphicsManager::getGraphicsManager()->resetView();
@@ -43,7 +45,15 @@ namespace States{
             pointsText.setCharacterSize(24);
             pointsText.setFillColor(sf::Color::White);
             pointsText.setString("Points: " + std::to_string(points));
-            pointsText.setPosition(Constants::WINDOW_WIDTH/2, Constants::WINDOW_HEIGHT/2);//adjust to the midle after 
+            pointsText.setPosition(Constants::WINDOW_WIDTH/2, 
+                                   Constants::WINDOW_HEIGHT/2);//adjust to the midlle after
+            
+            nameText.setFont(*Font);
+            nameText.setCharacterSize(24);
+            nameText.setFillColor(sf::Color::White);
+            nameText.setString("Enter Name: ");
+            nameText.setPosition(Constants::WINDOW_WIDTH/2.f - nameText.getGlobalBounds().width/2.f, 
+                                 Constants::WINDOW_HEIGHT/2.f + 32.f);
         } else {
             std::cerr << "Failed to load game font.\n";
         }
@@ -54,32 +64,62 @@ namespace States{
     }
 
     void EndMenu::exec(){
-        updateSelected();
+        if (nameInputActive){
+            nameText.setString("Enter name: " + playerName + "_");
+        } else{
+            nameText.setString("Enter name: " + playerName);
+            updateSelected();
+        }
         draw();
     }
 
     void EndMenu::keyPressed(const sf::Keyboard::Key key){
-        if (key == sf::Keyboard::Up) {
-            if (selected == EndOptions::SaveScore) {
-                selected = EndOptions::Menu;
-            } else if (selected == EndOptions::Menu) {
-                selected = EndOptions::SaveScore;
-            }
-            updateSelected();
-        } else if (key == sf::Keyboard::Down) {
-            if (selected == EndOptions::SaveScore) {
-                selected = EndOptions::Menu;
-            } else if (selected == EndOptions::Menu) {
-                selected = EndOptions::SaveScore;
-            } 
-            updateSelected();
-        } else if (key == sf::Keyboard::Enter) {
-            if (selected == EndOptions::SaveScore) {
+            if (nameInputActive) {
+                if (key == sf::Keyboard::Enter) {
+                    if (!playerName.empty()) { 
+                        nameInputActive = false;
+                        selected = EndOptions::SaveScore;
+                        updateSelected();
+                    }
+                } else if (key == sf::Keyboard::BackSpace) { 
+                    if (!playerName.empty()) {
+                        playerName.pop_back();
+                    }
+                }
+            
+            } else {
+            if (key == sf::Keyboard::Up) {
+                if (selected == EndOptions::SaveScore) {
+                    selected = EndOptions::Menu;
+                } else if (selected == EndOptions::Menu) {
+                    selected = EndOptions::SaveScore;
+                }
+                updateSelected();
+            } else if (key == sf::Keyboard::Down) {
+                if (selected == EndOptions::SaveScore) {
+                    selected = EndOptions::Menu;
+                } else if (selected == EndOptions::Menu) {
+                    selected = EndOptions::SaveScore;
+                } 
+                updateSelected();
+            } else if (key == sf::Keyboard::Enter) {
+                if (selected == EndOptions::SaveScore) {
 
-            } else if (selected == EndOptions::Menu) {
-                pStateStack->pushState(States::StateType::Menu);
+                } else if (selected == EndOptions::Menu) {
+                    pStateStack->pushState(States::StateType::Menu);
+                }
+            } 
+        }
+    }
+
+    void EndMenu::textEntered(const sf::Uint32 unicode){
+        if (nameInputActive) {
+            if (unicode >= 32 && unicode < 127) { 
+                if (playerName.length() < 15) { 
+                    playerName += static_cast<char>(unicode);
+                }
             }
-        } 
+        }
     }
 
     void EndMenu::updateSelected(){
@@ -107,6 +147,7 @@ namespace States{
             Manager::GraphicsManager::getGraphicsManager()->draw(saveScoreButton);
             Manager::GraphicsManager::getGraphicsManager()->draw(menuButton);
             Manager::GraphicsManager::getGraphicsManager()->draw(pointsText);
+            Manager::GraphicsManager::getGraphicsManager()->draw(nameText);
         }
     }
 }
