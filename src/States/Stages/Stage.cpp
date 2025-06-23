@@ -18,7 +18,7 @@ namespace States {
             pointsText.setCharacterSize(24);
             pointsText.setFillColor(sf::Color::White);
             pointsText.setString("Points: 0");
-            pointsText.setPosition(10, 10); // Posição na tela
+            pointsText.setPosition(10, 10); 
         } else {
             std::cerr << "Failed to load game font.\n";
         }

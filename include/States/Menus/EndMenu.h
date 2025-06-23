@@ -39,7 +39,6 @@ namespace States {
             void updateSelected();
             void draw();
 
-            void updateName();
             void saveOnTxt();
         public:
             EndMenu(Stage* stage);

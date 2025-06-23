@@ -104,7 +104,7 @@ namespace States{
                 updateSelected();
             } else if (key == sf::Keyboard::Enter) {
                 if (selected == EndOptions::SaveScore) {
-
+                    saveOnTxt();
                 } else if (selected == EndOptions::Menu) {
                     pStateStack->pushState(States::StateType::Menu);
                 }
@@ -133,12 +133,14 @@ namespace States{
         } 
     }
 
-    void EndMenu::updateName(){
-        
-    }
-
     void EndMenu::saveOnTxt(){
-        
+        std::ofstream file("../data/leaderboard.txt", std::ios::app); 
+        if (file.is_open()) {
+            file << playerName << " " << points << std::endl;
+            file.close();
+        } else {
+            std::cerr << "error opening leaderboard.txt" << std::endl;
+        }
     }
 
     void EndMenu::draw(){
