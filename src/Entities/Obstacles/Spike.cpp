@@ -5,7 +5,7 @@ namespace Entities
 {
     Spike::Spike():
         Obstacle(Texture::Spike, Constants::SPIKE_WIDTH, Constants::SPIKE_HEIGHT, EntityType::Spike, true),
-        damage(10)
+        damage(1)
     {}
 
     Spike::~Spike() {}
@@ -19,6 +19,7 @@ namespace Entities
     void Spike::obstruct(Character* character) {
 		if (character->getType() == EntityType::Player) {
             damageCollision(character);
+            character->setLife(character->getLife() - damage);
         }
         else {
             sf::FloatRect intersectionRect;
@@ -52,4 +53,8 @@ namespace Entities
             }
         }
 	}
+
+    const int Spike::getDamage() const {
+        return damage;
+    }
 }

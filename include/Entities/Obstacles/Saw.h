@@ -11,7 +11,7 @@ namespace Entities {
 	class Saw : public Obstacle //implement damage, +50 damage for tounching it and it thwrows the player back
 	{
 	private:
-		const float damage;
+		const int damage;
 		const float moving_area;
 		float dx,dy;
 		float dx_sum;

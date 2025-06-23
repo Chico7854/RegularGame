@@ -4,7 +4,7 @@
 namespace Entities {
 	Saw::Saw():
 		Obstacle(Texture::Saw, Constants::SAW_WIDTH, Constants::SAW_HEIGHT, EntityType::Saw, true), 
-		damage(10.f), 
+		damage(2), 
         dx(Constants::SPEED),
         dy(0.f),
         moving_area(128.f),
@@ -24,6 +24,7 @@ namespace Entities {
 	void Saw::obstruct(Character* character) {
 		if (character->getType() == EntityType::Player) {
             damageCollision(character);
+            character->setLife(character->getLife() - damage);
         }
         else {
             sf::FloatRect intersectionRect;

@@ -8,7 +8,7 @@ namespace Entities {
 	class Spike : public Obstacle //implement damage to player, +10 damage per second of contact
 	{
 	private:
-		float damage;
+		const int damage;
 		
 	public:
 		Spike();
@@ -16,9 +16,8 @@ namespace Entities {
 
 		void save() override;
 		void exec() override {};
-
 		void obstruct(Character* character) override;
-		float getDamage() const { return damage; }
-		void setDamage(float damage_value) { damage = damage_value; }
+
+		const int getDamage() const;
 	};
 }
