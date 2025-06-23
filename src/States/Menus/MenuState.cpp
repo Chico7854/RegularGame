@@ -104,13 +104,13 @@ namespace States{
                 pStateStack->pushState(States::StateType::GameDay);
             } else if (selected == MenuOptions::NewNight) {
                 pStateStack->pushState(States::StateType::GameNight);
-            } else if (selected == MenuOptions::ExitGame) {
-                Manager::GraphicsManager::getGraphicsManager()->closeWindow();
             } else if (selected == MenuOptions::LoadGame) {
                 
             } else if (selected == MenuOptions::Leaderboard) {
                 
-            }
+            } else if (selected == MenuOptions::ExitGame) {
+                Manager::GraphicsManager::getGraphicsManager()->closeWindow();
+            } 
         }
     }
 

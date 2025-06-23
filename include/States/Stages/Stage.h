@@ -38,6 +38,7 @@ namespace States {
 
             void setIsPaused(bool isP);
             void updatePoints(int p);
+            int getPoints();
             void checkEnd();
         protected:
             void createYoukai(const float x, const float y);

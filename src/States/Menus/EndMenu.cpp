@@ -1,14 +1,17 @@
 #include "States/Menus/EndMenu.h"
+#include "States/Stages/Stage.h"
 
 namespace States{
     EndMenu::EndMenu(Stage* stage) : State(Manager::EventManager::getEventManager()),
         pStage(stage),
         selected(EndOptions::SaveScore),
         saveScoreButton(),
-        menuButton()
+        menuButton(),
+        points(0)
     {
-        setType(StateType::Paused);
+        setType(StateType::EndMenu);
         Manager::GraphicsManager::getGraphicsManager()->resetView();
+        points = pStage->getPoints();
         initializeAssets();
         updateSelected();
     }
@@ -40,7 +43,7 @@ namespace States{
             pointsText.setCharacterSize(24);
             pointsText.setFillColor(sf::Color::White);
             pointsText.setString("Points: " + std::to_string(points));
-            pointsText.setPosition(Constants::WINDOW_WIDTH/2 + 64, Constants::WINDOW_HEIGHT + 16);//adjust to the midle after 
+            pointsText.setPosition(Constants::WINDOW_WIDTH/2, Constants::WINDOW_HEIGHT/2);//adjust to the midle after 
         } else {
             std::cerr << "Failed to load game font.\n";
         }
@@ -90,11 +93,20 @@ namespace States{
         } 
     }
 
+    void EndMenu::updateName(){
+        
+    }
+
+    void EndMenu::saveOnTxt(){
+        
+    }
+
     void EndMenu::draw(){
         if(Manager::GraphicsManager::getGraphicsManager()){
             Manager::GraphicsManager::getGraphicsManager()->getWindow()->setView(sf::View(sf::FloatRect(0, 0, Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)));
             Manager::GraphicsManager::getGraphicsManager()->draw(saveScoreButton);
             Manager::GraphicsManager::getGraphicsManager()->draw(menuButton);
+            Manager::GraphicsManager::getGraphicsManager()->draw(pointsText);
         }
     }
 }

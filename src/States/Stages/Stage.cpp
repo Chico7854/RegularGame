@@ -133,10 +133,14 @@ namespace States {
         points += p;
     }
 
+    int Stage::getPoints(){
+        return points;
+    }
+
     void Stage::checkEnd(){
         const sf::FloatRect p1Coords = player->getGlobalHitbox();
         if ((p1Coords.left + p1Coords.width) > Constants::MAP_WIDTH) {
-        States::StateStack::getInstance()->pushState(States::StateType::EndMenu, new States::EndMenu(this));
+            States::StateStack::getInstance()->pushState(States::StateType::EndMenu, new States::EndMenu(this));
         }
     }
 

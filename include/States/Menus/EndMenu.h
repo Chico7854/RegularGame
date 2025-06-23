@@ -8,6 +8,10 @@
 #include "Utility/Font.h"
 #include "Utility/Constants.h"
 
+namespace States{
+    class Stage;
+}
+
 namespace States {
     enum class EndOptions {
         None = -1,
@@ -20,6 +24,7 @@ namespace States {
         private:
             sf::Sprite saveScoreButton;
             sf::Sprite menuButton;
+
             sf::Text name;
             sf::Text pointsText;
             int points;
@@ -29,6 +34,9 @@ namespace States {
             void initializeAssets(); 
             void updateSelected();
             void draw();
+
+            void updateName();
+            void saveOnTxt();
         public:
             EndMenu(Stage* stage);
             ~EndMenu();
