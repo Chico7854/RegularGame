@@ -6,12 +6,14 @@ namespace Entities {
     Player::Player(Texture::ID id, const int width, const int height):
         Character(id, width, height, EntityType::Player),
         attack_radius(64.f),
-        isAttacking(false)
+        isAttacking(false),
+        swordDamage(1)
     {
     }
 
     Player::Player():
-        attack_radius()
+        attack_radius(-1),
+        swordDamage(-1)
     {}
 
     Player::~Player() {}
@@ -52,7 +54,7 @@ namespace Entities {
             pEnemy->setDx(pEnemy->getDx() * -1);
 
             if (isAttacking) {
-                pEnemy->setLife(pEnemy->getLife() - 1);
+                pEnemy->setLife(pEnemy->getLife() - swordDamage);
                 pEnemy->setIsHurt(true);
                 pEnemy->setDy(Constants::JUMP_SPEED / 1.5);
                 pEnemy->moveHitboxSprite(pEnemy->getDx(), pEnemy->getDy());

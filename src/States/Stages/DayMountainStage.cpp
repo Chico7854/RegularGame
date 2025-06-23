@@ -160,6 +160,8 @@ namespace States {
     void DayMountainStage::createObstacles() {
         std::ifstream file;
         std::string line;
+        int platformCount = 0;
+        int spikeCount = 0;
         file.open(mapPath);
         if (!file.is_open()) {
             std::cerr << "Couldnt open stage file\n";

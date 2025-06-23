@@ -16,6 +16,7 @@ namespace Entities {
 
     class Player : public Character {
         private:
+            const float swordDamage;
             const float attack_radius;
             bool isAttacking;
             States::Stage* pStage;
