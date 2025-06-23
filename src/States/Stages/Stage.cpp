@@ -115,6 +115,7 @@ namespace States {
     void Stage::exec() {
         if(!isPaused) {
             drawBackground();
+            checkEnd();
             updateView();
             updatePointsText();
             pCollisionManager->exec();
@@ -130,6 +131,13 @@ namespace States {
 
     void Stage::updatePoints(int p){
         points += p;
+    }
+
+    void Stage::checkEnd(){
+        const sf::FloatRect p1Coords = player->getGlobalHitbox();
+        if ((p1Coords.left + p1Coords.width) > Constants::MAP_WIDTH) {
+        States::StateStack::getInstance()->pushState(States::StateType::EndMenu, new States::EndMenu(this));
+        }
     }
 
     void Stage::pauseGame(){

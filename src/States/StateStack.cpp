@@ -5,6 +5,7 @@
 #include "States/Stages/NightMountainStage.h"
 #include "States/Menus/PausedState.h"
 #include "States/Menus/MenuState.h"
+#include "States/Menus/EndMenu.h"
 /*#include "State/PauseState.h"
 #include "State/PlayerSelectState.h"
 #include "State/StageSelectState.h"
@@ -46,6 +47,9 @@ namespace States {
       case (StateType::Paused):
         state = pState;
         break;
+      case (StateType::EndMenu):
+        state = pState;
+        break;
       /*case (StateType::PlayerSelect): 
         state = new PlayerSelectState; 
         break;
@@ -59,9 +63,7 @@ namespace States {
       /*case (StateType::Continue):
         state = new LoadingState(false);
         break;
-      case (StateType::EndStage):
-        state = new EndStageState(static_cast<GameState*>(pState));
-        break;
+      
       case (StateType::SaveScore):
         state = new SaveScoreState;
         break;

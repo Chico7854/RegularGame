@@ -12,6 +12,7 @@
 #include "Managers/EventManager.h"
 #include "States/StateStack.h"
 #include "States/Menus/PausedState.h"
+#include "States/Menus/EndMenu.h"
 #include "Utility/Font.h"
 
 namespace States {
@@ -37,6 +38,7 @@ namespace States {
 
             void setIsPaused(bool isP);
             void updatePoints(int p);
+            void checkEnd();
         protected:
             void createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);

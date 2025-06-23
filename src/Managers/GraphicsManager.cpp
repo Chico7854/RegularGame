@@ -119,6 +119,7 @@ namespace Manager {
         loadTexture(Save, SAVE);
         loadTexture(Load, LOAD);
         loadTexture(Leaderboard, LEADERBOARD);
+        loadTexture(SaveScore, SAVE_SCORE);
     }
 
     sf::Texture* GraphicsManager::getTexture(Texture::ID id) {

@@ -27,7 +27,8 @@ namespace Texture {
         Menu,
         Save,
         Load,
-        Leaderboard
+        Leaderboard,
+        SaveScore
     };
 
     struct Texture {
@@ -52,8 +53,8 @@ namespace Texture {
     constexpr char EXIT_GAME[] = "../assets/images/exitgame.png";
     constexpr char CONTINUE[] = "../assets/images/continue.png";
     constexpr char MENU[] = "../assets/images/menu.png";
-    constexpr char SAVE[] = "../assets/images/save.png";
+    constexpr char SAVE[] = "../assets/images/save_game.png";
     constexpr char LOAD[] = "../assets/images/load.png";
     constexpr char LEADERBOARD[] = "../assets/images/leaderboard.png";
-
+    constexpr char SAVE_SCORE[] = "../assets/images/save_score.png";
 }

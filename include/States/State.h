@@ -10,6 +10,7 @@ namespace States {
         Paused,
         GameDay,
         GameNight,
+        EndMenu,
         TotalStates
     };
 
