@@ -34,10 +34,6 @@ namespace Entities {
         return lifes;
     }
 
-    void Character::setSpeed(float s) {
-        speed = s;
-    }
-
     void Character::setDx(float x) {
         dx = x;
     }
@@ -71,8 +67,14 @@ namespace Entities {
         updateHitbox();
     }
 
-    void Character::saveDataBuffer() {
-        Entity::saveDataBuffer();
-        buffer << " " << lifes << " " << speed << " " << dx << " " << dy << " " << onGround << " " << isHurt;
+    json Character::saveDataBuffer() {
+        json data = Entity::saveDataBuffer();
+        data["lifes"] = lifes;
+        data["dx"] = dx;
+        data["dy"] = dy;
+        data["onGround"] = onGround;
+        data["isHurt"] = isHurt;
+
+        return data;
     }
 }

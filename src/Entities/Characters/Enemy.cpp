@@ -29,8 +29,9 @@ namespace Entities {
         }
     }
 
-    void Enemy::saveDataBuffer() {
-        Character::saveDataBuffer();
-        buffer << " " << evilness;
+    json Enemy::saveDataBuffer() {
+        json data = Character::saveDataBuffer();
+        data["evilness"] = evilness;
+        return data;
     }
 }

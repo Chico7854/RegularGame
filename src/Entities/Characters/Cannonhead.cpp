@@ -18,8 +18,11 @@ namespace Entities {
     }
 
     void Cannonhead::save() {
-        Enemy::saveDataBuffer();
-        buffer << " " << direction << " " << dtime << std::endl;
+        json data = Enemy::saveDataBuffer();
+        data["direction"] = direction;
+        data["dtime"] = dtime;
+        buffer << data.dump(4) << ",\n";
+        buffer.flush();
     }
 
     void Cannonhead::exec()

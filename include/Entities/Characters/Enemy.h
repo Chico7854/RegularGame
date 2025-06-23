@@ -24,6 +24,6 @@ namespace Entities {
             virtual void exec() = 0;
 
             virtual void changeDirectionOnPlatform();
-            void saveDataBuffer();
+            json saveDataBuffer();
     };
 }

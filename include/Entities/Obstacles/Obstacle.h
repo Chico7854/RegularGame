@@ -19,7 +19,7 @@ namespace Entities {
         virtual void exec() = 0;
         virtual void obstruct(Entities::Character* character) = 0;
 
-        void saveDataBuffer();
+        json saveDataBuffer();
         void damageCollision(Character* character);
     };
 }

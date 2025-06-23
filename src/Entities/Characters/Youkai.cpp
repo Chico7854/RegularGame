@@ -16,8 +16,9 @@ namespace Entities {
 
     void Youkai::save()
     {
-        Enemy::saveDataBuffer();
-        buffer << std::endl;
+        json data = Enemy::saveDataBuffer();
+        buffer << data.dump(4) << ",\n";
+        buffer.flush();
     }
 
     void Youkai::exec()

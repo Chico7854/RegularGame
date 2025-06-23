@@ -50,7 +50,8 @@ namespace Entities {
     }
 
     void Platform::save() {
-        Obstacle::saveDataBuffer();
-        buffer << std::endl;
+        json data = Obstacle::saveDataBuffer();
+        buffer << data.dump(4) << ",\n"; 
+        buffer.flush();  
     }
 }

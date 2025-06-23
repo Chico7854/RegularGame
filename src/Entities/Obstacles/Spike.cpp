@@ -11,8 +11,9 @@ namespace Entities
     Spike::~Spike() {}
 
     void Spike::save() {
-        Obstacle::saveDataBuffer();
-        buffer << std::endl;
+        json data = Obstacle::saveDataBuffer();
+        buffer << data.dump(4) << ",\n";
+        buffer.flush();
     }
 
     void Spike::obstruct(Character* character) {

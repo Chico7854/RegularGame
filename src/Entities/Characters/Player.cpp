@@ -98,9 +98,11 @@ namespace Entities {
 
     void Player::save()
     {
-        Character::saveDataBuffer();
-        buffer << " " << isAttacking << std::endl;
-        
+        json data = Character::saveDataBuffer();
+        data["isAttacking"] = isAttacking;
+
+        buffer << data.dump(4) << ",\n";
+        buffer.flush();
     }
 
     void Player::exec()

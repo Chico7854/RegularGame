@@ -14,7 +14,6 @@ namespace Entities {
 	Saw::~Saw() {}
 
     void Saw::save() {
-        Obstacle::saveDataBuffer();
         saveDataBuffer();
     }
 
@@ -82,6 +81,11 @@ namespace Entities {
     }
 
     void Saw::saveDataBuffer() {
-        buffer << " " << dx << " " << dy << " " << dx_sum << std::endl;
+        json data = Obstacle::saveDataBuffer();
+        data["dx"] = dx;
+        data["dy"] = dy;
+        data["dx_sum"] = dx_sum;
+        buffer << data.dump(4) << ",\n";
+        buffer.flush();
     }
 }

@@ -2,11 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <fstream>
+#include <nlohmann/json.hpp>
 
 #include "Ent.h"
 #include "Utility/Constants.h"
 
 #include "Utility/Texture.h"
+
+using json = nlohmann::json;
 
 namespace Entities {
     enum class EntityType {
@@ -50,6 +53,6 @@ namespace Entities {
         void setToDelete(bool del);
 
     protected:
-        void saveDataBuffer();
+        json saveDataBuffer();
     };
 }

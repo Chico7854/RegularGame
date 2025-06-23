@@ -68,8 +68,12 @@ namespace Entities {
     }
 
     void Ghost::save() {
-        Enemy::saveDataBuffer();
-        buffer << " " << dtime << " " << inRange << " " << distanceFromPlayer << std::endl;
+        json data = Enemy::saveDataBuffer();
+        data["dtime"] = dtime;
+        data["inRange"] = inRange;
+        data["distanceFromPlayer"] = distanceFromPlayer;
+        buffer << data.dump(4) << ",\n";
+        buffer.flush();
     }
 
     void Ghost::exec(){

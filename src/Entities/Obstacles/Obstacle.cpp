@@ -12,8 +12,8 @@ namespace Entities {
 
     Obstacle::~Obstacle() {}
 
-    void Obstacle::saveDataBuffer() {
-        Entity::saveDataBuffer();
+    json Obstacle::saveDataBuffer() {
+        return Entity::saveDataBuffer();
     }
 
     void Obstacle::damageCollision(Character* character) {

@@ -146,8 +146,17 @@ namespace States {
     }
 
     void Stage::save() {
-        std::ofstream("../data/save.txt", std::ios::trunc).close();     //delete contents of the file
+        std::ofstream file("../data/save.json", std::ios::out);     //delete contents of the file
+        json endObj = {};
+        file << "[\n";
+        file.flush();
+        file.close();
         pEntityList->saveEntities();
+        std::ofstream file2("../data/save.json", std::ios::app);
+        file2 << endObj.dump(4);
+        file2 << "\n]";
+        file2.flush();
+        file2.close();
     }
 
     void Stage::pauseGame(){

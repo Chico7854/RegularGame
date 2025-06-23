@@ -5,9 +5,13 @@ namespace Entities {
         Ent(id, width, height), 
         type(t),
         toDelete(false),
-        buffer("../data/save.txt", std::ios::app)
+        buffer("../data/save.json", std::ios::app)
     {
         setHitbox({0.f, 0.f, (float)width, (float)height});
+        if (!buffer) {
+            std::cerr << "ERROR Failed to load buffer";
+            exit(1);
+        }
     }
 
     Entity::Entity():
@@ -16,7 +20,9 @@ namespace Entities {
         buffer()
     {}
 
-    Entity::~Entity() {}
+    Entity::~Entity() {
+        buffer.close();
+    }
 
     sf::FloatRect Entity::getGlobalHitbox() const {
         return hitbox;
@@ -47,7 +53,13 @@ namespace Entities {
         this->toDelete = del;
     }
 
-    void Entity::saveDataBuffer() {
-        buffer << (int)type << " " << hitbox.left << " " << hitbox.top << " " << toDelete;
+    json Entity::saveDataBuffer() {
+        json data = {
+            {"type", (int)type},
+            {"left", hitbox.left},
+            {"top", hitbox.top},
+            {"toDelete", toDelete}
+        };
+        return data;
     }
 }
