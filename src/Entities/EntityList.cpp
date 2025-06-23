@@ -7,7 +7,15 @@ namespace List {
         entities()
     {}
 
-    EntityList::~EntityList() {}
+    EntityList::~EntityList() {
+        List<Entities::Entity*>::Iterator it = entities.getHead();
+        while (it != nullptr) {
+            if (*it) {
+                delete *it;
+            }
+            it++;
+        }
+    }
 
     EntityList* EntityList::getEntityList() {
         if (!pSelf) {

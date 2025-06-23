@@ -24,7 +24,11 @@ namespace States {
         }
     }
 
-    Stage::~Stage() {}
+    Stage::~Stage() {
+        pEntityList = nullptr;
+        pCollisionManager = nullptr;
+        player = nullptr;
+    }
 
     const Entities::Player* Stage::getPlayer() const {
         return player;
