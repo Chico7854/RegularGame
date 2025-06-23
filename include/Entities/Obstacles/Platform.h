@@ -18,6 +18,7 @@ namespace Entities {
         const float getMagicalForce() const;
 
         void obstruct(Entities::Character* character) override;
-        void save() override {} 
+        void save() override;
+        void exec() override {}
     };
 }

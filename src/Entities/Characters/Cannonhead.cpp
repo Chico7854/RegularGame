@@ -6,7 +6,6 @@ namespace Entities {
         Enemy(Texture::Cannonhead, Constants::CANNONHEAD_WIDTH, Constants::CANNONHEAD_HEIGHT, EntityType::Cannonhead),
         direction(false),
         pEntityList(nullptr),
-        cont_balls(0),
         dtime(0.f)
     {
         setEntityList();
@@ -18,12 +17,13 @@ namespace Entities {
         player->setLife(player->getLife() - 1);
     }
 
-    void Cannonhead::save(){
+    void Cannonhead::save() {
+        Enemy::saveDataBuffer();
+        buffer << " " << direction << " " << dtime << std::endl;
     }
 
     void Cannonhead::exec()
     {
-        /*GAMBIARRA*/
         dy += Constants::GRAVITY;
         if (sprite.getGlobalBounds().left + dx < 0 || sprite.getGlobalBounds().left + sprite.getGlobalBounds().width + dx > Constants::MAP_WIDTH) {
             dx = -dx; // Reverse direction if hits borders
@@ -40,23 +40,6 @@ namespace Entities {
         } else {
             sprite.setColor(sf::Color::Red);
         }
-
-        /*if(pProjectileList){
-            projectileList->execEntities();
-            projectileList->drawEntities();
-        }*/
-
-        // frame += 0.008f * time; // Animation speed
-        // if (frame >= 6) {
-        //     frame = 0;
-        // }
-
-        // if (dx > 0) {
-        //     sprite.setTextureRect(sf::IntRect(width * (int)frame, 0, width, height));
-        // }
-        // if (dx < 0) {
-        //     sprite.setTextureRect(sf::IntRect(width * ((int)frame + 1), 0, -width, height));
-        // }
     }
 
     void Cannonhead::setBallDirection(){
@@ -82,7 +65,6 @@ namespace Entities {
 
         Manager::CollisionManager::getCollisionManager()->appendProjectile(new_ball);
         pEntityList->append(new_ball);
-        cont_balls++;
     }
 
     void Cannonhead::setEntityList(){

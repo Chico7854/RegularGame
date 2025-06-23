@@ -28,4 +28,9 @@ namespace Entities {
             moveHitboxSprite(dx, 0);
         }
     }
+
+    void Enemy::saveDataBuffer() {
+        Character::saveDataBuffer();
+        buffer << " " << evilness;
+    }
 }

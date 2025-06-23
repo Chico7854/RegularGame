@@ -71,4 +71,8 @@ namespace Entities {
         updateHitbox();
     }
 
+    void Character::saveDataBuffer() {
+        Entity::saveDataBuffer();
+        buffer << " " << lifes << " " << speed << " " << dx << " " << dy << " " << onGround << " " << isHurt;
+    }
 }

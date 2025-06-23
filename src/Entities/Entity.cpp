@@ -4,14 +4,16 @@ namespace Entities {
     Entity::Entity(Texture::ID id, const int width, const int height, EntityType t):
         Ent(id, width, height), 
         type(t),
-        toDelete(false)
+        toDelete(false),
+        buffer("../data/save.txt", std::ios::app)
     {
         setHitbox({0.f, 0.f, (float)width, (float)height});
     }
 
     Entity::Entity():
         Ent(),
-        type(EntityType::None)
+        type(EntityType::None),
+        buffer()
     {}
 
     Entity::~Entity() {}
@@ -43,5 +45,9 @@ namespace Entities {
 
     void Entity::setToDelete(bool del){
         this->toDelete = del;
+    }
+
+    void Entity::saveDataBuffer() {
+        buffer << (int)type << " " << hitbox.left << " " << hitbox.top << " " << toDelete;
     }
 }

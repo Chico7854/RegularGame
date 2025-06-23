@@ -145,6 +145,11 @@ namespace States {
         }
     }
 
+    void Stage::save() {
+        std::ofstream("../data/save.txt", std::ios::trunc).close();     //delete contents of the file
+        pEntityList->saveEntities();
+    }
+
     void Stage::pauseGame(){
         isPaused = true;
         States::PausedState* paused = new States::PausedState(this);

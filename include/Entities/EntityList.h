@@ -19,6 +19,7 @@ namespace List {
             void printEntities();
             void execEntities();
             void drawEntities();
+            void saveEntities();
 
             void clear();
 

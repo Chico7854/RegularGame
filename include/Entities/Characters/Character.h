@@ -30,6 +30,7 @@ namespace Entities {
             void setLife(const int numLifes);
 
             void moveHitboxSprite(const float dx, const float dy);
+            void saveDataBuffer();
 
             virtual void save() = 0;
             virtual void exec() = 0;

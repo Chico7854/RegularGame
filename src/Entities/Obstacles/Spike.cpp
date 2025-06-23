@@ -10,6 +10,11 @@ namespace Entities
 
     Spike::~Spike() {}
 
+    void Spike::save() {
+        Obstacle::saveDataBuffer();
+        buffer << std::endl;
+    }
+
     void Spike::obstruct(Character* character) {
 		if (character->getType() == EntityType::Player) {
             damageCollision(character);

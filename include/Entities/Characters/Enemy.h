@@ -20,9 +20,10 @@ namespace Entities {
             const int getEvilness() const;
 
             virtual void damage(Player* player) = 0;
-            virtual void save();
+            virtual void save() = 0;
             virtual void exec() = 0;
 
             virtual void changeDirectionOnPlatform();
+            void saveDataBuffer();
     };
 }

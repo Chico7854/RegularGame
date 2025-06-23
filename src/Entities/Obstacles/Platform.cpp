@@ -48,4 +48,9 @@ namespace Entities {
             } 
         }
     }
+
+    void Platform::save() {
+        Obstacle::saveDataBuffer();
+        buffer << std::endl;
+    }
 }

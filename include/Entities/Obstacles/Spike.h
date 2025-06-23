@@ -9,11 +9,14 @@ namespace Entities {
 	{
 	private:
 		float damage;
+		
 	public:
 		Spike();
 		virtual ~Spike();
 
-		void save() override {}
+		void save() override;
+		void exec() override {};
+
 		void obstruct(Character* character) override;
 		float getDamage() const { return damage; }
 		void setDamage(float damage_value) { damage = damage_value; }

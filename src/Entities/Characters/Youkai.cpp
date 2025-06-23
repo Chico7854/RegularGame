@@ -16,6 +16,8 @@ namespace Entities {
 
     void Youkai::save()
     {
+        Enemy::saveDataBuffer();
+        buffer << std::endl;
     }
 
     void Youkai::exec()
@@ -31,17 +33,5 @@ namespace Entities {
         } else {
             sprite.setColor(sf::Color::White);
         }
-
-        // frame += 0.008f * time; // Animation speed
-        // if (frame >= 6) {
-        //     frame = 0;
-        // }
-
-        // if (dx > 0) {
-        //     sprite.setTextureRect(sf::IntRect(width * (int)frame, 0, width, height));
-        // }
-        // if (dx < 0) {
-        //     sprite.setTextureRect(sf::IntRect(width * ((int)frame + 1), 0, -width, height));
-        // }
     }
 }

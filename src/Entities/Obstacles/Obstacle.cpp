@@ -12,6 +12,10 @@ namespace Entities {
 
     Obstacle::~Obstacle() {}
 
+    void Obstacle::saveDataBuffer() {
+        Entity::saveDataBuffer();
+    }
+
     void Obstacle::damageCollision(Character* character) {
         const sf::FloatRect charCoordinates = character->getGlobalHitbox();
         const sf::FloatRect obstacleCoordinates = getGlobalHitbox();

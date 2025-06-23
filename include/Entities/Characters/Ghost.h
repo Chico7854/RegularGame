@@ -25,7 +25,7 @@ namespace Entities {
             void jump();
             void changeDirectionOnPlatform() override;
             void damage(Player* player) override;
-            void save() override {}
+            void save() override;
             void exec() override;
     };
 }

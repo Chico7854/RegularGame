@@ -12,7 +12,6 @@ namespace Entities {
     private:
         bool direction; // true for right, false for left
         List::EntityList* pEntityList;
-        int cont_balls;
         float dtime;//Gambiarra, maybe add clock on main loop after
 
     public:     

@@ -11,20 +11,23 @@ namespace Entities {
 	class Saw : public Obstacle //implement damage, +50 damage for tounching it and it thwrows the player back
 	{
 	private:
-		float damage;
+		const float damage;
+		const float moving_area;
 		float dx,dy;
-		float moving_area;
 		float dx_sum;
-		float frame;
+
 	public:
 		Saw();
 		virtual ~Saw();
-		void save() override {}
+
+		void save() override;
 		void exec() override;
+
 		void obstruct(Character* character) override;
 		void moveHitboxSprite(float dx, float dy); 
 		void moveSaw();
-		float getDamage() const { return damage; }
-		void setDamage(float damage_value) { damage = damage_value; }
+		void saveDataBuffer();
+
+		const float getDamage() const;
 	};
 }

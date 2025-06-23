@@ -80,7 +80,7 @@ namespace States{
             } else if (selected == PausedOptions::Menu) {
                 pStateStack->pushState(States::StateType::Menu);
             } else if (selected == PausedOptions::SaveGame) {
-                
+                pStage->save();
             }
         } 
     }

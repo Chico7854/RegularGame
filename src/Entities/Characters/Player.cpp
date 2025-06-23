@@ -98,6 +98,9 @@ namespace Entities {
 
     void Player::save()
     {
+        Character::saveDataBuffer();
+        buffer << " " << isAttacking << std::endl;
+        
     }
 
     void Player::exec()

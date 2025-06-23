@@ -8,20 +8,18 @@ namespace Entities {
         dx(Constants::SPEED),
         dy(0.f),
         moving_area(128.f),
-        dx_sum(0.f),
-		frame(0)
+        dx_sum(0.f)
 	{}
 
 	Saw::~Saw() {}
 
-    void Saw::exec(){
-        moveSaw();
-        /*frame += 0.005f * 5;  
-        if (frame >= 6) {
-            frame = 0;
-        }
+    void Saw::save() {
+        Obstacle::saveDataBuffer();
+        saveDataBuffer();
+    }
 
-        sprite.setTextureRect(sf::IntRect(64 * (int)frame, 0, 64, 64));*/
+    void Saw::exec() {
+        moveSaw();
     }
 
 	void Saw::obstruct(Character* character) {
@@ -77,5 +75,13 @@ namespace Entities {
                 dx_sum += dx*(-1);
         }
         moveHitboxSprite(dx, dy);
+    }
+
+    const float Saw::getDamage() const {
+        return damage;
+    }
+
+    void Saw::saveDataBuffer() {
+        buffer << " " << dx << " " << dy << " " << dx_sum << std::endl;
     }
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <fstream>
 
 #include "Ent.h"
 #include "Utility/Constants.h"
@@ -28,6 +29,7 @@ namespace Entities {
         const EntityType type;
         sf::FloatRect hitbox;
         bool toDelete;
+        std::ofstream buffer;
 
     public:
         Entity(Texture::ID id, int width, const int height, EntityType t);
@@ -46,5 +48,8 @@ namespace Entities {
         const EntityType getType() const;
         bool getToDelete() const;
         void setToDelete(bool del);
+
+    protected:
+        void saveDataBuffer();
     };
 }

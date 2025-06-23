@@ -67,6 +67,11 @@ namespace Entities {
         player->setLife(player->getLife() - 1);
     }
 
+    void Ghost::save() {
+        Enemy::saveDataBuffer();
+        buffer << " " << dtime << " " << inRange << " " << distanceFromPlayer << std::endl;
+    }
+
     void Ghost::exec(){
         /*GAMBIARRA*/
         dy += Constants::GRAVITY;

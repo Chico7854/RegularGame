@@ -40,6 +40,8 @@ namespace States {
             void updatePoints(int p);
             int getPoints();
             void checkEnd();
+            void save();
+
         protected:
             void createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);

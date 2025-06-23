@@ -15,10 +15,11 @@ namespace Entities {
         Obstacle();
         virtual ~Obstacle();
 
-        virtual void save() override {}
-        virtual void exec() {};
+        virtual void save() = 0;
+        virtual void exec() = 0;
         virtual void obstruct(Entities::Character* character) = 0;
 
+        void saveDataBuffer();
         void damageCollision(Character* character);
     };
 }
