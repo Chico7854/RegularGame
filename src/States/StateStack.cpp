@@ -83,9 +83,9 @@ namespace States {
     }
 
     if (stack.size() > 0)
-      stack.back()->setIsActive(false);
+      stack.top()->setIsActive(false);
 
-    stack.push_back(state);
+    stack.push(state);
   }
 
   StateStack::~StateStack() {
@@ -112,23 +112,19 @@ namespace States {
   }
 
   void StateStack::delayedPopState() {
-    States::State* tmpState = stack.back();
+    States::State* tmpState = stack.top();
     delete tmpState;
-    stack.erase(stack.end() - 1);
+    stack.pop();
 
     if (stack.size() > 0)
-      stack.back()->setIsActive(true);
+      stack.top()->setIsActive(true);
   }
 
   void StateStack::clearStates() {
-    std::vector<State*>::iterator it = stack.begin();
-
-    while (it != stack.end()) {
-      delete *it;
-      ++it;
+    while (!stack.empty()) {
+      delete stack.top();
+      stack.pop();
     } 
-
-    stack.clear(); 
   }
 
   void StateStack::applyPendingCommands() {
@@ -154,15 +150,11 @@ namespace States {
     }
   }
 
-  State* StateStack::getBack() const {
-    return stack.back();
-  }
-
   void StateStack::exec() {
     applyPendingCommands();
 
     if (!stack.empty()) {
-      stack.back()->exec();
+      stack.top()->exec();
     }
   }
 

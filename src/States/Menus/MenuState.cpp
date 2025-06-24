@@ -139,6 +139,7 @@ namespace States{
                 Manager::GraphicsManager::getGraphicsManager()->closeWindow();
             } 
         }
+        std::cout << "Menu:" << (int)selected << "\n";
     }
 
     void MenuState::setIsActive(bool isA){

@@ -25,7 +25,6 @@ namespace States {
             sf::Text pointsText;
             const int maxYoukais;
             const bool isSinglePlayer;
-            bool isPaused;
             int points;
 
         public:

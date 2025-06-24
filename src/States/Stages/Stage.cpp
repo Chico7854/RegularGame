@@ -130,20 +130,14 @@ namespace States {
     }
 
     void Stage::exec() {
-        if(!isPaused) {
-            drawBackground();
-            checkEnd();
-            updateView();
-            updatePointsText();
-            pCollisionManager->exec();
-            entities.execEntities();
-            entities.drawEntities();
-            pGraphicsManager->draw(pointsText);
-        }
-    }
-
-    void Stage::setIsPaused(bool isP){
-        isPaused = isP;
+        drawBackground();
+        checkEnd();
+        updateView();
+        updatePointsText();
+        pCollisionManager->exec();
+        entities.execEntities();
+        entities.drawEntities();
+        pGraphicsManager->draw(pointsText);
     }
 
     void Stage::updatePoints(int p){
@@ -163,7 +157,6 @@ namespace States {
     }
 
     void Stage::pauseGame(){
-        isPaused = true;
         States::PausedState* paused = new States::PausedState(this);
         pStateStack->pushState(States::StateType::Paused, paused, false); 
     }

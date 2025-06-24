@@ -75,7 +75,6 @@ namespace States{
             updateSelected();
         } else if (key == sf::Keyboard::Enter) {
             if (selected == PausedOptions::Continue) {
-                pStage->setIsPaused(false);
                 pStateStack->popState();
             } else if (selected == PausedOptions::Menu) {
                 pStateStack->pushState(States::StateType::Menu);
@@ -83,6 +82,7 @@ namespace States{
                 pStage->save();
             }
         } 
+        std::cout << "Pause:" << (int)selected << "\n";
     }
 
     void PausedState::updateSelected(){

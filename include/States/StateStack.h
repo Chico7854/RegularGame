@@ -4,7 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <vector>
+#include <stack>
 #include <queue>
 
 namespace States {
@@ -31,7 +31,7 @@ namespace States {
 
     private:
       static StateStack* pSelf;
-      std::vector<State*> stack;
+      std::stack<State*> stack;
       std::queue<CommandDetails> commandQueue;
 
     private:
@@ -47,6 +47,5 @@ namespace States {
       void pushState(StateType stateType, State* pState = NULL, const bool isReplacing = false);
       void popState();
       void exec();
-      State* getBack() const;
   };
 }
