@@ -8,7 +8,7 @@ namespace States {
             const int maxGhosts;
 
         public:
-            NightMountainStage(const bool isSinglePlayer, const bool defaultMap = true);
+            NightMountainStage(const bool isSinglePlayer, const bool defaultMap = true, const int pointsValue = 0);
             ~NightMountainStage();
 
             void save() override;

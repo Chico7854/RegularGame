@@ -29,7 +29,7 @@ namespace States {
 
         public:
             Stage(const Texture::ID background, const std::string path, 
-                  const float sprite_width, const float sprite_height, const bool singlePlayer);
+                  const float sprite_width, const float sprite_height, const bool singlePlayer, const int pointsValue);
             virtual ~Stage();
 
             const Entities::Player* getPlayer() const;

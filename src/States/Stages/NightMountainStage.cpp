@@ -1,8 +1,8 @@
 #include "States/Stages/NightMountainStage.h"
 
 namespace States {
-    NightMountainStage::NightMountainStage(const bool isSinglePlayer, const bool defaultMap):
-        Stage(Texture::ID::BackgroundNightMountain, "../assets/stages/NightMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, isSinglePlayer),
+    NightMountainStage::NightMountainStage(const bool isSinglePlayer, const bool defaultMap, const int pointsValue):
+        Stage(Texture::ID::BackgroundNightMountain, "../assets/stages/NightMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, isSinglePlayer, pointsValue),
         maxGhosts(3)
     {
         if (defaultMap)

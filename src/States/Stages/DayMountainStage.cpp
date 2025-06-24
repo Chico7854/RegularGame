@@ -1,8 +1,8 @@
 #include "States/Stages/DayMountainStage.h"
 
 namespace States {
-    DayMountainStage::DayMountainStage(const bool isSinglePlayer, const bool defaultMap):
-        Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, isSinglePlayer),
+    DayMountainStage::DayMountainStage(const bool isSinglePlayer, const bool defaultMap, const int pointsValue):
+        Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, isSinglePlayer, pointsValue),
         maxCannonheads(5)
     {
         if (defaultMap)

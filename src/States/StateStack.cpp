@@ -48,10 +48,10 @@ namespace States {
         std::vector<json> data = jsonData.get<std::vector<json>>();
         json stageData = data[0];
         if (stageData["map"] == "day") {
-          state = new DayMountainStage(stageData["isSinglePlayer"], false);
+          state = new DayMountainStage(stageData["isSinglePlayer"], false, stageData["points"]);
         }
         else if (stageData["map"] == "night") {
-          state = new NightMountainStage(stageData["isSinglePlayer"], false);
+          state = new NightMountainStage(stageData["isSinglePlayer"], false, stageData["points"]);
         }
       }
         
