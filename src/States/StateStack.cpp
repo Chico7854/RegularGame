@@ -62,7 +62,6 @@ namespace States {
       std::cerr << "Error creating " << static_cast<int>(stateType) << " state! \n";
       return;
     }
-    std::cout << "Stack Size: " << stack.size() << "\n";
     if (stack.size() > 0)
       stack.top()->setIsActive(false);
 

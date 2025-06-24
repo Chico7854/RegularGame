@@ -10,6 +10,7 @@ namespace Entities {
         swordDamage(1),
         isPlayer1(isP1)
     {
+        lifes = 30;
     }
 
     Player::Player():

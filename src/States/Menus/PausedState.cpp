@@ -82,7 +82,6 @@ namespace States{
                 pStage->save();
             }
         } 
-        std::cout << "Pause:" << (int)selected << "\n";
     }
 
     void PausedState::updateSelected(){

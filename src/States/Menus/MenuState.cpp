@@ -139,7 +139,6 @@ namespace States{
                 Manager::GraphicsManager::getGraphicsManager()->closeWindow();
             } 
         }
-        std::cout << "Menu:" << (int)selected << "\n";
     }
 
     const bool MenuState::getIsSingle() {
