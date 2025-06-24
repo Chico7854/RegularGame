@@ -137,7 +137,6 @@ namespace Entities {
 
     void Player::exec()
     {
-        std::cout << lifes << "\n";
         if (!isHurt) {
             sprite.setColor(sf::Color::White);
             isAttacking = false;

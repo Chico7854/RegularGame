@@ -7,6 +7,8 @@ namespace States {
         State(Manager::EventManager::getEventManager()),
         entities(),
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
+        player1(nullptr),
+        player2(nullptr),
         mapPath(path),
         maxYoukais(10),
         maxPlatforms(30),
@@ -28,7 +30,8 @@ namespace States {
 
     Stage::~Stage() {
         pCollisionManager = nullptr;
-        player = nullptr;
+        player1 = nullptr;
+        player2 = nullptr;
     }
 
     const int Stage::getMapId() const {
@@ -36,7 +39,7 @@ namespace States {
     }
 
     const Entities::Player* Stage::getPlayer() const {
-        return player;
+        return player1;
     }
 
     void Stage::drawBackground() {
@@ -103,21 +106,22 @@ namespace States {
         Player* pPlayer = nullptr;
         if (isPlayer1) {
             pPlayer = new Player(Texture::Player1, Constants::P1_WIDTH, Constants::P1_HEIGHT, isPlayer1);
-            player = pPlayer;
+            player1 = pPlayer;
             Manager::CollisionManager::getCollisionManager()->setPlayer1(pPlayer);
         }
         else {
             pPlayer = new Player(Texture::Player2, Constants::P2_WIDTH, Constants::P2_HEIGHT, isPlayer1);
+            player2 = pPlayer;
             Manager::CollisionManager::getCollisionManager()->setPlayer2(pPlayer);
         }
         pPlayer->setSpritePosition(x, y);
         entities.append(static_cast<Entity*>(pPlayer));
-        player->setStage(this);
+        pPlayer->setStage(this);
         return pPlayer;
     }
 
     void Stage::updateView() {
-        pGraphicsManager->setViewCenter(player->getGlobalHitbox().left);
+        pGraphicsManager->setViewCenter(player1->getGlobalHitbox().left);
         sprite.setPosition(pGraphicsManager->getViewPositionX(), 0.f);
     }
 
@@ -157,13 +161,19 @@ namespace States {
     }
 
     void Stage::checkAlive(){
-        if (player->getLife() <= 0) {
+        if (player1->getLife() <= 0) {
             pStateStack->pushState(States::StateType::GameOver); 
         }
+        else {
+            if (!isSinglePlayer)
+                if (player2->getLife() <= 0)
+                    pStateStack->pushState(States::StateType::GameOver); 
+        }
+        
     }
 
     void Stage::checkEnd(){
-        const sf::FloatRect p1Coords = player->getGlobalHitbox();
+        const sf::FloatRect p1Coords = player1->getGlobalHitbox();
         if ((p1Coords.left + p1Coords.width) > Constants::MAP_WIDTH) {
             States::EndMenu* paused = new States::EndMenu(this);
             pStateStack->pushState(States::StateType::EndMenu, paused, false);

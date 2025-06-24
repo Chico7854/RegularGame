@@ -22,7 +22,8 @@ namespace States {
             int mapId;
             List::EntityList entities;
             Manager::CollisionManager* pCollisionManager;
-            Entities::Player* player;
+            Entities::Player* player1;
+            Entities::Player* player2;
             std::string mapPath;
             sf::Text pointsText;
             const int maxYoukais;

@@ -104,7 +104,7 @@ namespace States {
         pGhost->setSpritePosition(x, y);
         entities.append(static_cast<Entity*>(pGhost));
         pCollisionManager->appendEnemy(static_cast<Enemy*>(pGhost));
-        pGhost->setPlayer(player);
+        pGhost->setPlayer(player1);
         return pGhost;
     }
 
