@@ -136,6 +136,7 @@ namespace States {
 
     void Stage::exec() {
         drawBackground();
+        //checkAlive();
         checkEnd();
         updateView();
         updatePointsText();
@@ -151,6 +152,12 @@ namespace States {
 
     int Stage::getPoints(){
         return points;
+    }
+
+    void Stage::checkAlive(){
+        if (player->getLife() <= 0) {
+            pStateStack->pushState(States::StateType::GameOver); 
+        }
     }
 
     void Stage::checkEnd(){

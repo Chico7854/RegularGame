@@ -7,6 +7,7 @@
 #include "States/Menus/MenuState.h"
 #include "States/Menus/EndMenu.h"
 #include "States/Menus/Leaderboard.h"
+#include "States/Menus/GameOver.h"
 
 #include <iostream>
 
@@ -41,6 +42,9 @@ namespace States {
         break;
       case (StateType::Leaderboard):
         state = new Leaderboard;
+        break;
+      case (StateType::GameOver):
+        state = new GameOver;
         break;
       case (StateType::LoadGame): {
         std::ifstream file("../data/save.json");

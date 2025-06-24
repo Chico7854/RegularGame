@@ -13,6 +13,7 @@
 #include "States/StateStack.h"
 #include "States/Menus/PausedState.h"
 #include "States/Menus/EndMenu.h"
+#include "States/Menus/GameOver.h"
 #include "Utility/Font.h"
 
 namespace States {
@@ -40,6 +41,7 @@ namespace States {
 
             void updatePoints(int p);
             int getPoints();
+            void checkAlive();
             void checkEnd();
             virtual void save() = 0;
             virtual void loadSave() = 0;

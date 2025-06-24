@@ -13,6 +13,7 @@ namespace States {
         GameNight,
         EndMenu,
         Leaderboard,
+        GameOver,
         TotalStates
     };
 
