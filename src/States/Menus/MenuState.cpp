@@ -142,10 +142,6 @@ namespace States{
         std::cout << "Menu:" << (int)selected << "\n";
     }
 
-    void MenuState::setIsActive(bool isA){
-        Event::EventObserver::setIsActive(isA);
-    }
-
     const bool MenuState::getIsSingle() {
         return isSingle;
     }

@@ -42,7 +42,6 @@ namespace States {
 
             void exec() override;
             void keyPressed(const sf::Keyboard::Key key) override;
-            void setIsActive(bool isA) override;
 
             static const bool getIsSingle();
     };

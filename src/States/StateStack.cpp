@@ -46,11 +46,12 @@ namespace States {
         std::ifstream file("../data/save.json");
         json jsonData = json::parse(file);
         std::vector<json> data = jsonData.get<std::vector<json>>();
-        if (data[0]["map"] == "day") {
-          state = new DayMountainStage(false);
+        json stageData = data[0];
+        if (stageData["map"] == "day") {
+          state = new DayMountainStage(stageData["isSinglePlayer"], false);
         }
-        else if (data[0]["map"] == "night") {
-          state = new NightMountainStage(false);
+        else if (stageData["map"] == "night") {
+          state = new NightMountainStage(stageData["isSinglePlayer"], false);
         }
       }
         
@@ -81,7 +82,7 @@ namespace States {
       std::cerr << "Error creating " << static_cast<int>(stateType) << " state! \n";
       return;
     }
-
+    std::cout << "Stack Size: " << stack.size() << "\n";
     if (stack.size() > 0)
       stack.top()->setIsActive(false);
 
@@ -122,7 +123,7 @@ namespace States {
 
   void StateStack::clearStates() {
     while (!stack.empty()) {
-      delete stack.top();
+      // delete stack.top();
       stack.pop();
     } 
   }

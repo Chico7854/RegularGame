@@ -15,7 +15,7 @@ namespace States {
 
     void DayMountainStage::save() {
         std::ofstream file("../data/save.json", std::ios::out);     //delete contents of the file
-        json stageData = {{"map", "day"}, {"points", points}};
+        json stageData = {{"map", "day"}, {"points", points}, {"isSinglePlayer", isSinglePlayer}};
         json endObj = {{"type",0}};
         file << "[\n";
         file << stageData.dump(4) << ",\n";
