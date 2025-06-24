@@ -6,6 +6,7 @@ namespace States {
     class NightMountainStage : public States::Stage {
         private:
             const int maxGhosts;
+            const int maxSaws;
 
         public:
             NightMountainStage(const bool isSinglePlayer, const bool defaultMap = true, const int pointsValue = 0);

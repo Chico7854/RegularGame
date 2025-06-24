@@ -9,6 +9,7 @@ namespace States {
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
         mapPath(path),
         maxYoukais(10),
+        maxPlatforms(30),
         isSinglePlayer(singlePlayer),
         points(pointsValue),
         mapId(map)

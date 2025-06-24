@@ -26,6 +26,7 @@ namespace States {
             std::string mapPath;
             sf::Text pointsText;
             const int maxYoukais;
+            const int maxPlatforms;
             const bool isSinglePlayer;
             int points;
 

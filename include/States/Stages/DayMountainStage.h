@@ -6,6 +6,7 @@ namespace States {
     class DayMountainStage : public States::Stage {
         private:
             const int maxCannonheads;
+            const int maxSpikes;
 
         public:
             DayMountainStage(const bool isSinglePlayer, const bool defaultMap = true, const int pointsValue = 0);

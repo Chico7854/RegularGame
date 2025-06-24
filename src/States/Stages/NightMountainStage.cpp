@@ -3,7 +3,8 @@
 namespace States {
     NightMountainStage::NightMountainStage(const bool isSinglePlayer, const bool defaultMap, const int pointsValue):
         Stage(Texture::ID::BackgroundNightMountain, "../assets/stages/NightMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, isSinglePlayer, pointsValue, 1),
-        maxGhosts(3)
+        maxGhosts(3),
+        maxSaws(20)
     {
         if (defaultMap)
             createMap();
@@ -167,15 +168,19 @@ namespace States {
                     createBlock(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == '&') {
-                    if ((platformCount < 3) || (rand() % 2)) {
-                        createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
-                        platformCount++;
+                    if (platformCount < maxPlatforms) {
+                        if ((platformCount < 3) || (rand() % 2)) {
+                            createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                            platformCount++;
+                        }
                     }
                 }
                 else if (line[i] == 'S') {
-                    if ((sawCount < 3) || (rand() % 2)) {
-                        createSaw(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
-                        sawCount++;
+                    if (sawCount < maxSaws) {
+                        if ((sawCount < 3) || (rand() % 2)) {
+                            createSaw(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                            sawCount++;
+                        }
                     }
                 }
             }

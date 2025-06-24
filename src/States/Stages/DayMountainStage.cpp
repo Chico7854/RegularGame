@@ -3,7 +3,8 @@
 namespace States {
     DayMountainStage::DayMountainStage(const bool isSinglePlayer, const bool defaultMap, const int pointsValue):
         Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, isSinglePlayer, pointsValue, 0),
-        maxCannonheads(5)
+        maxCannonheads(5),
+        maxSpikes(40)
     {
         if (defaultMap)
             createMap();
@@ -175,15 +176,19 @@ namespace States {
                     createBlock(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
                 }
                 else if (line[i] == '&') {
-                    if ((platformCount < 3) || (rand() % 2)) {
-                        createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
-                        platformCount++;
+                    if (platformCount < maxPlatforms) {
+                        if ((platformCount < 3) || (rand() % 2)) {
+                            createPlatform(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                            platformCount++;
+                        }
                     }
                 }
                 else if (line[i] == 's') {
-                    if ((spikeCount < 3) || (rand() % 2)) {
-                        createSpike(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
-                        spikeCount++;
+                    if (spikeCount < maxSpikes) {
+                        if ((spikeCount < 3) || (rand() % 2)) {
+                            createSpike(i * Constants::SCALE_TXT, j * Constants::SCALE_TXT);
+                            spikeCount++;
+                        }
                     }
                 }
             }
