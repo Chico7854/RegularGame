@@ -9,7 +9,6 @@ namespace Entities {
         reloadTime(150.f/evilness),
         dtime(0.f)
     {
-        setEntityList();
     }
 
     Cannonhead::~Cannonhead() {}
@@ -56,7 +55,6 @@ namespace Entities {
     }
 
     void Cannonhead::shoot(){
-
         Projectile* new_ball = new Projectile(Texture::Ball, Constants::BALL_WIDTH, Constants::BALL_HEIGHT);
         
         float startX = sprite.getGlobalBounds().left ;//+ Constants::CANNONHEAD_WIDTH / 2.f;
@@ -72,8 +70,8 @@ namespace Entities {
         pEntityList->append(new_ball);
     }
 
-    void Cannonhead::setEntityList(){
-        pEntityList = List::EntityList::getEntityList();
+    void Cannonhead::setEntityList(List::EntityList* entityList){
+        pEntityList = entityList;
     }
 
     void Cannonhead::setDtime(const float dt) {

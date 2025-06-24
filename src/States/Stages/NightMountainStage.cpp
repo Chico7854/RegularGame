@@ -21,7 +21,7 @@ namespace States {
         file << stageData.dump(4) << ",\n";
         file.flush();
         file.close();
-        pEntityList->saveEntities();
+        entities.saveEntities();
         std::ofstream file2("../data/save.json", std::ios::app);
         file2 << endObj.dump(4);
         file2 << "\n]";
@@ -34,13 +34,13 @@ namespace States {
     void NightMountainStage::loadSave() {
         using namespace Entities;
         std::cout << "Game Loaded \n";
-        pEntityList->clear(); //preventing entities leaking to other stages
+        entities.clear(); //preventing entities leaking to other stages
         pCollisionManager->clearLists();
         std::ifstream file("../data/save.json");
         json data = json::parse(file);
-        std::vector<json> entities = data.get<std::vector<json>>();
-        for (int i = 1; i < entities.size(); i++) {
-            json entityData = entities[i];
+        std::vector<json> entitiesJSON = data.get<std::vector<json>>();
+        for (int i = 1; i < entitiesJSON.size(); i++) {
+            json entityData = entitiesJSON[i];
             EntityType type = entityData["type"];
             switch (type) {
                 case EntityType::Platform:
@@ -100,7 +100,7 @@ namespace States {
         using namespace Entities;
         Ghost* pGhost = new Ghost();
         pGhost->setSpritePosition(x, y);
-        pEntityList->append(static_cast<Entity*>(pGhost));
+        entities.append(static_cast<Entity*>(pGhost));
         pCollisionManager->appendEnemy(static_cast<Enemy*>(pGhost));
         pGhost->setPlayer(player);
         return pGhost;
@@ -110,7 +110,7 @@ namespace States {
         using namespace Entities;
         Saw* pSaw = new Saw();
         pSaw->setSpritePosition(x, y);
-        pEntityList->append(static_cast<Entity*>(pSaw));
+        entities.append(static_cast<Entity*>(pSaw));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pSaw));
         return pSaw;
     }

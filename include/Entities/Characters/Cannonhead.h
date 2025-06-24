@@ -26,7 +26,7 @@ namespace Entities {
         void setBallDirection();
         void shoot();
         
-        void setEntityList();
+        void setEntityList(List::EntityList* entityList);
         void setDtime(const float dt);
         void setDirection(const bool d);
         void setReloadTime(const float reloadT);

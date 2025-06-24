@@ -5,14 +5,13 @@ namespace States {
                  const float sprite_width, const float sprite_height, const bool singlePlayer):
         Ent(background, sprite_width, sprite_height),
         State(Manager::EventManager::getEventManager()),
-        pEntityList(nullptr),
+        entities(),
         pCollisionManager(Manager::CollisionManager::getCollisionManager()),
         mapPath(path),
         maxYoukais(10),
         isSinglePlayer(singlePlayer),
         points(0)
     {
-        setEntityList();
         sf::Font* pointsFont = Manager::GraphicsManager::getGraphicsManager()->getFont(Font::Pixelify);
         if (pointsFont) {
             pointsText.setFont(*pointsFont);
@@ -26,17 +25,12 @@ namespace States {
     }
 
     Stage::~Stage() {
-        pEntityList = nullptr;
         pCollisionManager = nullptr;
         player = nullptr;
     }
 
     const Entities::Player* Stage::getPlayer() const {
         return player;
-    }
-
-    void Stage::setEntityList(){
-        pEntityList = List::EntityList::getEntityList();
     }
 
     void Stage::drawBackground() {
@@ -48,7 +42,7 @@ namespace States {
         try {
             Youkai* pYoukai = new Youkai();
             pYoukai->setSpritePosition(x, y);
-            pEntityList->append(static_cast<Entity*>(pYoukai)); 
+            entities.append(static_cast<Entity*>(pYoukai)); 
             pCollisionManager->appendEnemy(static_cast<Enemy*>(pYoukai));
             return pYoukai;
         }
@@ -75,12 +69,12 @@ namespace States {
         pPlatform5->setSpritePosition(x + Constants::SCALE_TXT * 4, y);
         pPlatform6->setSpritePosition(x + Constants::SCALE_TXT * 5, y);
 
-        pEntityList->append(static_cast<Entity*>(pPlatform1));
-        pEntityList->append(static_cast<Entity*>(pPlatform2));
-        pEntityList->append(static_cast<Entity*>(pPlatform3));
-        pEntityList->append(static_cast<Entity*>(pPlatform4));
-        pEntityList->append(static_cast<Entity*>(pPlatform5));
-        pEntityList->append(static_cast<Entity*>(pPlatform6));
+        entities.append(static_cast<Entity*>(pPlatform1));
+        entities.append(static_cast<Entity*>(pPlatform2));
+        entities.append(static_cast<Entity*>(pPlatform3));
+        entities.append(static_cast<Entity*>(pPlatform4));
+        entities.append(static_cast<Entity*>(pPlatform5));
+        entities.append(static_cast<Entity*>(pPlatform6));
 
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform1));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform2));
@@ -94,7 +88,7 @@ namespace States {
         using namespace Entities;
         Platform* pPlatform = new Platform();
         pPlatform->setSpritePosition(x, y);
-        pEntityList->append(static_cast<Entity*>(pPlatform));
+        entities.append(static_cast<Entity*>(pPlatform));
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform));
     }
 
@@ -111,7 +105,7 @@ namespace States {
             Manager::CollisionManager::getCollisionManager()->setPlayer2(pPlayer);
         }
         pPlayer->setSpritePosition(x, y);
-        pEntityList->append(static_cast<Entity*>(pPlayer));
+        entities.append(static_cast<Entity*>(pPlayer));
         player->setStage(this);
     }
 
@@ -126,7 +120,7 @@ namespace States {
     }
 
     void Stage::createMap() {
-        pEntityList->clear(); //preventing entities leaking to other stages
+        entities.clear(); //preventing entities leaking to other stages
         pCollisionManager->clearLists();
         createPlayer(0.f, Constants::FLOOR_HEIGHT - Constants::P1_HEIGHT, true);
         if (!isSinglePlayer)
@@ -142,8 +136,8 @@ namespace States {
             updateView();
             updatePointsText();
             pCollisionManager->exec();
-            pEntityList->execEntities();
-            pEntityList->drawEntities();
+            entities.execEntities();
+            entities.drawEntities();
             pGraphicsManager->draw(pointsText);
         }
     }

@@ -18,7 +18,7 @@
 namespace States {
     class Stage : public Ent, public States::State{
         protected:
-            List::EntityList* pEntityList;
+            List::EntityList entities;
             Manager::CollisionManager* pCollisionManager;
             Entities::Player* player;
             std::string mapPath;
@@ -33,7 +33,6 @@ namespace States {
                   const float sprite_width, const float sprite_height, const bool singlePlayer);
             virtual ~Stage();
 
-            void setEntityList();
             const Entities::Player* getPlayer() const;
             void exec();
 
