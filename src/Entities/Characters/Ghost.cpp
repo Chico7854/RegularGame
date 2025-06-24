@@ -74,7 +74,7 @@ namespace Entities {
     void Ghost::changeDirectionOnPlatform() {}
 
     void Ghost::damage(Player* player) {
-        player->setLife(getLife() - soulDamage);
+        player->setLife(player->getLife() - soulDamage);
     }
 
     void Ghost::save() {

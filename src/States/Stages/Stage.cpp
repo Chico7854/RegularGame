@@ -137,7 +137,7 @@ namespace States {
 
     void Stage::exec() {
         drawBackground();
-        //checkAlive();
+        checkAlive();
         checkEnd();
         updateView();
         updatePointsText();
@@ -157,7 +157,8 @@ namespace States {
 
     void Stage::checkAlive(){
         if (player->getLife() <= 0) {
-            pStateStack->pushState(States::StateType::GameOver); 
+            //pStateStack->pushState(States::StateType::GameOver); 
+            std::cout << player->getLife() << std::endl;
         }
     }
 
