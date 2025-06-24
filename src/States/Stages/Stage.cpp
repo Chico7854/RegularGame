@@ -157,8 +157,7 @@ namespace States {
 
     void Stage::checkAlive(){
         if (player->getLife() <= 0) {
-            //pStateStack->pushState(States::StateType::GameOver); 
-            std::cout << player->getLife() << std::endl;
+            pStateStack->pushState(States::StateType::GameOver); 
         }
     }
 

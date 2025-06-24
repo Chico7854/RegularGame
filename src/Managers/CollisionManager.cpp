@@ -71,10 +71,11 @@ namespace Manager {
         std::list<Entities::Obstacle*>::iterator it = obstacles.begin();
         while (it != obstacles.end()) {
             if (*it) {
-                (*it)->obstruct(static_cast<Entities::Character*>(p1));
-                if (p2) {
-                (*it)->obstruct(static_cast<Entities::Character*>(p2));
-                }
+                if (verifyCollision(*it, p1)) 
+                    (*it)->obstruct(static_cast<Entities::Character*>(p1));
+                if (p2)
+                    if (verifyCollision(*it, p2))
+                        (*it)->obstruct(static_cast<Entities::Character*>(p2));
             }
             it++;
         }
