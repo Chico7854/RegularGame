@@ -56,15 +56,16 @@ namespace States {
                     break;
                 }
 
-                case EntityType::Player:
-                    createPlayer(entityData["left"], entityData["top"], entityData["isPlayer1"]);
-                    player->setDx(entityData["dx"]);
-                    player->setDy(entityData["dy"]);
-                    player->setLife(entityData["lifes"]);
-                    player->setOnGround(entityData["onGround"]);
-                    player->setIsHurt(entityData["isHurt"]);
-                    player->setIsAttacking(entityData["isAttacking"]);
+                case EntityType::Player: {
+                    Entities::Player* pPlayer = createPlayer(entityData["left"], entityData["top"], entityData["isPlayer1"]);
+                    pPlayer->setDx(entityData["dx"]);
+                    pPlayer->setDy(entityData["dy"]);
+                    pPlayer->setLife(entityData["lifes"]);
+                    pPlayer->setOnGround(entityData["onGround"]);
+                    pPlayer->setIsHurt(entityData["isHurt"]);
+                    pPlayer->setIsAttacking(entityData["isAttacking"]);
                     break;
+                }
                 
                 case EntityType::Youkai: {
                     Youkai* pYoukai = createYoukai(entityData["left"], entityData["top"]);

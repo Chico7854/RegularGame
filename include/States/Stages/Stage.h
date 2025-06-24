@@ -51,7 +51,7 @@ namespace States {
             Entities::Youkai* createYoukai(const float x, const float y);
             void createPlatform(const float x, const float y);
             void createBlock(const float x, const float y);
-            void createPlayer(const float x, const float y, const bool isPlayer1);
+            Entities::Player* createPlayer(const float x, const float y, const bool isPlayer1);
             
             void updateView();
             void updatePointsText();

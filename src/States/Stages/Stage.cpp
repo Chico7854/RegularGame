@@ -98,7 +98,7 @@ namespace States {
         pCollisionManager->appendObstacle(static_cast<Obstacle*>(pPlatform));
     }
 
-    void Stage::createPlayer(const float x, const float y, const bool isPlayer1) {
+    Entities::Player* Stage::createPlayer(const float x, const float y, const bool isPlayer1) {
         using namespace Entities;
         Player* pPlayer = nullptr;
         if (isPlayer1) {
@@ -113,6 +113,7 @@ namespace States {
         pPlayer->setSpritePosition(x, y);
         entities.append(static_cast<Entity*>(pPlayer));
         player->setStage(this);
+        return pPlayer;
     }
 
     void Stage::updateView() {
