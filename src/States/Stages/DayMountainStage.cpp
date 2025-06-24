@@ -2,7 +2,7 @@
 
 namespace States {
     DayMountainStage::DayMountainStage(const bool isSinglePlayer, const bool defaultMap, const int pointsValue):
-        Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, isSinglePlayer, pointsValue),
+        Stage(Texture::ID::BackgroundDayMountain, "../assets/stages/DayMountainMap.txt", Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, isSinglePlayer, pointsValue, 0),
         maxCannonheads(5)
     {
         if (defaultMap)

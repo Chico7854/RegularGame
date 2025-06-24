@@ -17,6 +17,7 @@ namespace States {
         None = -1,
         SaveScore,
         Menu,
+        NextStage,
         TotalStates
     };
 
@@ -24,6 +25,7 @@ namespace States {
         private:
             sf::Sprite saveScoreButton;
             sf::Sprite menuButton;
+            sf::Sprite nextStageButton;
 
             sf::Text nameText;
             std::string playerName; 

@@ -7,6 +7,7 @@ namespace States{
         selected(EndOptions::SaveScore),
         saveScoreButton(),
         menuButton(),
+        nextStageButton(),
         points(0),
         playerName(""),
         nameInputActive(true)
@@ -21,7 +22,16 @@ namespace States{
     void EndMenu::initializeAssets(){
         if (Manager::GraphicsManager::getGraphicsManager()) {
             auto texSaveScore = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::SaveScore);
-            auto texMenu = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Menu);
+            sf::Texture* texMenu = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::Menu);
+            sf::Texture* texNextStage = nullptr;
+
+            if (pStage->getMapId() == 0) {
+                texNextStage = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::NewNightButton);
+            }
+            else {
+                texNextStage = Manager::GraphicsManager::getGraphicsManager()->getTexture(Texture::NewDayButton);
+            }
+
             if (texSaveScore) {
                 saveScoreButton.setTexture(*texSaveScore);
             } else {
@@ -32,11 +42,19 @@ namespace States{
             } else {
                 std::cerr << "Menu texture error\n";
             }
+            if (texNextStage) {
+                nextStageButton.setTexture(*texNextStage);
+            } else {
+                std::cerr << "NextStage texture error\n";
+            }
             
             saveScoreButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
                                                     128.f * 3));
             menuButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
                                                     128.f * 4));
+            nextStageButton.setPosition(sf::Vector2f(Constants::WINDOW_WIDTH/2.f - Constants::BUTTON_WIDTH/2.f ,
+                                                    128.f * 3.5));
+            
         }
 
         sf::Font* Font = Manager::GraphicsManager::getGraphicsManager()->getFont(Font::Pixelify);
@@ -92,20 +110,31 @@ namespace States{
                 if (selected == EndOptions::SaveScore) {
                     selected = EndOptions::Menu;
                 } else if (selected == EndOptions::Menu) {
+                    selected = EndOptions::NextStage;
+                } else if (selected == EndOptions::NextStage) {
                     selected = EndOptions::SaveScore;
                 }
                 updateSelected();
             } else if (key == sf::Keyboard::Down) {
                 if (selected == EndOptions::SaveScore) {
-                    selected = EndOptions::Menu;
+                    selected = EndOptions::NextStage;
                 } else if (selected == EndOptions::Menu) {
                     selected = EndOptions::SaveScore;
-                } 
+                } else if (selected == EndOptions::NextStage) {
+                    selected = EndOptions::Menu;
+                }
                 updateSelected();
             } else if (key == sf::Keyboard::Enter) {
                 if (selected == EndOptions::SaveScore) {
                     saveOnTxt();
-                } else if (selected == EndOptions::Menu) {
+                } 
+                else if (selected == EndOptions::NextStage) {
+                    if (pStage->getMapId() == 0) 
+                        pStateStack->pushState(States::StateType::GameNight);
+                    else   
+                        pStateStack->pushState(States::StateType::GameDay);
+                }
+                else if (selected == EndOptions::Menu) {
                     pStateStack->pushState(States::StateType::Menu);
                 }
             } 
@@ -125,12 +154,15 @@ namespace States{
     void EndMenu::updateSelected(){
         saveScoreButton.setColor(sf::Color::White);
         menuButton.setColor(sf::Color::White);
+        nextStageButton.setColor(sf::Color::White);
 
         if (selected == EndOptions::SaveScore) {
             saveScoreButton.setColor(sf::Color::Yellow);
         } else if (selected == EndOptions::Menu){
             menuButton.setColor(sf::Color::Yellow);
-        } 
+        } else if (selected == EndOptions::NextStage) {
+            nextStageButton.setColor(sf::Color::Yellow);
+        }
     }
 
     void EndMenu::saveOnTxt(){
@@ -147,6 +179,7 @@ namespace States{
         if(Manager::GraphicsManager::getGraphicsManager()){
             Manager::GraphicsManager::getGraphicsManager()->getWindow()->setView(sf::View(sf::FloatRect(0, 0, Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT)));
             Manager::GraphicsManager::getGraphicsManager()->draw(saveScoreButton);
+            Manager::GraphicsManager::getGraphicsManager()->draw(nextStageButton);
             Manager::GraphicsManager::getGraphicsManager()->draw(menuButton);
             Manager::GraphicsManager::getGraphicsManager()->draw(pointsText);
             Manager::GraphicsManager::getGraphicsManager()->draw(nameText);

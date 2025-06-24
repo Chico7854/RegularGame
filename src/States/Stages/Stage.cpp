@@ -2,7 +2,7 @@
 
 namespace States {
     Stage::Stage(const Texture::ID background, const std::string path, 
-                 const float sprite_width, const float sprite_height, const bool singlePlayer, const int pointsValue):
+                 const float sprite_width, const float sprite_height, const bool singlePlayer, const int pointsValue, const int map):
         Ent(background, sprite_width, sprite_height),
         State(Manager::EventManager::getEventManager()),
         entities(),
@@ -10,7 +10,8 @@ namespace States {
         mapPath(path),
         maxYoukais(10),
         isSinglePlayer(singlePlayer),
-        points(pointsValue)
+        points(pointsValue),
+        mapId(map)
     {
         sf::Font* pointsFont = Manager::GraphicsManager::getGraphicsManager()->getFont(Font::Pixelify);
         if (pointsFont) {
@@ -27,6 +28,10 @@ namespace States {
     Stage::~Stage() {
         pCollisionManager = nullptr;
         player = nullptr;
+    }
+
+    const int Stage::getMapId() const {
+        return mapId;
     }
 
     const Entities::Player* Stage::getPlayer() const {

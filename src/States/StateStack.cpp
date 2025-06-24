@@ -54,26 +54,6 @@ namespace States {
           state = new NightMountainStage(stageData["isSinglePlayer"], false, stageData["points"]);
         }
       }
-        
-        
-      /*case (StateType::PlayerSelect): 
-        state = new PlayerSelectState; 
-        break;
-      case (StateType::StageSelect): 
-        state = new StageSelectState; 
-        break;
-      case (StateType::Loading):
-        state = new LoadingState;
-        break;*/
-      
-      /*case (StateType::Continue):
-        state = new LoadingState(false);
-        break;
-      
-      case (StateType::SaveScore):
-        state = new SaveScoreState;
-        break;
-      */
       default:
         break;
     }

@@ -18,6 +18,7 @@
 namespace States {
     class Stage : public Ent, public States::State{
         protected:
+            int mapId;
             List::EntityList entities;
             Manager::CollisionManager* pCollisionManager;
             Entities::Player* player;
@@ -29,13 +30,14 @@ namespace States {
 
         public:
             Stage(const Texture::ID background, const std::string path, 
-                  const float sprite_width, const float sprite_height, const bool singlePlayer, const int pointsValue);
+                  const float sprite_width, const float sprite_height, const bool singlePlayer, const int pointsValue, const int map);
             virtual ~Stage();
 
+            const int getMapId() const;
             const Entities::Player* getPlayer() const;
+            
             void exec();
 
-            void setIsPaused(bool isP);
             void updatePoints(int p);
             int getPoints();
             void checkEnd();
