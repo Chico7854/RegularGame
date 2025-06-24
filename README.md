@@ -9,3 +9,5 @@ Sistema operacional: Ubuntu
 Compilador: g++ 13.3.0
 
 Biblioteca Gráfica: SFML 2.5.1
+
+Cmake: 4.0.3
